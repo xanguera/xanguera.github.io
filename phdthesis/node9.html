@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>State of the art</TITLE>
+<META NAME="description" CONTENT="State of the art">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node41.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="PhD_Thesis.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html485"
+  HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html481"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html475"
+  HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html483"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html486"
+  HREF="node10.html">Acoustic Features for Speaker</A>
+<B> Up:</B> <A NAME="tex2html482"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html476"
+  HREF="node8.html">Outline of the Thesis</A>
+ &nbsp; <B>  <A NAME="tex2html484"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00600000000000000000"></A>
+<A NAME="state_art"></A>
+<BR>
+State of the art
+</H1>
+
+<P>
+In this chapter the main techniques used over the recent years on
+the task towards speaker diarizaton (i.e. speaker segmentation and
+clustering) and on acoustic beamforming are reviewed. Initially,
+the features that have been found suitable for speaker diarization
+are explained. Then, a look at the algorithms and systems to deal
+in general with the task at hand are introduced. Finally some
+ground is set on techniques oriented towards performing speaker
+diarization in meetings, being this the main domain of application
+of this thesis.
+
+<P>
+Speaker diarization can be defined in terms of being a subtype of
+audio diarization, where the speech segments of the signal are
+broken into the different speakers ((<A
+ HREF="node147.html#Reynolds_2004">Reynolds and Torres-Carrasquillo, 2004</A>)). It
+generally answers to the question ``Who spoke when?'' and it is
+sometimes referred to as speaker segmentation and clustering. In the
+domain of application of this thesis it is performed without any
+prior knowledge of the identity of the speakers in the recordings or
+how many are there. This, though, is not a requirement to call it
+speaker diarization as partial knowledge on the identities of some
+people in the recordings, the number of speakers or the structure of
+the audio (what follows what) might be available and used depending
+on the application at hand. None of these informations is provided
+in the RT evaluation campaigns organized by NIST
+(<A
+ HREF="node147.html#NIST_Meetings_web"><EM>NIST Spring Rich Transcription Evaluation in Meetings
+  website,
+  http://www.nist.gov/speech/tests/rt/rt2005/spring</EM>, 2006</A>) which is the task used to evaluate all the
+algorithms presented in this thesis.
+
+<P>
+According to <A
+ HREF="node147.html#Reynolds_2004">Reynolds and Torres-Carrasquillo (2004)</A>, there are 3 main domains
+of application for speaker diarization that have received special
+attention over the years:
+
+<P>
+
+<UL>
+<LI>Broadcast news audio: Radio and TV programs with various
+kinds of programming, usually containing commercial breaks and
+music, over a single or stereo channel.
+
+<P>
+</LI>
+<LI>Recorded meetings: meetings or lectures where multiple
+people interact in the same room or over the phone. Normally
+recordings are made with several microphones.
+
+<P>
+</LI>
+<LI>Phone conversations: single channel recordings of phone
+conversations between two or more people. It is very much used in
+the speaker recognition campaigns but in disuse in diarization.
+</LI>
+</UL>
+
+<P>
+Furthermore, one could consider other particular domains, like air
+traffic communications, dialog in the car, and others.
+
+<P>
+As part of speaker diarization, speaker segmentation and speaker
+clustering belong to the pattern classification family, where one
+tries to find categorical (discrete) classes for continuous
+observations of speech and, by doing so, it finds the boundaries
+between them. Speech recognition is also a pattern classification
+problem. As such, they all need to work on a feature set that
+represents well the acoustic data and define a distance
+measure/method to assign each feature vector to a class.
+
+<P>
+In general, clustering data into classes is a well studied
+technique for statistical data analysis, with applications in many
+fields, including machine learning, data mining, pattern
+recognition, image analysis, bioinformatics and others.
+
+<P>
+When using clustering techniques for speaker or acoustic clustering
+one needs to previously define the segments that are going to be
+clustered, which might be of different sizes and characteristics
+(speech, non-speech, music, noises). In creating the segments using
+segmentation techniques one needs to be able to separate the speech
+stream into speakers and not words or phones. Any speech segment is
+populated with voiced and unvoiced phones, and short pauses between
+some phones or in speech prosody stops. A speaker segmentation and
+clustering algorithm needs to define the properties of the speaker's
+data to be assigned to a single speaker and define techniques to
+assign such data into a single cluster. To do so one needs to use
+the appropriate acoustic models, their parameters and training
+algorithms so that they identify differences correctly in the
+acoustics at the speaker level.
+
+<P>
+The first section in this chapter takes a look at the features that
+have proven useful for speaker-based processing (like speaker
+diarization). Emphasis is given to alternatives to the traditional
+features, to focus on speaker characteristics that better
+discriminate and help identify the speakers present in a recording.
+
+<P>
+Following the features review, an overview of the main techniques
+that have been used in the area of speaker segmentation and
+speaker diarization is pursued. Speaker segmentation is a first
+step in many speaker diarization systems and therefore it is found
+useful to review what techniques have been mainly used in the past
+and to create a ground theory  for the speaker diarization review.
+After explaining the main speaker diarization systems focus will
+be geared towards speaker diarization for meetings, which is the
+focus of implementation in this thesis.
+
+<P>
+In meetings one usually encounters several available microphones for
+processing, they are all located inside the meetings room in several
+locations around the speakers. Although most of these microphones
+are not defined to form a microphone array in theory (the AMI
+microphone set is), in practice it is found useful to use microphone
+array beamforming techniques in order to combine the microphones
+data into one ``enhanced'' channel and then process only this
+channel using the diarization system. This has the advantage that
+the speaker diarization system stays totally transparent of the
+particularities of each meeting room setting and processes only one
+channel in any case, improving in speed, versus any other solutions
+involving some sort of processing of all channels in parallel.
+
+<P>
+In the last section of this state of the art review the main
+techniques currently available in acoustic beamforming will be
+covered, which have been applied in the implemented system in order
+to take advantage of the multiplicity of available microphones.
+First, an overview of the techniques used to obtain an ``enhanced''
+signal as an output from multiple input signals is covered, and then
+possible ways to estimate the delay between each of these channels
+is explored, necessary in order to align the acoustic data, used in
+the majority of beamforming algorithms.
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html487"
+  HREF="node10.html">Acoustic Features for Speaker Diarization</A>
+<LI><A NAME="tex2html488"
+  HREF="node11.html">Speaker Segmentation</A>
+<UL>
+<LI><A NAME="tex2html489"
+  HREF="node12.html">Metric-Based Segmentation</A>
+<LI><A NAME="tex2html490"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<UL>
+<LI><A NAME="tex2html491"
+  HREF="node14.html">Silence and Decoder-Based Segmentation</A>
+<LI><A NAME="tex2html492"
+  HREF="node15.html">Model-Based Segmentation</A>
+<LI><A NAME="tex2html493"
+  HREF="node16.html">Segmentation Using Other Techniques</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html494"
+  HREF="node17.html">Speaker Diarization</A>
+<UL>
+<LI><A NAME="tex2html495"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<UL>
+<LI><A NAME="tex2html496"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+<LI><A NAME="tex2html497"
+  HREF="node20.html">Top-down Clustering Techniques</A>
+<LI><A NAME="tex2html498"
+  HREF="node21.html">Combination of Clustering Methods</A>
+</UL>
+<LI><A NAME="tex2html499"
+  HREF="node22.html">Other Clustering Techniques</A>
+<LI><A NAME="tex2html500"
+  HREF="node23.html">Use of Support Information in Diarization</A>
+<UL>
+<LI><A NAME="tex2html501"
+  HREF="node24.html">Helping Diarization Using the Spoken Transcripts</A>
+<LI><A NAME="tex2html502"
+  HREF="node25.html">Speaker Diarization Using Multi-Channel Information</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html503"
+  HREF="node26.html">Speaker Diarization in Meetings</A>
+<UL>
+<LI><A NAME="tex2html504"
+  HREF="node27.html">Current Meeting Room Research Projects</A>
+<LI><A NAME="tex2html505"
+  HREF="node28.html">Databases</A>
+<LI><A NAME="tex2html506"
+  HREF="node29.html">NIST RT Speaker Diarization Systems for Meetings</A>
+<UL>
+<LI><A NAME="tex2html507"
+  HREF="node30.html">NIST 2002 Speaker Recognition Evaluation</A>
+<LI><A NAME="tex2html508"
+  HREF="node31.html">NIST 2004 Rich Transcription Spring Meeting Evaluation</A>
+<LI><A NAME="tex2html509"
+  HREF="node32.html">NIST 2005 Rich Transcription Spring Meeting Evaluation</A>
+<LI><A NAME="tex2html510"
+  HREF="node33.html">NIST 2006 Rich Transcription Spring Meeting Evaluation</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html511"
+  HREF="node34.html">Multichannel Acoustic Enhancement</A>
+<UL>
+<LI><A NAME="tex2html512"
+  HREF="node35.html">Introduction to Acoustic Array Processing</A>
+<UL>
+<LI><A NAME="tex2html513"
+  HREF="node36.html">Acoustic Signal Propagation</A>
+<LI><A NAME="tex2html514"
+  HREF="node37.html">Passive Apertures</A>
+<LI><A NAME="tex2html515"
+  HREF="node38.html">Linear Apertures Theory</A>
+</UL>
+<LI><A NAME="tex2html516"
+  HREF="node39.html">Microphone Array Beamforming</A>
+<LI><A NAME="tex2html517"
+  HREF="node40.html">Time Delay of Arrival Estimation</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html485"
+  HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html481"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html475"
+  HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html483"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html486"
+  HREF="node10.html">Acoustic Features for Speaker</A>
+<B> Up:</B> <A NAME="tex2html482"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html476"
+  HREF="node8.html">Outline of the Thesis</A>
+ &nbsp; <B>  <A NAME="tex2html484"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

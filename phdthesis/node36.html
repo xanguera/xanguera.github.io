@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Acoustic Signal Propagation</TITLE>
+<META NAME="description" CONTENT="Acoustic Signal Propagation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node37.html">
+<LINK REL="previous" HREF="node35.html">
+<LINK REL="up" HREF="node35.html">
+<LINK REL="next" HREF="node37.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html865"
+  HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html861"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html855"
+  HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html863"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html866"
+  HREF="node37.html">Passive Apertures</A>
+<B> Up:</B> <A NAME="tex2html862"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Previous:</B> <A NAME="tex2html856"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+ &nbsp; <B>  <A NAME="tex2html864"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00651100000000000000">
+Acoustic Signal Propagation</A>
+</H3>
+
+<P>
+In general, in terms of signal propagation, an active speaker can
+be considered as an acoustic source which emits an acoustic signal
+that propagates through the air until it reaches each of the
+microphones in the room. In order to define an equation for such
+acoustic signal one can consider it as a longitudinal wave that
+propagates generating areas of compression and expansion. Using
+Newton's equations of motion of the volume in a fluid, and
+considering a semi-ideal case (<A
+ HREF="node147.html#McCowan_01b">McCowan (2001)</A>,
+<A
+ HREF="node147.html#Brandstein_01b">Brandstein and Ward (2001)</A>) one obtains:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\bigtriangledown^{2}x(t,\mathbf{r})-\frac{1}{c^{2}}\frac{\delta^{2}}{\delta^{2}}x(t,
+\mathbf{r}) = 0
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="211" HEIGHT="61" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.png"
+ ALT="$\displaystyle \bigtriangledown^{2}x(t,\mathbf{r})-\frac{1}{c^{2}}\frac{\delta^{2}}{\delta^{2}}x(t, \mathbf{r}) = 0$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">23</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+were <!-- MATH
+ $\bigtriangledown^{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.png"
+ ALT="$ \bigtriangledown^{2}$"></SPAN> is the Laplacian operator,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img108.png"
+ ALT="$ x(.)$"></SPAN> is the wave field (of any sort) as a function if time and
+space, <!-- MATH
+ $\mathbf{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img109.png"
+ ALT="$ \mathbf{r}$"></SPAN> is the 3D position of the wave and <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN> is the
+speed of sound (about 330 m/s in air).
+
+<P>
+In microphone array processing this equation can be solved for two
+particular cases. On one hand, when the acoustic wave field is
+considered monochromatic and plane (for far-field conditions) it
+is solved as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+x(t,\mathbf{r})=A(t)e^{j(wt-\mathbf{k}\mathbf{r})}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="172" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img111.png"
+ ALT="$\displaystyle x(t,\mathbf{r})=A(t)e^{j(wt-\mathbf{k}\mathbf{r})}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">24</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="70" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img112.png"
+ ALT="$ w=2\pi f$"></SPAN> is the considered frequency (in
+radiants per second), <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img113.png"
+ ALT="$ A(t)$"></SPAN> is the wave field amplitude and
+<!-- MATH
+ $\mathbf{k}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img114.png"
+ ALT="$ \mathbf{k}$"></SPAN> is the wavenumber and is defined as
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+\mathbf{k}=\frac{2\pi}{\lambda}[\sin\theta \cos\phi \;\;
+\sin\theta \sin\phi \;\; \cos\theta]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="274" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img115.png"
+ ALT="$\displaystyle \mathbf{k}=\frac{2\pi}{\lambda}[\sin\theta \cos\phi \;\;
+\sin\theta \sin\phi \;\; \cos\theta]
+$">
+</DIV><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> is the wavelength (<!-- MATH
+ $\lambda = c/f$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img116.png"
+ ALT="$ \lambda = c/f$"></SPAN>),
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img44.png"
+ ALT="$ \theta$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img117.png"
+ ALT="$ \phi$"></SPAN> are the polar coordinates for elevation and
+azimut (respectively) of the waveform position in space.
+
+<P>
+On the other hand, when the wave is considered spherical
+(propagating in all directions), as used in near-field conditions,
+it is solved as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+x(t,\mathbf{r})=\frac{-A(t)}{4\pi r}e^{j(wt-kr)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="189" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img118.png"
+ ALT="$\displaystyle x(t,\mathbf{r})=\frac{-A(t)}{4\pi r}e^{j(wt-kr)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">25</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where now <!-- MATH
+ $r=|\mathbf{r}|$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="54" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img119.png"
+ ALT="$ r=\vert\mathbf{r}\vert$"></SPAN> determines the scalar
+distance to the source in any direction and k is the scalar
+version of the wavenumber, <!-- MATH
+ $k=2\pi/\lambda$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img120.png"
+ ALT="$ k=2\pi/\lambda$"></SPAN> for all directions.
+
+<P>
+From these formulas one can observe how any acoustic wave can be
+sampled both in time and space in a similar way (both dimensions
+being in the exponential). Time sampling is done to obtain a
+digital signal and space sampling is done by a microphone array.
+In both cases one can reconstruct the original signal as long as
+it complies with the Nyquist rule (<A
+ HREF="node147.html#Ifeachor_96">Ifeachor and Jervis, 1996</A>) (or else
+there will be spacial/temporal aliasing).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html865"
+  HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html861"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html855"
+  HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html863"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html866"
+  HREF="node37.html">Passive Apertures</A>
+<B> Up:</B> <A NAME="tex2html862"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Previous:</B> <A NAME="tex2html856"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+ &nbsp; <B>  <A NAME="tex2html864"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

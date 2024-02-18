@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Acoustic Features for Speaker Diarization</TITLE>
+<META NAME="description" CONTENT="Acoustic Features for Speaker Diarization">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node11.html">
+<LINK REL="previous" HREF="node9.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node11.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html528"
+  HREF="node11.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html524"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html518"
+  HREF="node9.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html526"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html529"
+  HREF="node11.html">Speaker Segmentation</A>
+<B> Up:</B> <A NAME="tex2html525"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html519"
+  HREF="node9.html">State of the art</A>
+ &nbsp; <B>  <A NAME="tex2html527"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00610000000000000000">
+Acoustic Features for Speaker Diarization</A>
+</H1>
+
+<P>
+Speaker diarization falls into the category of speaker-based
+processing techniques. Features extracted from the acoustic signal
+are intended to convey information about the speakers in the
+conversations in order to enable the systems to separate them
+optimally.
+
+<P>
+Like in speaker recognition and speech recognition systems, commonly
+used parametrization features in speaker diarization are Mel
+Frequency Cepstral Coefficients (MFCC), Linear frequency cepstral
+coefficients (LFCC), Perceptual Linear Predictors (PLP), Linear
+Predictive Coding (LPC) and others.
+
+<P>
+Although the aforementioned parametrization techniques yield a
+good performance in current speaker diarization and recognition
+systems, they are usually not focused on representing the
+information relevant to distinguishing between speakers and to
+isolate such information from other interfering sources (like
+non-stationary noises, background music and others). Nevertheless
+speaker recognition and diarization systems like the one presented
+in this thesis use MFCC parameters with a higher number of
+coefficients as it is known that the higher coefficients do
+incorporate speaker information.
+
+<P>
+In this section some research is pointed out that propose
+alternative parameters focusing on the speaker characteristics
+and/or particular conditions of the tasks that they are applied
+to, all within the speaker-based area, which can constitute an
+advantage if used alone or in conjunction with the most common
+parametrization techniques. Although the use of these parameters
+is still not general, these should constitute the tip of the
+iceberg of parameters exploiting speaker information to come.
+
+<P>
+In <A
+ HREF="node147.html#Yamaguchi_2005">Yamaguchi et&nbsp;al. (2005)</A> propose a speaker segmentation system
+using energy, pitch frequency, peak-frequency centroid and
+peak-frequency bandwidth, and adds three new features: temporal
+feature stability of the power spectra, spectral shape and white
+noise similarities; all three related to the cross correlation of
+the power spectrum of the signal.
+
+<P>
+In order to avoid the influence of background noises and other
+non-speaker related events, in <A
+ HREF="node147.html#Pelecanos_2001">Pelecanos and Sridharan (2001)</A> and more
+recently in <A
+ HREF="node147.html#Ouellet_2005">Ouellet et&nbsp;al. (2005)</A>, feature warping techniques
+are proposed to change the shape of the p.d.f. (probability density
+function) of the features to a Gaussian shape prior to their
+modeling. They have been applied with success in
+<A
+ HREF="node147.html#Sinha_2005">Sinha et&nbsp;al. (2005)</A> and <A
+ HREF="node147.html#Zhu_2006">Zhu et&nbsp;al. (2006)</A> for speaker
+diarization in broadcast news and meetings respectively.
+
+<P>
+In the area of speech activity detection (SAD) there have been also
+several features proposed in recent years. In
+<A
+ HREF="node147.html#Kristjansson_2005">Kristjansson et&nbsp;al. (2005)</A> some well known features and other
+new ones are proposed, based on autocorrelation of the signal or on
+the spectrum characteristics.
+
+<P>
+In <A
+ HREF="node147.html#Nguyen_2003">Nguyen (2003)</A> a new theoretical framework for
+natural isometric frontend parameters based on differential
+geometry is presented and applied to speaker diarization,
+improving performance when used in combination to standard MFCC
+parameters.
+
+<P>
+In <A
+ HREF="node147.html#Moh_2003">Moh et&nbsp;al. (2003)</A>, <A
+ HREF="node147.html#Tsai_2004">Tsai et&nbsp;al. (2004)</A> and
+<A
+ HREF="node147.html#Tsai_2005">Tsai et&nbsp;al. (2005)</A> speaker diarization systems are proposed by
+constructing a speaker space from the data and projecting the
+feature vectors in it prior to the clustering step. Similarly,
+<A
+ HREF="node147.html#Collet_2005">Collet et&nbsp;al. (2005)</A> proposes the technique of anchor modeling
+(introduced in <A
+ HREF="node147.html#Sturim_2001">Sturim et&nbsp;al. (2001)</A>) where acoustic frames are
+projected into an anchor model space (previously defined from
+outside data) and perform speaker tracking with the resulting
+parameter vectors. They show that it improves robustness against
+outside interfering signals and they claim it to be domain
+independent.
+
+<P>
+When more than one microphone is collecting the recordings (for
+examples in meeting rooms) <A
+ HREF="node147.html#Pardo_2006a">Pardo et&nbsp;al. (2006a)</A>,
+<A
+ HREF="node147.html#Pardo_2006b">Pardo et&nbsp;al. (2006b)</A>, <A
+ HREF="node147.html#Ellis_01"><EM>ICSI Meeting Recorder Project: Channel skew in ICSI-recorded
+  meetings</EM> (2006)</A>,
+<A
+ HREF="node147.html#Lathoud_2003">Lathoud and McCowan (2003)</A> show that the use of the time-delays
+between microphones is useful for speaker diarization .
+
+<P>
+Finally, <A
+ HREF="node147.html#Chan_2006">Chan et&nbsp;al. (2006)</A> propose the use of vocal source
+features for the task of speaker segmentation using a system based
+on <A
+ HREF="node147.html#Delacourt_2000">Delacourt and Wellekens (2000)</A>. Also in <A
+ HREF="node147.html#Lu_2002b">Lu and Zhang (2002b)</A> a
+real-time 2-step algorithm is proposed by doing a Bayesian fusion of
+LSP, MFCC and pitch features.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html528"
+  HREF="node11.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html524"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html518"
+  HREF="node9.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html526"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html529"
+  HREF="node11.html">Speaker Segmentation</A>
+<B> Up:</B> <A NAME="tex2html525"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html519"
+  HREF="node9.html">State of the art</A>
+ &nbsp; <B>  <A NAME="tex2html527"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

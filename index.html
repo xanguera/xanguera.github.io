@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xavier Anguera, Ph.D.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            font-weight: bold;
+            font-size: larger;
+        }
+        .navbar-nav {
+            align-items: center;
+        }
+        .navbar-nav .nav-item .nav-link {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-nav .nav-item .linkedin-logo {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .navbar {
+            padding-top: 10px; /* Increased top padding */
+            padding-bottom: 10px; /* Increased bottom padding */
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+        .container, .navbar .container {
+            padding-left: 15px;
+            padding-right: 15px;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .fixed-top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .section-box {
+            background-color: #f8f9fa; /* Light grey background */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        #about {
+        margin-top: 10px; /* Added top margin to the About section */
+        }
+        .about-picture {
+            width: 100%;
+            height: auto;
+            transform: scale(0.8);
+            transform-origin: center;
+            border-radius: 5px; /* Optional: for rounded corners */
+        }
+        .tab-content .tab-pane {
+            padding-top: 15px; /* Adds space between tabs and text */
+        }
+        .tab-content .tab-pane p {
+            margin-bottom: 15px; /* Adds space between paragraphs */
+            text-align: justify; /* Justifies the text */
+        }
+        .tab-content .tab-pane p:not(:first-child) {
+            text-indent: 20px; /* Adds indentation to the first line of subsequent paragraphs */
+        }
+        body {
+           padding-top: 50px; /* leave space for the navbar */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">Xavier Anguera, Ph.D.</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#CV">CV</a></li>
+                <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                <li class="nav-item"><a class="nav-link" href="#phd">Ph.D. Thesis</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.linkedin.com/in/xanguera" target="_blank">
+                        <img src="./images/linkedin-logo.svg" class="linkedin-logo" alt="LinkedIn">
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <section id="about" class="section-box">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="nav nav-tabs" id="aboutTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="professional-tab" data-toggle="tab" href="#professional" role="tab" aria-controls="professional" aria-selected="true">Professional</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="personal-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="personal" aria-selected="false">Personal</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="aboutTabsContent">
+                    <div class="tab-pane fade show active" id="professional" role="tabpanel" aria-labelledby="professional-tab">
+                        <!-- Your professional text goes here -->
+                        <p>I am the co-founder and CTO of ELSA, an AI-powered application to help language students improve their English communication skills.</p>
+                        <p>At ELSA I built the engineering and research teams and currently I focus my time on developing our AI technology.</p>
+                        <p>Prior to ELSA, I created an edtech startup called Sinkronigo that published speech-enabled ebooks for language learning.</p>
+                        <p>Earlier on I was one of the founding researchers in the multimedia research group at Telefonica R&D, in Barcelona, where I pursued research in speech and multimedia processing.</p>
+                        <p>I hold a Ph.D. in speech processing and I am the coauthor of over 125 research publications. I am also the co-inventor in multiple patents and an active contributor to the open source community 
+                        (if you worked in the area of multi-microphone speech processing you probably heard about the <a href="https://github.com/xanguera/BeamformIt">BeamformIt software</a>).</p>
+                    </div>
+                    <div class="tab-pane fade" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+                        <!-- Your personal text goes here -->
+                        <p>I am an Electrical engineer, turned speech and multimedia researcher, turned entrepreneur.</p>
+                        <p>I was born in Tarragona, an ancient Roman Empire Capital in the Mediterranean coast of Spain.</p>
+                        <p>I am the single child of a family of farmers that moved to Tarragona right before I was born and established a family business selling and repairing home appliances.</p>
+                        <p>I was thus raised in between TVs under test, and got to master soldering at an early age.</p>
+                        <p>Currently I live in Lisbon, Portugal, with my wife and 2 kids, I enjoy Portuguese good coffee and "pasteis de nata" and how wellcoming Portuguese people are always with me.</p>                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="./images/headshot.png" alt="My Headshot" class="about-picture">
+                <div class="text-center">
+                    <p style="margin-top: -50px;"><b>[name_initial]+[last_name] @ gmail+[dot]+com</b></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="CV" class="section-box">
+        <h2>CV</h2>
+        <!-- Your content goes here -->
+        <p>You can find my CV in pdf version in <a href="./docs/Resume_xavier_Anguera_012024.pdf">here</a>. 
+        In there you will find a complete list of PhD and Msc. student theses I co-directed, as well as more information on my duties in each of my positions across the years</br>
+        I have been very fortunate to having worked in academia, academic and corporate research and in a startup environment.</p> 
+        <p>You can also visit my <a href="https://www.linkedin.com/in/xanguera">linkedin profile</a> for a summarized version of by professional path and to get updated with what I am up to.
+        I do not publish a lot, but I like to post there from time to time.</p>
+        I am always eager to learn end experience new things. Do you have a new project idea or need advice in your idea, get in touch!</br>
+        my email: [name_initial]+[last_name] @ gmail+[dot]+com
+    </section>
+
+    <section id="publications" class="section-box">
+        <h2>Publications</h2>
+        <p>Loosely ordered by topics:</p>
+        <h3>Language learning</h3>
+        <ul>
+            <li>Anguera, X., Proença, J., Gulordava, K., Tarján, B., Parslow, N., Dobrovolskii, V., Valente, F. & Girard, R. (2023). "<font color=#800000>ELSA Speech Analyzer: English Communication Assessment of Spontaneous Speech</font>”, In Proc. 9th Workshop on Speech and Language Technology in Education (SLaTE) (pp. 95-96).</li></br>
+
+            <li>Proença, J., Raboshchuk, G., Costa, A., Lopez-Otero & P. Anguera, X. (2019). "<font color=#800000>Teaching American English pronunciation using a TTS service</font>”, In Proc. 8th Workshop on Speech and Language Technology in Education (SLaTE)</li></br>
+
+            <li>Anguera, X. & Van, V. (2016). "<font color=#800000>English Language Speech Assistant</font>", Show and Tell session. Interspeech 2016, San Francisco, CA, USA</li></br>
+
+            <li>Anguera, X. (2015). "<font color=#800000>Multimodal Read-aloud eBooks for Language Learning</font>", Show and Tell session. Interspeech 2015, Dresden, Germany</li></br>                        
+        </ul>
+        
+        
+        <h3>Speech Segmentation and Clustering</h3>        
+        <ul>
+            <li>Gracia, C., Anguera, X., Luque, J. & Artzi, I. (2014). "<font color=#800000>Phoneme-Lattice to Phoneme-Sequence matching algorithm based on Dynamic Programming</font>", book chapter in Advances in Speech and Language Technologies for Iberian Languages. Lecture Notes in Computer Science, Volume 8854, 2014, pp. 99-108. Presented at Iberspeech 2014, Las Palmas, Spain. <a href="http://www.xavieranguera.com/papers/Iberspeech2014_2.pdf">pdf</a></li></br>
+
+            <li>Gracia, C., Anguera, X. & Binefa, X. (2013). "<font color=#800000>A Riemannian stopping criterion for unsupervised phonetic segmentation</font>", in Proc. ICMLA 2013, Florida, USA. <a href="http://www.xavieranguera.com/papers/icmla1.pdf">pdf</a></li></br>
+            
+            <li>Gracia, C., Anguera, X. & Binefa, X. (2013)."<font color=#800000>Two-level clustering towards unsupervised discovery of acoustic classes</font>", in Proc. ICMLA 2013, Florida, USA. <a href="http://www.xavieranguera.com/papers/icmla2.pdf">pdf</a></li></br>
+
+        </ul>
+
+
+        <h3>Audio Fingerprinting</h3>        
+        <ul>
+            <li>Tsai, TJ., Friedland, G. & Anguera, X. (2015). "<font color=#800000>An Information-Theoretic Metric of Fingerprint Effectiveness</font>", in proc. ICASSP 2015, Brisbane, Australia.</li></br>
+
+            <li>Ondel, L, Anguera, X. & Luque, J. (2015). "<font color=#800000>MASK+:Data-driven Regions Selection for Acoustic Fingerprinting</font>", in proc. ICASSP 2015, Brisbane, Australia.</li></br>
+
+            <li>Anguera, X., Garzon, A. & Adamek, T. (2012). "<font color=#800000>MASK: Robust Local Features for Audio Fingerprinting </font>"</span>, in Proc. ICME 2012, Melbourne, Australia. (BEST PAPER AWARD ICME 2012)<a href="http://www.xavieranguera.com/papers/xanguera_icme2012.pdf">pdf</a></li></br>
+        </ul>
+                
+        <h3>Dinamic Time Warping and Applications</h3>        
+        <ul>
+            <li>Ferrarons, M., Anguera, X. & Luque, J. (2014). "<font color=#800000>Flexible Stand-alone Keyword Recognition Application using Dynamic Time Warping</font>", book chapter in Advances in Speech and Language Technologies for Iberian Languages. Lecture Notes in Computer Science, Volume 8854, 2014, pp. 158-167. Presented at Iberspeech 2014, Las Palmas, Spain. <a href="http://www.xavieranguera.com/papers/Iberspeech2014_1.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Luque, J. & Gracia, C. (2014). "<font color=#800000>Audio-to-text Alignment for speech recognition with very limited resources</font>", in proc. Interspeech 2014, Singapore. <a href="http://www.xavieranguera.com/papers/IS2014_phonealignment.pdf">pdf</a></li></br>
+
+            <li>Gracia, C., Anguera, X., Luque, J. & Artzi, I. (2014). "<font color=#800000>Phoneme-Lattice to Phoneme-Sequence matching algorithm based on Dynamic Programming</font>", book chapter in Advances in Speech and Language Technologies for Iberian Languages. Lecture Notes in Computer Science, Volume 8854, 2014, pp. 99-108. Presented at Iberspeech 2014, Las Palmas, Spain. <a href="http://www.xavieranguera.com/papers/Iberspeech2014_2.pdf">pdf</a></li></br>
+        </ul>
+
+        <h3>Zero-Resource Speech Processing</h3>
+        <ul>
+            <li>Dunbar, E., Cao, XN., Benjumea, J., Karadayi, J., Bernard, M., Besacier, L., Anguera, X. & Dupoux, E (2017). "<font color=#800000>The zero resource speech challenge 2017</font>”, 2017 IEEE Automatic Speech Recognition and Understanding Workshop (ASRU)</li></br>
+
+            <li>Szoke, I. & Anguera, X (2016). "<font color=#800000>Zero-Cost Speech Recognition Task at Mediaeval 2016</font>", in proc. Mediaeval 2016 Benchmark evaluation, Amsterdam, Nederlands.</li></br>
+
+            <li>Versteegh, M., Thiolliere, R., Schatz, T., Cao, XN., Anguera, X., Jansen, A. and Dupoux, E. (2015). "<font color=#800000>The Zero Resource Speech Challenge 2015</font>", Interspeech 2015, Dresden, Germany</li></br>
+        </ul>
+
+        <h3>Query-by-Example Voice Search</h3>
+        <ul>
+            <li>Anguera, X., Rodriguez-Fuentes, L-J., Buzo, A., Metze, F., Szöke, I. & Peñagarikano, M. (2015). "<font color=#800000>QUESST2014: Evaluating Query-by-example Speech Search in a Zero-Resource Setting with Real-life Queries</font>", in proc. ICASSP 2015, Brisbane, Australia.</li></br>
+
+            <li>Szoke, I., Rodriguez-Fuentes, L-J., Buzo, A., Anguera, X., Metze, F., Proença, J., Pleva, M. & Xiong, X. (2015). "<font color=#800000>Query by Example Search on Speech at Mediaeval 2015</font>", in proc. Mediaeval 2015 Benchmark evaluation, Wurzen, Germany</li></br>
+
+            <li>Metze, F., Anguera, X., Barnard, E., Davel, M. & Gravier, G. (2014). "<font color=#800000>Language independent search in MediaEval's Spoken Web Search task</font>", Elsevier Journal on Computer, Speech and language, January 2014. <a href="http://www.xavieranguera.com/papers/YCSLA638.pdf">pdf</a></li></br>
+
+            <li>Gracia, C., Anguera, X. & Binefa, X. (2014). "<font color=#800000>Combining Temporal and Spectral Information for Query-By-Example Spoken Term Detection</font>", in proc. Eusipco 2014, Lisboa, Portugal. <a href="http://www.xavieranguera.com/papers/Eusipco_2014_SWS.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Rodriguez-Fuentes, L.-J., Szöke, I., Buzo, A., Metze, F. & Penagarikano, M. (2014). "<font color=#800000>Query-by-Example Spoken Term Detection Evaluation o Low-Resource Languages</font>", in Proc. SLTU 2014, Saint Petersburg, Russia. <a href="http://www.xavieranguera.com/papers/sltu_2014.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Rodriguez-Fuentes, L.-J., Szoke, I., Buzo, A., Metze, F. & Penagarikano, M. (2014). "<font color=#800000>Query-by-Example Spoken Term Detection on Multilingual Unconstrained Speech</font>", in proc. Interspeech 2014, Singapore. <a href="http://www.xavieranguera.com/papers/IS2014_mediaeval.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Rodriguez-Fuentes, L-J., Szöke, I., Buso, A. and Metze, F. (2014). "<font color=#800000>Query by Example Search on Speech at Mediaeval 2014</font>", in proc. Mediaeval 2014. <a href="http://www.xavieranguera.com/papers/quesst2014_overview.pdf">pdf</a></li></br>
+
+            <li>Mantena, G. & Anguera, X. (2013). "<font color=#800000>Speed Improvements to Information Retrieval-Based Dynamic Time Warping Using Hierarchical K-means Clustering </font>", in Proc. ICASSP 2013, Vancouver, Canada. <a href="http://www.xavieranguera.com/papers/mantena_icassp2013.pdf">pdf</a></li></br>
+                    
+            <li>Metze, F., Anguera, X., Barnard, E., Davel, M. & Gravier, G. (2013). "<font color=#800000>The Spoken Web Search Task at Mediaeval 2012 </font>", in Proc. ICASSP 2013, Vancouver, Canada. <a href="http://www.xavieranguera.com/papers/0008121.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X. & Ferrarons, M. (2013). "<font color=#800000>Memory Efficient Subsequence DTW for Query-by-Example Spoken Term Detection </font>", in Proc. ICME 2013, San Jose, CA, USA. <a href="http://www.xavieranguera.com/papers/sdtw_icme2013.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X. (2013). "<font color=#800000>Information Retrieval-based Dynamic Time Warping </font>", in Proc. Interspeech 2013, Lyon, France. <a href="http://www.xavieranguera.com/papers/interspeech2013.pdf">pdf</a></li></br>
+
+            <li>Tejedor, J., Toledano, D.T., Anguera, X., Varona, A., Hurtado, L.F., Miguel, A. & Colás, J. (2013). "<font color=#800000>Query-by-Example Spoken Term Detection ALBAYZIN 2012 evaluation: overview, systems, results, and discussion</font>", EURASIP Journal on Audio, Speech, and Music Processing 2013, 2013:23, September 2013. <a href="http://www.xavieranguera.com/papers/eurasip_tejedor.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Skázel, M., Vorwerk, V. & Luque, J. (2013)."<font color=#800000>The Telefonica Research Spoken Web Search System for Mediaeval 2013</font>", in Proc. Mediaeval 2013 evaluation Workshop, Barcelona, Spain. <a href="http://www.xavieranguera.com/papers/mediaeval2013.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Metze, F., Buso, A., Szöke, I. & Rodriguez-Fuentes, L.-J. (2013)."<font color=#800000>The Spoken Web Search Task</font>", in Proc. Mediaeval 2013 evaluation Workshop, Barcelona, Spain. <a href="http://www.xavieranguera.com/papers/Overview_ME2013_SWS">pdf</a></li></br>
+
+            <li>Metze, F., Rajput, N., Anguera, X., Davel, M., Gravier, G., van Heerden, C., Mantena, G., Muscariello, A., Prahallad, K., Szoke, I., & Tejedor, J. (2012). "<font color=#800000>The Spoken Web search task at Mediaeval 2011 </font>"</span>, in Proc. ICASSP 2012, Kyoto, Japan. <a href="http://www.xavieranguera.com/papers/me-icassp2012-v1.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X. (2012). "<font color=#800000>Speaker Independent Discriminant Feature Extraction for Acoustic Pattern-Matching </font>"</span>, in Proc. ICASSP 2012, Kyoto, Japan. <a href="http://www.xavieranguera.com/papers/swsmodel.pdf">pdf</a></li></br>
+
+            <li>Anguera, X. (2012). "<font color=#800000>Telefonica Research system for the Query-by-example task at Albayzin 2012 </font>"</span>, in Proc. Iberspeech 2012, Madrid, Spain. <a href="http://www.xavieranguera.com/papers/albayzin_qbe.pdf">pdf</a></li></br>
+     
+            <li>Anguera, X. (2012). "<font color=#800000>Telefonica Research System for the Spoken Web Search task at Mediaeval 2012 </font>"</span>, in Proc. Mediaeval 2012 evaluation Workshop, Pisa, Italy. <a href="http://www.xavieranguera.com/papers/mediaeval_tid.pdf">pdf</a></li></br>
+        
+            <li>Metze, F., Barnard, E., Davel, M., van Heerden, C., Anguera, X., Gravier, G. & Rajput, N. (2012). "<font color=#800000>The Spoken Web Search Task </font>"</span>, in Proc. Mediaeval 2012 evaluation Workshop, Pisa, Italy. <a href="http://www.xavieranguera.com/papers/Overview_ME2012_SWS.pdf">pdf</a></li></br>
+
+            <li>Anguera, X. (2012). "<font color=#800000>Telefonica System for the Spoken Web Search Task at Mediaeval 2011 </font>"</span>, MediaEval Workshop, November 2011, Pisa, Italy. <a href="http://www.xavieranguera.com/papers/Anguera_TID_SWS_me11wn.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Macrae, R. & Oliver, N. (2010). "<font color=#800000>Partial Sequence Matching Using an Unbounded Dynamic Time Warping Algorithm</font>"</span>, in Proc. ICASSP 2010 <a href="http://www.xavieranguera.com/papers/icassp2010.pdf">pdf</a></li></br>
+
+        </ul>
+
+        <h3>Sports analytics</h3>
+        <ul>
+            <li>Duxans, H., Anguera, X. & Conejero, D. (2009). "<font color=#800000>Audio-Based Soccer Game Summarization</font>"</span>, in Proc. IEEE International Symposium on Broadband Multimedia Systems and Broadcasting (BMSB09) <a href="http://www.xavieranguera.com/papers/bmsb09.pdf">pdf</a></li></br>
+
+            <li>Gyarmati, L. & Anguera, X. (2015). "<font color=#800000>Automatic Extraction of the Passing Strategies of Soccer Teams</font>", in Proc. 2015 KDD Workshop on Large-Scale Sports Analytics, Sidney, Australia</li></br>
+        </ul>
+
+        <h3>Voice Biometrics</h3>
+        <ul>
+            <li>Bonastre, J.-F., Anguera, X., Bousquet, P.-M. & Matrouf, D. (2012). "<font color=#800000>Discriminant Binary Data Representation for Speaker Recognition</font>"</span>, in Proc. ICASSP 2011, Prague, Check Republic. <a href="http://www.xavieranguera.com/papers/icassp2011b.pdf">pdf</a></li></br>
+
+            <li>Bonastre, J.-F., Anguera, X., Sierra, G.H. & Bousquet, P.-M. (2012). "<font color=#800000>Speaker modeling using local binary decisions </font>"</span>, in Proc. Interspeech 2011. <a href="http://www.xavieranguera.com/papers/IS11full_paper.pdf">pdf</a></li></br>
+
+            <li>Anguera, X. & Bonastre, J.-F. (2010). "<font color=#800000>Novel binary key representation for biometric speaker recognition</font>"</span>, , in Proc. Interspeech 2010, Makuhari, Japan.<a href="http://www.xavieranguera.com/papers/xanguera_interspeech2010.pdf">pdf</a></li></br>
+
+            <li>Anguera, X. (2009). "<font color=#800000>MiniVectors: an Improved GMM-SVM Approach for Speaker Verification</font>"</span>, in Proc. Interspeech 2009 <a href="http://www.xavieranguera.com/papers/interspeech09.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Obrador, P. & Oliver, N. (2009). "<font color=#800000>Multimodal video copy detection of social media</font>"</span>, in Proc. first SIGMM Workshop on Social Media (WSM2009) at ACM MM09 <a href="http://www.xavieranguera.com/papers/WSM08c.pdf">pdf</a></li></br>
+        </ul>
+
+        <h3>Content-based Video-Copy Detection (CV-VCD)</h3>
+        <ul>
+            <li>Anguera, X. & Adamek, T. (2012). "<font color=#800000>Multimodal Video Copy Detection using local features </font>", in IEEE COMSOC MMTC E-Letter. <a href="http://www.xavieranguera.com/papers/VCD_letter.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Adamek, T., Xu, D. and Barrios, J.M. (2012). "<font color=#800000>Telefonica Research at TRECVID 2011 Content-Based Copy Detection </font>"</span>, NIST-TRECVID workshop 2011. <a href="http://www.xavieranguera.com/papers/trecvid_2011.pdf">pdf</a></li></br>
+            
+            <li>Barrios, J.M., Bustos, B. and Anguera, X. (2012). "<font color=#800000>Combining Features at Search Time: PRISMA at Video Copy Detection Task </font>"</span>, NIST-TRECVID workshop 2011. <a href="http://www.xavieranguera.com/papers/prisma.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Barrios, J.M., Adamek, T. & Oliver, N. (2012). "<font color=#800000>Multimodal fusion for video copy detection </font>"</span>, in Proc. ACM Multimedia 2011. <a href="http://www.xavieranguera.com/papers/msp159-anguera.pdf">pdf</a></li></br>
+
+            <li>Younessian, E., Anguera, X., Adamek, T., Oliver, N. & Marimon, D. (2010). "<font color=#800000>Telefonica Research at TRECVID 2010 Content-Based Copy Detection</font>"</span>, NIST Trecvid Workshop notebook paper.<a href="http://www.xavieranguera.com/papers/trecvid_2010.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Obrador, P., Adamek, T., Marimon, D. & Oliver, N. (2009). "<font color=#800000>Telefonica Research Content-Based Copy Detection TRECVID Submission</font>"</span>, NIST Trecvid 2009 Workshop notebook paper <a href="http://www.xavieranguera.com/papers/trecvid09.pdf">pdf</a></li></br>
+        </ul>
+
+        
+        <h3>Multimedia & Mobile Computing</h3>
+        <ul>
+            <li>Macrae, R., Neumann, J., Anguera, X., Oliver, N. & Dixon, S. (2012). "<font color=#800000>Real-Time synchronization of multimedia streams in a mobile device</font>"</span>, in Proc. ADMIRE Workshop within ICME 2011, Barcelona, Spain. <a href="http://www.xavieranguera.com/papers/icme2011a.pdf">pdf</a></li></br>
+                    
+            <li>Anguera, X., Pérez, N., Urruela, A. & Oliver, N. (2012). "<font color=#800000>Automatic Synchronization of Electronic and Audio Books via TTS Alignment and Silence Filtering</font>"</span>, in Proc. Hot Topics in Multimedia within ICME 2011, Barcelona, Spain. <a href="http://www.xavieranguera.com/papers/icme2011b.pdf">pdf</a></li></br>
+            
+            <li>Flamary, R., Anguera, X. & Oliver, N. (2012). "<font color=#800000>Spoken Wordcloud: clustering recurrent patterns in speech</font>"</span>, in Proc. CBMI 2011, Madrid, Spain. <a href="http://www.xavieranguera.com/papers/cbmi2011.pdf">pdf</a></li></br>
+
+            <li>Macrae, R., Anguera, X. & Oliver, N. (2010). "<font color=#800000>MuViSync: Realtime Music Video Alignment</font>"</span>, in Proc. ICME 2010 <a href="http://www.xavieranguera.com/papers/icme2010.pdf">pdf</a></li></br>
+            
+            <li>Wang, J., Anguera, X., Chen, X. & Yang, D. (2010). "<font color=#800000>Enriching Music Mood Annotation by Semantic Association Reasoning</font>"</span>, in Proc. AdMiRe Workshop, in ICME 2010 <a href="http://www.xavieranguera.com/papers/icme2010b.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Cherubini, M. & Oliver, N. (2010). "<font color=#800000>Unrestricted Voice Annotations and Search of Personal Photographs in a Mobile Phone</font>"</span>, in Proc. Of Spoken Query 2010 Workshop on voice search, in ICASSP 2010 <a href="http://www.xavieranguera.com/papers/sq2010.pdf">pdf</a></li></br>
+
+            <li>Cherubini, M., Anguera, X., Oliver, N. & de Oliveira, R. (2009). "<font color=#800000>Text versus Speech: A Comparison of Tagging Input Modalities for Camera Phones</font>"</span>, in Proc. MobileHCI, Bonn, Germany, September 2009, (best paper award nominee) <a href="http://www.xavieranguera.com/papers/mobilehci09.pdf">pdf</a></li></br>
+
+            <li>Duxans, H., Conejero, D. & Anguera, X. (2009). "<font color=#800000>Audio-Based Automatic Management of Audio Commercials</font>"</span>, in Proc. ICASSP 2009, Taipei, Taiwan. April 2009 <a href="http://www.xavieranguera.com/papers/icassp09.pdf">pdf</a></li></br>
+
+            <li>Obrador, P., Anguera, X., de Oliveira, R. & Oliver, N. (2009). "<font color=#800000>The role of tags and image aesthetics in social image search</font>"</span>, in Proc. first SIGMM Workshop on Social Media (WSM2009) at ACM MM09 <a href="http://www.xavieranguera.com/papers/WSM09e.pdf">pdf</a></li></br>
+
+            <li>Conejero, D. & Anguera, X. (2008). "<font color=#800000>TV advertisements detection and clustering based on acoustic information</font>"</span>, in proc. International Conference on Computational Intelligence for Modelling, Control and Automation - CIMCA08, Viena, Austria, December 2008 <a href="http://www.xavieranguera.com/papers/cimca_2008.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X. & Oliver, N. (2008). "<font color=#800000>MAMI: Multimodal Annotations on a Camera Phone</font>"</span>, in Proc. MobileHCI, Amsterdam, September 2008 <a href="http://www.xavieranguera.com/papers/mhci_2008.pdf">pdf</a></li></br>
+        
+            <li>Urdapilleta, U., Conejero, D., Anguera, X., Cacenabes, D. & Caminero, F.J. (2008). "<font color=#800000>Sistema de Indexación Automática de Contenidos Multimedia</font>"</span>, in Proc. XVIII Jornadas Telecom I+D, Bilbao, Spain <a href="http://www.xavieranguera.com/papers/jornadas_2008.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Oliver, N. & Cherubini, M. (2008). "<font color=#800000>Multimodal and Mobile Personal Image Retrieval: A User Study</font>"</span>, in Proc. Workshop on Mobile Information Retrieval, MOBIR'08, Singapore <a href="http://www.xavieranguera.com/papers/mobIR_2008.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., J.Xu & Oliver, N. (2008). "<font color=#800000>Multimodal Photo Annotation and Retrieval on a Mobile Phone</font>"</span>, in Proc. ACM Intl. Conference on Multimedia Information Retrieval, Vancouver, Canada. 2008 <a href="http://www.xavieranguera.com/papers/MIR_2008.pdf">pdf</a></li></br>
+
+            <li>Hernando, D., Hernando, J. & Anguera, X. (2005). "<font color=#800000>PETRA: Advanced Oral Interfaces for Unified Messaging Applications</font>"</span>, Buran magazine, IEEE Barcelona student branch. Number 22, September 2005.</li>
+        </ul>
+            
+        <h3>Speaker Diarization - Multiple channels</h3>
+        <ul>
+            <li>Pardo, J.M., Anguera, X. & Wooters, C. (2007)."<font color=#800000>Speaker Diarization For Multiple-Distant-Microphone Meetings Using Several Sources of Information</font>"</span>, IEEE Transactions on Computers, September 2007, volume 56, number 9, pp. 1189-1224. <a  href="http://www.xavieranguera.com/papers/Trans-on-computers_2007.pdf">pdf</a></li></br>
+            
+            <li>Anguera, X., Wooters, C. & Hernando, J. (2007). "<font color=#800000>Acoustic beamforming for speaker diarization of meetings</font>"</span>, IEEE Transactions on Audio, Speech and Language Processing, September 2007, volume 15, number 7, pp.2011-2023. <a href="http://www.xavieranguera.com/papers/transactions_taslp_2007.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Wooters, C., Pardo, J.M. & Hernando, J. (2007)."<font color=#800000>Automatic Weighting for the Combination of TDOA and Acoustic Features in Speaker Diarization for Meetings</font>"</span>, ICASSP, Hawaii, USA, April 2007. <a href="http://www.xavieranguera.com/papers/icassp_2007_weighting.pdf">pdf</a></li></br>
+        
+            <li>Luque, J., Anguera, X., Temko, A., & Hernando, J. (2007). "<font color=#800000>Speaker Diarization for Conference Room: The UPC RT07s Evaluation System</font>"</span>, RT07s Rich Transcription evaluation workshop, Washington, May 2007 <a href="http://www.xavieranguera.com/papers/rt07.pdf">pdf</a></li></br>
+
+            <li>Gallardo, A., Anguera, X. & Wooters, C. (2006). "<font color=#800000>Multi-Stream Speaker Diarization Systems for the Meetings Domain</font>"</span>, Interspeech-ICSLP, Pittsburgh, Pensilvania, USA, September 2006. <a href="http://www.xavieranguera.com/papers/icslp_2006_gallardo.pdf">pdf</a></li></br>
+        
+            <li>Pardo, J.M., Anguera, X. & Wooters, C. (2006). "<font color=#800000>Speaker Diarization for Multiple Distant Microphone Meetings: Mixing Acoustic Features And Inter-Channel Time Differences</font>"</span>, Interspeech-ICSLP, Pittsburgh, Pensilvania, USA, September 2006. <a href="http://www.xavieranguera.com/papers/icslp_2006_pardo.pdf">pdf</a></li></br>
+
+            <li>Pardo, J.M., Anguera, X. & Wooters, C. (2006). "<font color=#800000>Speaker Diarization for Multi-Microphone Meetings Using only Between-Channel Differences</font>"</span>, In S. Renals and S. Bengio, editors, Machine Learning for Multimodal Interaction: Third InternationalWorkshop (MLMI 2006), Lecture Notes in Computer Science. Springer <a href="http://www.xavieranguera.com/papers/mlmi_2006_pardo.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Wooters, C. & Pardo, J.M. (2006). "<font color=#800000>Robust Speaker Diarization for Meetings: ICSI RT06s evaluation system</font>"</span>, Interspeech-ICSLP, Pittsburgh, Pensilvania, USA, September 2006. <a href="http://www.xavieranguera.com/papers/icslp_2006_diary.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Wooters, C. & Hernando, J. (2005). "<font color=#800000>Speaker Diarization for Multi-Party Meetings Using Acoustic Fusion</font>"</span>, Automatic Speech Recognition and Understanding (ASRU). Puerto Rico, November 2005. <a href="http://www.xavieranguera.com/papers/asru_2005.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Wooters, C., Peskin, B. & Aguilo, M.. (2005). "<font color=#800000>Robust Speaker Segmentation for Meetings: The ICSI-SRI Spring 2005 Diarization System</font>"</span>, Machine Learning for Multimodal Interaction: Second International Workshop (MLMI 2005), Lecture Notes in Computer Science. Springer <a href="http://www.xavieranguera.com/papers/rt05s.pdf">pdf</a></li></br>
+        </ul>
+
+        <h3>Speaker Diarization and clustering - Core algorithms</h3>
+        <ul>
+            <li>Patino, J., Delgado, H., Evans, N. & Anguera, X. (2016). "<font color=#800000>EURECOM submission to the Albayzin 2016 Speaker Diarization Evaluation</font>", IberSPEECH 2016</li></br>
+
+            <li>Delgado, H., Anguera, X., Freouille, C. & Serrano, J. (2015). "<font color=#800000>Improved Binary Key Speaker Diarization System</font>", in proc. EUSIPCO 2015, Nice, France</li></br>
+
+            <li>Delgado, H., Anguera, X., Fredouille, C. & Serrano, J., (2015). "<font color=#800000>Novel Clustering Selection Criterion for Fast Binary Key Speaker Diarization</font>", in proc. Interspeech 2015, Dresde, Germany</li></br>
+
+            <li>Delgado, H., Anguera, X., Fredouille, C. & Serrano, J. (2014). "<font color=#800000>Global Speaker Clustering towards Optimal Stopping Criterion in Binary Key Speaker Diarization</font>", book chapter in Advances in Speech and Language Technologies for Iberian Languages. Lecture Notes in Computer Science, Volume 8854, 2014, pp. 59-68. Presented at Iberspeech 2014, Las Palmas, Spain. <a href="http://www.xavieranguera.com/papers/iberspeech2014_3.pdf">pdf</a></li></br>
+
+            <li>Friedland, G., Janin, A., Imseng, D., Anguera, X., Gottlieb, L., Huijbregts, M., Knox, M.T. & Vinyals, O. (2012). "<font color=#800000>The ICSI RT-09 Speaker Diarization System</font>"</span>, Transactions on Audio, Speech and Language Processing (TASLP), special issue on New Frontiers in Rich Transcription, July 2011. <a href="http://www.xavieranguera.com/papers/taslp2011b.pdf">pdf</a></li></br>
+
+            <li>Stafylakis, T., Anguera, X., Katsouros, V., Carayannis, G. (2012). "<font color=#800000>Closed-Form Expressions vs. BIC: a Comparison for Speaker Clustering</font>"</span>, in Proc. ICASSP 2011, Prague, Check Republic. <a href="http://www.xavieranguera.com/papers/icassp2011c.pdf">pdf</a></li></br>
+
+            <li>Anguera, X. & Bonastre, J.-F. (2012). "<font color=#800000>Fast Speaker Diarization Based on Binary Keys</font>"</span>, in Proc. ICASSP 2011, Prague, Check Republic. <a href="http://www.xavieranguera.com/papers/icassp2011a.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Bozonnet, S., Evans, N., Fredouille, C., Friedland, G., & Vinyals, O. (2012). "<font color=#800000>Speaker Diarization: a review of recent research</font>"</span>, Transactions on Audio, Speech and Language Processing (TASLP), special issue on New Frontiers in Rich Transcription. <a href="http://www.xavieranguera.com/papers/taslp2011a.pdf">pdf</a></li></br>
+        
+            <li>Bozonet, S., Evans, N., Anguera, X., Vinyals, O., Friedland, G. & Fredouille, C. (2010). "<font color=#800000>System output combination for improved speaker diarization</font>"</span>, in Proc. Interspeech 2010, Makuhari, Japan.</li>
+        
+            <li>Stafylakis, T. & Anguera, X. (2010). "<font color=#800000>Improvements to the equal-parameter BIC for Speaker Diarization</font>"</span>, in Proc. Interspeech 2010, Makuhari, Japan.<a href="http://www.xavieranguera.com/papers/Stafylakis_interspeech2010.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Shinozaki, T., Wooters, C. & Hernando, J. (2007). "<font color=#800000>Model Complexity Selection and Cross-Validation EM Training for Robust Speaker Diarization</font>"</span>, ICASSP, Hawaii, USA, April 2007. <a href="http://www.xavieranguera.com/papers/icassp_2007_complexity.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Wooters, C. & Hernando, J. (2006). "<font color=#800000>Purity Algorithms for Speaker Diarization of Meetings Data</font>"</span>, ICASSP 2006, Toulouse, France, May 2006. <a href="http://www.xavieranguera.com/papers/icassp06.pdf">pdf</a></li></br>
+                
+            <li>Anguera, X., Wooters, C. & Hernando, J. (2006). "<font color=#800000>Automatic Cluster Complexity and Quantity Selection: Towards Robust Speaker Diarization</font>"</span>, In S. Renals and S. Bengio, editors, Machine Learning for Multimodal Interaction: Third International Workshop (MLMI 2006), Lecture Notes in Computer Science. Springer <a href="http://www.xavieranguera.com/papers/mlmi2006.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Wooters, C. & Pardo, J.M. (2006). "<font color=#800000>Robust Speaker Diarization for Meetings: ICSI RT06s Meetings Evaluation System</font>"</span>, In S. Renals and S. Bengio, editors, Machine Learning for Multimodal Interaction: Third International Workshop (MLMI 2006), Lecture Notes in Computer Science. Springer <a href="http://www.xavieranguera.com/papers/rt06s.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Wooters, C. & Hernando, J. (2006). "<font color=#800000>Frame Purification for Cluster Comparison in Speaker Diarization</font>"</span>, MMUA 2006, Toulouse, France, May 2006. <a href="http://www.xavieranguera.com/papers/mmua06.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Aguilo, M., Wooters, C., Nadeu, C. & Hernando, J. (2006). "<font color=#800000>Hybrid Speech/Non-Speech Detector Applied to Speaker Diarization of Meetings</font>"</span>, Speaker Odyssey 2006, San Juan de Puerto Rico, USA, June 2006. <a href="http://www.xavieranguera.com/papers/spkrodd06.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Wooters, C. & Hernando, J. (2006). "<font color=#800000>Friends and Enemies: A Novel Initialization for Speaker Diarization</font>"</span>, Interspeech-ICSLP, Pittsburgh, Pensilvania, USA, September 2006. <a href="http://www.xavieranguera.com/papers/icslp_2006_init.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X. (2005). "<font color=#800000>XBIC: Real-Time Cross Probabilities Measure for Speaker Segmentation</font>"</span>, International Computer Science Institute Technical Report TR-05-008. <a href="http://www.xavieranguera.com/papers/techreport_xbic.pdf">pdf</a></li></br>        
+
+            <li>Wooters, C., Fung, J., Peskin, B. & Anguera, X. (2004). "<font color=#800000>Towards Robust Speaker Segmentation: The ICSI-SRI Fall 2004 Diarization System</font>"</span>, EARS Program RT-04 Workshop, nov 7-10 2004. <a href="http://www.xavieranguera.com/papers/EARS-RT04f-spkr.pdf">pdf</a></li></br>
+
+            <li>Anguera, X. & Hernando, J. (2004)."<font color=#800000>Evolutive Speaker Segmentation using a Repository System</font>"</span>,  Interspeech-ICSLP, Korea 2004. <a href="http://www.xavieranguera.com/papers/icslp2004.pdf">pdf</a></li></br>
+        
+            <li>Anguera, X., Farrús, M., Hernando, J. & Abad, A. (2004). "<font color=#800000>Segmentació de locutor per a la indexació automàtica de bases de dades multimèdia en català</font>"</span>, II Congrés d'enginyeria en llengua catalana, Andorra 2004. <a href="http://www.xavieranguera.com/papers/andorra_2004.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Hernando, J. & Anguita, J.. (2004)."<font color=#800000>XBIC: Nueva Medida para Segmentación de Locutor hacia el Indexado Automático de la Señal de Voz</font>"</span>, III Jornadas en Tecnología del Habla, Valencia, 17-10 Nov 2004.<a href="http://www.xavieranguera.com/papers/valencia.pdf">pdf</a></li></br>
+        </ul>
+
+        <h3>Speech Recognition</h3>
+        <ul>
+            <li>Stolcke, A., Anguera, X., Boakye, K., Çetin, O., Janin, A., Magimai-Doss, M., Wooters, C. & Zheng, J. (2007). "<font color=#800000>The SRI-ICSI Spring 2007 Meeting and Lecture Recognition System</font>"</span>, RT07s Rich Transcription evaluation workshop, Washington, May 2007 <a href="http://www.xavieranguera.com/papers/rt07_icsi.pdf">pdf</a></li></br>
+
+            <li>Janin, A., Stolcke, A., Anguera, X., Boakye, K., Cetin, O., Frankel, J. & Zheng, J. (2006). "<font color=#800000>The ICSI-SRI Spring 2006 Meeting Recognition System</font>"</span>, Machine Learning for Multimodal Interaction: Third International Workshop (MLMI 2006), Lecture Notes in Computer Science. Springer <a href="http://www.xavieranguera.com/papers/rt06s_icsi.pdf">pdf</a></li></br>
+
+            <li>Stolcke, A., Anguera, X., Boakye, K., Cetin, O., Grezl, F., Janin, A., Mandal, A., Peskin, B., Wooters, C. & Zheng, J. (2005)."<font color=#800000>Further Progress in Meeting Recognition: The ICSI-SRI Spring 2005 Speech-to-Text Evaluation System</font>"</span>, Machine Learning for Multimodal Interaction: Second International Workshop (MLMI 2005), Lecture Notes in Computer Science. Springer <a href="http://www.xavieranguera.com/papers/rt05s_icsi.pdf">pdf</a></li></br>
+
+            <li>Farrús, M, Anguita, J., Anguera, X., Crego, J.M., de Gispert, A., Hernando, J. & Nadeu, C.. (2004). "<font color=#800000>Els sistemes de reconeixement de veu i traduccio automatica en catala: present i futur</font>"</span>, II Congres d'enginyeria en llengua catalana, Andorra 2004. <a href="http://www.xavieranguera.com/papers/andorra04.pdf">pdf</a></li></br>
+        </ul>
+
+
+        <h3>Miscelaneous</h3>
+        <ul>
+            <li>Llimona, Q., Luque, J., Anguera, X., Hidalgo, Z., Park, S. & Oliver, N. (2015). "<font color=#800000>Effect of gender and call duration on customer satisfaction in call center big data</font>", in Proc. Interspeech 2015, Dresden, Germany.</li></br>
+
+            <li>Costa Pereira, J., Luque, J. & Anguera, X. (2014). "<font color=#800000>Sentiment Retrieval on Web Reviews Using Spontaneous Natural Speech</font>", in Proc. ICASSP 2014, Florence, Italy. <a href="http://www.xavieranguera.com/papers/cross_text_cc.pdf">pdf</a></li></br>
+        
+            <li>Harsha Yella, S., Anguera, X. & Luque, J. (2014). "<font color=#800000>Inferring Social Relationships in a Phone Call from a Single Party's Speech</font>", in Proc. ICASSP 2014, Florence, Italy. <a href="http://www.xavieranguera.com/papers/callwhoid.pdf">pdf</a></li></br>
+
+            <li>Luque, J. & Anguera, X. (2014). "<font color=#800000>On the Modeling of Natural Vocal Emotion Expressions Through Binary Key</font>", in proc. Eusipco 2014, Lisboa, Portugal. <a href="http://www.xavieranguera.com/papers/eusipco_2014.pdf">pdf</a></li></br>
+
+            <li>Gonzalez, S. & Anguera, X. (2013). "<font color=#800000>Perceptually Inspired Features for Speaker Likability Classification </font>", in Proc. ICASSP 2013, Vancouver, Canada. <a href="http://www.xavieranguera.com/papers/Likability.pdf">pdf</a></li></br>
+
+            <li>Larson, M., Said, A., Shi, Y., Cremonesi, P., Tikk, D., Karatzoglou, A., Baltrunas, L., Geurts, J., Anguera, X. & Hopfgartner, F. (2013). "<font color=#800000>Activating the Crowd: Exploiting User-Item Reciprocity for Recommendation</font>", in Proc. CrowdRec: Crowdsourcing and Human Computation for Recommender Systems Workshop, ACM RecSys 2013. <a href="http://www.xavieranguera.com/papers/crowdrec2013.pdf">pdf</a></li></br>
+
+            <li>Anguera, X., Movellan, E. & Ferrarons, M. (2012). "<font color=#800000>Emotions recognition using binary fingerprints </font>"</span>, in Proc. Iberspeech 2012, Madrid, Spain. <a href="http://www.xavieranguera.com/papers/iberspeech2012.pdf">pdf</a></li></br>
+        </ul>
+
+
+
+
+    </section>
+
+    <section id="phd" class="section-box">
+        <h2>Ph.D. Thesis</h2>
+        <p></p>
+        <!-- Your content goes here -->
+        <p>In 2006 I defended my Ph.D. Thesis titled "<a href="./phdthesis/PhD_Thesis.html" target="_blank">Robust Speaker Diarization for Meetings</a>".</br>
+            The research for the thesis was done in between UPC Barcelona (under supervision of <a href="https://www.linkedin.com/in/javier-hernando-1a7b976">Prof. Javier Hernando</a>) and ICSI Berkeley (under supervision of <a href="https://www.linkedin.com/in/chuck-wooters">Dr. Chuck Wooters</a>).</br>
+            I arrived at ICSI right when the Speaker Diarization and Speech Recognition communities started to shift focus from analyzing single-channel Broadcast News recordings to multi-channel meeting recordings.</br>
+            My first important contribution was to propose adding a signal preprocessing step to any speech analysis to obtain a single (enhanced) speech recording, obtained via the weighted combination of all available channels, with an acoustic beamforming algorithm. 
+            From this work I later released the open source tool <a href="https://github.com/xanguera/BeamformIt">BeamformIt software</a> which is still currently considered a baseline in this and related areas.</br>
+            In addition, I worked on many algorithmic improvements to the Agglomerative Speaker Diarization system we used at ICSI, resulting in our system being the top performer during the NIST Speaker Diarization Campaigns of 2004 and 2005, when I led the ICSI submissions for Diarizartion. 
+        </p>
+        <p>
+        You can browse the document online (see link above, there might be some pdf->html conversion errors) or download <a href="./papers/PhD_Thesis.pdf">the pdf file</a>.</p>
+    </section>
+
+    <!--
+    <section id="blog" class="section-box">
+        <h2>Blog</h2>
+    </section>
+    -->
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    // Given the fixed navbar, this solves the visual issue of hiding the header top under it
+    document.addEventListener("DOMContentLoaded", function() {
+        const offset = 50; // Height of your fixed header.
+    
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+    
+                let targetId = this.getAttribute('href');
+                let targetElement = document.querySelector(targetId);
+    
+                window.scroll({
+                    top: targetElement.offsetTop - offset, // Adjust scroll position
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>    
+</body>
+</html>

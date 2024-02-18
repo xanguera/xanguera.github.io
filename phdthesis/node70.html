@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Friends-and-Enemies Initialization</TITLE>
+<META NAME="description" CONTENT="Friends-and-Enemies Initialization">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node72.html">
+<LINK REL="previous" HREF="node69.html">
+<LINK REL="up" HREF="node69.html">
+<LINK REL="next" HREF="node71.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1329"
+  HREF="node71.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1325"
+  HREF="node69.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1319"
+  HREF="node69.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1327"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1330"
+  HREF="node71.html">Initialization Algorithm Description</A>
+<B> Up:</B> <A NAME="tex2html1326"
+  HREF="node69.html">Speaker Clusters Description and</A>
+<B> Previous:</B> <A NAME="tex2html1320"
+  HREF="node69.html">Speaker Clusters Description and</A>
+ &nbsp; <B>  <A NAME="tex2html1328"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00821000000000000000"></A>
+<A NAME="friends_and_enemies"></A>
+<BR>
+Friends-and-Enemies Initialization
+</H2>
+
+<P>
+In this section a new cluster initialization algorithm is
+presented (see <A
+ HREF="node147.html#Anguera_2006d">Anguera, Wooters and Hernando (2006c)</A>), which has been called
+``friends-and-enemies'' initialization due to the way that
+single-speaker segments are grouped with those closer to them, and
+new clusters are created as enemies of the existing clusters. A
+cross-likelihood metric is used to determine ``friendliness''.
+This algorithm is aimed at improving the prior linear
+initialization algorithm, explained in section
+<A HREF="node44.html#linear_initialization">3.1.2</A>.
+
+<P>
+The clusters initialization block has often been considered to be
+of less importance in the past, as many segmentations and models
+retraining iterations take place later in the process that should
+allow any ``pseudo-optimal'' initializations to perform as well as
+any other in the end. In this respect it has been considered that
+the best initialization is that which does not introduce any
+computational burden to the overall system.
+
+<P>
+With a marked reduction of the error in the current system, it has
+been seen that the linear initialization <SPAN  CLASS="textit">does</SPAN> cause a
+problem on the final score, since some initial clustering errors
+are propagated all the way to the end of the agglomerative
+clustering and show up in the final result. It has also been
+observed that a linear initialization without any acoustic
+constraints on the initially created clusters introduces a random
+effect in the system which could be one of the sources of per-show
+``flakiness'', as presented in <A
+ HREF="node147.html#Mirghafori_2006">Mirghafori and Wooters (2006)</A>.
+
+<P>
+When designing an initialization algorithm for speaker diarization
+there is an additional problem beyond the standard problem of
+acoustic clustering. It is important to constrain the
+classification of every acoustic frame according to its context,
+in the same way as it will be classified within the rest of the
+system, which uses a minimum duration for a speaker turn to avoid
+instabilities and very short segments. For this reason it is
+important to separate into two different initial clusters, for
+example, data from a speaker in a solo presentation and data from
+the same speaker in an overlap region, or in a region with a lot
+of non-detected silence segments as the models used initially are
+small and can cause problems when modeling different kinds of
+data. These clusters should be merged in the agglomerative
+clustering, using more complex models.
+
+<P>
+The proposed ``friends-and-enemies'' initialization algorithm aims
+at creating <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> initial clusters ensuring that each cluster
+contains data only from one speaker. It intends to maximize the
+cluster purity, as introduced in <A
+ HREF="node147.html#Gauvain_1998">Gauvain et&nbsp;al. (1998)</A>, which
+accounts for the percentage of frames in any given cluster that
+come from the most represented speaker in that cluster. It differs
+from the DER in that it does not pretend to find the optimum
+number of clusters, but rather obtain each cluster with only one
+speaker worth of data in it.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1331"
+  HREF="node71.html">Initialization Algorithm Description</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1329"
+  HREF="node71.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1325"
+  HREF="node69.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1319"
+  HREF="node69.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1327"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1330"
+  HREF="node71.html">Initialization Algorithm Description</A>
+<B> Up:</B> <A NAME="tex2html1326"
+  HREF="node69.html">Speaker Clusters Description and</A>
+<B> Previous:</B> <A NAME="tex2html1320"
+  HREF="node69.html">Speaker Clusters Description and</A>
+ &nbsp; <B>  <A NAME="tex2html1328"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

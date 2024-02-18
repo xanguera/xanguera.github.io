@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Channels Sum and Output</TITLE>
+<META NAME="description" CONTENT="Channels Sum and Output">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node98.html">
+<LINK REL="up" HREF="node96.html">
+<LINK REL="next" HREF="node100.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1710"
+  HREF="node100.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1706"
+  HREF="node96.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1702"
+  HREF="node98.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1708"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1711"
+  HREF="node100.html">Use of the Estimated</A>
+<B> Up:</B> <A NAME="tex2html1707"
+  HREF="node96.html">Output Signal Generation</A>
+<B> Previous:</B> <A NAME="tex2html1703"
+  HREF="node98.html">Automatic Adaptive Channel Elimination</A>
+ &nbsp; <B>  <A NAME="tex2html1709"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00924300000000000000">
+Channels Sum and Output</A>
+</H3>
+
+<P>
+Once the output weight has been determined for each channel at a
+particular segment, all the signals are summed up to form the
+output ``enhanced'' signal. Such output signal needs to be ensured
+acoustic continuity at all times. In the theoretical filter&amp;sum
+equation as shown in eq. <A HREF="node39.html#filter-sum-eq">2.33</A> it will causes
+discontinuities in the signal on the segments edges due to the
+mismatch between the summed-up signals on the edges between
+segments.
+
+<P>
+A triangular window is therefore used to smooth and reduce the
+discontinuity between any two segments, as seen in figure
+<A HREF="#sum_signals">5.9</A>. At every segment the triangular filter smooths
+the signal delayed using that segment's selected TDOA value with
+the signals delayed using the TDOA values from the previous
+segment. By using the triangular window the system obtains a
+constant total value without discontinuities. The actual
+implementation follows equation <A HREF="#real_delaysum">5.19</A>.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img442.png"
+ ALT="$\displaystyle y[cS+k]$"></SPAN></TD>
+<TD NOWRAP ALIGN="LEFT"><SPAN CLASS="MATH"><IMG
+ WIDTH="373" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img443.png"
+ ALT="$\displaystyle = W_{overall} (\alpha[k] \sum_{n=1}^{N} w_{i}[c] x_{i}[cS+k-TDOA_{i}[c]] +$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT"><SPAN CLASS="MATH"><IMG
+ WIDTH="355" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img444.png"
+ ALT="$\displaystyle (1-\alpha[k]) \sum_{n=1}^{N} w_{i}[c] x_{i}[cS+k-TDOA_{i}[c-1]])$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+<A NAME="real_delaysum">(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">19</SPAN>)</A></TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img273.png"
+ ALT="$ S$"></SPAN> is the segment sample length, <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN> is the
+segment being processed and <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ k$"></SPAN> is the sample within that segment
+being processed.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="sum_signals"></A><A NAME="5677"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.9:</STRONG>
+<I>Multichannel delayed signal sum using a triangular
+window</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="532" HEIGHT="298" BORDER="0"
+ SRC="img445.png"
+ ALT="\begin{figure*}
+\centerline{\epsfig{figure=figures/sum_signals,width=120mm}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In the standard implementation the analysis window overlaps 50%
+with the segment window, which agrees with the triangular overlap
+of 50% overlap done here. After all samples from both overlapping
+windows are summed the overall weighting factor computed earlier
+is applied to ensure that the dynamic range of the filter&amp;summed
+signal is optimally matched with the available dynamic range of
+the output file. The resulting signal is further processed by the
+speaker diarization system which is described in the next chapter.
+Together with the acoustic signal, also the TDOA values used in
+the channel delays are written to an ASCII file for use by the
+Diarization system as features and used as explained in the next
+section.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1710"
+  HREF="node100.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1706"
+  HREF="node96.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1702"
+  HREF="node98.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1708"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1711"
+  HREF="node100.html">Use of the Estimated</A>
+<B> Up:</B> <A NAME="tex2html1707"
+  HREF="node96.html">Output Signal Generation</A>
+<B> Previous:</B> <A NAME="tex2html1703"
+  HREF="node98.html">Automatic Adaptive Channel Elimination</A>
+ &nbsp; <B>  <A NAME="tex2html1709"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

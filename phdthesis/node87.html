@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Individual Channels Signal Enhancement</TITLE>
+<META NAME="description" CONTENT="Individual Channels Signal Enhancement">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node88.html">
+<LINK REL="previous" HREF="node86.html">
+<LINK REL="up" HREF="node86.html">
+<LINK REL="next" HREF="node88.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1565"
+  HREF="node88.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1561"
+  HREF="node86.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1555"
+  HREF="node86.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1563"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1566"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Up:</B> <A NAME="tex2html1562"
+  HREF="node86.html">Multichannel Acoustic Beamforming System</A>
+<B> Previous:</B> <A NAME="tex2html1556"
+  HREF="node86.html">Multichannel Acoustic Beamforming System</A>
+ &nbsp; <B>  <A NAME="tex2html1564"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00921000000000000000">
+Individual Channels Signal Enhancement</A>
+</H2>
+
+<P>
+Prior to doing any multichannel beamforming each individual
+channel is Wiener filtered (<A
+ HREF="node147.html#Wiener_49">Wiener and Norbert, 1949</A>). It aims at cleaning
+the signal from corrupting noise, which is considered to be
+additive and of a stochastic nature. The Wiener filter parameters
+<SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img367.png"
+ ALT="$ w(t)$"></SPAN> are chosen so that the mean square error between the clean
+signal <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img368.png"
+ ALT="$ x(t)$"></SPAN> and the resulting output signal <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img369.png"
+ ALT="$ s(t)$"></SPAN> is minimized.
+Considering an additive noise <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img370.png"
+ ALT="$ n(t)$"></SPAN> it can be written as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+x_{n}[k] = w_{n}[k] * (s_{N}[k] + n_{n}[k])
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="237" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img371.png"
+ ALT="$\displaystyle x_{n}[k] = w_{n}[k] * (s_{N}[k] + n_{n}[k])$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">6</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img372.png"
+ ALT="$ s_{n}[k]$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img373.png"
+ ALT="$ n_{n}[k]$"></SPAN> are the discrete speech
+and noise recorded by each of the <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN> channels in the room, and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img374.png"
+ ALT="$ x_{n}[k]$"></SPAN> is the cleaned signal which will be further processed
+by the system.
+
+<P>
+In this implementation Wiener filtering is applied to each channel
+independently, not taking advantage of the multichannel properties
+of the speech or noise being recorded as in
+<A
+ HREF="node147.html#Rombouts_03">Rombouts and M.Moonen (2003)</A> and <A
+ HREF="node147.html#Doclo_02">Doclo and Moonen (2002)</A>. Being that the
+microphones are located in unknown places in the room it is
+considered that no assumptions can be made on the noise or speech
+properties at this level. The Wiener filtering implementation is
+taken from ICSI-SRI-UW and used in the ASR system as explained in
+<A
+ HREF="node147.html#Mirghafori_04">Mirghafori et&nbsp;al. (2004)</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1565"
+  HREF="node88.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1561"
+  HREF="node86.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1555"
+  HREF="node86.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1563"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1566"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Up:</B> <A NAME="tex2html1562"
+  HREF="node86.html">Multichannel Acoustic Beamforming System</A>
+<B> Previous:</B> <A NAME="tex2html1556"
+  HREF="node86.html">Multichannel Acoustic Beamforming System</A>
+ &nbsp; <B>  <A NAME="tex2html1564"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

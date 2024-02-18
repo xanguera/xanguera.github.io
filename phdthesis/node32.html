@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>NIST 2005 Rich Transcription Spring Meeting Evaluation</TITLE>
+<META NAME="description" CONTENT="NIST 2005 Rich Transcription Spring Meeting Evaluation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node33.html">
+<LINK REL="previous" HREF="node31.html">
+<LINK REL="up" HREF="node29.html">
+<LINK REL="next" HREF="node33.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html812"
+  HREF="node33.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html808"
+  HREF="node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html802"
+  HREF="node31.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html810"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html813"
+  HREF="node33.html">NIST 2006 Rich Transcription</A>
+<B> Up:</B> <A NAME="tex2html809"
+  HREF="node29.html">NIST RT Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html803"
+  HREF="node31.html">NIST 2004 Rich Transcription</A>
+ &nbsp; <B>  <A NAME="tex2html811"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00643300000000000000">
+NIST 2005 Rich Transcription Spring Meeting Evaluation</A>
+</H3>
+
+<P>
+The RT05s evaluation welcomed a different kind of meetings to be
+evaluated. These are the meetings in a lecture environment, where
+a speaker is giving a lecture in front of an audience and there
+are eventual questions and answer periods. In this evaluation
+systems could be presented for either or both subtasks (lecture
+room and conference room data). The sets of microphones used was
+extended from the previous evaluations due to the existence of two
+new kinds in the lecture room data (entirely recorded by the
+partners in the CHIL project). These were labelled as MM3A
+(Multiple Mark III microphone arrays) which consisted on one or
+several 64 elements microphone arrays developed by NIST and
+positioned on one of the walls of the meetings room; and MSLA
+(Multiple source localization microphones) which are four sets of
+four microphones each, used primarily for speaker localization,
+but available also for speaker diarization. For a more thorough
+description of the tasks and microphone types please refer to
+<A
+ HREF="node147.html#Fiscus_2005">Fiscus et&nbsp;al. (2005)</A>. The following is a brief description of
+the approaches taken in this evaluation:
+
+<P>
+
+<UL>
+<LI>The Macquarie University system (<A
+ HREF="node147.html#Cassidy_2004">Cassidy, 2004</A>)
+participated only on SDM which expands its work from the RT04s
+system. In the RT05s submission it uses the KL distance between
+clusters and does a post-processing of the segments using speaker
+identification techniques to refine the segments-to-speakers
+assignment.
+
+<P>
+</LI>
+<LI>The TNO speaker diarization system (<A
+ HREF="node147.html#vanLeeuwen_2005">van Leeuwen, 2005</A>)
+presents a system for MDM using a single channel. It first uses a
+Speech Activity Detector (SAD) to filter out non-speech frames.
+Then it does a segmentation and clustering using an agglomerative
+clustering via BIC.
+
+<P>
+</LI>
+<LI>The ICSI-SRI speaker diarization system (<A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo, 2005</A>)
+uses a filter&amp;sum module to obtain an enhanced signal on the MDM
+condition, and then uses an iterative agglomerative clustering
+using a BIC-alike metric. This system and its improvements for
+RT06s are described in this thesis.
+
+<P>
+</LI>
+<LI>The ELISA consortium system (<A
+ HREF="node147.html#Istrate_2005">Istrate et&nbsp;al., 2005</A>) is different
+from their system in RT04s in that a preprocessing step is
+performed on the MDM channels to obtain a single enhanced channel.
+It is based on a weighted sum of the individual channels, weighted
+by their relative Signal to Noise Ration (SNR) without any
+relative delays estimation. Three different clustering systems are
+then proposed. The first system is based on EHMM
+(<A
+ HREF="node147.html#Meignier_2001">Meignier et&nbsp;al., 2001</A>), doing a top-down clustering. The second and
+third systems are both bottom-up, one using speaker change
+detection via GLR and agglomerative clustering via BIC, and the
+other using BIC for change detection and UBM-BIC in the
+agglomerative clustering part. All systems use a resegmentation
+stage at the end in order to refine the speaker segments. For this
+evaluation either system was run individually, with no collapse of
+the different outputs.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html812"
+  HREF="node33.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html808"
+  HREF="node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html802"
+  HREF="node31.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html810"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html813"
+  HREF="node33.html">NIST 2006 Rich Transcription</A>
+<B> Up:</B> <A NAME="tex2html809"
+  HREF="node29.html">NIST RT Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html803"
+  HREF="node31.html">NIST 2004 Rich Transcription</A>
+ &nbsp; <B>  <A NAME="tex2html811"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

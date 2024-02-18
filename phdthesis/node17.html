@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speaker Diarization</TITLE>
+<META NAME="description" CONTENT="Speaker Diarization">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node18.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html616"
+  HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html612"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html606"
+  HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html614"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html617"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<B> Up:</B> <A NAME="tex2html613"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html607"
+  HREF="node16.html">Segmentation Using Other Techniques</A>
+ &nbsp; <B>  <A NAME="tex2html615"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00630000000000000000">
+Speaker Diarization</A>
+</H1>
+
+<P>
+In some occasions the use of the term speaker diarization is
+confused with speaker clustering. One must refer as speaker
+clustering the techniques and algorithms that agglutinate together
+all segments that belong to the same speaker. This does not entail
+wether such segments come from the same acoustic file or different
+ones. It also does not say anything about how acoustically
+homogeneous segments within a single file are obtained. The term
+speaker diarization refers to the systems that perform a speaker
+segmentation of the input signal and then a speaker clustering of
+the created segments into homogeneous groups (or some hybrid
+mechanism doing both at the same time), all within the same file
+or input stream.
+
+<P>
+In the literature one can normally find two main applications for
+speaker diarization. On one hand, Automatic Speech Recognition
+(ASR) systems make use of the speaker homogeneous clusters to
+adapt the acoustic models to be speaker dependent and therefore
+increase recognition performance. On the other hand, speaker
+indexing and rich transcription systems use the speaker
+diarization output as one of (possibly) many information pieces
+extracted from a recording, which allow its automatic indexation
+and other further processing areas.
+
+<P>
+This section reviews the main systems present in the literature
+for both applications. It mainly focuses on systems that propose
+solutions to a blind speaker diarization problem, where no
+information is known a priori about the number of people or their
+identities. On one hand, it is crucial for systems oriented
+towards rich transcription of the data to accurately estimate the
+number of speakers present, as error measures penalize any
+incorrectly assigned speaker segment. On the other hand, in ASR
+systems it becomes more important to have sufficient data to
+accurately adapt the resulting speaker models, therefore several
+speakers with similar acoustic characteristics are preferably
+grouped together.
+
+<P>
+At a high level point of view one can differentiate between online
+and offline systems. The systems that process the data offline
+have access to all the recording before they start processing it.
+These are the most common in the bibliography and they are the
+main focus of attention of this review. The online systems only
+have access to the data that has been recorded up to that point.
+They might allow a latency in output to allow for a certain amount
+of data to become available for processing, but in any case no
+information on the complete recording is available. Such systems
+usually start with one single speaker (whoever starts talking at
+the beginning of the recording) and iteratively increase the
+number of speaker as they intervene. The following are some
+representative systems used for online processing:
+
+<P>
+In <A
+ HREF="node147.html#Mori_2001">Mori and Nakagawa (2001)</A> a clustering algorithm based on the
+Vector Quantization (VQ) distortion measure (<A
+ HREF="node147.html#Nakagawa_1993">Nakagawa and Suzuki, 1993</A>)
+is proposed. It starts processing with one speaker in the
+code-book and incrementally adds new speakers whose VQ distortion
+exceeds a threshold in the current code-book.
+
+<P>
+In <A
+ HREF="node147.html#Rougui_2006">Rougui et&nbsp;al. (2006)</A> a GMM based system is proposed, using
+a modified KL distance between models. Change points are detected
+as the speech becomes available and data is assigned to either
+speaker present in the database or a new speaker is created,
+according to a dynamic threshold. Emphasis is put into fast
+classification of the speech segments into speakers by using a
+decision tree structure for speaker models.
+
+<P>
+All systems presented below are based on offline processing,
+although some of the techniques presented could potentially be
+used also in an online implementation.  These systems can be
+classified in two main groups, on one hand the hierarchical
+clustering techniques reach the optimum diarization by iterative
+processing of different number of possible clusters obtained by
+merging or splitting existing clusters. On the other hand, other
+clustering techniques first estimate the number of clusters and
+obtain a diarization output without deriving the clusters from
+bigger/smaller ones.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html618"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<UL>
+<LI><A NAME="tex2html619"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+<LI><A NAME="tex2html620"
+  HREF="node20.html">Top-down Clustering Techniques</A>
+<LI><A NAME="tex2html621"
+  HREF="node21.html">Combination of Clustering Methods</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html622"
+  HREF="node22.html">Other Clustering Techniques</A>
+<LI><A NAME="tex2html623"
+  HREF="node23.html">Use of Support Information in Diarization</A>
+<UL>
+<LI><A NAME="tex2html624"
+  HREF="node24.html">Helping Diarization Using the Spoken Transcripts</A>
+<LI><A NAME="tex2html625"
+  HREF="node25.html">Speaker Diarization Using Multi-Channel Information</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html616"
+  HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html612"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html606"
+  HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html614"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html617"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<B> Up:</B> <A NAME="tex2html613"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html607"
+  HREF="node16.html">Segmentation Using Other Techniques</A>
+ &nbsp; <B>  <A NAME="tex2html615"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

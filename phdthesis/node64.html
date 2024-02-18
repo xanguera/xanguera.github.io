@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Data Preprocessing</TITLE>
+<META NAME="description" CONTENT="Data Preprocessing">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node65.html">
+<LINK REL="previous" HREF="node63.html">
+<LINK REL="up" HREF="node63.html">
+<LINK REL="next" HREF="node65.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1255"
+  HREF="node65.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1251"
+  HREF="node63.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1245"
+  HREF="node63.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1253"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1256"
+  HREF="node65.html">Derivative Filtering</A>
+<B> Up:</B> <A NAME="tex2html1252"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Previous:</B> <A NAME="tex2html1246"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+ &nbsp; <B>  <A NAME="tex2html1254"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00811100000000000000"></A>
+<A NAME="datapreproc"></A>
+<BR>
+Data Preprocessing
+</H3>
+
+<P>
+Due to the different sources and recording setups, the average
+amplitude of the signal to be processed can vary over a large
+range. Therefore it needs to be normalized to be able to bring
+consistency in the follow-on processing. A standard energy average
+over all the recording would not be plausible due to the existence
+of extended silence regions and of sudden noise bursts. In order
+to compute the normalization constant <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img236.png"
+ ALT="$ \mu$"></SPAN> was chosen, which is
+more robust to these effects as shown in equation
+<A HREF="#normalization">4.1</A>. This same expression is used in the
+filter&amp;sum processing to obtain the overall channels weighting
+factor of the input signals <A HREF="node90.html#overall_weighting">5.2.2</A>.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="normalization"></A><!-- MATH
+ \begin{equation}
+\mu = \frac{1}{P}\sum_{p=1}^{P}max(s[p \
+cdot TF_{s}], \cdots, s[(p+1)\cdot TF_{s}])
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="385" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img237.png"
+ ALT="$\displaystyle \mu = \frac{1}{P}\sum_{p=1}^{P}max(s[p \ cdot TF_{s}], \cdots, s[(p+1)\cdot TF_{s}])$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ P$"></SPAN> is the total amount of non overlapped blocks
+of duration <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img238.png"
+ ALT="$ TF_{s}$"></SPAN> (with <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img239.png"
+ ALT="$ F_{s}$"></SPAN> being the sampling rate in
+samples/second, and T is the analysis segment size in seconds) in
+the recording. Each block of samples ranges from <!-- MATH
+ $p\cdot TF_{s}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img240.png"
+ ALT="$ p\cdot TF_{s}$"></SPAN>
+to <!-- MATH
+ $(p+1)\cdot TF_{s}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img241.png"
+ ALT="$ (p+1)\cdot TF_{s}$"></SPAN>
+
+<P>
+Finally a low-pass Butterworth filter deletes all high band noises
+leaving only information of the signal below <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img242.png"
+ ALT="$ 4kHz$"></SPAN>. This is done
+because the major part of the energy of the signal is contained in
+this band and no information is needed but the energy at this
+point of the non-speech detection process. This Butterworth filter
+has been implemented using its IIR form.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1255"
+  HREF="node65.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1251"
+  HREF="node63.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1245"
+  HREF="node63.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1253"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1256"
+  HREF="node65.html">Derivative Filtering</A>
+<B> Up:</B> <A NAME="tex2html1252"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Previous:</B> <A NAME="tex2html1246"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+ &nbsp; <B>  <A NAME="tex2html1254"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

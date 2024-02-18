@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Signal Output Algorithms Analysis</TITLE>
+<META NAME="description" CONTENT="Signal Output Algorithms Analysis">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node118.html">
+<LINK REL="previous" HREF="node116.html">
+<LINK REL="up" HREF="node113.html">
+<LINK REL="next" HREF="node118.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1957"
+  HREF="node118.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1953"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1947"
+  HREF="node116.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1955"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1958"
+  HREF="node118.html">Use of the Beamformed</A>
+<B> Up:</B> <A NAME="tex2html1954"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1948"
+  HREF="node116.html">TDOA Post-Processing Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1956"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001044000000000000000">
+Signal Output Algorithms Analysis</A>
+</H2>
+
+<P>
+The signal output module includes the relative channel weight
+estimation algorithm (explained in <A HREF="node97.html#auto_channel_weight">5.2.4</A>) and
+the elimination of frames from low quality channels (seen in
+<A HREF="node98.html#auto_channel_eliminate">5.2.4</A>).
+
+<P>
+The relative channel weight algorithm is necessary when the
+different microphones are of very diverse type and therefore the
+levels and kinds of noises being recorded are different. In such
+cases the standard delay-and-sum theory does not apply as the
+noise from the different channels cannot cancel itself out. One
+needs to find the appropriate weights of each of the channels that
+is able to reduce the effect of a channel when the quality of the
+signal is poor and magnify it when it is very good. In the RT06s
+system the relative weights are computed once the channel delays
+are known, and is a function of the average correlation between
+the signal of all channels.
+
+<P>
+The elimination of certain channels when their quality is too low
+uses also the correlation information to determine when a channel
+in a particular frame is of too low quality that it is better not
+to use it in the output as it would degrade the output quality.
+This is done automatically and in a dynamic way (only certain
+frames are eliminated, not all the data in that recording). Table
+<A HREF="#output_results">6.11</A> shows the results comparing the RT06s system
+with the same without the use of the relative channels weighting
+and the automatic channels elimination algorithms. When no channel
+weights are used, a <!-- MATH
+ $\frac{1}{N}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img377.png"
+ ALT="$ \frac{1}{N}$"></SPAN> constant weight  is applied to
+all channels.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7180"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.11:</STRONG>
+<I>Results for relative channel weights and elimination
+of bad channels</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">F&amp;S system</TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>SNR</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>DER</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system</TD>
+<TD ALIGN="RIGHT">30.20db</TD>
+<TD ALIGN="RIGHT">45.28db</TD>
+<TD ALIGN="RIGHT">17.15%</TD>
+<TD ALIGN="RIGHT">22.92%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">No relative weights</TD>
+<TD ALIGN="RIGHT">30.34db</TD>
+<TD ALIGN="RIGHT">44.06db</TD>
+<TD ALIGN="RIGHT">17.48%</TD>
+<TD ALIGN="RIGHT">24.06%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">No channels elimination</TD>
+<TD ALIGN="RIGHT">31.5db</TD>
+<TD ALIGN="RIGHT">44.96db</TD>
+<TD ALIGN="RIGHT">17.14%</TD>
+<TD ALIGN="RIGHT">23.91%</TD>
+</TR>
+</TABLE>
+ <A NAME="output_results"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The SNR of the development set improves when not using either one
+of the techniques, but gets worse in the test set. The DER
+improves a 1.8% relative by using the relative channel weights on
+the development set and a 4.7% relative on the evaluation set. By
+eliminating the bad channels from the processing the DER does not
+change in the development set but is improves a 4.1% relative in
+the evaluation set.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1957"
+  HREF="node118.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1953"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1947"
+  HREF="node116.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1955"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1958"
+  HREF="node118.html">Use of the Beamformed</A>
+<B> Up:</B> <A NAME="tex2html1954"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1948"
+  HREF="node116.html">TDOA Post-Processing Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1956"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

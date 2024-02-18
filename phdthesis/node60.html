@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Clusters Merging and System Output</TITLE>
+<META NAME="description" CONTENT="Clusters Merging and System Output">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node58.html">
+<LINK REL="up" HREF="node55.html">
+<LINK REL="next" HREF="node61.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1178"
+  HREF="node61.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1174"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1170"
+  HREF="node59.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1176"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1179"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+<B> Up:</B> <A NAME="tex2html1175"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1171"
+  HREF="node59.html">Models Training Using CV-EM</A>
+ &nbsp; <B>  <A NAME="tex2html1177"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00734000000000000000">
+Clusters Merging and System Output</A>
+</H2>
+
+<P>
+When computing the BIC metric between two clusters it was observed
+that small amounts of non-speech data affect negatively the
+speaker models and therefore could create errors when deciding
+wether to merge them or not. A new technique called frame-based
+cluster purification is introduced to modify the cluster models
+for the BIC comparison step in order to obtain more discriminant
+models. It is explained in detail in section <A HREF="node77.html#sec:purif">4.3.1</A>.
+
+<P>
+It has also been observed that some clusters contain speaker
+segments from more than one speaker. The models associated with
+these clusters are able to model both speaker correctly and
+therefore cause a problem when comparing with other clusters
+containing either one of those speakers, leading to potentially
+serious decrease of performance due to erroneous cluster merges.
+For this reason, and during the initial iterations of the
+segmentation and clustering algorithm, a segment-level cluster
+purification algorithm aims at detecting speaker segments that are
+very dissimilar to the cluster they belong to, and assign them to
+a new cluster. A further description of the algorithm is given in
+section <A HREF="node81.html#segment_purify">4.3.2</A>.
+
+<P>
+In order to save some computation when computing the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC
+metric among all possible pairs, a pruning algorithm was
+implemented in broadcast news that would not compute the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC for those pairs that had previously obtained a
+negative value. For the meetings system this was revisited and it
+was observed on development data that, specially during the
+initial iterations of the algorithm, the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC metric would
+oscillate between small positive and negative values for some
+clusters until they would finally stabilize its assigned data. By
+using such a restrictive pruning, the system does not allow such
+clusters to eventually merge, even though they might be from the
+same speaker.
+
+<P>
+For this reason the pruning algorithm was relaxed to eliminate a
+cluster pair from further comparisons only if its <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC
+value falls below a certain threshold (<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img93.png"
+ ALT="$ &lt;0$"></SPAN>), much safer to use.
+Such threshold was set to -100 as it was seen that <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC
+values below this threshold would always remain negative
+throughout the process and therefore there is no chance of
+eliminating any potential merge pair.
+
+<P>
+As in the broadcast news system, the cluster pair with the biggest
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC value is merged into a common cluster. The resulting
+model is the union of both merged models. If none of the cluster
+pairs obtains a positive <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC value, no merging takes place
+and the system prepares to finish, as it failed the stopping
+criterion.
+
+<P>
+In the Meetings system only the local <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC stopping
+criterion is used as tests using a likelihood criterion (in the
+same way as in the broadcast news system) resulted in worse
+performance.
+
+<P>
+When the system's stopping point is reached, the algorithm does a
+final post-processing in order to output a final clustering.
+During the iterative merging process the minimum speaker turn
+duration is set to be 3 seconds. This is necessary when there are
+many clusters, each containing small amounts of data, as the
+corresponding models can fluctuate a lot and not model the speaker
+appropriately.
+
+<P>
+Once the system determines to stop merging, the optimum amount of
+clusters has been reached and the models are expected to contain
+enough data to model each speaker appropriately. At this point, a
+single Viterbi segmentation iteration is performed where the
+minimum duration is set to 1.5 seconds in order to allow the
+output segmentation to contain smaller speaker turns, given that
+in meetings the average speaker turn duration is smaller than in
+broadcast news, as seen in section <A HREF="node47.html#bn_compare">3.2</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1178"
+  HREF="node61.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1174"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1170"
+  HREF="node59.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1176"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1179"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+<B> Up:</B> <A NAME="tex2html1175"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1171"
+  HREF="node59.html">Models Training Using CV-EM</A>
+ &nbsp; <B>  <A NAME="tex2html1177"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

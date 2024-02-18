@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Review of Objectives Completion</TITLE>
+<META NAME="description" CONTENT="Review of Objectives Completion">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node144.html">
+<LINK REL="previous" HREF="node142.html">
+<LINK REL="up" HREF="node141.html">
+<LINK REL="next" HREF="node144.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2291"
+  HREF="node144.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2287"
+  HREF="node141.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2281"
+  HREF="node142.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2289"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2292"
+  HREF="node144.html">Possible Future Work Topics</A>
+<B> Up:</B> <A NAME="tex2html2288"
+  HREF="node141.html">Conclusions</A>
+<B> Previous:</B> <A NAME="tex2html2282"
+  HREF="node142.html">Overall Thesis Final Review</A>
+ &nbsp; <B>  <A NAME="tex2html2290"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001220000000000000000">
+Review of Objectives Completion</A>
+</H1>
+
+<P>
+Upon the thesis start (ad stated in the introduction) a set of
+objectives was set. At this point these were all successfully
+completed and will be reviewed in the following paragraphs.
+
+<P>
+In general, a successful system was implemented basing it on the
+broadcast news technology available at ICSI at the start of the
+thesis. During this process most of the differences between
+broadcast news and meetings were analyzed and algorithms were
+proposed to bridge the gap between both. These were, for example,
+the multi-channel setup in the meetings versus a single broadcast
+news channel, the different nature of the non-speech data to be
+detected and the existence of shorter (in average) speaker. When
+developing the system it was made modular so that the acoustic
+beamformer, the speech/non-speech detector and the speaker
+diarization modules were independent from each other and passing
+the information between them in files. This allowed the use of the
+beamforming module for the automatic speech recognition system for
+meetings, with good results.
+
+<P>
+Two main ideals that were already in place at ICSI at the start of
+the thesis were followed at heart. These were making the system be
+easy to adapt to new domains and that parameters should be robust
+and not flaky. In terms of easy adaptation, as has been already
+mentioned, the system was developed using separate blocks to allow
+for an easy recombination depending on the necessities. In fact,
+already within the meetings domain, the same speaker diarization
+module and the speech/non-speech module were reused for SDM and
+MDM conditions, either using the beamforming as an initial step or
+not. The core speaker diarization module was kept very similar to
+the broadcast news system, therefore it could be readapted to that
+domain with little effort.
+
+<P>
+In terms of robustness and lack of flakiness, they are problems
+present in many current speaker diarization systems under research
+nowadays. Mostly with the inclusion of the proposed new
+diarization module algorithms it has been shown in the experiments
+that final results on development and test follow each other
+closely, showing an increase in robustness from the start of the
+thesis work. Regarding flakiness, some parameters were defined to
+substitute others which experienced important differences in
+Diarization Error Rate (DER) when slightly modifying its value.
+The DER value accounts for the percentage of incorrectly assigned
+time. With the new parameters, in many cases, it was shown that
+the DER curves were flatter, reducing therefore the flakiness. In
+some other cases there is still work to do.
+
+<P>
+Although the system needs the use of development data in order to
+tune some of the parameters in it, with the development of a
+hybrid speech/non-speech detector it does not require anymore the
+use of any external training data. This speaks also in favor of
+self-sufficiency of the system, which is another ideal followed
+during its implementation, very much in tune with the capability
+for fast adaptation to new domains and robustness to changes in
+the data being tested.
+
+<P>
+Both in 2005 and 2006 the speaker diarization system entered the
+NIST Rich Transcription (RT) evaluations where a common task and
+common datasets were processed by multiple research laboratories.
+In both entries the ICSI system performed very well. This was
+established as a goal or milestone in order to push the research
+and development of the system to be available for the evaluations.
+In 2005 the main improvement consisted on the development of the
+initial version of the beamforming system. In 2006 it was a set of
+improvements to the beamforming and many changes made to the
+speaker diarization module, as well as a totally new
+speech/non-speech detector.
+
+<P>
+As important as the technical improvements and innovations are the
+tasks to increase public awareness on the system and algorithms
+being proposed. To this respect, the RT evaluations are a
+wonderful way to meet people from the same research area and to
+expose one's research to the community. Another very important way
+is the publication of articles in conferences and technical
+magazines. From the start of this thesis work more than 15 papers
+have been accepted for publication which explain the different
+improvements and capabilities of the system.
+
+<P>
+Yet another way is the transfer of technology or knowledge between
+research labs, which allows other researcher to build on top of
+pre-established research from other researchers. This was the case
+of TNO-Twente research group (within the AMI project group) which
+implemented part of their RT06s contribution based on ICSI's
+system, or LIA (Avignon) which experimented with the segment
+purification algorithm originally proposed in RT05s ICSI's
+submission. Also in this group is the direct transfer of resources
+by means of system source code, as it was originally done by IDIAP
+to bring to ICSI the initial speaker diarization system (thanks to
+Jitendra Ajmera), and was followed recently by the author to take
+it to the University of Washington (UW). Finally, recently the
+diarization system has been adapted for speaker tracking used in a
+Spanish evaluation task within UPC <A HREF="#jornadas_zaragoza_2006"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="/usr/share/latex2html/icons/crossref.png"></A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2291"
+  HREF="node144.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2287"
+  HREF="node141.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2281"
+  HREF="node142.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2289"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2292"
+  HREF="node144.html">Possible Future Work Topics</A>
+<B> Up:</B> <A NAME="tex2html2288"
+  HREF="node141.html">Conclusions</A>
+<B> Previous:</B> <A NAME="tex2html2282"
+  HREF="node142.html">Overall Thesis Final Review</A>
+ &nbsp; <B>  <A NAME="tex2html2290"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

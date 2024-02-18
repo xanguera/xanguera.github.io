@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Acoustic Signal Enhancement</TITLE>
+<META NAME="description" CONTENT="Acoustic Signal Enhancement">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node57.html">
+<LINK REL="previous" HREF="node55.html">
+<LINK REL="up" HREF="node55.html">
+<LINK REL="next" HREF="node57.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1133"
+  HREF="node57.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1129"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1123"
+  HREF="node55.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1131"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1134"
+  HREF="node57.html">Single Channel System Frontend</A>
+<B> Up:</B> <A NAME="tex2html1130"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1124"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+ &nbsp; <B>  <A NAME="tex2html1132"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00731000000000000000">
+Acoustic Signal Enhancement</A>
+</H2>
+
+<P>
+Both the individual channel enhancement block and the acoustic
+fusion block aim at obtaining a signal with a better quality than
+the original in order to improve the performance of the
+diarization system.
+
+<P>
+The individual channels are first Wiener-filtered (<A
+ HREF="node147.html#Wiener_49">Wiener and Norbert, 1949</A>)
+to improve the SNR with the same algorithm as in the ICSI-SRI-UW
+Meetings recognition system (<A
+ HREF="node147.html#Mirghafori_04">Mirghafori et&nbsp;al., 2004</A>), which uses a
+noise reduction algorithm developed for the Aurora 2 front-end,
+proposed originally in <A
+ HREF="node147.html#Adami_2002b">Adami, Burget, Dupont, Garudadri, Grezl, Hermansky, Jain,
+  Kajarekar, Morgan and Sivadas (2002)</A>. The algorithm
+performs Wiener filtering with typical engineering modifications,
+such as a noise over-estimation factor, smoothing of the filter
+response, and a spectral flooring. The original algorithm was
+modified to use a single noise spectral estimate for each meeting
+waveform. This was calculated over all the frames judged to be
+non-speech by the voice-activity detection component within the
+module. As observed in Figure <A HREF="node55.html#full_system">3.5</A>, the algorithm is
+independently applied to each meeting channel and uses overlap-add
+resynthesis to create noise-reduced output waveforms, which then
+are either fed into the acoustic fusion block (multi-channel) or
+directly into the segmentation and clustering block
+(single-channel).
+
+<P>
+The acoustic fusion module makes use of standard beamforming
+techniques in order to obtain an ``enhanced'' version of the
+signal as a combination of the multiple channel input signals. It
+considers the multiple channels to form a microphone array.
+Neither the microphone positions nor their acoustic properties are
+known. Given these constraints, a variation of the simple (yet
+effective) delay&amp;sum beamforming technique is applied as it does
+not require any information from the microphones in order to
+operate. As the different microphones have a different acoustic
+directivity pattern and are located in places in the room where
+the noise level is different, a dynamic weighting of the
+individual channels and a triangular filtering is used to reduce
+its negative effects. By using such channel filtering the system
+will be referred to as filter&amp;sum from now on.
+
+<P>
+The filter&amp;sum beamforming technique involves estimating the
+relative time delay of arrival (TDOA) of the acoustic signal with
+respect to a reference channel. The GCC-PHAT (Generalized Cross
+Correlation with Phase Transform) is used to find the potential
+relative delays regarding each of the speakers in the meeting. In
+order to avoid impulsive noise, short-term events and overlap
+speech from tainting the correct approximation of the TDOA,
+multiple TDOA values are computed for each time and a double
+post-processing algorithm is implemented to select the most
+appropriate value. On one hand, noise is detected by measuring the
+quality of the computed cross-correlation values at each point
+with respect to the rest of the meeting and the computed TDOA
+values are substituted by the previous (more reliable) values when
+considered too low. On the other hand, impulsive events and
+overlap is dealt with by using a double-step Viterbi decoding of
+the delays in order to obtain the optimum set of TDOA values that
+are both reliable and stable. A more in depth explanation of these
+and other steps involved in the acoustic fusion block is given in
+chapter <A HREF="node82.html#multich_process">5</A>.
+
+<P>
+Apart from using the post-processed estimated delays for the
+filter&amp;sum beamforming, they are also used in the segmentation
+and clustering block as they can convey information about the
+speaker through his/her location in the room. Such information is
+orthogonal to the acoustic information and therefore adds useful
+information to the diarization system. In section
+<A HREF="node100.html#multi_delays">5.3</A> the combination of both features is presented
+in detail.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1133"
+  HREF="node57.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1129"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1123"
+  HREF="node55.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1131"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1134"
+  HREF="node57.html">Single Channel System Frontend</A>
+<B> Up:</B> <A NAME="tex2html1130"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1124"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+ &nbsp; <B>  <A NAME="tex2html1132"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

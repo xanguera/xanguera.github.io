@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Multichannel Acoustic Beamforming System Implementation</TITLE>
+<META NAME="description" CONTENT="Multichannel Acoustic Beamforming System Implementation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node100.html">
+<LINK REL="previous" HREF="node83.html">
+<LINK REL="up" HREF="node82.html">
+<LINK REL="next" HREF="node87.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1540"
+  HREF="node87.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1536"
+  HREF="node82.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1530"
+  HREF="node85.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1538"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1541"
+  HREF="node87.html">Individual Channels Signal Enhancement</A>
+<B> Up:</B> <A NAME="tex2html1537"
+  HREF="node82.html">Multichannel Processing for Meetings</A>
+<B> Previous:</B> <A NAME="tex2html1531"
+  HREF="node85.html">Filter-and-Sum Beamforming</A>
+ &nbsp; <B>  <A NAME="tex2html1539"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00920000000000000000"></A>
+<A NAME="multi-implement"></A>
+<BR>
+Multichannel Acoustic Beamforming System Implementation
+</H1>
+
+<P>
+This section describes the implementation of the multichannel
+acoustic beamforming system for meetings based of the
+filter-and-sum system presented in section <A HREF="node83.html#filter-and-sum">5.1</A>
+and also described in <A
+ HREF="node147.html#Anguera_2005b">Anguera, Wooters and Hernando (2005)</A>. This involves
+the processing of the signal from each available microphone until
+obtaining the final ``enhanced'' channel output and other related
+information useful for further processing in the mono-channel
+speaker diarization system presented in the next section.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="delaysum_blocks"></A><A NAME="5640"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.3:</STRONG>
+<I>filter-and-sum implementation blocks
+diagram</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="156" HEIGHT="262" BORDER="0"
+ SRC="img366.png"
+ ALT="\begin{figure*}
+\centering {\epsfig{figure=figures/ds_blocks,width=220mm,
+angle=90}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Figure <A HREF="#delaysum_blocks">5.3</A> shows the different blocks involved
+in the filter-and-sum process. The system is able to handle from 2
+microphones to as many microphones as memory allows in the
+computer where it is executed. Each processing stage is either
+performed on each individual microphone or to all microphones in
+combination. Each processing block is described in detail below.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1542"
+  HREF="node87.html">Individual Channels Signal Enhancement</A>
+<LI><A NAME="tex2html1543"
+  HREF="node88.html">Meeting Information Extraction</A>
+<UL>
+<LI><A NAME="tex2html1544"
+  HREF="node89.html">Reference Channel Computation</A>
+<LI><A NAME="tex2html1545"
+  HREF="node90.html">Overall Channels Weighting Factor</A>
+<LI><A NAME="tex2html1546"
+  HREF="node91.html">ICSI Meetings Skew Estimation</A>
+<LI><A NAME="tex2html1547"
+  HREF="node92.html">GCC-PHAT Cross-Correlation</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1548"
+  HREF="node93.html">TDOA Values Selection</A>
+<UL>
+<LI><A NAME="tex2html1549"
+  HREF="node94.html">TDOA Post-Processing</A>
+<LI><A NAME="tex2html1550"
+  HREF="node95.html">Dual-Pass Viterbi Post-Processing</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1551"
+  HREF="node96.html">Output Signal Generation</A>
+<UL>
+<LI><A NAME="tex2html1552"
+  HREF="node97.html">Automatic Channel Weight Adaptation</A>
+<LI><A NAME="tex2html1553"
+  HREF="node98.html">Automatic Adaptive Channel Elimination</A>
+<LI><A NAME="tex2html1554"
+  HREF="node99.html">Channels Sum and Output</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

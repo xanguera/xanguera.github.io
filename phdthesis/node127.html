@@ -1,0 +1,495 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Overall Experiments and Analysis of Results</TITLE>
+<META NAME="description" CONTENT="Overall Experiments and Analysis of Results">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node119.html">
+<LINK REL="up" HREF="node103.html">
+<LINK REL="next" HREF="node128.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2081"
+  HREF="node128.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2077"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2073"
+  HREF="node126.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2079"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2082"
+  HREF="node128.html">NIST Evaluations in Speaker</A>
+<B> Up:</B> <A NAME="tex2html2078"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html2074"
+  HREF="node126.html">Algorithms Agglomeration Performance</A>
+ &nbsp; <B>  <A NAME="tex2html2080"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001060000000000000000">
+Overall Experiments and Analysis of Results</A>
+</H1>
+
+<P>
+In the previous section a majority of the algorithms proposed in
+this thesis for use in speaker diarization have been analyzed,
+first by themselves comparing them to the baseline and then as
+part of an agglomerate system in order to obtain an optimum final
+system.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7940"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.23:</STRONG>
+<I>Summary of average DER for the agglomerate system
+on development and evaluation data</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<SMALL CLASS="SMALL">
+</SMALL><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL">
+System </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> DER   </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> Improv.   </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> Improv. vs. </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> DER  </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> Improv.   </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> Improv. vs. </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL"> 
+       </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> devel </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> vs. prior </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> baseline    </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> eval </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> vs. prior </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> baseline </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL">Baseline </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 18.71% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 23.23 </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL"> 
+
+multi-stream weights </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 17.93% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 4.16% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 4.16% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 23.97% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> -3.18% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> -3.18% </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL"> 
+# init clusters + complexity </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 17.19% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 4.12% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 8.12% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 23.18% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 3.29% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 0.21% </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL"> 
+Friends-and-enemies init </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 17.77% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> -3.37% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 23.79% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> -2.63% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL"> 
+CV-EM Training </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 17.17% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 0.11%(*) </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 8.23% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 21.79% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 5.99%(*) </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 6.19% </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL"> 
+Frame purification </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 16.77% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 2.32% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> <SPAN  CLASS="textbf">10.36</SPAN>% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 20.16% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 7.48% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> <SPAN  CLASS="textbf">13.21</SPAN>% </SMALL></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SMALL"> 
+Segment purificaton </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 16.82% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> -0.29% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> 20.55% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> -1.93% </SMALL></TD>
+<TD ALIGN="CENTER"><SMALL CLASS="SMALL"> - </SMALL></TD>
+</TR>
+<TR><TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+</TABLE>  <A NAME="summary_results_agglo"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#summary_results_agglo">6.23</A> shows a summary of the results
+analyzed in the previous section and computes the relative
+improvement of each algorithm with respect to the previous one and
+to the baseline (accumulating all improvements). Both the
+friends-and-enemies and segment purification algorithms obtain bad
+results in this experiment and therefore are not included in the
+agglomerate system result (results with * indicate that the
+relative improvement to the prior system computes it not taking
+them into account). The algorithms not included in this final
+experiment are still valid and obtain good results in certain
+situations, but not in the average of all cases.
+
+<P>
+Taking into account the average DER between the SDM, MDM and
+TDOA-MDM system outputs, and tuning all the algorithms to them,
+the proposed algorithms in the diarization module improve up to a
+<SPAN  CLASS="textbf">10.36</SPAN>% relative in the development set and up to a
+<SPAN  CLASS="textbf">13.21</SPAN>% relative in the evaluation set.
+
+<P>
+While such approach of optimizing the average DER obtains systems
+that will perform well for all the different tasks considered. In
+some applications where multiple microphones are available it is
+interesting to find the best result possible. To obtain it the
+TDOA-MDM system has been selected and the parameters optimized to
+it according to the parameter sweeps performed in the previous
+section. The parameters selection was then:
+
+<P>
+
+<UL>
+<LI>Automatic multi-stream weighting
+
+<P>
+</LI>
+<LI>model complexity selection and number of initial clusters
+with CCR=6
+
+<P>
+</LI>
+<LI>CV-EM training with 25 CV-EM parallel models
+
+<P>
+</LI>
+<LI>Friends-and-enemies initialization using 2-2 metric-init
+combination and 5 friends
+
+<P>
+</LI>
+<LI>Frame purification with 80% frames accepted, 75% Gaussians
+used
+
+<P>
+</LI>
+<LI>Segment purification enabled
+</LI>
+</UL>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7941"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.24:</STRONG>
+<I>Results for the TDOA-MDM task using different
+algorithm settings</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER">DER development</TD>
+<TD ALIGN="CENTER">DER evaluation</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Optimum average system</TD>
+<TD ALIGN="CENTER">14.92%</TD>
+<TD ALIGN="CENTER">15.55%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Optimum TDOA-MDM system</TD>
+<TD ALIGN="CENTER">14.64%</TD>
+<TD ALIGN="CENTER">14.76%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">best TDOA-MDM devel</TD>
+<TD ALIGN="CENTER">13.78%</TD>
+<TD ALIGN="CENTER">17.22%</TD>
+</TR>
+</TABLE>
+ <A NAME="best_tdoa-mdm"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The obtained results are shown in table <A HREF="#best_tdoa-mdm">6.24</A> where
+DER results are shown only for the TDOA-MDM task, which is usually
+the one with best performance. By using the optimum parameters
+according to the development sweeps in the previous section, and
+including all algorithms into the system, the resulting optimum
+TDOA-MDM system obtains an improvement of 5.08% on the evaluation
+set versus the optimum average system optimized for the average
+DER for all three systems.
+
+<P>
+The final system has a robust performance over changes in the
+data, sometimes at the cost of not obtaining the absolute minimum
+DER in all cases. To illustrate this, let us take the system
+labelled as best TDOA-MDM on the development, which is a system
+built only using the automatic weighting algorithm and the
+definition of number of clusters and complexity of the models.
+This system outperforms vastly the optimum systems in the
+development set but when changing to a different set it returns a
+poor performance. By using the optimum systems once all algorithms
+are in place, the results are even in both sets at the expense of
+some increase int the DER in the development.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7942"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.25:</STRONG>
+<I>Overall thesis scores comparison</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER">DER development</TD>
+<TD ALIGN="CENTER">DER evaluation</TD>
+</TR>
+<TR><TD ALIGN="LEFT">BN baseline (SDM)</TD>
+<TD ALIGN="CENTER">24.88%</TD>
+<TD ALIGN="CENTER">19.80%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Meetings baseline (MDM)</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Optimum TDOA-MDM system</TD>
+<TD ALIGN="CENTER">14.64%</TD>
+<TD ALIGN="CENTER">14.76%</TD>
+</TR>
+</TABLE>
+
+<A NAME="final_phd_scores"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#final_phd_scores">6.25</A> shows the DER scores to illustrate
+the overall improvement achieved by the system while transforming
+from broadcast news speaker diarization to diarization for
+meetings. The BN baseline system shows the DER of the described
+baseline which uses model-based speech/non-speech detection. As
+pointed out, even though this system is already a step forward
+from the system at the start of this thesis work, it acts as a
+good baseline for all the work done in beamforming and speaker
+diarization.
+
+<P>
+The meetings baseline is the same baseline as in the BN system,
+but using the hybrid speech/non-speech detection and the baseline
+RT06s beamforming. Finally, the optimum TDOA-MDM system has been
+presented earlier in this section and shows the optimum/robust
+results obtained by using all proposed algorithms.
+
+<P>
+The optimum TDOA-MDM system obtains an outstanding 41.15%
+relative improvement on the development set compared to the BN
+baseline, and a 25.45% relative improvement on the evaluation
+set. As shown over the experiment sections, these improvements are
+due to all the new and refurbished algorithms proposed for the
+system, being the MDM beamforming and the inclusion of TDOA
+features into the diarization the two most outstanding components.
+
+<P>
+One Interesting result in the BN baseline system is the
+outstanding difference between development and evaluation results.
+While the system performs rather poorly on the development set,
+for that particular combination of parameters it obtains a very
+good result on the evaluation set. Running any acoustic
+beamforming using more microphones than just the SDM results
+always in an increase on the DER. In fact, an experiment using the
+RT06s beamforming on top of the BN baseline achieves a 23.63% DER
+on dev set (a slight improvement) and 26.3% DER on the evaluation
+set (much worse, similar to the result for the meetings baseline).
+
+<P>
+This is another example of show flakiness and lack of robustness
+on the baseline system. On one hand, while one set of data
+performs well, another set can perform very poorly for the same
+parameters setting. On the other hand, when doing changes to the
+system, not all datasets perform the same way, achieving an
+improvement on one set does not mean that it translates to others.
+This problem is the keystone of research in speaker diarization
+and has been a main concern and issue during all the thesis
+development, as random results jeopardize the assessment of new
+techniques that, although beneficiary to the system, might have
+been discarded due to poor performance.
+
+<P>
+Given each independent recording (meetings, broadcast news or
+other sources), the speaker diarization algorithm processes it and
+obtains an output segmentation. Such segmentation might show a
+slight improvement due to the applied systems but could also
+obtain a very high DER due to factors like a badly chosen stopping
+point. By considering the final DER as the time-weighted sum of
+all excerpts, if a few of them experienced such bad behavior then
+the final score is worse than previous runs, misleading to
+thinking that the tested algorithm is not correct. When computing
+the DER for a small set of excerpts (8 to 10), these errors cause
+a big impact in the final score.
+
+<P>
+While the DER score is a standard way of measuring diarization
+performance as used in the NIST RT evaluations, which is the
+ultimate metric to reduce to show improvements in the systems, in
+order to avoid the problems posed earlier there are several
+alternatives. On one hand the use of bigger development and
+evaluation sets so as to reduce the effect of these outliers. To
+work with such datasets there must be accurate and consistent
+transcriptions to test against, which should be obtained using
+automated mechanisms like forced-alignments. On the other hand,
+the DER metric could be altered to eliminate the outlier scores
+from the average during development. Although this would solve the
+occasional excerpts with big errors, it does not help improve
+those that are considered ``hard nuts'' (shows that always perform
+very badly) and it is therefore difficult to define the outlier
+boundaries that describe the system correctly.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7943"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.26:</STRONG>
+<I>Overall thesis DER scores comparison</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System / DER</TD>
+<TD ALIGN="CENTER">RT02s</TD>
+<TD ALIGN="CENTER">RT04s</TD>
+<TD ALIGN="CENTER">RT05s</TD>
+<TD ALIGN="CENTER">all dev.</TD>
+<TD ALIGN="CENTER">eval (RT06s)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">BN baseline (SDM)</TD>
+<TD ALIGN="CENTER">35.20%</TD>
+<TD ALIGN="CENTER">28.26%</TD>
+<TD ALIGN="CENTER">23.26%</TD>
+<TD ALIGN="CENTER">27.82%</TD>
+<TD ALIGN="CENTER">37.67%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Optimum TDOA-MDM system</TD>
+<TD ALIGN="CENTER">27.86%</TD>
+<TD ALIGN="CENTER">25.05%</TD>
+<TD ALIGN="CENTER">17.47%</TD>
+<TD ALIGN="CENTER">22.27%</TD>
+<TD ALIGN="CENTER">31.75%</TD>
+</TR>
+</TABLE>
+
+<A NAME="hand_align_final"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Finally, for comparison purposes, table <A HREF="#hand_align_final">6.26</A>
+shows the initial and final systems evaluated this time using the
+hand-alignments proposed by NIST during the evaluation campaigns
+and splitting results into evaluation sources. These are used for
+comparison only as development using these references was stopped
+and switched to the forced-alignment references, much more robust
+across years.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2081"
+  HREF="node128.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2077"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2073"
+  HREF="node126.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2079"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2082"
+  HREF="node128.html">NIST Evaluations in Speaker</A>
+<B> Up:</B> <A NAME="tex2html2078"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html2074"
+  HREF="node126.html">Algorithms Agglomeration Performance</A>
+ &nbsp; <B>  <A NAME="tex2html2080"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

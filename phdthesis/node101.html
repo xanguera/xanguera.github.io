@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TDOA Modeling and Features Fusion</TITLE>
+<META NAME="description" CONTENT="TDOA Modeling and Features Fusion">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node102.html">
+<LINK REL="previous" HREF="node100.html">
+<LINK REL="up" HREF="node100.html">
+<LINK REL="next" HREF="node102.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1734"
+  HREF="node102.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1730"
+  HREF="node100.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1724"
+  HREF="node100.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1732"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1735"
+  HREF="node102.html">Automatic Features Weight Estimation</A>
+<B> Up:</B> <A NAME="tex2html1731"
+  HREF="node100.html">Use of the Estimated</A>
+<B> Previous:</B> <A NAME="tex2html1725"
+  HREF="node100.html">Use of the Estimated</A>
+ &nbsp; <B>  <A NAME="tex2html1733"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00931000000000000000"></A>
+<A NAME="multiple_features"></A>
+<BR>
+TDOA Modeling and Features Fusion
+</H2>
+
+<P>
+For any given set of <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN> channels at frame <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> (<!-- MATH
+ $x_{1}[n] \dots
+x_{N}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="111" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img446.png"
+ ALT="$ x_{1}[n] \dots
+x_{N}[n]$"></SPAN>) the beamforming system determines a single vector
+<SPAN CLASS="MATH"><IMG
+ WIDTH="79" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img447.png"
+ ALT="$ TDOA[n]$"></SPAN> with dimension <SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img403.png"
+ ALT="$ N-1$"></SPAN> obtained from the best TDOA values
+between each microphone and the reference. The dimension of the
+TDOA vector will change depending on the number of microphones
+available. This does not indicate a priory that TDOA vectors with
+lower dimension will be able to discriminate worse between
+speakers, as it depends not only on the number of microphones but
+also on the acoustic properties of the room (influencing how
+accurate the TDOA values are), the microphones topology and the
+location of the speakers.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="TDOA_location"></A><A NAME="6297"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.10:</STRONG>
+<I>Locations information contained in the TDOA values</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="646" HEIGHT="489" BORDER="0"
+ SRC="img448.png"
+ ALT="\begin{figure}
+\centering
+\begin{tabular}{cc}
+\epsfig{figure=figures/histo_d...
+... plot for TDOA values from channels 1 and 2}\\
+\end{tabular}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+For any particular frame, the <SPAN CLASS="MATH"><IMG
+ WIDTH="79" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img447.png"
+ ALT="$ TDOA[n]$"></SPAN> vector will contain a set
+of TDOA values that identify the location of the main acoustic
+source towards where the acoustic beamforming is steering. To
+exemplify this, figure <A HREF="#TDOA_location">5.10</A> shows the histograms
+and X-Y plot of the first two dimensions of the TDOA vectors
+extracted for all speech frames in the show ICSI_20000807-1000
+containing six speakers (which is the actual number of
+participants in that meeting). The histograms show the existence
+of around 6 speakers, being some of them closer together than
+others. In the X-Y plot the higher density places indicate higher
+probability of speakers. The points that fall far from any of the
+speakers are due to silence regions not eliminated by the
+post-processing step in the beamforming, or by acoustic events
+other than speakers (pen drops, door slams, etc). There are also
+some vectors falling along one of the speaker axes indicating that
+a speaker is most probably active during that frame instant but
+the different dimensions do not agree. This can be due to overlap
+regions where each microphone points at a different speaker or
+errors in the TDOA approximation. This problem is common when
+computing TDOA values and is one of the issues addressed by the
+double-Viterbi post-processing algorithm. The remaining TDOA
+vectors not detected by the post-process tend to cause errors in
+the diarization algorithm by causing models to fit such data as an
+independent speaker.
+
+<P>
+The use of delays for speaker diarization using the presented
+diarization system was initiated by J.M. Pardo and presented in
+<A
+ HREF="node147.html#Pardo_2006a">Pardo et&nbsp;al. (2006a)</A>. Later, the same proposed in
+<A
+ HREF="node147.html#Pardo_2006b">Pardo et&nbsp;al. (2006b)</A> the combination of TDOA values and
+acoustics in order to improve results even more. Also at ICSI some
+work by <A
+ HREF="node147.html#Gallardo_2006">Gallardo-Antolin et&nbsp;al. (2006)</A> shows other features fusion
+alternatives other than the TDOa values.
+
+<P>
+In order to use these delays vectors to add extra information in
+the speaker diarization module they are treated as a feature
+vector and modeled by a GMM. As used in <A
+ HREF="node147.html#Lathoud_2004">Lathoud, McCowan and Odobez (2004)</A>,
+a single Gaussian is used to model the clusters initially created
+in the diarization system. In figure <A HREF="#features_fusion">5.11</A> it
+indicates the way that features computed from the acoustic signal
+and the TDOA values are fused.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="features_fusion"></A><A NAME="6299"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.11:</STRONG>
+<I>Fusion of TDOA values and acoustic
+features within the speaker diarization module</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="1155" HEIGHT="173" BORDER="0"
+ SRC="img449.png"
+ ALT="\begin{figure*}
+\centerline{\epsfig{figure=figures/features_fusion,width=220mm,
+angle=90}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Upon starting the diarization two feature streams are available
+for processing, the acoustic stream (which is composed of 19 MFCC
+features, computed every 10ms) and the TDOA stream, computed in
+the beamforming module. In theory the same TDOA values that are
+used for the beamforming process can be reused in this module, but
+in practice, in order to obtain synchrony between acoustics and
+TDOA values, they are recomputed every 10ms. Use of the same TDOA
+values was also tested by repeating the same values several times
+(25 times for 250ms scroll) with slightly worse (but acceptable)
+results, showing its feasibility in case of computational
+constraints.
+
+<P>
+In order to process the signal using both feature streams the
+system maintains two different/independent HMM speaker model sets
+and keeps the same speaker clustering, which gets defined using
+both streams. The speaker models use the same structure as in the
+standard system (an ergodic HMM) and share the number of speakers,
+defining a model pair for each speaker cluster, but can be
+represented using a different complexity, depending on the optimum
+way that the data in each stream should be modeled.
+
+<P>
+The first step in the system is to initialize the K initial
+speaker clusters. This entails splitting the input data among
+these K clusters. This is currently done in the same way as in the
+standard system, using solely the acoustic data stream. Once an
+initial clustering is defined, the initial models are created both
+for the acoustics and the TDOA values and the system enters the
+segmentation/training step. Both speaker models are used in the
+Viterbi decoding to determine the optimum path among the different
+speaker clusters by considering the joint log-likelihood for any
+given frame as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq_lkld"></A><!-- MATH
+ \begin{equation}
+\mathcal{L}(x_{aco}[n], x_{del}[n]|\Theta_{aco}, \Theta_{del}) =
+W_{1} \cdot \mathcal{L}(x_{aco}[n]|\Theta_{aco}) + W_{2} \cdot
+\mathcal{L}(x_{del}[n]|\Theta_{del})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="558" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img450.png"
+ ALT="$\displaystyle \mathcal{L}(x_{aco}[n], x_{del}[n]\vert\Theta_{aco}, \Theta_{del}...
+...o}[n]\vert\Theta_{aco}) + W_{2} \cdot \mathcal{L}(x_{del}[n]\vert\Theta_{del})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">20</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $\Theta_{aco}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img451.png"
+ ALT="$ \Theta_{aco}$"></SPAN>, <!-- MATH
+ $x_{aco}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="55" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img452.png"
+ ALT="$ x_{aco}[n]$"></SPAN> is the acoustic model
+and data, <!-- MATH
+ $\Theta_{del}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img453.png"
+ ALT="$ \Theta_{del}$"></SPAN>, <!-- MATH
+ $x_{del}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img454.png"
+ ALT="$ x_{del}[n]$"></SPAN> is the delay model and
+data, and <!-- MATH
+ $W_{1}, W_{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="60" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img455.png"
+ ALT="$ W_{1}, W_{2}$"></SPAN> weight the effect of each stream in the
+decoding, given that <!-- MATH
+ $W_{1} + W_{2} = 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="106" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img456.png"
+ ALT="$ W_{1} + W_{2} = 1$"></SPAN>. In this formulation it
+is considered each stream to be statistically independent from
+each other, which is a plausible consideration given that acoustic
+and TDOA information convey very different information. If more
+feature streams are available, this formulation can be expanded
+with each feature likelihood being weighted by a different
+<SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img457.png"
+ ALT="$ W_{i}$"></SPAN>. When running the Viterbi decoding a minimum duration for
+a speaker segment is set to <SPAN CLASS="MATH"><IMG
+ WIDTH="70" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img316.png"
+ ALT="$ MD=3$"></SPAN> seconds (optimized for the
+development data) for both models in order to avoid constant
+changes in the clustering. Once a new speaker clustering is
+defined, the models are retrained independently.
+
+<P>
+The second step where the feature streams fusion takes place is in
+the clustering step where the closest cluster pair is selected and
+the clusters and models are merged (or the processing finishes if
+the stopping criterion decides so). As explained in
+<A HREF="node42.html#bn_system">3.1</A> the cluster pair comparison metric of choice is a
+variant of the BIC metric where the penalty term is eliminated by
+constraining the complexity of the different models being
+compared. In this particular case the formulation for the BIC
+contemplating the fusion between both streams can be defined
+directly from equation <A HREF="#eq_lkld">5.20</A> as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq_bic"></A><!-- MATH
+ \begin{equation}
+\Delta BIC(A,B) = W_{1} \Delta BIC_{aco}(A,B) + W_{2} \Delta
+BIC_{del}(A,B)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="433" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img458.png"
+ ALT="$\displaystyle \Delta BIC(A,B) = W_{1} \Delta BIC_{aco}(A,B) + W_{2} \Delta BIC_{del}(A,B)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">21</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img459.png"
+ ALT="$ A,B$"></SPAN> are two clusters we want to compute the
+distance for, and <!-- MATH
+ $W_{1}, W_{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="60" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img455.png"
+ ALT="$ W_{1}, W_{2}$"></SPAN> are the same weights as in eq.
+<A HREF="#eq_lkld">5.20</A>. This can also be directly expanded to use more than
+2 streams.
+
+<P>
+If frame or segment purification are to be applied, these are done
+so only using the acoustic frames. This is so in the case of frame
+purification because the TDOA models react in a different way to
+the non-speech data than the acoustic models.
+
+<P>
+The same stopping criterion as in the regular system is used.
+While the system does not determine to stop the clustering
+process, the closest cluster pair is selected and merged, together
+with the models belonging to such cluster. In the case of the TDOA
+models the merging is done by overlapping both existing models and
+retraining the overall model using all the data from both
+clusters. In the case of the acoustic models it is either done in
+the same way as just explained or it is modified according to the
+determined new complexity for the resulting model.
+
+<P>
+Whenever the system determines to stop clustering, a final Viterbi
+decoding is performed using again both frame streams, with a
+smaller minimum duration, as explained in the meetings system in
+section <A HREF="node55.html#proposed_meetings">3.3</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1734"
+  HREF="node102.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1730"
+  HREF="node100.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1724"
+  HREF="node100.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1732"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1735"
+  HREF="node102.html">Automatic Features Weight Estimation</A>
+<B> Up:</B> <A NAME="tex2html1731"
+  HREF="node100.html">Use of the Estimated</A>
+<B> Previous:</B> <A NAME="tex2html1725"
+  HREF="node100.html">Use of the Estimated</A>
+ &nbsp; <B>  <A NAME="tex2html1733"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

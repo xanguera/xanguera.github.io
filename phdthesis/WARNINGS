@@ -1,0 +1,16 @@
+No implementation found for style `rotating'
+No implementation found for style `url'
+No implementation found for style `fancyhdr'
+
+PhD_Thesis.tex is newer than PhD_Thesis.aux: Please rerun latex.
+
+PhD_Thesis.tex is newer than PhD_Thesis.lof: Please rerun latex.
+
+PhD_Thesis.tex is newer than PhD_Thesis.lot: Please rerun latex.
+
+\setcounter{chapter}{0} ignored, cannot reduce from 4
+{eqnarray} does not have 3 columns, inserting blank cell
+
+No number for "<I>Left,filterover<SPANCLASS="MATH">$tilde{e}[n]$</SPAN>.Decisionofsilenceinredafterthethresholding.</I>"
+
+PhD_Thesis.tex is newer than PhD_Thesis.bbl: Please rerun latex and bibtex.

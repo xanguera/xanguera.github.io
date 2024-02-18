@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speech/Non-Speech Detection Block</TITLE>
+<META NAME="description" CONTENT="Speech/Non-Speech Detection Block">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node113.html">
+<LINK REL="previous" HREF="node111.html">
+<LINK REL="up" HREF="node103.html">
+<LINK REL="next" HREF="node113.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1892"
+  HREF="node113.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1888"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1882"
+  HREF="node111.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1890"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1893"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Up:</B> <A NAME="tex2html1889"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1883"
+  HREF="node111.html">Experiments from Broadcast News</A>
+ &nbsp; <B>  <A NAME="tex2html1891"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001030000000000000000"></A> <A NAME="spnsp_exp"></A>
+<BR>
+Speech/Non-Speech Detection Block
+</H1>
+
+<P>
+Experiments for the speech/non-speech module were obtained for the
+SDM case to make it directly comparable with the baseline system
+results shown in the previous section. Although in this case two
+slightly different development and test sets were used. The
+development set consisted on the RT02 + RT04s datasets (16 meeting
+excerpts) and the test set was the RT05s set (with exception of
+the NIST meeting with faulty transcriptions). Forced alignments
+were used to evaluate the DER, MISS and FA errors.
+
+<P>
+In the development of the proposed hybrid speech/non-speech
+detector there are three main parameters that need to be set.
+These are the minimum duration for the speech/non-speech segments
+in both the energy block and the models block, and the complexity
+of the models in the models block.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="energy_error"></A><A NAME="6912"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.1:</STRONG>
+<I>Energy-based system errors depending on
+its segment minimum duration</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="371" HEIGHT="5" BORDER="0"
+ SRC="img487.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/spnsp_energy_error2,width=80mm,
+angle=-90}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The development set was used to first estimate the minimum
+duration of the speech and non-speech segments in the energy-based
+detector. In figure <A HREF="#energy_error">6.1</A> one can see the MISS and FA
+scores for various durations (in # frames). While for a final
+speech/non-speech system one would choose the value that gives the
+minimum total error, in this case the goal is to obtain enough
+non-speech data to train the non-speech models in the second step.
+It is very important to choose the value with smaller MISS so that
+the non-speech model is as pure as possible. This is so because
+the speech model is usually assigned more Gaussian mixtures in the
+modeling step, therefore a bigger FA rate does not influence it as
+much. It can be observed how in the range between duration 1000
+and 8000 the MISS rate remains quite flat, which indicates how
+robust the system is to variations in the data. In any new
+dataset, if it does not contain a minimum value for the MISS rate
+at the same value are in the development set, it will most
+probably still be a very plausible solution. A duration = 2400
+(150ms duration) is chosen with MISS = 0.3% and FA=9.5% (total
+9.7%).
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="cluster_error"></A><A NAME="6914"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.2:</STRONG>
+<I>Model-based system errors depending
+on its segment minimum duration</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="364" HEIGHT="5" BORDER="0"
+ SRC="img488.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/spnsp_cluster_error2,width=80mm,
+angle=-90}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The same procedure is followed to select the minimum duration for
+the speech and non-speech segments decoded using the model-based
+decoder, using the minimum  duration determined by the previous
+analysis of the energy-based detector. In figure
+<A HREF="#cluster_error">6.2</A> one can see the FA and MISS error rates for
+different minimum segment sizes (the same for speech and non
+speech); such curve is almost identical when using different #
+mixtures for the speech model, a complexity of 2 Gaussian mixtures
+for the speech model and 1 for silence is chosen. In contrast to
+the energy-based system, this second step does output a final
+result to be used in the diarization system, therefore it is a
+need to find the minimum segment duration that minimizes the total
+percent error. An minimum error of 5.6% was achieved using a
+minimum duration of 0.7 seconds. If the parameters in the
+energy-based detector that minimize the overall speech/non-speech
+error had been chosen (which is at 8000 frames, 0.5 seconds)
+instead of the current ones, the obtained scores would have had a
+minimum error of 6.0% after the cluster-based decoder step.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="6917"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.3:</STRONG>
+<I>Speech/non-speech errors on
+development and test data</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">sp/nsp system</TD>
+<TD ALIGN="CENTER" COLSPAN=3><SPAN>RT02+RT04s</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=3><SPAN>RT05s</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">MISS</TD>
+<TD ALIGN="RIGHT">FA</TD>
+<TD ALIGN="RIGHT">total</TD>
+<TD ALIGN="RIGHT">MISS</TD>
+<TD ALIGN="RIGHT">FA</TD>
+<TD ALIGN="RIGHT">total</TD>
+</TR>
+<TR><TD ALIGN="LEFT">All-speech system</TD>
+<TD ALIGN="RIGHT">0.0%</TD>
+<TD ALIGN="RIGHT">11.4%</TD>
+<TD ALIGN="RIGHT">11.4%</TD>
+<TD ALIGN="RIGHT">0.0%</TD>
+<TD ALIGN="RIGHT">13.2%</TD>
+<TD ALIGN="RIGHT">13.2%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Pre-trained models</TD>
+<TD ALIGN="RIGHT">1.9%</TD>
+<TD ALIGN="RIGHT">3.2%</TD>
+<TD ALIGN="RIGHT"><SPAN  CLASS="textbf">5.1</SPAN>%</TD>
+<TD ALIGN="RIGHT">1.9%</TD>
+<TD ALIGN="RIGHT">4.6%</TD>
+<TD ALIGN="RIGHT">6.5%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">hybrid (1st part)</TD>
+<TD ALIGN="RIGHT">0.4%</TD>
+<TD ALIGN="RIGHT">9.7%</TD>
+<TD ALIGN="RIGHT">10.1%</TD>
+<TD ALIGN="RIGHT">0.1%</TD>
+<TD ALIGN="RIGHT">10.4%</TD>
+<TD ALIGN="RIGHT">10.5%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">hybrid system(all)</TD>
+<TD ALIGN="RIGHT">2.4%</TD>
+<TD ALIGN="RIGHT">3.2%</TD>
+<TD ALIGN="RIGHT">5.6%</TD>
+<TD ALIGN="RIGHT">2.8%</TD>
+<TD ALIGN="RIGHT">2.1%</TD>
+<TD ALIGN="RIGHT"><SPAN  CLASS="textbf">4.9</SPAN>%</TD>
+</TR>
+</TABLE>
+  <A NAME="energy_results"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+In table <A HREF="#energy_results">6.3</A> results are presented for the
+development and evaluation sets using the selected parameters,
+taking into account only the MISS and FA errors from the proposed
+module. Used as comparison, the ``all-speech'' system shows the
+total percentage of data labelled as non-speech in the reference
+(ground truth) files. After obtaining the forced alignment from
+the STT system, there existed many non-speech segments with a very
+small duration due to the strict application of the 0.3s minimum
+pause duration rule to the forced alignment segmentations. The
+second row shows the speech/non-speech results using SRI
+speech/non-speech system (<A
+ HREF="node147.html#Stolcke_2005">Stolcke et&nbsp;al., 2005</A>) which is was
+developed using training data coming from various meeting sources
+and its parameters optimized using the development data presented
+here and the forced alignment reference files. If tuned using the
+hand annotated reference files provided by NIST for each data set,
+it obtains a much bigger FA rate, possibly due to the fact that it
+is more complicated in hand annotated data to follow the 0.3s
+silence rule. The third and forth rows belong to the results for
+the presented algorithm. The third row shows the errors in the
+intermediate stage of the algorithm, after the energy-based
+decoding. These are not comparable with the other systems as the
+optimization in here is done regarding the MISS error, and not the
+TOTAL error. The forth row shows the result of the final output
+from both systems together.
+
+<P>
+Although the speech/non-speech error rate obtained for the
+development set is worse than what is obtained using the
+pre-trained system, it is almost a 25% relative better in the
+evaluation set. This changes when considering the final DER. In
+order to test the usability of such speech/non-speech output for
+the speaker diarization of meetings data the baseline system was
+used interposing either of the three speech/non-speech modules
+shown in table <A HREF="#energy_results">6.3</A>.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="6918"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.4:</STRONG>
+<I>DER using different speech/non-speech systems</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">sp/nsp system</TD>
+<TD ALIGN="RIGHT">Development</TD>
+<TD ALIGN="RIGHT">evaluation</TD>
+</TR>
+<TR><TD ALIGN="LEFT">All-speech</TD>
+<TD ALIGN="RIGHT">27.50%</TD>
+<TD ALIGN="RIGHT">25.17%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Pre-trained models</TD>
+<TD ALIGN="RIGHT">19.24%</TD>
+<TD ALIGN="RIGHT">15.53%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">hybrid system</TD>
+<TD ALIGN="RIGHT"><SPAN  CLASS="textbf">16.51</SPAN>%</TD>
+<TD ALIGN="RIGHT"><SPAN  CLASS="textbf">13.97</SPAN>%</TD>
+</TR>
+</TABLE>
+
+<A NAME="diarization_results"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+It is seen in <A HREF="#diarization_results">6.4</A> that the use of any
+speech/non-speech detection algorithm improves the performance of
+the speaker diarization system. Both systems perform much better
+than just using the diarization system alone. This is due to the
+agglomerative clustering technique, which starts with a large
+amount of speaker clusters and tries to converge to an optimum
+number of clusters via cluster-pair comparisons. As non-speech
+data is distributed among all clusters, the more non-speech they
+contain, the less discriminative the comparison is, leading to
+more errors.
+
+<P>
+In both the development and evaluation sets the final DER of the
+proposed speech/non-speech system outperforms by a 14% relative
+(development) and a 10% relative (evaluation) the system using
+pre-trained models. It can be seen how the DER on the development
+set is much better that the pretrained system, even though the
+proposed system has a worse speech/non-speech error. This
+indicates that the proposed system obtains a set of
+speech/non-speech segments that are more tightly coupled with the
+diarization system.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1892"
+  HREF="node113.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1888"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1882"
+  HREF="node111.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1890"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1893"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Up:</B> <A NAME="tex2html1889"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1883"
+  HREF="node111.html">Experiments from Broadcast News</A>
+ &nbsp; <B>  <A NAME="tex2html1891"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

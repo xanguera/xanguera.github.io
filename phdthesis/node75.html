@@ -1,0 +1,485 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Acoustic Modeling without Time Restrictions</TITLE>
+<META NAME="description" CONTENT="Acoustic Modeling without Time Restrictions">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node72.html">
+<LINK REL="up" HREF="node69.html">
+<LINK REL="next" HREF="node76.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1386"
+  HREF="node76.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1382"
+  HREF="node69.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1378"
+  HREF="node74.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1384"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1387"
+  HREF="node76.html">Cluster Purification Algorithms</A>
+<B> Up:</B> <A NAME="tex2html1383"
+  HREF="node69.html">Speaker Clusters Description and</A>
+<B> Previous:</B> <A NAME="tex2html1379"
+  HREF="node74.html">Automatic Selection of the</A>
+ &nbsp; <B>  <A NAME="tex2html1385"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00823000000000000000"></A>
+<A NAME="no_time_restrict"></A>
+<BR>
+Acoustic Modeling without Time Restrictions
+</H2>
+
+<P>
+In this section a small change to the cluster models is proposed
+which leads to the elimination of the dependency of the acoustic
+models on the average speaker turn length. This is achieved by
+modifying the acoustic modeling topology by changing the
+probabilities of self-loop and transition in the last state. By
+doing so, a minimum duration for a speaker turn can be implemented
+like in the past while not influencing the final duration of a
+speaker turn. While setting a minimum duration for speaker turns
+is advantageous for the processing of the recordings and can be
+set to be independent of the kind of recording encountered, the
+average speaker turn duration is quite variable between individual
+recordings and domains. It is therefore better to let the acoustic
+data alone define when the speaker turn finishes once it achieves
+a minimum length.
+
+<P>
+In the cluster models each state contains a set of <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN>
+sub-states, as seen in figure <A HREF="#fig_hmm">4.7</A>, imposing a minimum
+duration of each model. Each one of the sub-states has a
+probability density function modeled via a Gaussian mixture model
+(GMM). The same GMM model is tied to all sub-states in any given
+state. Upon entering a state, at time <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> the model forces a jump
+to the following sub-state with probability <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img172.png"
+ ALT="$ 1.0$"></SPAN> until the last
+sub-state is reached. In that sub-state, it can remain in the same
+sub-state with transition weight <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN>, or jump to the first
+sub-state of another state with weight <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img173.png"
+ ALT="$ \beta/M$"></SPAN>, where <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img33.png"
+ ALT="$ M$"></SPAN> is the
+number of active states/clusters at that time. In the baseline
+system these were set to <!-- MATH
+ $\alpha = 0.9$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.png"
+ ALT="$ \alpha=0.9$"></SPAN> and <!-- MATH
+ $\beta = 0.1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img175.png"
+ ALT="$ \beta=0.1$"></SPAN> (summing
+to 1).
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig_hmm"></A><A NAME="4368"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.7:</STRONG>
+<I>Cluster models with Minimum duration and modified
+probabilities</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="357" HEIGHT="251" BORDER="0"
+ SRC="img303.png"
+ ALT="\begin{figure}\psfrag{alpha}{$\alpha$}
+\psfrag{beta}{$\beta$}
+\centerline{\epsfig{figure=figures/time_hmm2,width=80mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+One disadvantage of using these settings is that it creates an
+implicit duration model on the data beyond the minimum duration
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN>, set as a parameter. Let us consider a sequence of N feature
+vectors X={x[1] ...x[N]}. Let us also consider a set of K
+cluster models <!-- MATH
+ $\Theta=\{\Theta_{1} \dots \Theta_{K}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="124" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img304.png"
+ ALT="$ \Theta=\{\Theta_{1} \dots \Theta_{K}$"></SPAN>}. The
+system imposes an equal probability to choose either cluster once
+it outputs a prior cluster and has a minimum duration <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN> inside
+either cluster.
+
+<P>
+In order to study the interaction between <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img232.png"
+ ALT="$ \beta$"></SPAN> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN> parameters, the likelihood of the data given the models is
+analyzed. In equation <A HREF="#dur_modeling">4.11</A> the likelihood is written
+when the system selects model 1 as the initial model and stays in
+it for the whole N acoustic frames, therefore creating 0 model
+changes as
+
+<P>
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="dur_modeling"></A><!-- MATH
+ \begin{eqnarray}
+\mathcal{L}_{0}(X|\Theta) &=& \mathcal{L}(x[1]|\Theta_{1})
+\prod_{i=2}^{MD}(1 \cdot
+\mathcal{L}(x[i]|\Theta_{1})) \nonumber\\
+&&\cdot \prod_{i=MD+1}^{N}(\alpha \cdot
+\mathcal{L}(x[i]|\Theta_{1}))
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="72" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img305.png"
+ ALT="$\displaystyle \mathcal{L}_{0}(X\vert\Theta)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img246.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="225" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img306.png"
+ ALT="$\displaystyle \mathcal{L}(x[1]\vert\Theta_{1})
+\prod_{i=2}^{MD}(1 \cdot
+\mathcal{L}(x[i]\vert\Theta_{1}))$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="185" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img307.png"
+ ALT="$\displaystyle \cdot \prod_{i=MD+1}^{N}(\alpha \cdot
+\mathcal{L}(x[i]\vert\Theta_{1}))$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">11</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+In equation <A HREF="#dur_modeling2">4.12</A> the likelihood is computed for the
+case when one cluster change occurs within the decoded N frames.
+The decoding used imposes that the second model will contain at
+least <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN> acoustic frames. Considering models 1 and 2 it can be
+written as:
+
+<P>
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="dur_modeling2"></A><!-- MATH
+ \begin{eqnarray}
+\mathcal{L}_{1}(X|\Theta) &=& \mathcal{L}(x[1]|\Theta_{1})
+\prod_{i=2}^{MD}(1 \cdot \mathcal{L}(x[i]|\Theta_{1})) \cdot
+\prod_{i=MD+1}^{N_{1}}(\alpha \cdot
+\mathcal{L}(x[i]|\Theta_{1})) \nonumber\\
+&&\cdot \frac{\beta}{K} \prod_{i=N_{1}}^{N_{1}+MD}(1 \cdot
+\mathcal{L}(x[i]|\Theta_{2})) \cdot
+\prod_{i=N_{1}+MD+1}^{N}(\alpha \cdot
+\mathcal{L}(x[i]|\Theta_{2}))
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="72" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img308.png"
+ ALT="$\displaystyle \mathcal{L}_{1}(X\vert\Theta)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img246.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="410" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img309.png"
+ ALT="$\displaystyle \mathcal{L}(x[1]\vert\Theta_{1})
+\prod_{i=2}^{MD}(1 \cdot \mathc...
+...) \cdot
+\prod_{i=MD+1}^{N_{1}}(\alpha \cdot
+\mathcal{L}(x[i]\vert\Theta_{1}))$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="411" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img310.png"
+ ALT="$\displaystyle \cdot \frac{\beta}{K} \prod_{i=N_{1}}^{N_{1}+MD}(1 \cdot
+\mathca...
+...\cdot
+\prod_{i=N_{1}+MD+1}^{N}(\alpha \cdot
+\mathcal{L}(x[i]\vert\Theta_{2}))$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img311.png"
+ ALT="$ N_{1}$"></SPAN> indicates a random point in the <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN>
+frames, as long as <SPAN CLASS="MATH"><IMG
+ WIDTH="83" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img312.png"
+ ALT="$ N_{1}&gt;MD$"></SPAN> and <!-- MATH
+ $N_{1}<N-MD$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="120" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img313.png"
+ ALT="$ N_{1}&lt;N-MD$"></SPAN>.
+
+<P>
+The transition probabilities from these equations are the terms
+not affected by the acoustic models. By extending the number of
+changes to C, the transition probability can be proven that takes
+the expression:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="transition_prob"></A><!-- MATH
+ \begin{equation}
+Tr(C)=\left(\frac{\beta}{K}\right)^{C} \alpha^{(N-(C+1)MD)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="245" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img314.png"
+ ALT="$\displaystyle Tr(C)=\left(\frac{\beta}{K}\right)^{C} \alpha^{(N-(C+1)MD)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">13</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+It is composed of two parts. On one hand, the left side depends on
+the <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img232.png"
+ ALT="$ \beta$"></SPAN> parameter and depends exclusively on the number of
+cluster changes and the number of possible clusters to go to. On
+the other hand, the right side is dependent on the <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN>
+parameter and encodes the duration modeling of each of the
+acoustic models. This duration model depends on the number of
+speaker changes <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img315.png"
+ ALT="$ C$"></SPAN> and the minimum duration <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN>.
+
+<P>
+On the broadcast news system the parameters were set as
+<!-- MATH
+ $\alpha=0.9$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.png"
+ ALT="$ \alpha=0.9$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img175.png"
+ ALT="$ \beta=0.1$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="70" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img316.png"
+ ALT="$ MD=3$"></SPAN> seconds. This led to a
+transition probability which is dependent on <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img315.png"
+ ALT="$ C$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN>, which
+for many cases created segments that in average were very close to
+duration <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN>. This was because on most cases when evaluating on N
+frames of data, <!-- MATH
+ $\mathcal{L}_{i \ne 0}(X|\Theta) >
+\mathcal{L}_{0}(X|\Theta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="178" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img317.png"
+ ALT="$ \mathcal{L}_{i \ne 0}(X\vert\Theta) &gt;
+\mathcal{L}_{0}(X\vert\Theta)$"></SPAN>. In order to avoid cluster changes
+every <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN> seconds a lower boundary for <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN> must be set by
+ensuring that <!-- MATH
+ $tr_{i\ne0} < tr_{0}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="86" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img318.png"
+ ALT="$ tr_{i\ne0} &lt; tr_{0}$"></SPAN> computed for a hypothetic case
+when all models are the same (i.e. <!-- MATH
+ $\Theta_{i} = \Theta_{j},
+\forall i,j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="107" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img319.png"
+ ALT="$ \Theta_{i} = \Theta_{j},
+\forall i,j$"></SPAN>). Applying this condition to the transition
+probabilities for all possible <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img315.png"
+ ALT="$ C$"></SPAN> values gives:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="alpha_condition"></A><!-- MATH
+ \begin{equation}
+\alpha^{MD} > \frac{\beta}{K}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="85" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img320.png"
+ ALT="$\displaystyle \alpha^{MD} &gt; \frac{\beta}{K}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">14</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+In order to remove the dependency of the <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN> on duration
+modeling, and agreeing with equation <A HREF="#alpha_condition">4.14</A>, the
+parameters were set as <!-- MATH
+ $\alpha=1.0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img321.png"
+ ALT="$ \alpha=1.0$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img322.png"
+ ALT="$ \beta=1.0$"></SPAN>. Thus, once a
+segment exceeds the minimum duration, the HMM state transitions no
+longer influence the speaker turn length; it is solely governed by
+acoustics. This creates a non-standard (but valid) HMM topology as
+<!-- MATH
+ $\alpha + \beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img323.png"
+ ALT="$ \alpha + \beta$"></SPAN> no longer sums to 1.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1386"
+  HREF="node76.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1382"
+  HREF="node69.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1378"
+  HREF="node74.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1384"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1387"
+  HREF="node76.html">Cluster Purification Algorithms</A>
+<B> Up:</B> <A NAME="tex2html1383"
+  HREF="node69.html">Speaker Clusters Description and</A>
+<B> Previous:</B> <A NAME="tex2html1379"
+  HREF="node74.html">Automatic Selection of the</A>
+ &nbsp; <B>  <A NAME="tex2html1385"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

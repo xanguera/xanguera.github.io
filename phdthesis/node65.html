@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Derivative Filtering</TITLE>
+<META NAME="description" CONTENT="Derivative Filtering">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node66.html">
+<LINK REL="previous" HREF="node64.html">
+<LINK REL="up" HREF="node63.html">
+<LINK REL="next" HREF="node66.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1267"
+  HREF="node66.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1263"
+  HREF="node63.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1257"
+  HREF="node64.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1265"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1268"
+  HREF="node66.html">Time Constraints on Speech/non-Speech</A>
+<B> Up:</B> <A NAME="tex2html1264"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Previous:</B> <A NAME="tex2html1258"
+  HREF="node64.html">Data Preprocessing</A>
+ &nbsp; <B>  <A NAME="tex2html1266"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00811200000000000000"></A>
+<A NAME="derivfilter"></A>
+<BR>
+Derivative Filtering
+</H3>
+
+<P>
+Given the normalized and filtered energy signal (<!-- MATH
+ $\tilde{e}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img243.png"
+ ALT="$ \tilde{e}[n]$"></SPAN>) a
+derivative filter is used in order to enhance the
+speech/non-speech change-points. This processing helps prevent
+degradation due to low signal-to-noise ratios or nonstationary
+environments and was first introduced by <A
+ HREF="node147.html#qili_2002">Li et&nbsp;al. (2002)</A>.
+Such filter is defined via the following impulse response,
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+h[n]=\{-f[-W\leq n \leq 0], f[1\leq n \leq W]\}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="319" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img244.png"
+ ALT="$\displaystyle h[n]=\{-f[-W\leq n \leq 0], f[1\leq n \leq W]\}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Where,
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="lfilterEner"></A><!-- MATH
+ \begin{eqnarray}
+f[n]&=&e^{An}[K_1\sin(An)+K_2\cos(An)]\nonumber\\
+&&+e^{-An}[K_3\sin(An)+K_4\cos(An)]\nonumber\\
+&&+K_5+K_6e^{sn}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="35" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img245.png"
+ ALT="$\displaystyle f[n]$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img246.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="232" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img247.png"
+ ALT="$\displaystyle e^{An}[K_1\sin(An)+K_2\cos(An)]$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="256" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img248.png"
+ ALT="$\displaystyle +e^{-An}[K_3\sin(An)+K_4\cos(An)]$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="107" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img249.png"
+ ALT="$\displaystyle +K_5+K_6e^{sn}$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+<A NAME="lfn"></A>
+<P>
+And,
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+A&=&0.41s\nonumber\\
+s&=&\frac{7}{W}\nonumber\\
+W&=& \mbox{Half of the window length.}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="18" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img250.png"
+ ALT="$\displaystyle A$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img246.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img251.png"
+ ALT="$\displaystyle 0.41s$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="13" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img252.png"
+ ALT="$\displaystyle s$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img246.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="27" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img253.png"
+ ALT="$\displaystyle \frac{7}{W}$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img254.png"
+ ALT="$\displaystyle W$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img246.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%">Half of the window length.</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+And the values of the coefficients <!-- MATH
+ $[K_1\ldots K_6]=[1.583, 1.468,
+-0.078, -0.036, -0.872, -0.56]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="440" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img255.png"
+ ALT="$ [K_1\ldots K_6]=[1.583, 1.468,
+-0.078, -0.036, -0.872, -0.56]$"></SPAN>, for a chosen window length
+<SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img256.png"
+ ALT="$ W=31$"></SPAN>. The selection of an appropriate value for the <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img51.png"
+ ALT="$ W$"></SPAN>
+parameter is important as it sets the temporal resolution of the
+detector.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="lfigfilt"></A><A NAME="3992"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure:</STRONG>
+<I>Left, filter over <!-- MATH
+ $\tilde{e}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img243.png"
+ ALT="$ \tilde{e}[n]$"></SPAN>.
+Decision of silence in red after the thresholding.</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="556" HEIGHT="250" BORDER="0"
+ SRC="img257.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/spnsp_mateu1,width=\columnwidth}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+As shown in fig. <A HREF="#lfigfilt">4.2</A> the result of the convolution of
+<!-- MATH
+ $\tilde{e}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img243.png"
+ ALT="$ \tilde{e}[n]$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img258.png"
+ ALT="$ h[n]$"></SPAN>, <!-- MATH
+ $\hat{e}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.png"
+ ALT="$ \hat{e}[n]$"></SPAN> is thresholded and
+labelled, each sample, as <SPAN  CLASS="textit">speech</SPAN> or <SPAN  CLASS="textit">non-speech</SPAN>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1267"
+  HREF="node66.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1263"
+  HREF="node63.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1257"
+  HREF="node64.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1265"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1268"
+  HREF="node66.html">Time Constraints on Speech/non-Speech</A>
+<B> Up:</B> <A NAME="tex2html1264"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Previous:</B> <A NAME="tex2html1258"
+  HREF="node64.html">Data Preprocessing</A>
+ &nbsp; <B>  <A NAME="tex2html1266"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Other Clustering Techniques</TITLE>
+<META NAME="description" CONTENT="Other Clustering Techniques">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node23.html">
+<LINK REL="previous" HREF="node18.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node23.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html685"
+  HREF="node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html681"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html675"
+  HREF="node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html683"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html686"
+  HREF="node23.html">Use of Support Information</A>
+<B> Up:</B> <A NAME="tex2html682"
+  HREF="node17.html">Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html676"
+  HREF="node21.html">Combination of Clustering Methods</A>
+ &nbsp; <B>  <A NAME="tex2html684"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00632000000000000000">
+Other Clustering Techniques</A>
+</H2>
+
+<P>
+There are some papers in the literature that do not fit into an
+hierarchical clustering context. The systems reviewed here all
+define an algorithm or metric to determine the optimum number of
+speakers and a method for finding the optimum speaker clustering
+given a that number.
+
+<P>
+In <A
+ HREF="node147.html#Tsai_2006">Tsai and Wang (2006)</A> a genetic algorithm is proposed to
+obtain an optimum speaker clustering that optimizes the overall
+model likelihood by initial random cluster assignment and
+iterative evaluation of the likelihood and mutation. In order to
+select the optimum amount of speakers they use BIC computed on the
+resulting models.
+
+<P>
+A relatively new learning technique called Variational Bayesian
+learning (VB) or Ensemble learning (<A
+ HREF="node147.html#Attias_2000">Attias (2000)</A>,
+<A
+ HREF="node147.html#MacKay_1997">MacKay (1997)</A>) is used in <A
+ HREF="node147.html#Valente_2004">Valente and Wellekens (2004)</A>,
+<A
+ HREF="node147.html#Valente_2005">Valente and Wellekens (2005)</A> and <A
+ HREF="node147.html#Valente_2006">Valente (2006)</A> for
+speaker clustering. the VB training has the capacity of model
+parameter learning and model complexity selection, all in one
+algorithm. The models trained with this technique adapt their
+complexity to the amount of data available for training. In the
+proposed systems it computes the optimum clustering for a range of
+different number of clusters and uses a distance called free
+energy to determine the optimum.
+
+<P>
+In <A
+ HREF="node147.html#Lapidot_2003">Lapidot (2003)</A> self-organizing maps (SOM)
+(<A
+ HREF="node147.html#Lapidot_2002">Lapidot et&nbsp;al. (2002)</A>, <A
+ HREF="node147.html#Kohonen_1990">Kohonen (1990)</A>) are
+proposed for speaker clustering given a known number of speakers.
+This is a VQ algorithm for training the code-books representing
+each of the speakers. An initial non-informative set of code-books
+is created and then SOM is iterated, retraining them until the
+number of acoustic frames switching between clusters is close to
+0. In order to determine the optimum number of clusters a
+likelihood function is defined (derived from the code-words in the
+code-books by assigning a Gaussian pdf) and BIC is used.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html685"
+  HREF="node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html681"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html675"
+  HREF="node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html683"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html686"
+  HREF="node23.html">Use of Support Information</A>
+<B> Up:</B> <A NAME="tex2html682"
+  HREF="node17.html">Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html676"
+  HREF="node21.html">Combination of Clustering Methods</A>
+ &nbsp; <B>  <A NAME="tex2html684"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

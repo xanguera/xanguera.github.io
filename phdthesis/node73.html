@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Model Complexity Selection</TITLE>
+<META NAME="description" CONTENT="Model Complexity Selection">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node74.html">
+<LINK REL="previous" HREF="node72.html">
+<LINK REL="up" HREF="node72.html">
+<LINK REL="next" HREF="node74.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1366"
+  HREF="node74.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1362"
+  HREF="node72.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1356"
+  HREF="node72.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1364"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1367"
+  HREF="node74.html">Automatic Selection of the</A>
+<B> Up:</B> <A NAME="tex2html1363"
+  HREF="node72.html">Clusters and Models Complexity</A>
+<B> Previous:</B> <A NAME="tex2html1357"
+  HREF="node72.html">Clusters and Models Complexity</A>
+ &nbsp; <B>  <A NAME="tex2html1365"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00822100000000000000"></A> <A NAME="complex_select"></A>
+<BR>
+Model Complexity Selection
+</H3>
+
+<P>
+The acoustic models used to represent each cluster are a key part
+of the agglomerative clustering process. On one hand, comparing
+their likelihood given the data is how it is decided whether two
+models belong to the same cluster or not. On the other hand, they
+are used in the decoding process to redistribute the acoustic data
+into the different clusters on every iteration.
+
+<P>
+When designing their size, an important decision is whether to use
+fixed models (meaning a fixed number of Gaussian mixtures from
+start to finish), or if it allows the number of Gaussian mixtures
+to vary according to time or occupancy. Using fixed models is a
+viable alternative, but runs into the problem of having sufficient
+training data when the number of Gaussian mixtures is set to be
+high, or being too general a model when it is set to be small.
+
+<P>
+Furthermore, when comparing two models via <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC, if they
+are too general they tend to over-merge, and when they are too
+specific to the data they under-merge. Therefore it is important
+to find a tradeoff on the number of mixtures used (model
+complexity). This has been addressed in the systems presented by
+ICSI to the RT evaluations for meetings and broadcast news
+(<A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo (2005)</A> and <A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al. (2004)</A>) by using
+variable complexities as the merging process progresses. In such
+systems, all cluster models (regardless of their size) are
+initially trained using a fixed number of Gaussian mixtures. Upon
+merging any two clusters, the data from both original clusters are
+merged and a new cluster model is created as the sum of both
+parents' Gaussian mixtures.
+
+<P>
+Such an approach has a drawback that is addressed with the
+proposed technique. Models with the same complexity are modeling
+different amounts of data (sometimes very different), therefore
+their focus is very different. When doing a <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC comparison
+of such models one cannot expect to obtain coherent results,
+therefore system performance can degrade.
+
+<P>
+An algorithm is presented that selects the number of mixtures to
+be used when modeling each cluster according to its occupancy
+count. This could be referred to as an <SPAN  CLASS="textbf">occupancy driven
+approach</SPAN>. After each important change in the amount of data
+assigned to each cluster (normally due to a segmentation step),
+the number of acoustic frames that are assigned to each of the
+models is used to determine the number of mixtures by:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+M_{i}^{j} = round(\frac{N_{i}^{j}}{CCR_{gauss}})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="193" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img295.png"
+ ALT="$\displaystyle M_{i}^{j} = round(\frac{N_{i}^{j}}{CCR_{gauss}})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">9</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The number of Gaussian mixtures to model cluster <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN> at iteration
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ j$"></SPAN> (<SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img296.png"
+ ALT="$ M_{i}^{j}$"></SPAN>) is determined by rounding the number of frames
+belonging to that cluster at that time (<SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img297.png"
+ ALT="$ N_{i}^{j}$"></SPAN>) divided by a
+constant value (<!-- MATH
+ $CCR_{gauss}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="80" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img298.png"
+ ALT="$ CCR_{gauss}$"></SPAN>) that is defined as Cluster
+Complexity Ratio, fixed across all meetings.
+
+<P>
+In both approaches, the previous and this new one, the total
+number of mixtures used over all models remains constant in
+average, being distributed between the different cluster models as
+described above. This allows tracking of the system evolution by
+inspection of the Viterbi decoding total likelihood, which can be
+compared across merging iterations.
+
+<P>
+The model complexity selection algorithm is executed in the places
+described in Figure <A HREF="node57.html#diary_blocks">3.6</A>. The desired complexity of
+each model is computed using the equation described above and when
+it is different than the current complexity of the model it is
+readjusted in one of two possible ways:
+
+<P>
+
+<UL>
+<LI>When the final complexity is bigger than the current one,
+the model is grown, one Gaussian at a time, as described in step 3
+of section <A HREF="node58.html#speaker_clusters">3.3.3</A>.
+
+<P>
+</LI>
+<LI>When the final complexity is smaller than the current one,
+models are trained from scratch following the procedure in section
+<A HREF="node58.html#speaker_clusters">3.3.3</A>. As it is explained in that section,
+eliminating/vanishing Gaussian mixtures from small models is not
+desirable and leads to a decrease in performance.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1366"
+  HREF="node74.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1362"
+  HREF="node72.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1356"
+  HREF="node72.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1364"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1367"
+  HREF="node74.html">Automatic Selection of the</A>
+<B> Up:</B> <A NAME="tex2html1363"
+  HREF="node72.html">Clusters and Models Complexity</A>
+<B> Previous:</B> <A NAME="tex2html1357"
+  HREF="node72.html">Clusters and Models Complexity</A>
+ &nbsp; <B>  <A NAME="tex2html1365"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

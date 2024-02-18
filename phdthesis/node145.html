@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>BIC Formulation for Gaussian Mixture Models</TITLE>
+<META NAME="description" CONTENT="BIC Formulation for Gaussian Mixture Models">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node146.html">
+<LINK REL="previous" HREF="node141.html">
+<LINK REL="up" HREF="PhD_Thesis.html">
+<LINK REL="next" HREF="node146.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2313"
+  HREF="node146.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2309"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2303"
+  HREF="node144.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2311"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2314"
+  HREF="node146.html">Rich Transcription evaluation datasets</A>
+<B> Up:</B> <A NAME="tex2html2310"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html2304"
+  HREF="node144.html">Possible Future Work Topics</A>
+ &nbsp; <B>  <A NAME="tex2html2312"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001300000000000000000">
+BIC Formulation for Gaussian Mixture Models</A>
+</H1>
+
+<P>
+The purpose of this appendix is to show the equivalence between
+two different representations of the Bayesian Information
+Criterion (BIC), one based on the likelihood of the data given the
+models, which allows the models to be arbitrary and as complex as
+necessary given the task at hand, and another representation only
+dependent on the sufficient statistics of the data, which
+considers the case of a single Gaussian modeling the data. These
+two representations are used alternatively in the bibliography
+with various modifications, which sometimes cause the results not
+to be comparable between each other.
+
+<P>
+Given an acoustic segment <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ X_{i}$"></SPAN> with <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ N_{i}$"></SPAN> acoustic frames,
+modeled by <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ M_{i}$"></SPAN> which is an arbitrary model with a certain
+number of free parameters to estimate from the data, given by
+<!-- MATH
+ $\#(\mathcal{M}_{i})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="59" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img22.png"
+ ALT="$ \char93 (\mathcal{M}_{i})$"></SPAN>, which accounts for the complexity of such
+model. The general BIC expression of such model using the
+likelihood of the data is given by
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="basic_BIC2"></A><!-- MATH
+ \begin{equation}
+BIC(\mathcal{M}_{i}) = \log
+\mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i}) - \lambda \frac{1}{2}
+\#(\mathcal{M}_{i}) log(N_{i})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="362" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$\displaystyle BIC(\mathcal{M}_{i}) = \log \mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i}) - \lambda \frac{1}{2} \char93 (\mathcal{M}_{i}) log(N_{i})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(A.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Being <!-- MATH
+ $log \mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="107" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ \log \mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i})$"></SPAN>
+the log-likelihood of the data given the considered model. The
+parameter <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> is a design parameter which is not part of the
+original BIC formulation but which is used to change the effect of
+the penalty term in the formula. Such formula allows the model
+<!-- MATH
+ $\mathcal{M}_{i}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.png"
+ ALT="$ \mathcal{M}_{i}$"></SPAN> to be of any kind.
+
+<P>
+If instead it is considered that the model is created by a single
+Gaussian, eq. <A HREF="#basic_BIC2">A.1</A> can be rewritten as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="1gauss_BIC"></A><!-- MATH
+ \begin{equation}
+BIC(\mathcal{M}_{i}) = -\frac{1}{2} N_{i} log(|S_{i}|) -
+\frac{N_{i}}{2} d(1 + log(2\pi)) - \lambda \frac{1}{2}
+\#(\mathcal{M}_{i}) log(N_{i})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="519" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img525.png"
+ ALT="$\displaystyle BIC(\mathcal{M}_{i}) = -\frac{1}{2} N_{i} log(\vert S_{i}\vert) -...
+...2} d(1 + log(2\pi)) - \lambda \frac{1}{2} \char93 (\mathcal{M}_{i}) log(N_{i})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(A.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img273.png"
+ ALT="$ S$"></SPAN> is the covariance matrix representing the data
+and <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img526.png"
+ ALT="$ d$"></SPAN> is its dimension. Such formulation only depends on the
+sufficient statistics of the data, and therefore its computation
+is very fast.
+
+<P>
+Let us progress from equation <A HREF="node12.html#basic_BIC">2.1</A> into obtaining
+equation <A HREF="#1gauss_BIC">A.2</A>. Considering that the used model is a
+single Gaussian with full covariance, one can rewrite eq.
+<A HREF="node12.html#basic_BIC">2.1</A> as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="mixed_BIC"></A><!-- MATH
+ \begin{equation}
+BIC(\mathcal{M}_{i}) = \sum_{n=1}^{N_{i}} \log
+p(x_{i}[n]|\mathcal{M}_{i}) = \log
+\prod_{n=1}^{N_{i}}[\frac{1}{(2\pi)^{d/2}|S|^{1/2}}
+\exp^{-\frac{1}{2}(x_{i}[n]-\bar{x})' S^{-1} (x_{i}[n]-\bar{x})}]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="622" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img527.png"
+ ALT="$\displaystyle BIC(\mathcal{M}_{i}) = \sum_{n=1}^{N_{i}} \log p(x_{i}[n]\vert\m...
+...\vert^{1/2}} \exp^{-\frac{1}{2}(x_{i}[n]-\bar{x})' S^{-1} (x_{i}[n]-\bar{x})}]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(A.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+by doing the <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ N_{i}$"></SPAN> products one obtains a sum of terms
+in the exponential, where each terms is a scalar value. One can
+use mathematical properties of the trace in order to obtain a
+closer form for it. As the trace(scalar) = scalar, it does not
+change the result.
+
+<P>
+Let us then consider only the trace of the numerator in the
+exponent
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+Tr[(x_{i}[1]-\bar{x})' S^{-1} (x_{i}[1]-\bar{x}) + \dots + (x_{i}[N_{i}]-\bar{x})' S^{-1} (x_{i}[N_{i}]-\bar{x})]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="502" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img528.png"
+ ALT="$\displaystyle Tr[(x_{i}[1]-\bar{x})' S^{-1} (x_{i}[1]-\bar{x}) + \dots + (x_{i}[N_{i}]-\bar{x})' S^{-1} (x_{i}[N_{i}]-\bar{x})]$">
+</DIV><P></P>
+
+<P>
+
+<OL>
+<LI>Applying the property that <!-- MATH
+ $Tr[\sum] = \sum Tr[]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="129" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img529.png"
+ ALT="$ Tr[\sum] = \sum Tr[]$"></SPAN>
+<P><!-- MATH
+ \begin{displaymath}
+\dots = Tr[(x_{i}[1]-\bar{x})' S^{-1} (x_{i}[1]-\bar{x})] + \dots + tr[(x_{i}[N_{i}]-\bar{x})' S^{-1} (x_{i}[N_{i}]-\bar{x})]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="567" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img530.png"
+ ALT="$\displaystyle \dots = Tr[(x_{i}[1]-\bar{x})' S^{-1} (x_{i}[1]-\bar{x})] + \dots + tr[(x_{i}[N_{i}]-\bar{x})' S^{-1} (x_{i}[N_{i}]-\bar{x})]$">
+</DIV><P></P>
+
+<P>
+</LI>
+<LI>For each trace element applying the circularity of the trace
+property
+<P><!-- MATH
+ \begin{displaymath}
+\dots = Tr[(x_{i}[1]-\bar{x})' (x_{i}[1]-\bar{x}) S^{-1}] + \dots + tr[(x_{i}[N_{i}]-\bar{x})' (x_{i}[N_{i}]-\bar{x})S^{-1}]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="567" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img531.png"
+ ALT="$\displaystyle \dots = Tr[(x_{i}[1]-\bar{x})' (x_{i}[1]-\bar{x}) S^{-1}] + \dots + tr[(x_{i}[N_{i}]-\bar{x})' (x_{i}[N_{i}]-\bar{x})S^{-1}]$">
+</DIV><P></P>
+
+<P>
+</LI>
+<LI>Applying the property of matrix algebra AB+CB = (A+C)B one
+can isolate the inverse covariance matrix. At this point, given
+the definition of covariance matrix one can identify it in the
+equation and therefore we obtain
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+\dots = Tr[N_{i} S S^{-1}] = N_{i} Tr[\mathbb{I}] = Nd
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="268" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img532.png"
+ ALT="$\displaystyle \dots = Tr[N_{i} S S^{-1}] = N_{i} Tr[\mathbb{I}] = Nd$">
+</DIV><P></P>
+
+<P>
+</LI>
+</OL>
+
+<P>
+Given this result and going back to the BIC formulation in eq.
+<A HREF="#mixed_BIC">A.3</A> and using the log properties
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+BIC(\mathcal{M}_{i}) = \log [\frac{1}{(2\pi)^{dN_{i}/2}|S|^{N/2}} e^{-N_{i}d/2}]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="313" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img533.png"
+ ALT="$\displaystyle BIC(\mathcal{M}_{i}) = \log [\frac{1}{(2\pi)^{dN_{i}/2}\vert S\vert^{N/2}} e^{-N_{i}d/2}] $">
+</DIV><P></P>
+<P><!-- MATH
+ \begin{displaymath}
+= -\log(2\pi)^{dN_{i}/2} - \log(|S|)^{N_{i}/2} - \frac{N_{i}d}{2}
+- \lambda \frac{1}{2} \#(\mathcal{M}_{i}) log(N_{i})
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="448" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img534.png"
+ ALT="$\displaystyle = -\log(2\pi)^{dN_{i}/2} - \log(\vert S\vert)^{N_{i}/2} - \frac{N_{i}d}{2}
+- \lambda \frac{1}{2} \char93 (\mathcal{M}_{i}) log(N_{i})$">
+</DIV><P></P>
+
+<P>
+Obtaining finally
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+BIC(\mathcal{M}_{i}) = -\frac{1}{2} N_{i} log(|S_{i}|) -
+\frac{N_{i}}{2} d(1 + log(2\pi)) - \lambda \frac{1}{2}
+\#(\mathcal{M}_{i}) log(N_{i})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="519" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img525.png"
+ ALT="$\displaystyle BIC(\mathcal{M}_{i}) = -\frac{1}{2} N_{i} log(\vert S_{i}\vert) -...
+...2} d(1 + log(2\pi)) - \lambda \frac{1}{2} \char93 (\mathcal{M}_{i}) log(N_{i})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(A.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Which is in fact equation <A HREF="#1gauss_BIC">A.2</A>. Note that a factor
+<!-- MATH
+ $\frac{1}{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img535.png"
+ ALT="$ \frac{1}{2}$"></SPAN> applies to each term in the expression. Such factor
+is sometimes omitted, causing the optimum <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> factor to
+differ in the different implementations.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2313"
+  HREF="node146.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2309"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2303"
+  HREF="node144.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2311"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2314"
+  HREF="node146.html">Rich Transcription evaluation datasets</A>
+<B> Up:</B> <A NAME="tex2html2310"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html2304"
+  HREF="node144.html">Possible Future Work Topics</A>
+ &nbsp; <B>  <A NAME="tex2html2312"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Context and Motivations of this Thesis</TITLE>
+<META NAME="description" CONTENT="Context and Motivations of this Thesis">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html451"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html447"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html441"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html449"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html452"
+  HREF="node7.html">Definition of the Thesis</A>
+<B> Up:</B> <A NAME="tex2html448"
+  HREF="node5.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html442"
+  HREF="node5.html">Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html450"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00510000000000000000"></A>
+<A NAME="into_context"></A>
+<BR>
+Context and Motivations of this Thesis
+</H1>
+
+<P>
+
+<P></P>
+
+<SPAN  CLASS="textbf">People like to talk</SPAN>
+
+<P></P>
+
+<P>
+Speech is still one of the most used way that humans have to
+communicate their ideas and to convey information to the world
+outside of ourselves. In fact, the quantity of available information
+by means of speech (telephone, radio, television, meetings,
+lectures, internet, etc) that is being stored is very big and
+rapidly increasing given the cheaper and cheaper ways of storage
+available nowadays. Following the two maxima that say ``time is
+money'' and ``information is power'', it becomes clear how desirable
+it is to have access to all this information, but as we only have
+two ears and limited time, we would like someone else to access it
+for us and to tell us only what is important, not wasting time in
+listening to multiple hours of contentless recordings. Some other
+times we might be interested in accessing some particular bit of
+this information which we do not know where it is, lost inside of
+our ``Alexandria audio library.'' This is one area where speech
+technology can make a big contribution by means of techniques like
+audio indexing, where information is automatically extracted from
+the audio, which allows the processing, search and recovery of the
+desired content much easier. Considering a parallelism, acoustic
+indexing could be considered to an audio-based library what a good
+librarian is to a paper-based library.
+
+<P>
+
+<P></P>
+
+<SPAN  CLASS="textbf">People do not like, usually, to talk alone</SPAN>
+
+<P></P>
+
+<P>
+Most of the times when a person speaks, his/her speech is directed
+to someone or something else, which we expect to communicate with.
+In fact, even when we are talking to an animal, a machine or a
+little baby we are adapting our speech so that the message is
+conveyed to this outer entity. When dealing with information
+extraction from a recording, it becomes very important to answer
+questions like: ``What was said?'' as it conveys the message, but
+also ``Who said it?'' as information varies depending on who utters
+the spoken words.
+
+<P>
+Within the speech technologies, the broad topic of <SPAN  CLASS="textit">acoustic
+indexing</SPAN> studies the classification of sounds into different
+classes/sources. Such classes could be as broad as [cats, dogs,
+humans] or more concrete like [pit bull, pug, German shepherd].
+Algorithms used for acoustic indexing worry about the correct
+classification of the sounds, but not necessarily about the correct
+separation of them when more than one exist in the same audio
+segment. These purely classification techniques have sometimes been
+called <SPAN  CLASS="textit">audio clustering</SPAN>, which benefit from the broad topic
+of clustering, well studied in many areas.
+
+<P>
+When multiple sounds appear in the same audio signal one must turn
+his attention to techniques called <SPAN  CLASS="textit">audio diarization</SPAN> to
+process them. As described in <A
+ HREF="node147.html#Reynolds_2004">Reynolds and Torres-Carrasquillo (2004)</A>, audio
+diarization is known as the process of annotating an input audio
+signal with information that attributes (possibly overlapping)
+temporal regions of signal to their specific sources/classes (i.e.
+creating a ``diary'' of events in the audio document). These can
+include particular speakers, music, background noise sources, and
+other signal source/channel characteristics. It is very dependent on
+the application which particular classes are defined, becoming as
+broad or narrow as intended. In the simplest case, one could refer
+as audio diarization to the task of speech versus non-speech
+detection.
+
+<P>
+When the possible classes correspond to the different speakers in
+a recording these techniques are called <SPAN  CLASS="textit">speaker
+diarization</SPAN>. They aim at answering the question ``Who spoke
+when?'' given an audio signal. Algorithms doing speaker
+diarization need to locate each speaker turn and assign them to
+the appropriate speaker cluster. The output of the system is a set
+of segments with a unique ID assigned to each person that
+intervenes in the recording, leaving it to speaker identification
+systems to determine the person's identity given each ID. Until
+the present time, the domains that have received most research
+attention within the speaker diarization community have been
+
+<P>
+
+<UL>
+<LI>Telephone speech: Speaker diarization systems started being
+evaluated by NIST (<A
+ HREF="node147.html#NIST_web"><EM>National Institute for Standards and
+  Technology</EM>, 2006</A>) using single channel telephone
+speech signals, within the speaker recognition evaluations in the
+late 1990s.
+
+<P>
+</LI>
+<LI>Broadcast News (radio and TV broadcasts): Mainly with the
+impulse of DARPA's EARS program (<A
+ HREF="node147.html#EARS_project_web"><EM>DARPA Effective, Affordable, Reusable Speech-to-Text
+  (EARS)</EM>, 2004</A>) rich
+transcription of broadcasted news content became the primary
+research domain for speaker diarization roughly from 2002 to 2004.
+Rich transcription consists on the addition of extra information
+(generally called metadata, including speaker diarization
+information) to the speech-to-text transcriptions.
+
+<P>
+</LI>
+<LI>Meetings (lectures and conferences): Mainly due to the
+impulse of the European CHIL and AMI projects
+(<A
+ HREF="node147.html#CHIL_web"><EM>Computers in the Human Interaction Loop (CHIL)
+  website</EM> (2006)</A>, <A
+ HREF="node147.html#AMI_web"><EM>Augmented Multiparty Interaction (AMI)
+  website</EM> (2006)</A>) the focus of research
+shifted from broadcast news to meetings around 2004. Although its
+current prominence, many smaller projects had studied and recorded
+meetings previously in the 1990's.
+
+<P>
+</LI>
+</UL>
+
+<P>
+When talking about speaker diarization it is equivalent to saying
+<SPAN  CLASS="textit">speaker segmentation and clustering</SPAN> of an audio document as
+both these techniques are normally used together in diarization. On
+one hand, speaker segmentation (also called <SPAN  CLASS="textit">speaker change
+detection</SPAN>) aims at finding changes of speaker in an audio
+recording. It differs from <SPAN  CLASS="textit">acoustic change detection</SPAN> in that
+it does not consider changes in the background sounds during a
+single speaker segment to be a change to consider. On the other
+hand, speaker clustering agglomerates audio segments into
+homogeneous groups, coming from a similar/same source. In the
+general definition it does not constrain the process to a single
+file as all it requires is that each segment contain only a single
+speaker. When used in conjunction with speaker segmentation for
+speaker diarization, it clusters the segments created by the
+segmentation of one single recording.
+
+<P>
+Finally, also related to speaker diarization there are techniques
+regarding <SPAN  CLASS="textit">speaker tracking</SPAN> where the identity of one or more
+speakers is known a priori and the aim is to locate their
+interventions within the audio document.
+
+<P>
+From a general point of view, speaker diarization algorithms are a
+very useful part of many speech technology systems, for example:
+
+<P>
+
+<UL>
+<LI>Speaker indexing and rich transcription: By indexing the
+audio according to the speakers and adding extra information to
+speech transcripts it becomes easier for humans to locate
+information and for machines to process it. Typical automatic uses
+of such output might be speech summarization and translation.
+
+<P>
+</LI>
+<LI>Speaker segmentation and clustering helping Automatic Speech
+Recognition (ASR) systems: Segmentation algorithms are used to split
+the audio into small segments (maintaining all acoustic units
+intact) for the ASR systems to process. Also, speaker diarization
+algorithms are used to cluster all the input data into speakers for
+speaker dependent model adaptation. Sometimes the clustering is
+performed into broader speaker clusters (fewer than the actual
+number of speakers) to maximize the amount of adaptation data.
+
+<P>
+</LI>
+<LI>Preprocessing modules for speaker-based algorithms: Speaker
+diarization can be used before speaker tracking, speaker
+identification, speaker verification and other single
+speaker-based algorithms, to split the data into individual
+speakers.
+
+<P>
+</LI>
+</UL>
+
+<P>
+This thesis is about speaker diarization performed in the meetings
+environment. While doing so, and following the guidelines proposed
+by NIST in the Rich Transcription (RT) evaluations, it processes the
+data without any prior information on the number of speakers present
+in the meeting or their identities. Furthermore, the system is
+intended for use without any assumption on the meeting room layout,
+which usually contains multiple microphones recording synchronously.
+These microphones are of different kinds and it is assumed that
+their exact location is unknown to the system.
+
+<P>
+This thesis is being presented in partial fullfillment of the
+requirements for the PhD in Theory of Signal and Communications in
+the UPC, where I have taken the necessary doctorate courses and
+previously prepared the thesis proposal. The proposed system was
+implemented at the International Computer Science Institute during a
+two years research stay with funding from the AMI project in the
+first year and the Spanish visitors program in the second. The
+implementation of speaker diarization for meetings takes into
+account all available prior knowledge in speaker diarization for the
+broadcast news environment present at ICSI at the start of this
+project. It is based on a modified version of the Bayesian
+Information Criterion (BIC) which does not require the tuning of any
+penalty term. It performs an agglomerative clustering of the initial
+acoustic data after it has been filtered with a speech/non-speech
+detector to eliminate all non-speech information. The clustering
+finished when no cluster pair is available for merging.
+
+<P>
+Improvements are proposed for the system in three main areas. To
+extend the applicability of the system to multiple microphone
+recordings it implements a filter&amp;sum beamforming and adds
+several algorithms to improve the output signal when microphones
+are very dissimilar. The beamforming algorithm also started being
+used by the ASR system at ICSI in the meetings Rich Transcription
+evaluations with great results directly attributed to this module.
+Another area is the speech/non-speech detection where a new
+train-free system was implemented to allow for an accurate
+filtering of the silence segments in a meeting. Finally, within
+the inherited broadcast news system, several algorithms are either
+added or improved to increase the robustness of the system and to
+allow for it to extract as much information as possible from each
+recording allowing for fast adaptation to new domains. These
+include the automatic initial number of clusters and model
+complexity selection algorithms, two purification algorithms to
+allow better comparisons between clusters and a a more robust
+training. Finally, the time delay of arrival between microphones
+in the beamforming module is successfully used in the diarization
+to increase the amount of information used to perform the
+diarization.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html451"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html447"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html441"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html449"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html452"
+  HREF="node7.html">Definition of the Thesis</A>
+<B> Up:</B> <A NAME="tex2html448"
+  HREF="node5.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html442"
+  HREF="node5.html">Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html450"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

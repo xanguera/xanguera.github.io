@@ -1,0 +1,1217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Metric-Based Segmentation</TITLE>
+<META NAME="description" CONTENT="Metric-Based Segmentation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node13.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="node11.html">
+<LINK REL="next" HREF="node13.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html557"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html553"
+  HREF="node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html547"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html555"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html558"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<B> Up:</B> <A NAME="tex2html554"
+  HREF="node11.html">Speaker Segmentation</A>
+<B> Previous:</B> <A NAME="tex2html548"
+  HREF="node11.html">Speaker Segmentation</A>
+ &nbsp; <B>  <A NAME="tex2html556"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00621000000000000000">
+Metric-Based Segmentation</A>
+</H2>
+
+<P>
+Metric based segmentation is probably the most used technique up to
+date. It relies on the computation of a distance between two
+acoustic segments to determine whether they belong to the same
+speaker or to different speakers, and therefore whether there exists
+a speaker change point in the audio at the point being analyzed. The
+two acoustic segments are usually next to each other (in overlap or
+not) and the change-point considered is between them. Most of the
+distances used for acoustic change detection can also be applied to
+speaker clustering in order to compare the suitability that two
+speaker clusters belong to the same speaker.
+
+<P>
+Let us consider two audio segments (<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN>,<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ j$"></SPAN>) of parameterized
+acoustic vectors <!-- MATH
+ $\mathcal{X}_{i}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \mathcal{X}_{i}$"></SPAN> and <!-- MATH
+ $\mathcal{X}_{j}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ \mathcal{X}_{j}$"></SPAN> of lengths
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ N_{i}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ N_{j}$"></SPAN> respectively, and with mean and standard
+deviation values <!-- MATH
+ $\mu_{i},\sigma_{i}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$ \mu_{i},\sigma_{i}$"></SPAN> and <!-- MATH
+ $\mu_{j},\sigma_{j}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$ \mu_{j},\sigma_{j}$"></SPAN>. Each
+one of these segments is modeled using Gaussian processes
+<!-- MATH
+ $M_{i}(\mu_{i},\sigma_{i})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="79" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.png"
+ ALT="$ M_{i}(\mu_{i},\sigma_{i})$"></SPAN> and <!-- MATH
+ $M_{j}(\mu_{j},\sigma_{j})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ M_{j}(\mu_{j},\sigma_{j})$"></SPAN>, which
+can be a single Gaussian or a Gaussian Mixture Model (GMM). On the
+other hand, let's consider the agglomerate of both segments into
+<!-- MATH
+ $\mathcal{X}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ \mathcal{X}$"></SPAN>, with mean and variance <!-- MATH
+ $\mu,\sigma$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$ \mu,\sigma$"></SPAN> and the
+corresponding Gaussian process <!-- MATH
+ $M(\mu,\sigma)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="66" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ M(\mu,\sigma)$"></SPAN>.
+
+<P>
+In general, there are two different kinds of distances that can be
+defined between any pair of such audio segments. The first kind
+compares the sufficient statistics from the two acoustic sets of
+data without considering any particular model applied to the data,
+which from now on will be called <SPAN  CLASS="textit">statistics-based</SPAN> distances.
+These are normally very quick to compute and give good performances
+if <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ N_{i}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ N_{j}$"></SPAN> are big enough to robustly compute the data
+statistics and the data being modeled can be well described using a
+single Gaussian.
+
+<P>
+A second group of distances are based on the evaluation of the
+likelihood of the data according to models representing it. These
+distances are slower to compute (as models need to be trained and
+evaluated) but can achieve better results than the statistics-based
+one as bigger models can be used to fit more complex data. These
+will be referred as <SPAN  CLASS="textit">likelihood-based</SPAN> techniques. The
+following are the metrics that have been found of interest used in
+the literature for either case:
+
+<P>
+
+<UL>
+<LI><SPAN  CLASS="textbf">Bayesian Information Criterion</SPAN> (BIC): The BIC is
+probably the most extensively used segmentation and clustering
+metric due to its simplicity and effectiveness. It is a likelihood
+criterion penalized by the model complexity (number of free
+parameters in the model) introduced by <A
+ HREF="node147.html#Schwarz_1971">Schwarz (1971)</A> and
+<A
+ HREF="node147.html#Schwarz_1978">Schwarz (1978)</A> as a model selection criterion. For a
+given acoustic segment <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ X_{i}$"></SPAN>, the BIC value of a model <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ M_{i}$"></SPAN>
+applied to it indicates how well the model fits the data, and is
+determined by:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="basic_BIC"></A><!-- MATH
+ \begin{equation}
+BIC(\mathcal{M}_{i}) = \log
+\mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i}) - \lambda \frac{1}{2}
+\#(\mathcal{M}_{i}) log(N_{i})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="362" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$\displaystyle BIC(\mathcal{M}_{i}) = \log \mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i}) - \lambda \frac{1}{2} \char93 (\mathcal{M}_{i}) log(N_{i})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<!-- MATH
+ $\log \mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="107" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ \log \mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i})$"></SPAN> is the
+log-likelihood of the data given the considered model, <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> is
+a free design parameter dependent on the data being modeled,
+estimated using development data; <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ N_{i}$"></SPAN> is the number of frames in
+the considered segment and <!-- MATH
+ $\#(\mathcal{M}_{i})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="59" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img22.png"
+ ALT="$ \char93 (\mathcal{M}_{i})$"></SPAN> the number of free
+parameters to estimate in model <!-- MATH
+ $\mathcal{M}_{i}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.png"
+ ALT="$ \mathcal{M}_{i}$"></SPAN>. Such expression
+is an approximation of the Bayes Factor (BF)
+(<A
+ HREF="node147.html#Kass_1995">Kass and Raftery (1995)</A>, <A
+ HREF="node147.html#Chickering_1997">Chickering and Heckerman (1997)</A>) where the
+acoustic models are trained via ML methods and <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ N_{i}$"></SPAN> is considered
+big.
+
+<P>
+In order to use BIC to evaluate whether a change point occurs
+between both segments it evaluates the hypothesis that <!-- MATH
+ $\mathcal{X}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ \mathcal{X}$"></SPAN>
+better models the data versus the hypothesis that <!-- MATH
+ $\mathcal{X}_{i} +
+\mathcal{X}_{j}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img24.png"
+ ALT="$ \mathcal{X}_{i} +
+\mathcal{X}_{j}$"></SPAN> does instead, like in the GLR (Generalized
+Likelihood Ratio), by computing:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="delta_BIC"></A><!-- MATH
+ \begin{equation}
+\Delta BIC(i,j) = -R(i,j) + \lambda P
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="222" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$\displaystyle \Delta BIC(i,j) = -R(i,j) + \lambda P$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where P is the penalty term, which is a function of the
+number of free parameters in the model. For a full covariance matrix
+it is
+<P><!-- MATH
+ \begin{displaymath}
+P=\frac{1}{2}(p+\frac{1}{2}p(p+1))log(N)
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="224" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$\displaystyle P=\frac{1}{2}(p+\frac{1}{2}p(p+1))log(N)$">
+</DIV><P></P>
+The penalty term accounts for the likelihood increase of bigger
+models versus smaller ones.
+
+<P>
+The term <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img27.png"
+ ALT="$ R(i)$"></SPAN> can be written for the case of models composed on a
+single Gaussian as:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="BIC_1gauss"></A><!-- MATH
+ \begin{equation}
+R(i,j) = \frac{N}{2}log |\Sigma_{\mathcal{X}}|-\frac{N_{i}}{2}log
+|\Sigma_{\mathcal{X}_{i}}|-\frac{N_{j}}{2}log
+|\Sigma_{\mathcal{X}_{j}}|
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="367" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.png"
+ ALT="$\displaystyle R(i,j) = \frac{N}{2}log \vert\Sigma_{\mathcal{X}}\vert-\frac{N_{i...
+...a_{\mathcal{X}_{i}}\vert-\frac{N_{j}}{2}log \vert\Sigma_{\mathcal{X}_{j}}\vert$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+For cases where GMM models with multiple Gaussian mixtures are
+used, eq. <A HREF="#delta_BIC">2.2</A> is written as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="BIC_gmm"></A><!-- MATH
+ \begin{equation}
+\Delta BIC(\mathcal{M}_{i}) = \log
+\mathcal{L}(\mathcal{X},\mathcal{M}) - (\log
+\mathcal{L}(\mathcal{X}_{i},\mathcal{M}_{i}) + \log
+\mathcal{L}(\mathcal{X}_{j},\mathcal{M}_{j})) - \lambda \Delta
+\#(i,j) log(N)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="624" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.png"
+ ALT="$\displaystyle \Delta BIC(\mathcal{M}_{i}) = \log \mathcal{L}(\mathcal{X},\math...
+...cal{L}(\mathcal{X}_{j},\mathcal{M}_{j})) - \lambda \Delta \char93 (i,j) log(N)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $\Delta \#(i,j)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="69" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$ \Delta \char93 (i,j)$"></SPAN> is the difference between the
+number of free parameters in the combined model versus the two
+individual models. For a mathematical proof on the equality of
+equations <A HREF="#BIC_1gauss">2.3</A> and <A HREF="#BIC_gmm">2.4</A> please refer to the
+appendix section.
+
+<P>
+Although <!-- MATH
+ $\Delta BIC(i,j)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="91" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$ \Delta BIC(i,j)$"></SPAN> is the difference between two <SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.png"
+ ALT="$ BIC(i)$"></SPAN>
+criteria in order to determine which model suits better the data, it
+is usual in the speaker diarization literature to refer to the
+difference as BIC criterion. For the task of speaker segmentation,
+the technique was first used by Chen and Gopalakrishnan
+(<A
+ HREF="node147.html#Chen_1998a">Shaobing&nbsp;Chen and Gopalakrishnan (1998)</A>, <A
+ HREF="node147.html#Chen_1998b">Chen and Gopalakrishnan (1998)</A>,
+<A
+ HREF="node147.html#Chen_2002">Chen et&nbsp;al. (2002)</A>) where a single full covariance Gaussian was
+used for each of the models, as in eq. <A HREF="#BIC_1gauss">2.3</A>.
+
+<P>
+Although not existent in the original formulation, the <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN>
+parameter was introduced by (<A
+ HREF="node147.html#Chen_1998a">Shaobing&nbsp;Chen and Gopalakrishnan, 1998</A>) to adjust the penalty
+term effect on the comparison, which constitutes a hidden threshold
+to the BIC difference. Such a threshold needs to be tuned to the
+data and therefore its correct setting has been subject of constant
+study. Several people propose ways to automatically selecting
+<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN>, (<A
+ HREF="node147.html#Tritschler_1999">Tritschler and Gopinath (1999)</A>,
+<A
+ HREF="node147.html#Delacourt_2000">Delacourt and Wellekens (2000)</A>, <A
+ HREF="node147.html#Delacourt_1999b">Delacourt et&nbsp;al. (1999a)</A>,
+<A
+ HREF="node147.html#Mori_2001">Mori and Nakagawa (2001)</A>, <A
+ HREF="node147.html#Lopez_2000">Lopez and Ellis (2000a)</A>,
+<A
+ HREF="node147.html#Vandecatseye_2004">Vandecatseye et&nbsp;al. (2004)</A>). In <A
+ HREF="node147.html#Ajmera_2003a">Ajmera et&nbsp;al. (2003)</A> a GMM
+is used for each of the models (<SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img33.png"
+ ALT="$ M$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ M_{i}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ M_{j}$"></SPAN>) and by
+building the model <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img33.png"
+ ALT="$ M$"></SPAN> with the sum of models <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ M_{i}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ M_{j}$"></SPAN>
+complexities, it cancels out the penalty term avoiding the need to
+set any <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> value. The result is equivalent to the GLR metric
+where the models have the complexity constraint imposed to them.
+
+<P>
+In the formulation of BIC by <A
+ HREF="node147.html#Schwarz_1978">Schwarz (1978)</A> the number
+of acoustic vectors available to train the model were supposed to
+be infinite for the approximation to converge. In real
+applications this becomes a problem when there is a big mismatch
+between the length of the two adjacent windows or clusters being
+compared. Some people have successfully applied slight
+modification to the original formula, either to the penalty term
+(<A
+ HREF="node147.html#Perez-Freire_2004">Perez-Freire and Garcia-Mateo, 2004</A>) or to the overall value
+(<A
+ HREF="node147.html#Vandecatseye_2003">Vandecatseye and Martens, 2003</A>) to reduce this effect.
+
+<P>
+Several implementations using BIC as a segmentation metric have been
+proposed. Initially <A
+ HREF="node147.html#Chen_1998a">Shaobing&nbsp;Chen and Gopalakrishnan (1998)</A> proposed a multiple
+changing point detection algorithm in two passes, and later
+<A
+ HREF="node147.html#Tritschler_1999">Tritschler and Gopinath (1999)</A>, <A
+ HREF="node147.html#Sivakumaran_2001">Sivakumaran et&nbsp;al. (2001)</A>,
+<A
+ HREF="node147.html#Cheng_2003">sian Cheng and min Wang (2003)</A>, <A
+ HREF="node147.html#Lu_2002c">Lu and Zhang (2002a)</A>,
+<A
+ HREF="node147.html#Cettolo_2003">Cettolo and Vescovi (2003)</A> and <A
+ HREF="node147.html#Vescovi_2003">Vescovi et&nbsp;al. (2003)</A> followed
+with one or two-pass algorithms. They all propose a system using a
+growing window with inner variable length analysis segments to
+iteratively find the changing points. <A
+ HREF="node147.html#Tritschler_1999">Tritschler and Gopinath (1999)</A>
+propose some ways to make the algorithm faster and to focus on
+detecting very short speaker changes. In
+<A
+ HREF="node147.html#Sivakumaran_2001">Sivakumaran et&nbsp;al. (2001)</A>, <A
+ HREF="node147.html#Cettolo_2003">Cettolo and Vescovi (2003)</A> and
+<A
+ HREF="node147.html#Vescovi_2003">Vescovi et&nbsp;al. (2003)</A> speedups are proposed in ways of computing
+the mean and variances of the models. In <A
+ HREF="node147.html#Roch_2004">Roch and Cheng (2004)</A> a
+MAP-adapted version of the models is presented, which allows for
+shorter speaker change points to be found. By using MAP, this work
+opposes to the way the models are described to be trained in the
+original formula (which defines an ML criterion).
+
+<P>
+Even with the efforts to speed up the processing of BIC, it is
+computationally more intensive than other statistics-based metrics
+when used to analyze the signal with high resolution, but its good
+performance has kept it as the algorithm of choice in many
+applications. This is why some people have proposed BIC as the
+second pass (refinement) of a 2-pass speaker segmentation system. As
+described earlier, an important step in this direction is taken with
+DISTBIC (<A
+ HREF="node147.html#Delacourt_2000">Delacourt and Wellekens (2000)</A>, <A
+ HREF="node147.html#Delacourt_1999b">Delacourt et&nbsp;al. (1999a)</A>,
+<A
+ HREF="node147.html#Delacourt_1999c">Delacourt et&nbsp;al. (1999b)</A>) where the GLR is used as a first pass.
+Also in this direction are <A
+ HREF="node147.html#Zhou_2000">Zhou and Hansen (2000)</A>,
+<A
+ HREF="node147.html#Kim_2005">Kim et&nbsp;al. (2005)</A> and <A
+ HREF="node147.html#Tranter_2004">Tranter and Reynolds (2004)</A>, proposing to
+use Hotelling's <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img35.png"
+ ALT="$ T^{2}$"></SPAN> distance, and <A
+ HREF="node147.html#Lu_2002c">Lu and Zhang (2002a)</A> using
+KL2 (Kullback-Leibler) distance. In <A
+ HREF="node147.html#Vandecatseye_2004">Vandecatseye et&nbsp;al. (2004)</A>,
+a normalized GLR (called NLLR) is used as a first pass and a
+normalized BIC is used in the refinement step.
+
+<P>
+Some research has been done to combine alternative sources of
+information to help the BIC in finding the optimum change point.
+This is the case in <A
+ HREF="node147.html#Perez-Freire_2004">Perez-Freire and Garcia-Mateo (2004)</A> where image
+shot boundaries are used.
+
+<P>
+In <A
+ HREF="node147.html#Cheng_2004">sian Cheng and min Wang (2004)</A> a two-pass algorithm using BIC in both
+passes is proposed. This is peculiar in that instead of producing a
+first step with high false alarm errors (FA) and a second step that
+merges some of the change-points, the first step tries to minimize
+the FA and the second step finds the rest of unseen speaker changes.
+
+<P>
+</LI>
+<LI><SPAN  CLASS="textbf">Generalized Likelihood Ratio</SPAN> (GLR): The GLR (first
+proposed for change detection by <A
+ HREF="node147.html#Willsky_1976">Willsky and Jones (1976)</A> and
+<A
+ HREF="node147.html#Appel_1982">Appel and Brandt (1982)</A>) is a likelihood-based metric that
+proposes a ratio between two hypotheses: on one hand, <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.png"
+ ALT="$ H_{0}$"></SPAN>
+considers that both segments are uttered by the same speaker,
+therefore <!-- MATH
+ $\mathcal{X} = \mathcal{X}_{i} \bigcup \mathcal{X}_{j}
+\sim M(\mu,\sigma)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="185" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$ \mathcal{X} = \mathcal{X}_{i} \bigcup \mathcal{X}_{j}
+\sim M(\mu,\sigma)$"></SPAN> represents better the data. On the other hand,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$ H_{1}$"></SPAN> considers that each segment has been uttered by a
+different speaker, therefore <!-- MATH
+ $\mathcal{X}_{i} \sim
+M_{i}(\mu_{i},\sigma_{i})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="120" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ \mathcal{X}_{i} \sim
+M_{i}(\mu_{i},\sigma_{i})$"></SPAN> and <!-- MATH
+ $\mathcal{X}_{j} \sim
+M_{j}(\mu_{j},\sigma_{j})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="127" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ \mathcal{X}_{j} \sim
+M_{j}(\mu_{j},\sigma_{j})$"></SPAN> together suit better the data. The
+ratio test is computed as a likelihood ratio between the two
+hypotheses as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="GLR"></A><!-- MATH
+ \begin{equation}
+GLR(i, j) = \frac{H_{0}}{H_{1}} =
+\frac{\mathcal{L}(\mathcal{X},M(\mu,\sigma))}{\mathcal{L}
+(\mathcal{X}_{i},M_{i}(\mu_{i},\sigma_{i}))\mathcal{L}
+(\mathcal{X}_{j},M_{j}(\mu_{j},\sigma_{j}))}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="413" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.png"
+ ALT="$\displaystyle GLR(i, j) = \frac{H_{0}}{H_{1}} = \frac{\mathcal{L}(\mathcal{X},...
+...}(\mu_{i},\sigma_{i}))\mathcal{L} (\mathcal{X}_{j},M_{j}(\mu_{j},\sigma_{j}))}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">5</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+and determining the distance as <!-- MATH
+ $D(i,j) = -log(GLR(i,j))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="203" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ D(i,j) = -log(GLR(i,j))$"></SPAN>
+which, upon using an appropriate threshold one can decide whether
+both segments belong to the same speaker or otherwise. The GLR
+differs from a similar metric called the standard likelihood ratio
+test (LLR) in that the p.d.f.s for the GLR are unknown and must be
+estimated directly from the data within each considered segment,
+whereas in the LLR the models are considered to be known a priori.
+In speaker segmentation, the GLR is usually used with two adjacent
+segments of the same size which are scrolled through the signal, and
+the threshold is either pre-fixed or it dynamically adapts.
+
+<P>
+In <A
+ HREF="node147.html#bonastre_2000">Bonastre et&nbsp;al. (2000)</A> the GLR is used to segment the
+signal into speaker turns in a single step processing for speaker
+tracking. The threshold is set so that miss errors are minimized
+(at the cost of higher false alarms), as each segment is then
+independently considered as a potential speaker in the tracking
+algorithm.
+
+<P>
+In <A
+ HREF="node147.html#Gangadharaiah_2004">Gangadharaiah et&nbsp;al. (2004)</A> a two-speaker segmentation is
+performed in two steps. In the first step, GLR is used to
+over-segment the data. In a second step, ``seed'' segments are
+selected for both speakers and the rest are assigned to either
+speaker with a Viterbi decoding / ML approach without modifying the
+defined change-points.
+
+<P>
+On the same two-speaker detection task, in <A
+ HREF="node147.html#Adami_2002">Adami, Kajarekar and Hermansky (2002)</A>
+the first second of speech is considered to be from the first
+speaker and the second speaker is found determining the
+change-points via GLR. A second step assigns segments of speech to
+either speaker by comparing the GLR score of each of the two
+speakers computed across the recording and selecting the regions
+where either one is higher.
+
+<P>
+On the task of change detection for transcription and indexing in
+<A
+ HREF="node147.html#Liu_1999">Liu and Kubala (1999)</A> a penalized GLR is used as a second step, to
+accept/reject change-points previously found using a pre-trained
+phone-based decoder (where the ASR phone-set has been reduced into
+phone clusters). The penalty applied to the GLR is proportional to
+the amount of training data available in the two segments as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+GLR'(i,j) = \frac{GLR(i,j)}{(N_{1}+N_{2})^{\theta}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="196" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.png"
+ ALT="$\displaystyle GLR'(i,j) = \frac{GLR(i,j)}{(N_{1}+N_{2})^{\theta}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">6</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img44.png"
+ ALT="$ \theta$"></SPAN> is determined empirically. On the same
+note, <A
+ HREF="node147.html#Metze_2004">Metze et&nbsp;al. (2004)</A> use the GLR for a segmentation step in
+a transcription system for meetings.
+
+<P>
+Probably the most representative algorithm of the use of GLR for
+speaker segmentation is DISTBIC (<A
+ HREF="node147.html#Delacourt_1999a">Delacourt and Wellekens (1999)</A>,
+<A
+ HREF="node147.html#Delacourt_1999b">Delacourt et&nbsp;al. (1999a)</A>, <A
+ HREF="node147.html#Delacourt_1999c">Delacourt et&nbsp;al. (1999b)</A>,
+<A
+ HREF="node147.html#Delacourt_2000">Delacourt and Wellekens (2000)</A>) where GLR is proposed as the first
+step of a two-step segmentation process (using BIC as the second
+metric). Instead of using the GLR distance by itself, a low pass
+filtering is applied to it in order to reduce ripples in the
+computed distance function (which would generate false
+maxima/minima points) and then the difference between each local
+maxima and adjacent minima is used to assert the change-points.
+
+<P>
+</LI>
+<LI><SPAN  CLASS="textbf">Gish distance</SPAN>: It is a likelihood-based metric
+obtained as a variation to the GLR presented in
+<A
+ HREF="node147.html#Gish_1991">Gish et&nbsp;al. (1991)</A> and <A
+ HREF="node147.html#Gish_1994">Gish and Schmidt (1994)</A>. To derive it,
+the GLR function is split into two parts (<!-- MATH
+ $\lambda_{cov}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.png"
+ ALT="$ \lambda_{cov}$"></SPAN> and
+<!-- MATH
+ $\lambda_{mean}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$ \lambda_{mean}$"></SPAN>) and the background dependent part is ignored,
+leading to the equation
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D_{Gish}(i,j)=-\frac{N}{2}log(\frac{|S_{i}|^{\alpha}|S_{2}|^{(1-\alpha)}}{|W|})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="282" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.png"
+ ALT="$\displaystyle D_{Gish}(i,j)=-\frac{N}{2}log(\frac{\vert S_{i}\vert^{\alpha}\vert S_{2}\vert^{(1-\alpha)}}{\vert W\vert})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">7</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.png"
+ ALT="$ S_{i}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.png"
+ ALT="$ S_{j}$"></SPAN> represent the sample
+covariance matrices for each segment, <!-- MATH
+ $\alpha =
+\frac{N_{1}}{N_{1}+N_{2}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="88" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.png"
+ ALT="$ \alpha =
+\frac{N_{1}}{N_{1}+N_{2}}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img51.png"
+ ALT="$ W$"></SPAN> is their sample weighted
+average <!-- MATH
+ $W=\frac{N_{1}}{N_{1}+N_{2}}S_{1} +
+\frac{N_{2}}{N_{1}+N_{2}}S_{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="203" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.png"
+ ALT="$ W=\frac{N_{1}}{N_{1}+N_{2}}S_{1} +
+\frac{N_{2}}{N_{1}+N_{2}}S_{2}$"></SPAN>.
+
+<P>
+In <A
+ HREF="node147.html#Kemp_2000">Kemp et&nbsp;al. (2000)</A> the Gish distance is compared to other
+techniques for speaker segmentation.
+
+<P>
+</LI>
+<LI><SPAN  CLASS="textbf">Kullback-Leibler divergence</SPAN> (KL or KL2): The KL and
+KL2 divergences (<A
+ HREF="node147.html#Siegler_1997">Siegler et&nbsp;al. (1997)</A>, <A
+ HREF="node147.html#Hung_2000">Hung et&nbsp;al. (2000)</A>)
+are well used due to their fast computation and acceptable results.
+Given two random distributions <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$ X$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.png"
+ ALT="$ Y$"></SPAN>, the K-L divergence is
+defined as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+KL(X;Y) = E_{X}(log\frac{P_{X}}{P_{Y}})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="197" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$\displaystyle KL(X;Y) = E_{X}(log\frac{P_{X}}{P_{Y}})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">8</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Where <SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$ E_{X}$"></SPAN> is the expected value with respect to the
+PDF of X. When the two distributions are taken to be Gaussian, one
+can obtain a closed form solution to such expression
+(<A
+ HREF="node147.html#Campbell_1997">Campbell, 1997</A>) as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+KL(X,Y) =
+\frac{1}{2}tr[(C_{X}-C_{Y})(C^{-1}_{Y}-C^{-1}_{X})]+\frac{1}{2}
+tr[(C^{-1}_{Y}-C^{-1}_{X})(\mu_{X}-\mu_{Y})(\mu_{X}-\mu_{Y})^{T}]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="650" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img57.png"
+ ALT="$\displaystyle KL(X,Y) = \frac{1}{2}tr[(C_{X}-C_{Y})(C^{-1}_{Y}-C^{-1}_{X})]+\frac{1}{2} tr[(C^{-1}_{Y}-C^{-1}_{X})(\mu_{X}-\mu_{Y})(\mu_{X}-\mu_{Y})^{T}]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">9</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+For GMM models there is no closed form solution and the KL
+divergence needs to be computed using sample theory or one needs to
+use approximations as shown below. The KL2 divergence can be
+obtained by symmetrizing the KL in the following way:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+KL2(X;Y) = KL(X;Y) + KL(Y;X)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="295" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img58.png"
+ ALT="$\displaystyle KL2(X;Y) = KL(X;Y) + KL(Y;X)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">10</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+As previously, if both distributions X and Y are
+considered to be Gaussian one can obtain a closed form solution for
+the KL2 distance as a function of their covariance matrices and
+means.
+
+<P>
+Given any two acoustic segments <!-- MATH
+ $\mathcal{X}_{1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \mathcal{X}_{1}$"></SPAN> and
+<!-- MATH
+ $\mathcal{X}_{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img60.png"
+ ALT="$ \mathcal{X}_{2}$"></SPAN> can be considered as X and Y and therefore obtain
+the distance between them using these metrics.
+
+<P>
+In <A
+ HREF="node147.html#Delacourt_2000">Delacourt and Wellekens (2000)</A>, the KL2 distance is considered as a
+first of two steps for speaker change detection. In
+<A
+ HREF="node147.html#Zochova_2005">Zochova and Radova (2005)</A> KL2 is used again in an improved version
+of the previous algorithm.
+
+<P>
+In <A
+ HREF="node147.html#Hung_2000">Hung et&nbsp;al. (2000)</A> the MFCC acoustic vectors are initially
+processed via a PCA dimensionality reduction for each of the
+contiguous scrolling segments (either two independent PCA or one
+applied to both segments) and then Mahalanobis, KL and
+Bhattacharyya distances are used to determine if there is a change
+point.
+
+<P>
+</LI>
+<LI><SPAN  CLASS="textbf">Divergence Shape Distance</SPAN>(DSD): In a very similar
+fashion as how the Gish distance is defined in
+<A
+ HREF="node147.html#Gish_1991">Gish et&nbsp;al. (1991)</A>, the DSD is derived from the KL divergence of
+two classes with n-variate normal p.d.f.s by eliminating the part
+affected by the mean, as it is easily biased by environment
+conditions. Therefore, it corresponds to the expression
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D(i,j)=\frac{1}{2}tr[(C_{i}-C_{j})(C^{-1}_{j}-C^{-1}_{i})]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="286" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.png"
+ ALT="$\displaystyle D(i,j)=\frac{1}{2}tr[(C_{i}-C_{j})(C^{-1}_{j}-C^{-1}_{i})]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">11</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+In <A
+ HREF="node147.html#Kim_2005">Kim et&nbsp;al. (2005)</A> it is used in a single-step algorithm and
+its results are compared to BIC.
+
+<P>
+The DSD is also used in <A
+ HREF="node147.html#Lu_2002c">Lu and Zhang (2002a)</A> as a first step of a
+two step segmentation system, using BIC in the refinement step. In
+<A
+ HREF="node147.html#Lu_2002b">Lu and Zhang (2002b)</A> some speed-ups are proposed to make the
+previous system real-time.
+
+<P>
+The same authors present in <A
+ HREF="node147.html#Wu_2003a">Wu et&nbsp;al. (2003b)</A>,
+<A
+ HREF="node147.html#Wu_2003b">Wu et&nbsp;al. (2003a)</A> and <A
+ HREF="node147.html#Wu_2003c">Wu et&nbsp;al. (2003c)</A> an improvement to
+the algorithm using DSD and a Universal Background Model (UBM)
+trained from only the data in the processed data. Evaluation of the
+likelihood of the data according to the UBM is used to categorize
+the features in each analysis segment and only the good quality
+speech frames from each one are compared to each other. They use an
+adaptive threshold (adapted from previous values) to determine
+change points.
+
+<P>
+Such work is inspired by <A
+ HREF="node147.html#Beigi_1998">Beigi and Maes (1998)</A> where each segment
+is clustered into one of three classes via k-means and a global
+distance is computed by combining the distances between classes.
+There is no word in this work regarding to which particular distance
+is used between the classes.
+
+<P>
+</LI>
+<LI><SPAN  CLASS="textbf">Cross-BIC</SPAN> (XBIC): This distance was introduced by
+the author in <A
+ HREF="node147.html#Anguera_2004a">Anguera and Hernando (2004b)</A> and
+<A
+ HREF="node147.html#Anguera_2005c">Anguera (2005)</A>, which derives a distance between two
+adjacent segments by cross-likelihood evaluation, inspired by the
+BIC distance by comparison to a distance between HMMs presented in
+<A
+ HREF="node147.html#RabinerDistance_1985">Juang and Rabiner (1985)</A>:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+XBIC(\mathcal{X}_{1};\mathcal{X}_{2}) =
+\mathcal{L}(\mathcal{X}_{1}, \mathcal{M}_{2}(\mu_{2},\sigma_{2}))
++ \mathcal{L}(\mathcal{X}_{2},
+\mathcal{M}_{1}(\mu_{1},\sigma_{1}))
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="440" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img62.png"
+ ALT="$\displaystyle XBIC(\mathcal{X}_{1};\mathcal{X}_{2}) = \mathcal{L}(\mathcal{X}_...
+...gma_{2})) + \mathcal{L}(\mathcal{X}_{2}, \mathcal{M}_{1}(\mu_{1},\sigma_{1}))$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+In <A
+ HREF="node147.html#Malegaonkar_2006">Malegaonkar et&nbsp;al. (2006)</A> they propose a similar metric and
+study different likelihood normalization techniques to make the
+metric more robust, achieving better results than BIC for speaker
+segmentation.
+
+<P>
+</LI>
+<LI><SPAN  CLASS="textbf">Other distances</SPAN>: There are many other distances that
+are able to define a distance between two sets of acoustic
+features or two models. Some of them have been applied to the
+speaker segmentation task.
+
+<P>
+In <A
+ HREF="node147.html#Kamal_2005">Omar et&nbsp;al. (2005)</A> the CuSum distance
+(<A
+ HREF="node147.html#Basseville_1993">Basseville and Nikiforov, 1993</A>), the Kolmogorov-Smirnov test
+(<A
+ HREF="node147.html#Deshayes_1986">Deshayes and Picard, 1986</A>) and BIC are first used independently to find
+putative change points and then fused at likelihood level to
+assert those changes.
+
+<P>
+In (<A
+ HREF="node147.html#Hung_2000">Hung et&nbsp;al., 2000</A>) the Malalanobis and Bhattacharyya distances
+(<A
+ HREF="node147.html#Campbell_1997">Campbell, 1997</A>) are used in comparison to the KL distance for
+change detection.
+
+<P>
+In <A
+ HREF="node147.html#Kemp_2000">Kemp et&nbsp;al. (2000)</A> the entropy loss (<A
+ HREF="node147.html#Lee_1998">Lee, 1998</A>) of
+coding the data in two segments instead of only one is proposed in
+comparison to the Gish and KL distances.
+
+<P>
+<A
+ HREF="node147.html#Mori_2001">Mori and Nakagawa (2001)</A> apply VQ (Vector quantization) techniques to
+create a codebook from one of two adjacent segments and applies a VQ
+distortion measure (<A
+ HREF="node147.html#Nakagawa_1993">Nakagawa and Suzuki, 1993</A>) to compare its similarity
+with the other segment. Results are compared to GLR and BIC
+techniques.
+
+<P>
+In <A
+ HREF="node147.html#Zhou_2000">Zhou and Hansen (2000)</A> and <A
+ HREF="node147.html#Tranter_2004">Tranter and Reynolds (2004)</A> Hotelling's
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img35.png"
+ ALT="$ T^{2}$"></SPAN> distance is proposed, being a multivariate analog of the
+t-distribution. It is applied for the first step of a two-step
+segmentation algorithm. It finds the distance between two segments,
+modeling each one with a single Gaussian where both covariance
+matrices are set to be the same.
+
+<P>
+</LI>
+</UL>
+
+<P>
+All of these metric-based techniques compute a function whose
+maxima/minima need to be compared with a threshold in order to
+determine the suitability of every change point. In many cases the
+threshold is defined empirically given a development set, according
+to a desired performance. Such proceeding leads to a threshold which
+is normally dependent on the data being processed and that needs to
+be redefined every time data of a different nature needs to be
+processed. This problem has been studied within the speaker
+identification community in order to classify speakers in an open
+set speaker identification task (see for example
+<A
+ HREF="node147.html#Campbell_1997">Campbell (1997)</A>). In the area of speaker segmentation and
+clustering some publications propose automatic ways to define
+appropriate thresholds, for example:
+
+<P>
+
+<UL>
+<LI>In <A
+ HREF="node147.html#Lu_2002a">Lu et&nbsp;al. (2002)</A>, <A
+ HREF="node147.html#Lu_2002b">Lu and Zhang (2002b)</A> and
+<A
+ HREF="node147.html#Lu_2002c">Lu and Zhang (2002a)</A> an adaptive threshold is made dependent on the
+previous <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ P$"></SPAN> as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+Th_{i}=\alpha \frac{1}{P}\sum_{p=0}^{P} D(i-p-1,i-p)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="254" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.png"
+ ALT="$\displaystyle Th_{i}=\alpha \frac{1}{P}\sum_{p=0}^{P} D(i-p-1,i-p)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">13</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN> is an amplification coefficient (usually
+set close to 1).
+
+<P>
+The same adaptive threshold is used in <A
+ HREF="node147.html#Wu_2003a">Wu et&nbsp;al. (2003b)</A>,
+<A
+ HREF="node147.html#Wu_2003b">Wu et&nbsp;al. (2003a)</A> and <A
+ HREF="node147.html#Wu_2003c">Wu et&nbsp;al. (2003c)</A> to evaluate the
+difference between the local maxima and the neighboring minima
+distance points.
+
+<P>
+</LI>
+<LI>In <A
+ HREF="node147.html#Rougui_2006">Rougui et&nbsp;al. (2006)</A> a dynamic threshold is defined
+in comparing speaker clusters (rather than speaker segments) where
+a population of clusters is used to decide on the threshold value.
+It is defined as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+Th= \max(hist(d(M_{i}, M_{j}), \forall i \ne j)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="265" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$\displaystyle Th= \max(hist(d(M_{i}, M_{j}), \forall i \ne j)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">14</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img67.png"
+ ALT="$ hist$"></SPAN> denotes the histogram and <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ d()$"></SPAN> is the
+distance between two models, which in that work is defined as a
+modified KL distance to compare two GMM models.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html557"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html553"
+  HREF="node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html547"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html555"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html558"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<B> Up:</B> <A NAME="tex2html554"
+  HREF="node11.html">Speaker Segmentation</A>
+<B> Previous:</B> <A NAME="tex2html548"
+  HREF="node11.html">Speaker Segmentation</A>
+ &nbsp; <B>  <A NAME="tex2html556"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Use of the Estimated Delays for Speaker Diarization</TITLE>
+<META NAME="description" CONTENT="Use of the Estimated Delays for Speaker Diarization">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node86.html">
+<LINK REL="up" HREF="node82.html">
+<LINK REL="next" HREF="node101.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1720"
+  HREF="node101.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1716"
+  HREF="node82.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1712"
+  HREF="node99.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1718"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1721"
+  HREF="node101.html">TDOA Modeling and Features</A>
+<B> Up:</B> <A NAME="tex2html1717"
+  HREF="node82.html">Multichannel Processing for Meetings</A>
+<B> Previous:</B> <A NAME="tex2html1713"
+  HREF="node99.html">Channels Sum and Output</A>
+ &nbsp; <B>  <A NAME="tex2html1719"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00930000000000000000"></A>
+<A NAME="multi_delays"></A>
+<BR>
+Use of the Estimated Delays for Speaker Diarization
+</H1>
+
+<P>
+Performing an acoustic beamforming of the multiple input signals
+has multiple advantages, including the simplicity of the following
+speaker diarization system, which can be reused from the broadcast
+news system as it only needs to compute the output for a single
+acoustic channel. Another advantage is the independence of the
+proposed system to the room layout and number of microphones.
+
+<P>
+By doing an acoustic beamforming there comes a drawback in that
+all spatial information about the speaker location, which is
+carried by the multiple microphones in the room, is lost in the
+process. For this reason when multiple microphones are available
+(and therefore a beamforming is performed) the speaker location
+information is reused for the speaker diarization module. Such
+information comes from the Time Delay of Arrival (TDOA) values
+between each microphone and the reference channel. Although
+extensive research has gone into speaker localization using
+multiple microphones (including the identification of each speaker
+from the others), this is only possible when the topology and
+exact location of all microphones is known in advance. This is not
+considered in the current implementation of the system as multiple
+room topologies are to be processed and, for some of them, the
+microphones locations are not known.
+
+<P>
+Apart from the TDOA values, there are other features that could be
+useful to determine the difference between speakers. One such
+possibility is the relative amplitude between the different
+channels, which should be able to identify whoever is closer to
+what microphone, being therefore an indicator of location of the
+speakers. This metric is though very correlated to the TDOA
+values, suffering from the same problems, and therefore has not
+been considered in this thesis. Further study should be done to
+indicate wether using both information streams could lead to
+further improved speaker diarization.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1722"
+  HREF="node101.html">TDOA Modeling and Features Fusion</A>
+<LI><A NAME="tex2html1723"
+  HREF="node102.html">Automatic Features Weight Estimation</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1720"
+  HREF="node101.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1716"
+  HREF="node82.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1712"
+  HREF="node99.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1718"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1721"
+  HREF="node101.html">TDOA Modeling and Features</A>
+<B> Up:</B> <A NAME="tex2html1717"
+  HREF="node82.html">Multichannel Processing for Meetings</A>
+<B> Previous:</B> <A NAME="tex2html1713"
+  HREF="node99.html">Channels Sum and Output</A>
+ &nbsp; <B>  <A NAME="tex2html1719"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

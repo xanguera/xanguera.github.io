@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Stopping Criterion and System Output</TITLE>
+<META NAME="description" CONTENT="Stopping Criterion and System Output">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node45.html">
+<LINK REL="up" HREF="node42.html">
+<LINK REL="next" HREF="node47.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1002"
+  HREF="node47.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html998"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html994"
+  HREF="node45.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1000"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1003"
+  HREF="node47.html">Analysis of Differences from</A>
+<B> Up:</B> <A NAME="tex2html999"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html995"
+  HREF="node45.html">Clusters Comparison, Pruning and</A>
+ &nbsp; <B>  <A NAME="tex2html1001"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00714000000000000000">
+Stopping Criterion and System Output</A>
+</H2>
+
+<P>
+Introduced in the system presented for the RT04f evaluation, after
+each cluster pair merge a set of three iterations of models
+training and Viterbi segmentation of the data given the models is
+performed. This achieved a small improvement on the RT04f
+evaluation data but proved to be positive and to increase
+robustness in the system.
+
+<P>
+After any cluster pair merges the cluster structure changes, with
+one less cluster in the system. When performing a Viterbi
+segmentation many segment boundaries change and some segments are
+reassigned to different clusters. Such new clusters are used to
+retain the models which are used again to segment the data. After
+three iterations the segmentation has usually converged and a new
+merging step is started.
+
+<P>
+In order to stop the clustering processing at the optimum number
+of clusters, two different alternatives were proposed as stoping
+criterion in the RT04f evaluation system. On one hand, the
+clustering can be performed while there is any positive
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC distance between any two clusters, it is called the
+BIC stopping criterion. On the other hand, the overall likelihood
+of the data given all the acoustic models can be compared between
+iterations and stop the processing when it starts decreasing (and
+revert to the previous segmentation), it is called Viterbi
+stopping criterion.
+
+<P>
+It must be noted that the Viterbi criterion can be applied only
+because the overall system complexity remains constant between
+iterations and therefore overall likelihoods are comparable. Note
+also that the Viterbi stopping criterion is in fact the BIC
+criterion applied over the overall model, comparing a model with M
+clusters and a model with M-1 clusters and stopping when M-1 is
+better than M.
+
+<P>
+Table <A HREF="#bn_stopping">3.3</A> shows the resulting scores when using
+either BIC or Viterbi stopping criterions on the RT04f dataset.
+Although Viterbi stopping criterion achieves an absolute 1.55%
+improvement over BIC, the breakout by shows indicated mixed
+results and overall results are the opposite for other sets.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="2519"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.3:</STRONG>
+<I>Comparison between BIC and Viterbi
+stopping criterions for RT04f data</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Criterion</TD>
+<TD ALIGN="CENTER">%MISS</TD>
+<TD ALIGN="CENTER">%FA</TD>
+<TD ALIGN="CENTER">%SPKR</TD>
+<TD ALIGN="CENTER">%DER</TD>
+</TR>
+<TR><TD ALIGN="LEFT">BIC</TD>
+<TD ALIGN="CENTER">1.5</TD>
+<TD ALIGN="CENTER">1.2</TD>
+<TD ALIGN="CENTER">15.1</TD>
+<TD ALIGN="CENTER">17.91</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Viterbi</TD>
+<TD ALIGN="CENTER">1.5</TD>
+<TD ALIGN="CENTER">1.2</TD>
+<TD ALIGN="CENTER">13.6</TD>
+<TD ALIGN="CENTER">16.36</TD>
+</TR>
+</TABLE>
+ <A NAME="bn_stopping"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The final system for broadcast news uses a BIC stopping criterion
+as it does not require an extra clustering iteration for the
+stopping point to be found.
+
+<P>
+Once the system stops merging, the segmentation is output into a
+file. At this stage all removed non-speech regions are taken into
+account and inserted into the output where appropriate so that the
+output file is synchronous with the reference file used to
+evaluate its performance.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1002"
+  HREF="node47.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html998"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html994"
+  HREF="node45.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1000"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1003"
+  HREF="node47.html">Analysis of Differences from</A>
+<B> Up:</B> <A NAME="tex2html999"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html995"
+  HREF="node45.html">Clusters Comparison, Pruning and</A>
+ &nbsp; <B>  <A NAME="tex2html1001"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

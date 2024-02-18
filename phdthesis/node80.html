@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Frame-Based Purification Implementation</TITLE>
+<META NAME="description" CONTENT="Frame-Based Purification Implementation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node79.html">
+<LINK REL="up" HREF="node77.html">
+<LINK REL="next" HREF="node81.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1450"
+  HREF="node81.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1446"
+  HREF="node77.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1442"
+  HREF="node79.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1448"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1451"
+  HREF="node81.html">Segment-Level Cluster Purification</A>
+<B> Up:</B> <A NAME="tex2html1447"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Previous:</B> <A NAME="tex2html1443"
+  HREF="node79.html">Frame-Based Cluster Purification Metrics</A>
+ &nbsp; <B>  <A NAME="tex2html1449"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00831300000000000000"></A>
+<A NAME="frame_pur_implement"></A>
+<BR>
+Frame-Based Purification Implementation
+</H3>
+
+<P>
+When running the Speaker Diarization algorithm, each cluster is
+modeled with a variable number of Gaussian mixtures according to
+the amount of data it contains. It is necessary to analyze at what
+cluster complexity this behavior is present and the presented
+metrics can be used. In figure&nbsp;<A HREF="#multiple_gauss">4.12</A>, the
+histograms of speech and non-speech (according to the reference
+file) are shown of metric 1 evaluated using models ranging from 1
+to 8 mixtures. All model complexities have been trained with the
+same data and used to evaluate metric 1 on all the meeting in the
+same way as in figure <A HREF="node78.html#histogram">4.9</A>.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="multiple_gauss"></A><A NAME="4823"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.12:</STRONG>
+<I>Speech/non-speech histograms for
+different possible model complexities</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="544" HEIGHT="273" BORDER="0"
+ SRC="img346.png"
+ ALT="\begin{figure*}
+\centerline{\epsfig{figure=figures/pur_histograms,width=120mm,
+height=60mm}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+It is seen that only the case of 1 Gaussian mixture shows a bigger
+overlap between the speech and non-speech histograms, while after
+3 mixtures all plots seem identical (in fact, running the same
+experiments from 1 to 20 mixtures/model gives identical results
+from 9 to 20). The frame-level purification algorithm is therefore
+applied whenever the number of Gaussian mixtures is greater than
+one.
+
+<P>
+The algorithm is used when gathering the data to compare two
+clusters using the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC metric in the following way:
+
+<P>
+
+<OL>
+<LI>Retrieve all frames assigned to each of two clusters and use
+either metric for each frame in both clusters.
+
+<P>
+</LI>
+<LI>If <SPAN CLASS="MATH"><IMG
+ WIDTH="59" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img347.png"
+ ALT="$ M_{i}&gt;1$"></SPAN>, eliminate the <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ P$"></SPAN>% of frames in each cluster
+with the highest computed metric, where <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ P$"></SPAN> is a value to be
+optimized according to the data.
+
+<P>
+</LI>
+<LI>Train two new models with the remaining data and use them
+for computing the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC metric.
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1450"
+  HREF="node81.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1446"
+  HREF="node77.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1442"
+  HREF="node79.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1448"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1451"
+  HREF="node81.html">Segment-Level Cluster Purification</A>
+<B> Up:</B> <A NAME="tex2html1447"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Previous:</B> <A NAME="tex2html1443"
+  HREF="node79.html">Frame-Based Cluster Purification Metrics</A>
+ &nbsp; <B>  <A NAME="tex2html1449"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

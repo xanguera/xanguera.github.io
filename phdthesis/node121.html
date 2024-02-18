@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Number of Initial Clusters and Cluster Complexity selection</TITLE>
+<META NAME="description" CONTENT="Number of Initial Clusters and Cluster Complexity selection">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node122.html">
+<LINK REL="previous" HREF="node120.html">
+<LINK REL="up" HREF="node120.html">
+<LINK REL="next" HREF="node122.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2015"
+  HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2011"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2005"
+  HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2013"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2016"
+  HREF="node122.html">Cross-Validation EM Training</A>
+<B> Up:</B> <A NAME="tex2html2012"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2006"
+  HREF="node120.html">Individual Algorithms Performance</A>
+ &nbsp; <B>  <A NAME="tex2html2014"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001051100000000000000">
+Number of Initial Clusters and Cluster Complexity
+selection</A>
+</H3>
+
+<P>
+As pointed out during the system description chapters, the speaker
+diarization system via agglomerative clustering in the way that it
+is implemented in this thesis uses very small GMM models trained
+with small amounts of speaker data. These allow the system to be
+computationally faster than systems based on UBM adaptation
+techniques (like <A
+ HREF="node147.html#Zhu_2006">Zhu et&nbsp;al. (2006)</A>) but it requires of a more
+accurate selection of the number of initial clusters in the
+system, the complexity of the cluster models,  and how each model
+is trained so that data is equally well represented in each model
+and comparisons between them yield better decisions in the
+agglomerative process.
+
+<P>
+For both the number of initial clusters to be used in the system
+and for the complexity of the cluster models the Cluster
+Complexity Ration (CCR) is defined as the parameter to be
+optimized, as described in section <A HREF="node73.html#complex_select">4.2.2</A>. In the
+experiments performed for both algorithms an initial analysis
+studied the effect of such parameter in the final DER when using
+either algorithm alone compared to the baseline system. As both
+algorithms use the same parameter, a join experiment using both
+algorithms was used to tune the optimum CCR value according to the
+average DER between the three systems considered in the
+experiments.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="ccr_complex"></A><A NAME="7514"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.7:</STRONG>
+<I>DER for the model complexity selection algorithm
+using different CCR values</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="612" HEIGHT="256" BORDER="0"
+ SRC="img493.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/ccr_complex,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Figure <A HREF="#ccr_complex">6.7</A> shows the DER for the development set
+data using the three system implementations for model complexity
+selection. While SDM and MDM systems obtain a similar behavior on
+the different CCR values, the TDOA-MDM system tends to obtain the
+best scores for the lower set of evaluated CCR. Given that only
+the acoustic feature models are affected by the algorithm (not the
+TDOA values) this indicates that when using the TDOA values the
+system becomes more robust to complexity selection errors, given
+that bigger models (obtained by smaller CCR values) do not overfit
+as much to the data than when using acoustics alone.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="ccr_init"></A><A NAME="7516"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.8:</STRONG>
+<I>DER for the initial number of clusters algorithm
+using different CCR values</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="445" HEIGHT="243" BORDER="0"
+ SRC="img494.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/ccr_init,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The same behavior is observed when evaluating the number of
+initial clusters algorithm in figure <A HREF="#ccr_init">6.8</A>. When using
+the TDOA-MDM system the DER is very stable from CCR=5 to 10. Both
+algorithms show also an increase in DER when the CCR values are
+higher that 10, which indicates that models are too small to well
+represent the speaker data and too few models are initially
+created to allow the system to distribute the data appropriately
+among the speakers.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="ccr_complex_init"></A><A NAME="7518"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.9:</STRONG>
+<I>DER for the combination of complexity selection +
+initial number of clusters using different CCR values</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="450" HEIGHT="248" BORDER="0"
+ SRC="img495.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/ccr_init_complex,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In both algorithms the CCR value that obtains the optimum average
+DER is within the range of CCR=6 to 8. In order to use a single
+CCR value both algorithms are combined and the DER is shown in
+figure <A HREF="#ccr_complex_init">6.9</A>. In it the average DER between the
+three systems when using complexity selection or initial number of
+clusters is compared to the average DER when using both combined.
+It becomes very clear the existence of an average minimum value at
+CCR = 7.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7519"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.13:</STRONG>
+<I>DER for the development and evaluation sets for
+models complexity selection and initial number of clusters
+algorithms</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER">optimum CCR</TD>
+<TD ALIGN="CENTER">DER Devel</TD>
+<TD ALIGN="CENTER">DER Test</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline system</TD>
+<TD ALIGN="CENTER">n/a</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Base + complexity select.</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">18.19%</TD>
+<TD ALIGN="CENTER">23.2%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Base + number init clusters</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">18.19%</TD>
+<TD ALIGN="CENTER">22.24%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Base + complex + init number</TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">17.39&amp;</TD>
+<TD ALIGN="CENTER">23.18%</TD>
+</TR>
+</TABLE>
+ <A NAME="table_complex_init"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#table_complex_init">6.13</A> summarizes the results shown in the
+figures for the development set and shows the evaluation set
+scores obtained using the optimum parameters for each algorithm.
+While combining the two algorithms using a new CCR optimum value
+gives an improvement versus either development results, in the
+evaluation set the combined score is very similar to the worse of
+the individual algorithms. In any case, an improvement of 7.05%
+relative is shown in the development set and only a 0.2% relative
+in the evaluation set.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2015"
+  HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2011"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2005"
+  HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2013"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2016"
+  HREF="node122.html">Cross-Validation EM Training</A>
+<B> Up:</B> <A NAME="tex2html2012"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2006"
+  HREF="node120.html">Individual Algorithms Performance</A>
+ &nbsp; <B>  <A NAME="tex2html2014"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Average Speaker Turn Duration</TITLE>
+<META NAME="description" CONTENT="Average Speaker Turn Duration">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node53.html">
+<LINK REL="previous" HREF="node51.html">
+<LINK REL="up" HREF="node48.html">
+<LINK REL="next" HREF="node53.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1086"
+  HREF="node53.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1082"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1076"
+  HREF="node51.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1084"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1087"
+  HREF="node53.html">Meetings Domain Overlap Regions</A>
+<B> Up:</B> <A NAME="tex2html1083"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1077"
+  HREF="node51.html">Average Number of Speakers</A>
+ &nbsp; <B>  <A NAME="tex2html1085"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00721400000000000000">
+Average Speaker Turn Duration</A>
+</H3>
+
+<P>
+Given the HMM acoustic modeling presented in the previous section,
+a minimum duration is applied to the segment length when
+performing the acoustic decoding of the data using the Viterbi
+algorithm. Such segments constitute the speaker turns and
+therefore it is important to analyze how long in average these are
+in the different subdomains, in order to adapt (if necessary) this
+parameter of the system to allow for smaller/larger turns.
+
+<P>
+In Table <A HREF="#average_turn_dur">3.12</A> the average, maximum and standard
+deviation of the speaker turn duration is given both for
+conference room meetings data and for the lecture room data. In
+the case of the conference room data, both the manual
+transcriptions and the forced-alignments are analyzed. When
+analyzing this property, two speaker turns from the same speaker
+but separated with a silence are considered different turns, and
+their durations counted separately.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3016"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.12:</STRONG>
+<I>Speaker turn durations for RT04f
+and RT06s</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Domain</TD>
+<TD ALIGN="CENTER">Average duration</TD>
+<TD ALIGN="CENTER">max. duration</TD>
+<TD ALIGN="CENTER">std duration</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Meetings conference hand alignment</TD>
+<TD ALIGN="CENTER">3.96</TD>
+<TD ALIGN="CENTER">85.92</TD>
+<TD ALIGN="CENTER">5.74</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Meetings conference forced alignment</TD>
+<TD ALIGN="CENTER">1.89</TD>
+<TD ALIGN="CENTER">14.64</TD>
+<TD ALIGN="CENTER">1.90</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Broadcast news</TD>
+<TD ALIGN="CENTER">8.61</TD>
+<TD ALIGN="CENTER">107.54</TD>
+<TD ALIGN="CENTER">10.08</TD>
+</TR>
+</TABLE>
+ <A NAME="average_turn_dur"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+It is clear that in the lecture room data the speaker turns are in
+average of much greater length, given that many times a lecturer
+speaker for elongated amounts of time. In some cases though it was
+seen that the transcriptions contained errors when small silence
+segments needed to be transcribed as such and were included within
+the speaker segment adjacent to it. The maximum speaker turn
+length for these is of 1:45 minutes approx.
+
+<P>
+On the conference room data there is a difference between the two
+transcriptions sources. This is mainly due to the discrepancies on
+the transcription of small silences. According to NIST rules for
+the evaluations, any silence segment of length greater than 0.3
+seconds needs to be considered as such. This can be implemented
+efficiently in the forced-alignment transcriptions but it is more
+difficult to be followed by the human transcribers, leading to
+longer segments being annotated.
+
+<P>
+To further illustrate the distribution of the speaker turn
+durations, Figure <A HREF="#turn_duration_hist">3.3</A> shows the histogram of
+all three analyzed cases, showing the durations histogram of the
+first 10s, with a resolution of 0.1 second. It can be observed
+that both transcriptions for the meetings conference room
+recordings have a similar shape, being very pointy around 0.3s,
+while the broadcast news shows reflect a broader shape. Such a
+small peak duration in the conference data has a reason to be in
+that overlap segmentes were also used when computing the speaker
+turn duration. These segments occur when two or more people are
+speaking at the same time and can just refer to people uttering
+affirmative/negative responses or short sentences.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="turn_duration_hist"></A><A NAME="3018"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.3:</STRONG>
+<I>Speaker turn duration histograms</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="544" HEIGHT="307" BORDER="0"
+ SRC="img190.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/turn_duration,width=120mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In overall, the speaker turn length of meetings is much smaller
+than the average in broadcast news, which is modeled by the system
+with a minimum duration of 3 seconds. Such duration would be
+enough if the meetings system was evaluated using the
+hand-alignments, but needs to be reduced when evaluated with
+forced-alignments.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1086"
+  HREF="node53.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1082"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1076"
+  HREF="node51.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1084"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1087"
+  HREF="node53.html">Meetings Domain Overlap Regions</A>
+<B> Up:</B> <A NAME="tex2html1083"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1077"
+  HREF="node51.html">Average Number of Speakers</A>
+ &nbsp; <B>  <A NAME="tex2html1085"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

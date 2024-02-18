@@ -1,0 +1,636 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Dual-Pass Viterbi Post-Processing</TITLE>
+<META NAME="description" CONTENT="Dual-Pass Viterbi Post-Processing">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node94.html">
+<LINK REL="up" HREF="node93.html">
+<LINK REL="next" HREF="node96.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1663"
+  HREF="node96.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1659"
+  HREF="node93.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1655"
+  HREF="node94.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1661"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1664"
+  HREF="node96.html">Output Signal Generation</A>
+<B> Up:</B> <A NAME="tex2html1660"
+  HREF="node93.html">TDOA Values Selection</A>
+<B> Previous:</B> <A NAME="tex2html1656"
+  HREF="node94.html">TDOA Post-Processing</A>
+ &nbsp; <B>  <A NAME="tex2html1662"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00923200000000000000"></A>
+<A NAME="dual_pass_Viterbi"></A>
+<BR>
+Dual-Pass Viterbi Post-Processing
+</H3>
+
+<P>
+The second post-processing technique applied to the computed
+delays is used to select the appropriate delay to be used among
+the M-best GCC-PHAT values are computed at each step. As pointed
+out previously, the aim here is to maximize speaker continuity
+avoiding constant delay switching in the case of multiple
+speakers, and to filter out undesired steering towards spurious
+noises present in the room.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="delaysum"></A><A NAME="5649"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.5:</STRONG>
+<I>Filter and Sum double-Viterbi delays
+selection</I></CAPTION>
+<TR><TD></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+As seen in figure <A HREF="#delaysum">5.5</A> a 2-level Viterbi decoding of the
+M-best TDOA computed was applied. The first level consists of a
+local individual-channel decoding where the 2-best delays are
+chosen from the M-best delays computed for that channel at every
+segment. The second level of decoding considers all combinations
+of such 2-best across all channels and selects the final single
+TDOA that ar more consistent across all. For each step one needs
+to define the topology of the Viterbi algorithm and the emission
+and transition probabilities to be used. The selection of a 2-step
+algorithm is due in part to computational constraints as an
+exhaustive search over all possible combinations of all M-best
+values for all channels would easily become computationally
+prohibitive.
+
+<P>
+Both steps choose the most probable (and second most probable)
+sequence of hidden states where each item is related to the TDOA
+values computed for one segment. In the first step the set of
+possible states at each instant is given by the computed M-best
+values. Each possible state has an emission probability for each
+processed segment, equal to the GCC-PHAT value for each delay
+(<!-- MATH
+ $P_1^{m}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img396.png"
+ ALT="$ P_1^{m}[c]$"></SPAN>, where <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.png"
+ ALT="$ m$"></SPAN> is the m-best value being considered and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN> is the current segment).
+
+<P>
+The transition probability between two states is taken as the
+inverse proportional to the distance between its delays. Given two
+nodes, <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ j$"></SPAN> at segments <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img397.png"
+ ALT="$ c-1$"></SPAN>, respectively, the
+transition probability between them is
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="transitions_1"></A><!-- MATH
+ \begin{equation}
+Tr_1(i,j)[c] = \frac{\mbox{max\_diff}(i,j) - |\mbox{TDOA}_{i}[c] -
+\mbox{TDOA}_{j}[c-1]|}{ \mbox{max\_diff}(i,j) }
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="444" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img398.png"
+ ALT="$\displaystyle Tr_1(i,j)[c] = \frac{\mbox{max\_diff}(i,j) - \vert\mbox{TDOA}_{i}[c] - \mbox{TDOA}_{j}[c-1]\vert}{ \mbox{max\_diff}(i,j) }$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">13</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $\mbox{max\_diff}(i,j) = max(|\mbox{TDOA}_{i}[c] -
+\mbox{TDOA}_{j}[c-1]|, \forall i,j)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="426" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img402.png"
+ ALT="$\mbox{max\_diff}(i,j) = max(\vert\mbox{TDOA}_{i}[c] -
+\mbox{TDOA}_{j}[c-1]\vert, \forall i,j)$"></SPAN>. This way all transition
+probabilities as locally bounded between 0 and 1, assigning a 0
+probability to the furthest away delays pair.
+
+<P>
+This first Viterbi level aims at finding the best two TDOA values
+that represent the meeting's speakers at any given time. By doing
+so it is considered that the system will be able to choose the
+most appropriate/stable TDOA for that segment and a secondary
+delay, which can come from interfering events, other speakers or
+the same speaker's echoes. Such TDOA values are any two (not
+allowing the paths to collapse) of the M-best computed previously
+by the system, and are chosen exclusively based on their distance
+to surrounding TDOA values and their GCC-PHAT values.
+
+<P>
+The second level Viterbi decoding finds the best possible path
+given the set of hidden states generated by all possible
+combinations of delays from the 2-best delays obtained earlier for
+each channel. Given the vector of dimension <SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img403.png"
+ ALT="$ N-1$"></SPAN> (same as the
+number of channels for which TDOA values are computed) describing
+for each channel which TDOA value is being used <!-- MATH
+ $\textbf{g}^{i}[c]
+= [g^{i}_{1}[c] \dots g^{i}_{N-1}[c]]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="185" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img404.png"
+ ALT="$ \textbf{g}^{i}[c]
+= [g^{i}_{1}[c] \dots g^{i}_{N-1}[c]]$"></SPAN> with each <!-- MATH
+ $g^{i}_{n}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img405.png"
+ ALT="$ g^{i}_{n}[c]$"></SPAN>
+indicating the <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN> position among the 2-best list of TDOA values
+considered for channel <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> at segment <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN>. Given also that any
+given <!-- MATH
+ $\mbox{xcorr\_phat}_{n}^{g^[i]_{n}[c]}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="144" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img407.png"
+ ALT="$\mbox{xcorr\_phat}_{n}^{g^[i]_{n}[c]}[c]$"></SPAN> value (the
+GCC-PHAT value associated to the <!-- MATH
+ $g^[i]_{n}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="55" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img408.png"
+ ALT="$ g^[i]_{n}[c]$"></SPAN>-best TDOA value
+for channel <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> at segment <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN>) will take values <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img409.png"
+ ALT="$ [0, 1]$"></SPAN>, the
+emission probabilities are considered as the product of the
+individual GCC-PHAT values of each considered TDOA combination
+<!-- MATH
+ $\textbf{g}^{i}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img410.png"
+ ALT="$ \textbf{g}^{i}[c]$"></SPAN> at segment <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN> as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+P_2(i)[c] = \sum_{n=1}^{N}
+log(\mbox{xcorr\_phat}_{n}^{g^{i}_{n}[c]}[c])
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="141" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img411.png"
+ ALT="$\displaystyle P_2(i)[c] = \sum_{n=1}^{N} log($">xcorr<IMG
+ WIDTH="57" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img412.png"
+ ALT="$\displaystyle _{n}^{g^{i}_{n}[c]}[c])$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">14</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+which can be considered as the extension of <SPAN CLASS="MATH"><IMG
+ WIDTH="60" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img413.png"
+ ALT="$ P_1(i)[c]$"></SPAN>
+to the case of multiple TDOA values where we consider that the
+different dimensions are independent from each other (interpreted
+as independence of the TDOA values obtained for each channel at
+segment <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN>, not their relationship with each other in space along
+time).
+
+<P>
+On the other hand, the transition probabilities are also computed
+in a similar way as in the first step, but in this case they
+introduce a new dimension to the computation, as now a vector of
+TDOA values needs to be taken into accound. As it was done with
+the emission probabilities, the total distance is considered as
+the sum of the individual distances from each element. Given
+<!-- MATH
+ $\mbox{TDOA}(g^{i}_{n},n)[c]$
+ -->
+<SPAN CLASS="MATH">TDOA<IMG
+ WIDTH="71" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img414.png"
+ ALT="$ (g^{i}_{n},n)[c]$"></SPAN> as the TDOA value for the
+<!-- MATH
+ $g^{i}_{n}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img405.png"
+ ALT="$ g^{i}_{n}[c]$"></SPAN>-best element in channel <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> for segment <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN>, the
+transition probability between TDOA position vectors <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ j$"></SPAN>
+is determined by
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+Tr_{2}(i,j)[c] = \sum_{n=1}^{N} \frac{\mbox{max\_diff}(i,j,n) -
+|\mbox{TDOA}(g^{i}_{n},n)[c] - \mbox{TDOA}(g^{j}_{n},n)[c]|}{
+\mbox{max\_diff}(i,j,n) }
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="546" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img415.png"
+ ALT="$\displaystyle Tr_{2}(i,j)[c] = \sum_{n=1}^{N} \frac{\mbox{max\_diff}(i,j,n) - ...
+...g^{i}_{n},n)[c] - \mbox{TDOA}(g^{j}_{n},n)[c]\vert}{ \mbox{max\_diff}(i,j,n) }$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">15</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where now <!-- MATH
+ $\mbox{max\_diff}(i,j,n) =
+max(|\mbox{TDOA}(g^{i}_{n},n)[c] - \mbox{TDOA}(g^{j}_{n},n)[c]|,
+\forall i,j,n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="516" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img419.png"
+ ALT="$\mbox{max\_diff}(i,j,n) =
+max(\vert\mbox{TDOA}(g^{i}_{n},n)[c] - \mbox{TDOA}(g^{j}_{n},n)[c]\vert,
+\forall i,j,n)$"></SPAN>.
+
+<P>
+This second level of processing considers the relationship in
+space present between all channels, as they are presumably
+steering to the same point in space. By performing a decoding over
+time it selects the TDOA vector elements according to their
+distance to the vectors in its surroundings.
+
+<P>
+In both cases the transition probabilities are weighted to
+emphasize its effect in the decision of the best path in the same
+way as in the ASR systems (by product in the log domain). It will
+be shown in the experiments section that a value of weight 25 for
+both cases is what optimized the diarization error given the
+development set.
+
+<P>
+To illustrate how the two-step Viterbi decoding works on the TDOA
+values let us consider figure <A HREF="#double_Viterbi">5.6</A>. It shows a
+situation where four microphones are used in a room where two
+speakers are talking to each other, with some overlap speech.
+There is also one or more noisy events of short duration and noise
+room in general, both represented by a ``noise'' source. Given one
+of the microphones as a reference, the delay to each of the other
+microphone is computed, resulting in delays from speech coming
+from either speaker (<!-- MATH
+ $D(s[1,2], m)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="99" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img420.png"
+ ALT="$ D(s[1,2], m)$"></SPAN>) or from any of the noisy
+events (<SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img421.png"
+ ALT="$ D(nx, m)$"></SPAN>) with <!-- MATH
+ $m=1 \ldots 3$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="87" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img422.png"
+ ALT="$ m=1 \ldots 3$"></SPAN>.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="double_Viterbi"></A><A NAME="5666"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.6:</STRONG>
+<I>Two-step TDOA Viterbi decoding example, step 1</I></CAPTION>
+<TR><TD></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="Viterbi_pass1"></A><A NAME="5673"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.7:</STRONG>
+<I>Two-step TDOA Viterbi decoding example, step 1 for
+an individual channel</I></CAPTION>
+<TR><TD></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+For a particular segment the M-best TDOA values from the GCC-PHAT
+cross correlation function are computed. The first Viterbi step
+determines for each individual channel the 2-best paths across
+time for all the meeting. Figure <A HREF="#Viterbi_pass1">5.7</A> shows a
+possible Viterbi trellis for the first step for channel 1, where
+each column represents the M-best TDOA values computed for one
+segment. In this example four segments were considered where two
+speakers are overlapping each other, and there is also some
+eventual noisy events. For any given segment the Viterbi algorithm
+finds the two-best paths (forced not to overlap with each other)
+according to their distance of the delays to the chosen delays in
+the neighboring segments (transition probability) and to their
+cross-correlation values (emission probability). The resulting
+paths could be:
+
+<P>
+
+<OL>
+<LI>best path: <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img425.png"
+ ALT="$ D_{s1,1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img426.png"
+ ALT="$ D_{s2,1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img425.png"
+ ALT="$ D_{s1,1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img425.png"
+ ALT="$ D_{s1,1}$"></SPAN>
+
+<P>
+</LI>
+<LI>second path: <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img426.png"
+ ALT="$ D_{s2,1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img425.png"
+ ALT="$ D_{s1,1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img426.png"
+ ALT="$ D_{s2,1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img426.png"
+ ALT="$ D_{s2,1}$"></SPAN>
+</LI>
+</OL>
+
+<P>
+The third computed segment contains a noisy event that is well
+detected by channel 1 and the reference channel, and therefore it
+appears as the first in the M-best computed TDOA list. The effect
+of the Viterbi decoding can avoid selecting this event as its
+delay differs too much from the best delays in its surroundings
+and both speakers also appear with high correlation. On the other
+hand, the first and second segments contain the delays referring
+to the true speakers in the first and second-best positions,
+although alternated in both segments. This example illustrates a
+possible case where they cannot be correctly ordered and therefore
+there is a quick speaker change in the first and second-best delay
+paths in that segment.
+
+<P>
+The second step Viterbi decoding is intended to add an extra layer
+of robustness for the selection of the appropriate delays by
+considering all the possible delay combinations from all channels.
+Figure <A HREF="#Viterbi_pass2">5.8</A> shows the trellis formed by considering
+for each segment (in columns) all possible combinations of m-best
+delays (<!-- MATH
+ $\textbf{g}_{n}^{i}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img427.png"
+ ALT="$ \textbf{g}_{n}^{i}[c]$"></SPAN>) for the 3 channels case.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="Viterbi_pass2"></A><A NAME="5675"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.8:</STRONG>
+<I>Two-step TDOA Viterbi decoding example, step 2</I></CAPTION>
+<TR><TD></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In this step only the best path is selected according to the
+overall combined distances and correlation values among all
+possible combinations. In this example the algorithm is able to
+solve the order mismatch from the previous step, selecting the
+delays relative to speaker 1 for all the segments. The current
+computes the 2-best path also in this step and output a signal
+steering at the two sets of TDOA values, although the diarization
+algorithm only use the first of them. In order to take advantage
+of the second (or more) delays steering at the overlap speakers in
+the meeting it is necessary to achieve some more progress in
+reliable speaker overlap detection algorithms, which remains as
+future work at the end of this thesis.
+
+<P>
+In the implementation of the second level Viterbi decoding a big
+burden in computation time could be faced depending on the amount
+of microphones to be processed. In the second level Viterbi the
+amount of possible states for each instant <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ k$"></SPAN> is defined by
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+S[k] = M_{2}^{N-1}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="108" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img429.png"
+ ALT="$\displaystyle S[k] = M_{2}^{N-1}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">16</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$ M_{2}$"></SPAN> is the number of best TDOA values
+extracted from the M-best values in the first Viterbi level (in
+this implementation <SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img430.png"
+ ALT="$ M_{2}=2$"></SPAN>). As the amount of states grows
+exponentially when increasing <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img103.png"
+ ALT="$ D$"></SPAN>, it becomes computationally
+prohibitive for meetings with 16 or more microphones available
+(for <SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img431.png"
+ ALT="$ N=17$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img430.png"
+ ALT="$ M_{2}=2$"></SPAN>, <!-- MATH
+ $S[k]=65536$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="102" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img432.png"
+ ALT="$ S[k]=65536$"></SPAN>). For a feasible
+implementation, when <SPAN CLASS="MATH"><IMG
+ WIDTH="52" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img433.png"
+ ALT="$ N&gt;5$"></SPAN> the pool of microphones are split is
+blocks of 5 and the Viterbi is computed in each block
+independently. This is a suboptimal solution as not all
+microphones are used to optimize the delays and therefore it is
+not certain that all blocks will converge to the same solution. It
+is though much faster in processing time and it was not observed
+to degrade the overall performance compared to using all
+microphones together.
+
+<P>
+In conclusion, this newly-introduced double-Viterbi technique aims
+at finding a good tradeoff between reliability (cross-correlation)
+and stability (distance between contiguous delays). The second is
+cherished the most as the aim is to obtain an optimally improved
+signal, avoiding quick changes of the beamforming between acoustic
+events.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1663"
+  HREF="node96.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1659"
+  HREF="node93.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1655"
+  HREF="node94.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1661"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1664"
+  HREF="node96.html">Output Signal Generation</A>
+<B> Up:</B> <A NAME="tex2html1660"
+  HREF="node93.html">TDOA Values Selection</A>
+<B> Previous:</B> <A NAME="tex2html1656"
+  HREF="node94.html">TDOA Post-Processing</A>
+ &nbsp; <B>  <A NAME="tex2html1662"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

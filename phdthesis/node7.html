@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Definition of the Thesis Objectives</TITLE>
+<META NAME="description" CONTENT="Definition of the Thesis Objectives">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html463"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html459"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html453"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html461"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html464"
+  HREF="node8.html">Outline of the Thesis</A>
+<B> Up:</B> <A NAME="tex2html460"
+  HREF="node5.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html454"
+  HREF="node6.html">Context and Motivations of</A>
+ &nbsp; <B>  <A NAME="tex2html462"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00520000000000000000"></A>
+<A NAME="intro_objectives"></A>
+<BR>
+Definition of the Thesis Objectives
+</H1>
+
+<P>
+The main objective of this thesis is the development of a robust
+speaker diarization system towards its use in the meetings domain.
+In order to fully accomplish this, a set of concrete objectives is
+established (without any order of importance):
+
+<P>
+
+<UL>
+<LI>The speaker diarization system is to be built using the
+expertise accumulated at ICSI in the research done in broadcast
+news. First, the differences between broadcast news and meetings
+need to be analyzed. Then the mono-channel speaker diarization
+system used in broadcast news is to be adapted to the meetings
+domain by first addressing the points where both domains differ,
+and then improving current algorithms to improve its performance.
+
+<P>
+</LI>
+<LI>The resulting system is to be as independent as possible to
+any room distribution, number of microphones and placement, and
+kind of meeting. It should also be easy to be adapted to new
+domains with as little development time as possible. Within the
+meetings domain, algorithms should be able to obtain automatically
+all necessary parameters in each meeting and algorithms should
+work for all possible meeting conditions with acceptable
+performance. When porting the system to new domains it should
+perform well from the start.
+
+<P>
+</LI>
+<LI>The algorithms implemented for the meetings system should
+reduce ``<SPAN  CLASS="textit">show flakiness</SPAN>'' (<A
+ HREF="node147.html#Mirghafori_2006">Mirghafori and Wooters, 2006</A>), which
+accounts for sudden changes to the system performance, within the
+same set, upon slight modification of its parameter settings. It
+should also improve within-sets <SPAN  CLASS="textit">robustness</SPAN>, with similar
+results when running the same system in different data than the
+development. This can be achieved by research in system parameters
+that focus on the particular characteristics of the individual audio
+excerpts instead of the whole set, thus becoming more robust to
+changes in the used set. These parameters need to have a flat
+performance response around the optimum to allow for small changes
+not to dramatically affect the outcome.
+
+<P>
+</LI>
+<LI>In a similar fashion, the system is also aimed at being
+train-free (no external data is used to train acoustic models prior
+to the test). This allows both a quick adaptation to domains and a
+robust performance when new data within the same domain has a
+different acoustic content than the development data. This was
+already a goal of the broadcast news system, where only the
+speech/non-speech detector needed to be trained. The proposed system
+aims at replacing this module by a train-free alternative and to
+implement all new algorithms and improvements to be independent of
+any data outside of the test set for models training. Development
+data will though be used to set the system parameters.
+
+<P>
+</LI>
+<LI>The system is developed for participation in the NIST Rich
+Transcription (RT) evaluations for 2005 and 2006 in order to
+benchmark the performance of the technology and algorithms
+implemented in comparison to other systems given the same data.
+All decisions taken and parameter settings are in tune with the
+existing rules in these evaluations, which intend to measure
+general system performance, without emphasis in any particular
+application.
+
+<P>
+</LI>
+<LI>Last but not least, emphasis is put at the publication of
+results and improvements made to the system to allow for other
+research groups to know the research progress made at ICSI in
+terms of speaker diarization. Furthermore, efforts are made into
+making the system available for people to use it, either entirely
+or some of its modules, and both internally or by external users,
+giving support when possible.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html463"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html459"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html453"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html461"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html464"
+  HREF="node8.html">Outline of the Thesis</A>
+<B> Up:</B> <A NAME="tex2html460"
+  HREF="node5.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html454"
+  HREF="node6.html">Context and Motivations of</A>
+ &nbsp; <B>  <A NAME="tex2html462"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

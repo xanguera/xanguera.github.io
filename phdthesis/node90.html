@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Overall Channels Weighting Factor</TITLE>
+<META NAME="description" CONTENT="Overall Channels Weighting Factor">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node91.html">
+<LINK REL="previous" HREF="node89.html">
+<LINK REL="up" HREF="node88.html">
+<LINK REL="next" HREF="node91.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1605"
+  HREF="node91.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1601"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1595"
+  HREF="node89.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1603"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1606"
+  HREF="node91.html">ICSI Meetings Skew Estimation</A>
+<B> Up:</B> <A NAME="tex2html1602"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1596"
+  HREF="node89.html">Reference Channel Computation</A>
+ &nbsp; <B>  <A NAME="tex2html1604"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00922200000000000000"></A>
+<A NAME="overall_weighting"></A>
+<BR>
+Overall Channels Weighting Factor
+</H3>
+
+<P>
+The input signal to the filter-and-sum module is typically a
+16bit, 16KHz signal, and the output being treated by the
+diarization system is of the same characteristics. By using 16
+bits it can represent values from -32767 to +32768 in a single
+channel in steps of 1 (resolution of the input). Such resolution
+gets modified when performing the weighted sum of <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN> signals as
+the resolution becomes smaller than 1 (the range of possible
+values of the summed signal depends of the weights of the
+individual signals, it would be <!-- MATH
+ $\frac{1}{N}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img377.png"
+ ALT="$ \frac{1}{N}$"></SPAN> for equal weighing).
+Although a higher resolution is available after the sum, the
+signal needs to be quantized to steps of unit value to fit it into
+the 16bit output channel, therefore getting a quantization error
+at each frame.
+
+<P>
+As the use of a signal output using more bits (like using floating
+points) creates an inconsistency with the standard signals used in
+the system and therefore was not considered as feasible, two
+simple modifications were done in order to minimize the amount of
+quantization error whenever possible. These are:
+
+<P>
+
+<UL>
+<LI>The input signals usually does not cover all the dynamic
+range used by the 16 bits available (or only a few instants in the
+meeting do). A scaling factor was defined for all signals so that
+the sum of them will have a dynamic range closer to the available
+output, minimizing the quantization errors of the output signal.
+
+<P>
+There are several alternatives in signal processing to find
+maximum values of a signal in order to normalize it. Some
+alternatives are to compute the absolute maximum amplitude over
+all the show, or the Root Mean Square (RMS) value, or other
+variations of it involving a histogram of the signal (for example,
+taking the maximum as the 80% of such histogram).
+
+<P>
+It was observed that the processed signal contains very low energy
+areas (silence regions) with short duration in average, and very
+high energy areas (impulsive noises, like door slams, or common
+laughs or discussions), with even shorter duration. By using the
+absolute maximum or RMS it would saturate the normalizing factor
+to the highest possible value or bias it according to the amount
+of silence in the show. A windowed maximum averaging was
+implemented instead in blocks of T=10 seconds to ensure that every
+block is highly probable to contain some speech. In each block the
+maximum value is found and averaged over all the recording. Such
+average is used to obtain the overall weighting factor for the
+signal in terms of the average maximum of each of the channels as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+W_{all} = \frac{1}{N} \sum_{n=1}^{N} \frac{1}{M} \sum_{m=1}^{M}
+max\{x[n+\frac{T(m-1)}{f_{s}}], \cdots, x[n+\frac{Tm}{f_{s}}]\}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="473" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img378.png"
+ ALT="$\displaystyle W_{all} = \frac{1}{N} \sum_{n=1}^{N} \frac{1}{M} \sum_{m=1}^{M} max\{x[n+\frac{T(m-1)}{f_{s}}], \cdots, x[n+\frac{Tm}{f_{s}}]\}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">8</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+</LI>
+<LI>The quantization of the output signal is necessary to
+convert from a floating point value (obtained from the sum of all
+delayed-weighted-summed signals) to a 16bit signal. It is
+quantized to the closest integer value within the range <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img379.png"
+ ALT="$ \pm$"></SPAN>
+32767, allowing a maximum quantization error of value <SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img380.png"
+ ALT="$ \pm 0.5$"></SPAN>
+instead of using the standard functions ``int'' or ``floor'' in C,
+which considers a maximum error of 1.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1605"
+  HREF="node91.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1601"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1595"
+  HREF="node89.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1603"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1606"
+  HREF="node91.html">ICSI Meetings Skew Estimation</A>
+<B> Up:</B> <A NAME="tex2html1602"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1596"
+  HREF="node89.html">Reference Channel Computation</A>
+ &nbsp; <B>  <A NAME="tex2html1604"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

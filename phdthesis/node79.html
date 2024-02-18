@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Frame-Based Cluster Purification Metrics</TITLE>
+<META NAME="description" CONTENT="Frame-Based Cluster Purification Metrics">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node80.html">
+<LINK REL="previous" HREF="node78.html">
+<LINK REL="up" HREF="node77.html">
+<LINK REL="next" HREF="node80.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1440"
+  HREF="node80.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1436"
+  HREF="node77.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1430"
+  HREF="node78.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1438"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1441"
+  HREF="node80.html">Frame-Based Purification Implementation</A>
+<B> Up:</B> <A NAME="tex2html1437"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Previous:</B> <A NAME="tex2html1431"
+  HREF="node78.html">Speech and Non-Speech Modeling</A>
+ &nbsp; <B>  <A NAME="tex2html1439"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00831200000000000000">
+Frame-Based Cluster Purification Metrics</A>
+</H3>
+
+<P>
+In order to detect and filter out the non-speech frames using the
+detected likelihood property of the non-speech data, two variants
+of a likelihood-based metric are proposed.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="ave_lkld"></A><!-- MATH
+ \begin{equation}
+\bar{\mathcal{L}}(x[i] | \Theta_{A}) = \frac{1}{Q}
+\sum_{j=-Q/2}^{Q/2-1} \sum_{m=1}^{\widetilde{M}} log\Big(W_{A}[m]
+\mathcal{N}_{A,m}(x[i+j])\Big)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="421" HEIGHT="81" ALIGN="MIDDLE" BORDER="0"
+ SRC="img335.png"
+ ALT="$\displaystyle \bar{\mathcal{L}}(x[i] \vert \Theta_{A}) = \frac{1}{Q} \sum_{j=-...
+...-1} \sum_{m=1}^{\widetilde{M}} log\Big(W_{A}[m] \mathcal{N}_{A,m}(x[i+j])\Big)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">15</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The two metrics are based in equation <A HREF="#ave_lkld">4.15</A> where <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img336.png"
+ ALT="$ Q$"></SPAN>
+defines the length of an average window and is used to average the
+measure around the desired value to avoid noisy values;
+<!-- MATH
+ $\widetilde{M}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="24" ALIGN="BOTTOM" BORDER="0"
+ SRC="img337.png"
+ ALT="$ \widetilde{M}$"></SPAN> is the number of Gaussian mixtures used to compute
+the likelihood (where <!-- MATH
+ $\widetilde{M} < M$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img338.png"
+ ALT="$ \widetilde{M} &lt; M$"></SPAN>, the number of mixtures
+in the model); <SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img339.png"
+ ALT="$ W_{A}[m]$"></SPAN> is the mixture weight and
+<!-- MATH
+ $\mathcal{N}_{A,m}(x[i+j])(x[\cdot])$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="152" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img340.png"
+ ALT="$ \mathcal{N}_{A,m}(x[i+j])(x[\cdot])$"></SPAN> is the result of evaluating
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img341.png"
+ ALT="$ x[\cdot]$"></SPAN> on the Gaussian mixture <!-- MATH
+ $\mathcal{N}_{A,m}(x[i+j])$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="114" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img342.png"
+ ALT="$ \mathcal{N}_{A,m}(x[i+j])$"></SPAN>:
+
+<P>
+<DL>
+<DT><STRONG>Metric 1</STRONG></DT>
+<DD>A standard smoothed likelihood over 100ms of data
+(<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img343.png"
+ ALT="$ Q=5$"></SPAN> with 10ms acoustic frames) around each acoustic frame, with
+<!-- MATH
+ $\widetilde{M} = M$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0"
+ SRC="img344.png"
+ ALT="$ \widetilde{M} = M$"></SPAN> (all mixtures in model <!-- MATH
+ $\Theta_{A}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img329.png"
+ ALT="$ \Theta_{A}$"></SPAN>).
+
+<P>
+</DD>
+<DT><STRONG>Metric 2</STRONG></DT>
+<DD>The same smoothed likelihood (over 100ms) given a
+model formed by a subset of all Gaussian mixtures in the speaker
+model, which include the mixtures assigned to non-speech. The
+mixtures used are selected by computing the sum of variance over
+all dimensions and selecting those with smaller accumulated
+variance, <!-- MATH
+ $\widetilde{M}=M_{non-speech}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="137" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img345.png"
+ ALT="$ \widetilde{M}=M_{non-speech}$"></SPAN>. This second metric is
+equivalent to metric 1 when 100% of the Gaussian mixtures are
+selected.
+
+<P>
+</DD>
+</DL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1440"
+  HREF="node80.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1436"
+  HREF="node77.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1430"
+  HREF="node78.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1438"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1441"
+  HREF="node80.html">Frame-Based Purification Implementation</A>
+<B> Up:</B> <A NAME="tex2html1437"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Previous:</B> <A NAME="tex2html1431"
+  HREF="node78.html">Speech and Non-Speech Modeling</A>
+ &nbsp; <B>  <A NAME="tex2html1439"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

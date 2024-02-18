@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Hierarchical Clustering Techniques</TITLE>
+<META NAME="description" CONTENT="Hierarchical Clustering Techniques">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node17.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node19.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html636"
+  HREF="node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html632"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html626"
+  HREF="node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html634"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html637"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+<B> Up:</B> <A NAME="tex2html633"
+  HREF="node17.html">Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html627"
+  HREF="node17.html">Speaker Diarization</A>
+ &nbsp; <B>  <A NAME="tex2html635"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00631000000000000000">
+Hierarchical Clustering Techniques</A>
+</H2>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="pyramid"></A><A NAME="1377"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2.1:</STRONG>
+<I>Graphic interpretation of the most common clustering
+techniques</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="452" HEIGHT="204" BORDER="0"
+ SRC="img69.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/pyramid,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Most of the reviewed offline clustering algorithms use
+hierarchical schemes, where speech segments or clusters are
+iteratively split or merged until the optimum number of speakers
+is reached. In figure <A HREF="#pyramid">2.1</A> a pedantic abstraction of the
+two mostly used techniques in speaker clustering is shown.
+Bottom-up clustering systems are those which start with a big
+number of segments/clusters and via merging techniques converge to
+the optimum amount of clusters. On the other hand, top-down
+systems usually start with one or very few clusters and work its
+way up (in the number of clusters, down in the figure) via
+splitting procedures to obtain the optimum amount. In the design
+of either system, two items need to be defined:
+
+<P>
+
+<OL>
+<LI>A distance between clusters/segments to determine acoustic
+similarity. Instead of defining an individual value pair, usually
+a distance matrix is described, which is created with the distance
+from any possible pair. In many cases the distance metrics used
+for speaker clustering resemble those used in speaker segmentation
+computed using the metrics presented in section
+<A HREF="node11.html#segmentation">2.2</A>.
+
+<P>
+</LI>
+<LI>A stopping criterion to stop the iterative merging/splitting
+at the optimum number of clusters (which might be different
+depending on the application).
+</LI>
+</OL>
+
+<P>
+Classified by the type of clustering, the following are the most
+representative techniques described in the literature:
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html638"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+<LI><A NAME="tex2html639"
+  HREF="node20.html">Top-down Clustering Techniques</A>
+<LI><A NAME="tex2html640"
+  HREF="node21.html">Combination of Clustering Methods</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html636"
+  HREF="node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html632"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html626"
+  HREF="node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html634"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html637"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+<B> Up:</B> <A NAME="tex2html633"
+  HREF="node17.html">Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html627"
+  HREF="node17.html">Speaker Diarization</A>
+ &nbsp; <B>  <A NAME="tex2html635"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

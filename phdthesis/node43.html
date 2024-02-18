@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speech/non-Speech Detection and Parameters Extraction</TITLE>
+<META NAME="description" CONTENT="Speech/non-Speech Detection and Parameters Extraction">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node44.html">
+<LINK REL="previous" HREF="node42.html">
+<LINK REL="up" HREF="node42.html">
+<LINK REL="next" HREF="node44.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html968"
+  HREF="node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html964"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html958"
+  HREF="node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html966"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html969"
+  HREF="node44.html">Clusters Initialization and Acoustic</A>
+<B> Up:</B> <A NAME="tex2html965"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html959"
+  HREF="node42.html">The ICSI Broadcast News</A>
+ &nbsp; <B>  <A NAME="tex2html967"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00711000000000000000">
+Speech/non-Speech Detection and Parameters
+Extraction</A>
+</H2>
+
+<P>
+The use of a speech/non-speech detector in speaker diarization is
+important to ensure that acoustic models for each of the clusters
+correctly represents the speech data and is not ``contaminated''
+by non-speech information. In the ICSI system each cluster is
+initially modeled using a small number of Gaussian mixtures
+(usually 5) given that they are trained using ML over a small
+amount of data. This causes that the inclusion of non-speech data
+into the training makes clusters resemble each other much more and
+make the system prone to clustering errors, together with
+non-speech errors.
+
+<P>
+The speech/non-speech detector for the BN system is a two-class
+detector, in which each class is modeled by a three-state HMM,
+with a minimum duration of 30 msec. The non-speech model includes
+both music and silence. The features used in the SNS detector
+(MFCC12) are different from the features used for clustering. This
+detector that was initially used for ICSI-SRI’s BN STT system on
+RT04f. It was trained on 80 hours of 1996 HUB4 BN acoustic data.
+No tuning was made to adapt the detector to speaker diarization
+for the RT04f evaluation.
+
+<P>
+In order to illustrate the advantages of using a speech/non-speech
+(spnsp) detector (also sometimes referred as Speech Activity
+Detection, SAD) in table <A HREF="#bn_spnsp">3.1</A> (taken from
+<A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al. (2004)</A>) diarization error rates are shown on
+the RT04f data set using different kinds of spnsp detectors. The
+Diarization Error Rate (DER) is the percentage of time that the
+system miss-attributes speakers/non-speech segments. It can be
+broken down into speaker errors, which accounts for
+miss-attributed speaker segments, false alarms (FA) and missed
+speech errors (MISS), which account for non-speech labelled as
+speech, and viceversa. For an exhaustive definition of each on of
+these types of error refer to section <A HREF="node107.html#eval_metrics">6.1.3</A>.
+
+<P>
+The first column shows the baseline system composed of the RT03f
+system. It has an overall non-speech error of 5.1% and a speaker
+error of 17.8%. By adding the speech/non-speech detector proposed
+for broadcast news it not only improved the non-speech errors but
+also reduces the speaker error, due to the reduction in clustering
+errors as noted above. Finally, it is interesting to see how much
+can be achieved in terms of DER if a perfect spnsp detector was
+built. Such detector is obtained by extracting the speaker
+segments from the reference segmentation and running the
+diarization with those as spnsp input. It can be seen that the
+proposed spnsp detector is still about 1.2% worse than the
+perfect detector. The speaker error is lower in the proposed spnsp
+detector than in the ideal one. This could indicate that some
+non-speech data can still be beneficiary to train discriminant
+speaker models. In this implementation the system obtained a 0.2%
+and 0.1% MISS errors in the perfect spnsp and baseline systems
+which was later reduced to 0%.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="2515"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.1:</STRONG>
+<I>DER improvement by using a
+speech/non-speech detector</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System used</TD>
+<TD ALIGN="CENTER">%MISS</TD>
+<TD ALIGN="CENTER">%FA</TD>
+<TD ALIGN="CENTER">%SPKR</TD>
+<TD ALIGN="CENTER">%DER</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT03f system</TD>
+<TD ALIGN="CENTER">0.1</TD>
+<TD ALIGN="CENTER">5.0</TD>
+<TD ALIGN="CENTER">17.8</TD>
+<TD ALIGN="CENTER">22.95</TD>
+</TR>
+<TR><TD ALIGN="LEFT">+SRI/spnsp</TD>
+<TD ALIGN="CENTER">1.5</TD>
+<TD ALIGN="CENTER">1.2</TD>
+<TD ALIGN="CENTER">15.4</TD>
+<TD ALIGN="CENTER">18.17</TD>
+</TR>
+<TR><TD ALIGN="LEFT">+ideal spnsp</TD>
+<TD ALIGN="CENTER">0.2</TD>
+<TD ALIGN="CENTER">0.0</TD>
+<TD ALIGN="CENTER">16.8</TD>
+<TD ALIGN="CENTER">16.98</TD>
+</TR>
+</TABLE>
+ <A NAME="bn_spnsp"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+With respect to the parameters used in the system, as it happens
+with other speech processing areas, acoustic modeling for speaker
+diarization is performed based of acoustic features extracted from
+the input signal. For the broadcast news system at ICSI the
+features used have been modified over the years finally settling
+down into the use of MFCC features with 19 coefficient, without
+any deltas or double deltas and without the zeroth cepstral
+coefficient, linked to the energy of the signal. For broadcast
+news these features were computed over a 60 millisecond analysis
+window in 20 milliseconds intervals. Multiple tests were done
+resulting on the selection of these features. On one hand, the
+increase in computation involved in using the delta and double
+delta coefficients was considered unacceptable given that the
+system gave mixed results when using them. On the other hand,
+MFCC19 were chosen as opposed to PLP12, which were used on RT03f,
+due to a slightly better performance when using them together with
+the spnsp detector.
+
+<P>
+As can be seen in table <A HREF="#bn_params">3.2</A> also from
+<A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al. (2004)</A>, the baseline system using PLP and no
+spnsp detector produces better overall results than the
+counterpart MFCC system, but this second one is better when spnsp
+is added. In the diarization system for meetings a possible
+combination to use delays as features is proposed which is also
+applicable to all other kinds of feature vectors.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="2516"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.2:</STRONG>
+<I>Comparison of PLP12 and MFCC19
+parameterizations on RT04f</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System used</TD>
+<TD ALIGN="CENTER">%MISS</TD>
+<TD ALIGN="CENTER">%FA</TD>
+<TD ALIGN="CENTER">%SPKR</TD>
+<TD ALIGN="CENTER">%DER</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT03f PLP</TD>
+<TD ALIGN="CENTER">0.1</TD>
+<TD ALIGN="CENTER">5.0</TD>
+<TD ALIGN="CENTER">15.8</TD>
+<TD ALIGN="CENTER">20.93</TD>
+</TR>
+<TR><TD ALIGN="LEFT">+SRI spnsp</TD>
+<TD ALIGN="CENTER">1.6</TD>
+<TD ALIGN="CENTER">1.2</TD>
+<TD ALIGN="CENTER">15.5</TD>
+<TD ALIGN="CENTER">18.36</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT03f MFCC</TD>
+<TD ALIGN="CENTER">0.1</TD>
+<TD ALIGN="CENTER">5.0</TD>
+<TD ALIGN="CENTER">17.8</TD>
+<TD ALIGN="CENTER">22.95</TD>
+</TR>
+<TR><TD ALIGN="LEFT">+SRI spnsp</TD>
+<TD ALIGN="CENTER">1.5</TD>
+<TD ALIGN="CENTER">1.2</TD>
+<TD ALIGN="CENTER">15.4</TD>
+<TD ALIGN="CENTER">18.17</TD>
+</TR>
+</TABLE>
+ <A NAME="bn_params"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html968"
+  HREF="node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html964"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html958"
+  HREF="node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html966"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html969"
+  HREF="node44.html">Clusters Initialization and Acoustic</A>
+<B> Up:</B> <A NAME="tex2html965"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html959"
+  HREF="node42.html">The ICSI Broadcast News</A>
+ &nbsp; <B>  <A NAME="tex2html967"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Single Channel System Frontend</TITLE>
+<META NAME="description" CONTENT="Single Channel System Frontend">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node58.html">
+<LINK REL="previous" HREF="node56.html">
+<LINK REL="up" HREF="node55.html">
+<LINK REL="next" HREF="node58.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1145"
+  HREF="node58.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1141"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1135"
+  HREF="node56.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1143"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1146"
+  HREF="node58.html">Speaker Clusters and Models</A>
+<B> Up:</B> <A NAME="tex2html1142"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1136"
+  HREF="node56.html">Acoustic Signal Enhancement</A>
+ &nbsp; <B>  <A NAME="tex2html1144"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00732000000000000000">
+Single Channel System Frontend</A>
+</H2>
+
+<P>
+The speaker segmentation and clustering block of the overall
+speaker diarization system contains two main blocks, the
+speech/non-speech detector and the single-channel speaker
+diarization system. The speech/non-speech detector is different
+from the one used for broadcast news and does not require any
+training data for the acoustic models. It is a hybrid
+energy-based/model-based system which considers that most
+non-speech to be detected in a meeting, which can harm the
+diarization, is silence. It will be further described in
+<A HREF="node62.html#spnsp">4.1</A>.
+
+<P>
+The single-channel speaker diarization module has evolved from the
+broadcast news system by adding new algorithms and proposing
+improvements to existing ones. In figure <A HREF="#diary_blocks">3.6</A> a
+block diagram of the diarization process is shown with the newly
+proposed algorithms and changes to the baseline system in a darker
+box. There are also other improvements in various steps of the
+algorithms that are not reflected in the figure, these are the
+modification in duration modeling within the models and the models
+initialization algorithm. In the following sections a description
+of each one of these new modules and algorithm improvements is
+described in detail. For those not changing from the baseline
+refer to section <A HREF="node42.html#bn_system">3.1</A> for complete details.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="diary_blocks"></A><A NAME="3584"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.6:</STRONG>
+<I>single-channel speaker diarization for
+meetings block diagram</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="1155" HEIGHT="587" BORDER="0"
+ SRC="img193.png"
+ ALT="\begin{figure*}
+\centering {\epsfig{figure=figures/diary_blocks_all,width=220mm,
+angle=90}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+As mentioned earlier, the meetings speaker diarization system
+makes use of the TDOA values (when available) as an independent
+feature stream. These features contain N-1 dimension vectors,
+where N is the number of channels available, computed at the same
+rate as the MFCC parameters for synchronous operation. They are
+reused without any further processing, just converting them to HTK
+format to be properly read by the system.
+
+<P>
+The acoustic features continue to be Mel Frequency Cepstrum
+Coefficients (MFCC) but with an analysis window of 30ms (instead
+of 60ms) and computed every 10ms (instead of 20ms). The increase
+in computation due to having double the amount of features is
+explained by an increase in performance.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1145"
+  HREF="node58.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1141"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1135"
+  HREF="node56.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1143"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1146"
+  HREF="node58.html">Speaker Clusters and Models</A>
+<B> Up:</B> <A NAME="tex2html1142"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1136"
+  HREF="node56.html">Acoustic Signal Enhancement</A>
+ &nbsp; <B>  <A NAME="tex2html1144"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

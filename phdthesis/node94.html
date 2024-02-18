@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TDOA Post-Processing</TITLE>
+<META NAME="description" CONTENT="TDOA Post-Processing">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node95.html">
+<LINK REL="previous" HREF="node93.html">
+<LINK REL="up" HREF="node93.html">
+<LINK REL="next" HREF="node95.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1653"
+  HREF="node95.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1649"
+  HREF="node93.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1643"
+  HREF="node93.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1651"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1654"
+  HREF="node95.html">Dual-Pass Viterbi Post-Processing</A>
+<B> Up:</B> <A NAME="tex2html1650"
+  HREF="node93.html">TDOA Values Selection</A>
+<B> Previous:</B> <A NAME="tex2html1644"
+  HREF="node93.html">TDOA Values Selection</A>
+ &nbsp; <B>  <A NAME="tex2html1652"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00923100000000000000"></A>
+<A NAME="TDOA_post-process"></A>
+<BR>
+TDOA Post-Processing
+</H3>
+
+<P>
+The first filtering proposed intends to detect those TDOA values
+that are not reliable. A TDOA value does not show any useful
+information when it is computed over a silence (or mainly silence)
+region or when the SNR of the signals being compared (either one)
+are very low, making them very dissimilar. The first problem could
+be addressed by using a speech/non-speech detector prior to any
+further processing. Initial experiments indicated that further
+errors were introduced due to the detector used. An improvement
+was obtained by applying a simple continuity filter on the TDOA
+values based on their GCC-PHAT values by using a ``noise
+threshold'':
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+TDOA_{i}[n] = \left\{\begin{array}{lcl}
+    TDOA_{i}[n-1] & if & \mbox{GCC-PHAT}_{i}[n] < Thr_{noise} \\
+    TDOA_{i}[n] & if & \mbox{GCC-PHAT}_{i}[n] \geq Thr_{noise}
+\end{array}\right.
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="502" HEIGHT="62" ALIGN="MIDDLE" BORDER="0"
+ SRC="img392.png"
+ ALT="$\displaystyle TDOA_{i}[n] = \left\{\begin{array}{lcl} TDOA_{i}[n-1] &amp; if &amp; \mb...
+... TDOA_{i}[n] &amp; if &amp; \mbox{GCC-PHAT}_{i}[n] \geq Thr_{noise} \end{array}\right.$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $Thr_{noise}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="68" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img393.png"
+ ALT="$ Thr_{noise}$"></SPAN> is the ``noise threshold'', defined
+as the minimum correlation value at which it can be considered
+that the correlation is returning feasible results. It should be
+considered independently in every meeting as the correlation
+values are dependent not only on the signal itself but also on the
+microphone distribution in the different meeting rooms. In order
+to find an appropriate value for it, the distribution of computed
+correlation values needs to be evaluated for each meeting. In the
+diarization system presented for RT05s (<A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo, 2005</A>) a
+constant threshold fax fixed for all meetings. This caused the
+system to filter out a high amount of delays in some meetings
+while keeping non-speech segments unmodified from others. For
+RT06s a threshold was computed for each meeting as the value that
+filters out the 10% of lower cross-correlation values. This
+considers that in each meeting there are 10% of frames that
+either are non-speech or unreliable in terms of TDOA estimation.
+
+<P>
+Figure <A HREF="#histo_thresholds">5.4</A> shows the histogram of the two AMI
+meetings present in RT05s to illustrate this change. Such
+histograms are generated taking the output values from the
+GCC-PHAT for the used TDOA values, placing them in bins with
+minimum value 0 and maximum 1, and normalizing it. Most of the
+meetings present a bimodal histogram like for AMI_20041210-1052,
+where the relative minimum between the modes falls around the 10%
+of the values. In such case selecting a noise threshold at 10%
+absolute (0.1 value applied to the GCC-PHAT output) or finding the
+threshold at 10% of all computed values (0.0842 over 1 for
+AMI_20041210-1052) gives almost the same result. On the other
+hand, some meetings, like AMI_20050204-1206, obtain a poor
+distribution of GCC-PHAT values, concentrating them in the lower
+part of the histogram. In this case there is a big difference
+between the two kinds of thresholding (0.1 versus 0.0532 for
+AMI_20050204-1206).
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="histo_thresholds"></A><A NAME="5647"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.4:</STRONG>
+<I>Cross-correlation values histograms for RT06s AMI
+meetings</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="498" HEIGHT="329" BORDER="0"
+ SRC="img394.png"
+ ALT="\begin{figure*}
+\centerline{\epsfig{figure=figures/histo_thresholds,width=110mm}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Within each meeting there is also a slight difference in the
+distributions of each of the channel's correlations. It was found
+that there was no difference wether to compute an individual
+threshold for each channel or one global threshold for all
+channels, therefore a global threshold was used for all channels
+in the system.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1653"
+  HREF="node95.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1649"
+  HREF="node93.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1643"
+  HREF="node93.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1651"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1654"
+  HREF="node95.html">Dual-Pass Viterbi Post-Processing</A>
+<B> Up:</B> <A NAME="tex2html1650"
+  HREF="node93.html">TDOA Values Selection</A>
+<B> Previous:</B> <A NAME="tex2html1644"
+  HREF="node93.html">TDOA Values Selection</A>
+ &nbsp; <B>  <A NAME="tex2html1652"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

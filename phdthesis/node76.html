@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Cluster Purification Algorithms</TITLE>
+<META NAME="description" CONTENT="Cluster Purification Algorithms">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node69.html">
+<LINK REL="up" HREF="node61.html">
+<LINK REL="next" HREF="node77.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1396"
+  HREF="node77.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1392"
+  HREF="node61.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1388"
+  HREF="node75.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1394"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1397"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Up:</B> <A NAME="tex2html1393"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+<B> Previous:</B> <A NAME="tex2html1389"
+  HREF="node75.html">Acoustic Modeling without Time</A>
+ &nbsp; <B>  <A NAME="tex2html1395"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00830000000000000000">
+Cluster Purification Algorithms</A>
+</H1>
+
+<P>
+Given the speaker clustering algorithm presented in this thesis,
+there are usually acoustic frames assigned to a cluster which do
+not belong to the modeled speaker. These frames are either
+non-speech or frames from another speaker. In this thesis this
+phenomenon is referred as cluster ``impurity''. It is very
+important to ensure that the clusters only contain one speaker and
+therefore the merging decision and stoping point criterion don't
+suffer from cluster impurity. Such cluster impurity has been
+studied separating it into two levels of detail (relative to two
+sources of error) and two algorithms are presented to detect and
+purify the clusters.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="purity_errors"></A><A NAME="4813"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.8:</STRONG>
+<I>Possible Speaker clustering errors
+due to clusters purity problems</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="427" HEIGHT="376" BORDER="0"
+ SRC="img324.png"
+ ALT="\begin{figure}
+\begin{center}
+$\begin{array}{c}\epsfxsize =90mm \epsffile{f...
+...bf {\it (b) frame purity error}}
+\end{array}$
+\end{center}
+\par
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+One source of error occurs when a cluster is created from speech
+segments from multiple speakers. In standard agglomerative systems
+there is no mechanism to split a cluster when segments from
+different speakers are assigned to the same cluster. This effect
+causes an increase in the final speaker error as seen in the
+example in Figure&nbsp;<A HREF="#purity_errors">4.8</A>(a) for the case of two
+misplaced segments of two existing speakers. It is very possible
+that the speaker model for the mixed cluster is able to represent
+both speakers' data and therefore Viterbi segmentation does not
+achieve to homogenize the cluster classifying the acoustic frames
+into their respective clusters. At the end of the processing, the
+mixed cluster is likely to be assigned to an non existent speaker
+(or to either of the speaker present in it), causing a large
+increase on the Diarization Error Rate (DER).
+
+<P>
+The second source of error comes from the interference of
+non-speech frames in both clusters during cluster comparison. This
+is particularly true for short silences and short acoustic events
+that belong to the modeled speaker but do not discriminate one
+speaker from another. This can affect the final clustering in two
+ways, as seen in Figure&nbsp;<A HREF="#purity_errors">4.8</A>(b). First, when
+comparing two clusters belonging to the same speaker, the
+confounding frames can cause <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC to decide to keep them
+separate. Second, false alarm errors are produced when non-speech
+frames are assigned to one of the speakers.
+
+<P>
+Both sources of error are interrelated and are caused by frames
+that are assigned to the wrong acoustic model. The difference is
+the unit that is considered is miss-assigned (segment or frame).
+In next subsections tho algorithms are proposed towards solving
+both problems. The first algorithm identifies the segments that
+acoustically deviate most from their cluster, and splits them into
+a new cluster. This is referred to as ``segment-level''
+purification. The second algorithm locates the individual frames
+within a cluster than can cause problems in the merging state and
+avoids using them when computing the distance between the cluster
+pair. It is referred to as ``frame-level'' purification.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1398"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<UL>
+<LI><A NAME="tex2html1399"
+  HREF="node78.html">Speech and Non-Speech Modeling</A>
+<LI><A NAME="tex2html1400"
+  HREF="node79.html">Frame-Based Cluster Purification Metrics</A>
+<LI><A NAME="tex2html1401"
+  HREF="node80.html">Frame-Based Purification Implementation</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1402"
+  HREF="node81.html">Segment-Level Cluster Purification</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1396"
+  HREF="node77.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1392"
+  HREF="node61.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1388"
+  HREF="node75.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1394"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1397"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Up:</B> <A NAME="tex2html1393"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+<B> Previous:</B> <A NAME="tex2html1389"
+  HREF="node75.html">Acoustic Modeling without Time</A>
+ &nbsp; <B>  <A NAME="tex2html1395"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

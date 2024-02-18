@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Meetings Domain Experiments Setup</TITLE>
+<META NAME="description" CONTENT="Meetings Domain Experiments Setup">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node111.html">
+<LINK REL="previous" HREF="node103.html">
+<LINK REL="up" HREF="node103.html">
+<LINK REL="next" HREF="node105.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1792"
+  HREF="node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1788"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1782"
+  HREF="node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1790"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1793"
+  HREF="node105.html">Baseline Systems</A>
+<B> Up:</B> <A NAME="tex2html1789"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1783"
+  HREF="node103.html">Experiments</A>
+ &nbsp; <B>  <A NAME="tex2html1791"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001010000000000000000">
+Meetings Domain Experiments Setup</A>
+</H1>
+
+<P>
+When comparing the results of new speech-related algorithms it is
+usual to always face some sort of ``flakiness''. This term started
+being used for speaker diarization during the RT04f workshop
+(<A
+ HREF="node147.html#NIST_rt_web_2004"><EM>NIST Fall Rich Transcription Evaluation
+  website</EM>, 2006</A>) in order to account for two phenomena that
+were common to all diarization systems presented in that
+evaluation. These were the big variance of the scores among all
+evaluated shows and the extreme susceptibility of the scores to
+experience big changes upon small modifications of their tuning
+parameters.
+
+<P>
+Alike some other disciplines within the speech technologies, it
+makes a difference, when comparing the performances of algorithms
+compared to a baseline, to select the optimum baseline databases
+and test conditions to be able to show when the proposed
+algorithms preform the best. In many cases, due to flakiness,
+testing the same algorithms with two different databases or
+baseline systems derives into two very different results, one
+proving the validity of the proposed algorithm and one otherwise.
+
+<P>
+In order to run meaningful and fair experiments using the
+algorithms proposed in this thesis one needs to define:
+
+<P>
+
+<UL>
+<LI>A baseline system, which acts as the comparison ground to
+all systems proposed and tested.
+
+<P>
+</LI>
+<LI>A common development and test datasets, based on the NIST RT
+evaluations datasets, in order for results to be comparable
+between experiments and to systems outside of the thesis.
+
+<P>
+</LI>
+<LI>A set of metrics in order to evaluate such systems with
+commonly used and available techniques.
+
+<P>
+</LI>
+</UL>
+
+<P>
+In the following subsections each of these items is described as
+it has been used in this thesis for most of the experiments with
+the system's main blocks.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1794"
+  HREF="node105.html">Baseline Systems</A>
+<LI><A NAME="tex2html1795"
+  HREF="node106.html">Databases</A>
+<LI><A NAME="tex2html1796"
+  HREF="node107.html">Evaluation Metrics</A>
+<UL>
+<LI><A NAME="tex2html1797"
+  HREF="node108.html">Diarization Error Rate</A>
+<LI><A NAME="tex2html1798"
+  HREF="node109.html">Signal-to-Noise Ratio</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1799"
+  HREF="node110.html">Reference Segmentation Selection and Calculation</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1792"
+  HREF="node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1788"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1782"
+  HREF="node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1790"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1793"
+  HREF="node105.html">Baseline Systems</A>
+<B> Up:</B> <A NAME="tex2html1789"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1783"
+  HREF="node103.html">Experiments</A>
+ &nbsp; <B>  <A NAME="tex2html1791"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

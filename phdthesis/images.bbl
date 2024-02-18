@@ -1,0 +1,1293 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{Adami, Burget, Dupont, Garudadri, Grezl, Hermansky, Jain,
+  Kajarekar, Morgan and Sivadas}{2002}{Adami_2002b}
+Adami, A., Burget, L., Dupont, S., Garudadri, H., Grezl, F., Hermansky, H.,
+  Jain, P., Kajarekar, S., Morgan, N. and Sivadas, S.: 2002, Qualcomm-icsi-ogi
+  features for asr, {\em Proc. International Conference on Speech and Language
+  Processing}.
+
+\harvarditem{Adami, Kajarekar and Hermansky}{2002}{Adami_2002}
+Adami, A.~G., Kajarekar, S.~S. and Hermansky, H.: 2002, A new speaker change
+  detection method for two-speaker segmentation, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Orlando, Florida.
+
+\harvarditem{Aguilo}{2005}{Aguilo_2005}
+Aguilo, M.: 2005, {\em Deteccion de actividad oral en un sistema de
+  diarizacion}, Master's thesis, UPC.
+
+\harvarditem{Ajmera}{2004}{Ajmera_2004}
+Ajmera, J.: 2004, {\em Robust Audio Segmentation}, PhD thesis, Ecole
+  Polytechnique Federale de Lausanne.
+
+\harvarditem[Ajmera et~al.]{Ajmera, Bourlard and Lapidot}{2002}{Ajmera_2002}
+Ajmera, J., Bourlard, H. and Lapidot, I.: 2002, Improved unknown-multiple
+  speaker clustering using {HMM}, {\em Technical report}, IDIAP.
+
+\harvarditem{Ajmera, Lathoud and McCowan}{2004}{Ajmera_2004b}
+Ajmera, J., Lathoud, G. and McCowan, I.: 2004, Clustering and segmenting
+  speakers and their locations in meetings, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Vol.~1, pp.~605--608.
+
+\harvarditem[Ajmera et~al.]{Ajmera, McCowan and Bourlard}{2003}{Ajmera_2003a}
+Ajmera, J., McCowan, I. and Bourlard, H.: 2003, Robust speaker change
+  detection, {\em Technical report}, IDIAP.
+
+\harvarditem{Ajmera, McCowan and Bourlard}{2004}{Ajmera_2004a}
+Ajmera, J., McCowan, I. and Bourlard, H.: 2004, Robust speaker change
+  detection, {\em IEEE Signal Processing Letters} {\bf 11}(8),~649--651.
+
+\harvarditem{Ajmera and Wooters}{2003}{Ajmera_2003b}
+Ajmera, J. and Wooters, C.: 2003, A robust speaker clustering algorithm, {\em
+  IEEE Automatic Speech Recognition and Understanding Workshop}, US Virgin
+  Islands, USA.
+
+\harvarditem{Anguera}{2005}{Anguera_2005c}
+Anguera, X.: 2005, Xbic: Real-time cross probabilities measure for speaker
+  segmentation, {\em Technical Report TR-99-2004}, ICSI.
+
+\harvarditem{Anguera, Aguilo, Wooters, Nadeu and Hernando}{2006}{Anguera_2006b}
+Anguera, X., Aguilo, M., Wooters, C., Nadeu, C. and Hernando, J.: 2006, Hybrid
+  speech/non-speech detector applied to speaker diarization of meetings, {\em
+  Speaker Odyssey 06}, Puerto Rico, USA.
+
+\harvarditem{Anguera and Hernando}{2004a}{Anguera_2004b}
+Anguera, X. and Hernando, J.: 2004a, Evolutive speaker segmentation using a
+  repository system, {\em Proc. International Conference on Speech and Language
+  Processing}, Jeju Island, Korea.
+
+\harvarditem{Anguera and Hernando}{2004b}{Anguera_2004a}
+Anguera, X. and Hernando, J.: 2004b, {XBIC}: nueva medida para segmentacion de
+  locutor hacia el indexado automatico de la senal de voz, {\em III Jornadas en
+  Tecnologia del Habla}, Valencia, Spain.
+
+\harvarditem{Anguera, Wooters and Hernando}{2005}{Anguera_2005b}
+Anguera, X., Wooters, C. and Hernando, J.: 2005, Speaker diarization for
+  multi-party meetings using acoustic fusion, {\em IEEE Automatic Speech
+  Recognition and Understanding Workshop}, Puerto Rico, USA.
+
+\harvarditem{Anguera, Wooters and Hernando}{2006a}{Anguera_2006c}
+Anguera, X., Wooters, C. and Hernando, J.: 2006a, Automatic cluster complexity
+  and quantity selection: Towards robust speaker diarization, {\em MLMI'06},
+  Washington DC, USA.
+
+\harvarditem{Anguera, Wooters and Hernando}{2006b}{Anguera_2006a2}
+Anguera, X., Wooters, C. and Hernando, J.: 2006b, Frame purification for
+  cluster comparison in speaker diarization, {\em MMUA'06}, Toulouse, France.
+
+\harvarditem{Anguera, Wooters and Hernando}{2006c}{Anguera_2006d}
+Anguera, X., Wooters, C. and Hernando, J.: 2006c, Friends and enemies: A novel
+  initialization for speaker diarization, {\em Proc. International Conference
+  on Speech and Language Processing}, Pittsburgh, USA.
+
+\harvarditem{Anguera, Wooters and Hernando}{2006d}{Anguera_2006a}
+Anguera, X., Wooters, C. and Hernando, J.: 2006d, Purity algorithms for speaker
+  diarization of meetings data, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}, Toulouse, France.
+
+\harvarditem{Anguera, Wooters and Pardo}{2006a}{Anguera_2006e}
+Anguera, X., Wooters, C. and Pardo, J.~M.: 2006a, Robust speaker diarization
+  for meetings: {ICSI} {RT06s} evaluation system, {\em Proc. International
+  Conference on Speech and Language Processing}, Pittsburgh, USA.
+
+\harvarditem{Anguera, Wooters and Pardo}{2006b}{Anguera_2006f}
+Anguera, X., Wooters, C. and Pardo, J.~M.: 2006b, Robust speaker diarization
+  for meetings: {ICSI} {RT06s} meetings evaluation system, {\em RT06s Meetings
+  Recognition Evaluation}, Washington DC, USA.
+
+\harvarditem{Anguera, Wooters, Peskin and Aguilo}{2005}{Anguera_2005}
+Anguera, X., Wooters, C., Peskin, B. and Aguilo, M.: 2005, Robust speaker
+  segmentation for meetings: The {ICSI-SRI} spring 2005 diarization system,
+  {\em RT05s Meetings Recognition Evaluation}, Edinburgh, Great Brittain.
+
+\harvarditem{Appel and Brandt}{1982}{Appel_1982}
+Appel, U. and Brandt, A.: 1982, Adaptive sequential segmentation of piecewise
+  stationary time series, {\em Inf. Sci.} {\bf 29}(1),~27--56.
+
+\harvarditem{Attias}{2000}{Attias_2000}
+Attias, H.: 2000, A variational bayesian framework for graphical models, {\em
+  Advances in Neural information processing systems} .
+\newblock MIT Press, Cambridge.
+
+\harvarditem{{\em Augmented Multiparty Interaction ({AMI})
+  website}}{2006}{AMI_web}
+{\em Augmented Multiparty Interaction ({AMI}) website}: 2006.
+\newline\harvardurl{http://www.amiproject.org}
+
+\harvarditem[Bakis et~al.]{Bakis, Chen, Gopalakrishnan and
+  Gopinath}{1997}{Bakis_1997}
+Bakis, R., Chen, S., Gopalakrishnan, P. and Gopinath, R.: 1997, Transcription
+  of broadcast news shows with the {IBM} large vocabulary speech recognition
+  system, {\em Speech Recognition Workshop}, pp.~67--72.
+
+\harvarditem[Barras et~al.]{Barras, Zhu, Meignier and
+  Gauvain}{2004}{Barras_2004}
+Barras, C., Zhu, X., Meignier, S. and Gauvain, J.-L.: 2004, Improving speaker
+  diarization, {\em Fall 2004 Rich Transcription Workshop {(RT04)}}, Palisades,
+  NY.
+
+\harvarditem{Basseville and Nikiforov}{1993}{Basseville_1993}
+Basseville, M. and Nikiforov, I.: 1993, {\em Detection of abrupt changes-theory
+  abd application}, Prentice-Hall.
+
+\harvarditem{Beigi and Maes}{1998}{Beigi_1998}
+Beigi, H.~S. and Maes, S.~H.: 1998, Speaker, channel and environment change
+  detection, {\em World Congress on Automation}.
+
+\harvarditem[Beigi et~al.]{Beigi, Maes and Sorensen}{1998}{Beigi_1998b}
+Beigi, H.~S., Maes, S.~H. and Sorensen, J.~S.: 1998, A distance measure between
+  collections of distributions and its application to speaker recognition, {\em
+  Proc. IEEE International Conference on Acoustics, Speech and Signal
+  Processing}, Detroit, USA.
+
+\harvarditem[Ben et~al.]{Ben, Betser, Bimbot and Gravier}{2004}{Ben_2004}
+Ben, M., Betser, M., Bimbot, F. and Gravier, G.: 2004, Speaker diarization
+  using bottom-up clustering based on a parameter-derived distance between
+  adapted {GMM}s, {\em Proc. International Conference on Speech and Language
+  Processing}, Jeju Island, Korea.
+
+\harvarditem{Bilmes and Zweig}{2002}{Bilmes_2002}
+Bilmes, J. and Zweig, G.: 2002, The graphical models toolkit: an open source
+  software system for speech and time-series processing, {\em Proc. IEEE
+  International Conference on Acoustics, Speech and Signal Processing},
+  Orlando, Fl, USA.
+
+\harvarditem{Bimbot and Mathan}{1993}{Bimbot_1993}
+Bimbot, F. and Mathan, L.: 1993, Text-free speaker recognition using an
+  arithmetic-harmonic sphericity measure, {\em Eurospeech'93}, Berlin, Germany,
+  pp.~169--172.
+
+\harvarditem[Bonastre et~al.]{Bonastre, Delacourt, Fredouille, Merlin and
+  Wellekens}{2000}{bonastre_2000}
+Bonastre, J.-F., Delacourt, P., Fredouille, C., Merlin, T. and Wellekens, C.:
+  2000, A speaker tracking system based on speaker turn detection for {NIST}
+  evaluation, {\em Proc. IEEE International Conference on Acoustics, Speech and
+  Signal Processing}, Istanbul, Turkey, pp.~1177--1180.
+
+\harvarditem[Brandstein et~al.]{Brandstein, Adcock and
+  Silverman}{1995}{Brandstein_95}
+Brandstein, M., Adcock, J. and Silverman, H.: 1995, A practical time-delay
+  estimator for localizing speech sources with a microphone array, {\em Comput.
+  Speech Lang.} {\bf 9},~153--159.
+
+\harvarditem{Brandstein and Griebel}{2001}{Brandstein_01}
+Brandstein, M. and Griebel, S.: 2001, {\em Explicit Speech Modeling for
+  Microphone Array Applications}, Springer, chapter~7.
+
+\harvarditem{Brandstein and Silverman}{1997}{Brandstein_96}
+Brandstein, M.~S. and Silverman, H.~F.: 1997, A robust method for speech signal
+  time-delay estimation in reverberant rooms, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Munich, Germany.
+
+\harvarditem{Brandstein and Ward}{2001}{Brandstein_01b}
+Brandstein, M. and Ward, D.: 2001, {\em Microphone Arrays}, Springer.
+
+\harvarditem[Burger et~al.]{Burger, Maclaren and Yu}{2002}{CMU_corpus_paper}
+Burger, S., Maclaren, V. and Yu, H.: 2002, The {ISL} meeting corpus: The impact
+  of meeting type on speech style, {\em Proc. International Conference on
+  Speech and Language Processing}, Denver, USA.
+
+\harvarditem{Campbell}{1997}{Campbell_1997}
+Campbell, J.~P.: 1997, Speaker recognition: a tutorial, {\em Proceedings of the
+  IEEE} {\bf 1.85}(9),~1437--1462.
+
+\harvarditem[Canseco et~al.]{Canseco, Lamel and Gauvain}{2005}{Canseco_2005}
+Canseco, L., Lamel, L. and Gauvain, J.-L.: 2005, A comparative study using
+  manual and automatic transcriptions for diarization, {\em IEEE Automatic
+  Speech Recognition and Understanding Workshop}, San Juan, Puerto Rico.
+
+\harvarditem[Canseco-Rodriguez et~al.]{Canseco-Rodriguez, Lamel and
+  Gauvain}{2004a}{Canseco_2004a}
+Canseco-Rodriguez, L., Lamel, L. and Gauvain, J.-L.: 2004a, {Speaker
+  Diarization from Speech Transcripts}, {\em Proc. International Conference on
+  Speech and Language Processing}, Jeju Island, S. Korea, pp.~1272--1275.
+
+\harvarditem[Canseco-Rodriguez et~al.]{Canseco-Rodriguez, Lamel and
+  Gauvain}{2004b}{Canseco_2004b}
+Canseco-Rodriguez, L., Lamel, L. and Gauvain, J.-L.: 2004b, {Towards using STT
+  for Broadcast News Speaker Diarization}, {\em Proc. DARPA RT04}, Palisades
+  NY.
+
+\harvarditem[Carter et~al.]{Carter, Nuttall and Cable}{1973}{Carter_73}
+Carter, G., Nuttall, A.~H. and Cable, P.~G.: 1973, The smoothed coherence
+  transform, {\em Proc. IEEE (Lett.)} {\bf 61},~1497--1498.
+
+\harvarditem{Cassidy}{2004}{Cassidy_2004}
+Cassidy, S.: 2004, The macquarie speaker diarization system for rt04s, {\em
+  {NIST} 2004 Spring Rich Transcrition Evaluation Workshop}, Montreal, Canada.
+
+\harvarditem{Cettolo and Vescovi}{2003}{Cettolo_2003}
+Cettolo, M. and Vescovi, M.: 2003, Efficient audio segmentation algorithms
+  based on the {BIC}, {\em Proc. IEEE International Conference on Acoustics,
+  Speech and Signal Processing}.
+
+\harvarditem[Champagne et~al.]{Champagne, Bedard and
+  Stephenne}{1996}{Champagne_96}
+Champagne, B., Bedard, S. and Stephenne, A.: 1996, Performance of time-delay
+  estimation in the presence of room reverberation, {\em IEEE Transactions on
+  Speech and Audio Processing} .
+
+\harvarditem[Chan et~al.]{Chan, Lee, Zheng and hua Ouyang}{2006}{Chan_2006}
+Chan, W., Lee, T., Zheng, N. and hua Ouyang: 2006, Use of vocal source features
+  in speaker segmentation, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}, Toulouse, France.
+
+\harvarditem[Chen et~al.]{Chen, Rose, Parrill, Han, Tu, Huang, Harper, Quek,
+  McNeill, Tuttle and Huang}{2005}{VT_corpus_paper}
+Chen, L., Rose, R.~T., Parrill, F., Han, X., Tu, J., Huang, Z., Harper, M.,
+  Quek, F., McNeill, D., Tuttle, R. and Huang, T.: 2005, Vace multimodal
+  meeting corpus, {\em MLMI}, Edimburgh, UK.
+
+\harvarditem[Chen et~al.]{Chen, Gales, Gopinath, Kanvesky and
+  Olsen}{2002}{Chen_2002}
+Chen, S.~S., Gales, M. J.~F., Gopinath, R.~A., Kanvesky, D. and Olsen, P.:
+  2002, Automatic transcription of broadcast news, {\em Speech Communication}
+  {\bf 37},~69--87.
+
+\harvarditem{Chen and Gopalakrishnan}{1998}{Chen_1998b}
+Chen, S.~S. and Gopalakrishnan, P.: 1998, Clustering via the bayesian
+  information criterion with applications in speech recognition, {\em Proc.
+  IEEE International Conference on Acoustics, Speech and Signal Processing},
+  Vol.~2, Seattle, USA, pp.~645--648.
+
+\harvarditem{Chickering and Heckerman}{1997}{Chickering_1997}
+Chickering, D.~M. and Heckerman, D.: 1997, Efficient approximations for the
+  marginal likelihood of bayesian networks with hidden variables, {\em Machine
+  Learning} {\bf 29},~181--212.
+
+\harvarditem{{\em {CMU} Meetings Corpus website}}{2006}{CMU_corpus_web}
+{\em {CMU} Meetings Corpus website}: 2006.
+\newline\harvardurl{http://penance.is.cs.cmu.edu/meeting\_room}
+
+\harvarditem{{\em Cognitive Assistant that Learns and Organizes (CALO)
+  website}}{2006}{calo_web}
+{\em Cognitive Assistant that Learns and Organizes (CALO) website}: 2006.
+\newline\harvardurl{http://caloproject.sri.com/}
+
+\harvarditem{Cohen and Berdugo}{2002}{Cohen_02}
+Cohen, I. and Berdugo, B.: 2002, Speech enhancement based on a microphone array
+  and log-spectral amplitude estimation, {\em 22nd Convention of Electrical and
+  Electronics Engineers in Israel}.
+
+\harvarditem[Collet et~al.]{Collet, Charlet and Bimbot}{2005}{Collet_2005}
+Collet, M., Charlet, D. and Bimbot, F.: 2005, A correlation metric for speaker
+  tracking using anchor models, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}, Philadelphia, USA.
+
+\harvarditem{{\em Computers in the Human Interaction Loop ({CHIL})
+  website}}{2006}{CHIL_web}
+{\em Computers in the Human Interaction Loop ({CHIL}) website}: 2006.
+\newline\harvardurl{http://chil.server.de}
+
+\harvarditem[Cox et~al.]{Cox, Zeskind and Kooij}{1986}{Cox_86}
+Cox, H., Zeskind, R. and Kooij, I.: 1986, Practical supergain, {\em IEEE
+  Transactions on Acoustics, Speech and Signal Processing} {\bf
+  34}(3),~393--397.
+
+\harvarditem[Cox et~al.]{Cox, Zeskind and Owen}{1987}{Cox_87}
+Cox, H., Zeskind, R. and Owen, M.: 1987, Robust adaptive beamforming, {\em IEEE
+  Transactions on Acoustics, Speech and Signal Processing} {\bf
+  35}(10),~1365--1376.
+
+\harvarditem{{\em {DARPA} Effective, Affordable, Reusable Speech-to-Text
+  ({EARS})}}{2004}{EARS_project_web}
+{\em {DARPA} Effective, Affordable, Reusable Speech-to-Text ({EARS})}: 2004.
+\newline\harvardurl{http://www.darpa.mil/ipto/programs/ears}
+
+\harvarditem[Delacourt et~al.]{Delacourt, Kryze and
+  Wellekens}{1999a}{Delacourt_1999b}
+Delacourt, P., Kryze, D. and Wellekens, C.~J.: 1999a, Detection of speaker
+  changes in an audio document, {\em Eurospeech-1999}, Budapest, Hungary.
+
+\harvarditem[Delacourt et~al.]{Delacourt, Kryze and
+  Wellekens}{1999b}{Delacourt_1999c}
+Delacourt, P., Kryze, D. and Wellekens, C.~J.: 1999b, Speaker-based
+  segmentation for audio data indexing, {\em ESCA Workshop on accessing
+  Information in Audio Data}.
+
+\harvarditem{Delacourt and Wellekens}{1999}{Delacourt_1999a}
+Delacourt, P. and Wellekens, C.~J.: 1999, Audio data indexing: Use of
+  second-order statistics for speaker-based segmentation, {\em IEEE
+  International Conference on Multimedia, Computing and Systems}, Florence,
+  Italy.
+
+\harvarditem{Delacourt and Wellekens}{2000}{Delacourt_2000}
+Delacourt, P. and Wellekens, C.~J.: 2000, {DISTBIC}: A speaker-based
+  segmentation for audio data indexing, {\em Speech Communication: Special
+  Issue in Accessing Information in Spoken Audio} {\bf 32},~111--126.
+
+\harvarditem{Deshayes and Picard}{1986}{Deshayes_1986}
+Deshayes, J. and Picard, D.: 1986, {\em Off-line statistical analysis of
+  change-point models using non-parametric and likelihood methods},
+  Springer-Verlag.
+
+\harvarditem[Digalakis et~al.]{Digalakis, Monaco and
+  Murveit}{1996}{Digalakis_1996}
+Digalakis, V., Monaco, P. and Murveit, H.: 1996, Genones: generalized mixture
+  tying in continuous hidden markov model-based speech recognizers, {\em IEEE
+  transactions on speech and audio processing} {\bf 4}(4),~281--289.
+
+\harvarditem{Doclo and Moonen}{2002}{Doclo_02}
+Doclo, S. and Moonen, M.: 2002, Gsvd-based optimal filtering for single and
+  multimicrophone speech enhancement, {\em IEEE Trans. Signal Processing} {\bf
+  50},~2230--2244.
+
+\harvarditem{Duda and Hart}{1973}{Duda_1973}
+Duda, R. and Hart, P.: 1973, {\em Pattern classification and Scene analysis},
+  John Wiley \& Sons.
+
+\harvarditem[Dunn et~al.]{Dunn, Reynolds and Quatieri}{2000}{Dunn_2000}
+Dunn, R.~B., Reynolds, D. and Quatieri, T.~F.: 2000, Approaches to speaker
+  detection and tracking in conversational speech, {\em Digital signal
+  processing} {\bf 10},~93--112.
+
+\harvarditem{Eckart}{1952}{Eckart_52}
+Eckart, C.: 1952, Optimal rectifier systems for the detection of steady
+  signals, {\em Technical Report Rep SI0 12692, SI0 Ref 52-11,1952}, Univ.
+  California, Scripps Inst. Oceanography, Marine Physical Lab.
+
+\harvarditem{Ellis and Liu}{2004}{Ellis_2004}
+Ellis, D. and Liu, J.~C.: 2004, Speaker turn detection based on
+  between-channels differences, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}.
+
+\harvarditem{F.~Reed and Bershad}{1981}{Reed_81}
+F.~Reed, P.~F. and Bershad, N.: 1981, Time delay estimation using the lms
+  adaptive filter - static behavior, {\em IEEE Transactions on Acoustics,
+  Speech and Signal Processing} .
+
+\harvarditem[Fi\'errez-Aguilar et~al.]{Fi\'errez-Aguilar, Ortega-Garc\'ia and
+  Gonz\'alez-Rodr\'iguez}{2003}{Fierrez-Aguilar_2003}
+Fi\'errez-Aguilar, J., Ortega-Garc\'ia, J. and Gonz\'alez-Rodr\'iguez, J.:
+  2003, Fusion strategies in multimodal biometric verification, {\em IEEE
+  International Conference on Multimedia and Expo}.
+
+\harvarditem{Fischer and Kammeyer}{1997}{Fischer_97}
+Fischer, S. and Kammeyer, K.-D.: 1997, Broadband beamforming with adaptive
+  postfiltering for speech acquisition in noisy environments, {\em Proc. IEEE
+  International Conference on Acoustics, Speech and Signal Processing}.
+
+\harvarditem{Fiscus, Ajot, Michet and Garofolo}{2006}{Fiscus_2006}
+Fiscus, J.~G., Ajot, J., Michet, M. and Garofolo, J.~S.: 2006, The rich
+  transcription 2006 spring meeting recognition evaluation, {\em NIST 2006
+  Spring Rich Transcrition Evaluation Workshop}, Washington DC, USA.
+
+\harvarditem{Fiscus, Garofolo, Ajot and Michet}{2006}{Fiscus_2006b}
+Fiscus, J.~G., Garofolo, J., Ajot, J. and Michet, M.: 2006, Rt-06s speaker
+  diarization results and speech activity detection results, {\em NIST 2006
+  Spring Rich Transcrition Evaluation Workshop}, Washington DC, USA.
+
+\harvarditem[Fiscus et~al.]{Fiscus, Radde, Garofolo, Le, Ajot and
+  Laprun}{2005}{Fiscus_2005}
+Fiscus, J.~G., Radde, N., Garofolo, J.~S., Le, A., Ajot, J. and Laprun, C.~D.:
+  2005, The rich transcription 2005 spring meeting recognition evaluation, {\em
+  NIST 2005 Spring Rich Transcrition Evaluation Workshop}, Edimburgh, UK.
+
+\harvarditem[Flanagan et~al.]{Flanagan, Johnson, Kahn and
+  Elko}{1994}{Flanagan_94}
+Flanagan, J., Johnson, J., Kahn, R. and Elko, G.: 1994, Computer-steered
+  microphone arrays for sound transduction in large rooms, {\em Journal of the
+  Acoustic Society of America} {\bf 78},~1508--1518.
+
+\harvarditem[Fredouille et~al.]{Fredouille, Moraru, Meignier, Besacier and
+  Bonastre}{2004}{Fredouille_2004}
+Fredouille, C., Moraru, D., Meignier, S., Besacier, L. and Bonastre, J.-F.:
+  2004, The {NIST} 2004 spring rich transcription evaluation: Two-axis merging
+  strategy in the context of multiple distant microphone based meeting speaker
+  segmentation, {\em NIST 2004 Spring Rich Transcrition Evaluation Workshop},
+  Montreal, Canada.
+
+\harvarditem[Gallardo-Antolin et~al.]{Gallardo-Antolin, Anguera and
+  Wooters}{2006}{Gallardo_2006}
+Gallardo-Antolin, A., Anguera, X. and Wooters, C.: 2006, Multi-stream speaker
+  diarization systems for the meetings domain, {\em Proc. International
+  Conference on Speech and Language Processing}, Pittsburgh, USA.
+
+\harvarditem[Gangadharaiah et~al.]{Gangadharaiah, Narayanaswamy and
+  Balakrishnan}{2004}{Gangadharaiah_2004}
+Gangadharaiah, R., Narayanaswamy, B. and Balakrishnan, N.: 2004, A novel method
+  for two-speaker segmentation, {\em Proc. International Conference on Speech
+  and Language Processing}, Jeju, S. Korea.
+
+\harvarditem[Garofolo et~al.]{Garofolo, Laprun and Fiscus}{2004}{Garofolo_2004}
+Garofolo, J.~S., Laprun, C.~D. and Fiscus, J.~G.: 2004, The rich transcription
+  2004 spring meeting recognition evaluation, {\em NIST 2004 Spring Rich
+  Transcrition Evaluation Workshop}, Montreal, Canada.
+
+\harvarditem[Gauvain et~al.]{Gauvain, Lamel and Adda}{1998}{Gauvain_1998}
+Gauvain, J.-L., Lamel, L. and Adda, G.: 1998, Partitioning and transcription of
+  broadcast news data, {\em Proc. International Conference on Speech and
+  Language Processing}, Vol.~4, Sidney, Australia, pp.~1335--1338.
+
+\harvarditem{Gish and Schmidt}{1994}{Gish_1994}
+Gish, H. and Schmidt, M.: 1994, Text-independent speaker identification, {\em
+  Signal Processing Magazine, IEEE} pp.~18--32.
+
+\harvarditem[Gish et~al.]{Gish, Siu and Rohlicek}{1991}{Gish_1991}
+Gish, H., Siu, M.-H. and Rohlicek, R.: 1991, Segregation of speakers for speech
+  recognition and speaker identification, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Vol.~2, Toronto,
+  Canada, pp.~873--876.
+
+\harvarditem{Griffiths and Jim}{1982}{Griffiths_82}
+Griffiths, L. and Jim, C.: 1982, An alternative approach to linearly
+  constrained adaptive beamforming, {\em IEEE Trans. on Antenas and
+  Propagation} .
+
+\harvarditem[Hain et~al.]{Hain, Johnson, Turek, Woodland and
+  Young}{1998}{Hain_1998}
+Hain, T., Johnson, S., Turek, A., Woodland, P. and Young, S.~J.: 1998, Segment
+  generation and clustering in the {HTK} broadcast news transcription system,
+  {\em DARPA Broadcast News Transcription and Understanding Workshop},
+  pp.~133--137.
+
+\harvarditem{Heck and Sankar}{1997}{Heck_1997}
+Heck, L. and Sankar, A.: 1997, Acoustic clustering and adaptation for robust
+  speech recognition, {\em Eurospeech-97}, Rhodes, Greece.
+
+\harvarditem[Hoshuyama et~al.]{Hoshuyama, Sugiyama and
+  Hirano}{1999}{Hoshuyama_99}
+Hoshuyama, O., Sugiyama, A. and Hirano, A.: 1999, A robust adaptive beamformer
+  for microphone arrays with a blocking matrix using coefficient-constrained
+  adaptive filters, {\em IEEE Trans. on Signal Processing} .
+
+\harvarditem{{\em Humaine emotion research website}}{2006}{Humaine_web}
+{\em Humaine emotion research website}: 2006.
+\newline\harvardurl{http://emotion-research.net/}
+
+\harvarditem[Hung et~al.]{Hung, Wang and Lee}{2000}{Hung_2000}
+Hung, J., Wang, H. and Lee, L.: 2000, Automatic metric based speech
+  segmentation for broadcast news via principal component analysis, {\em Proc.
+  International Conference on Speech and Language Processing}, Beijing, China.
+
+\harvarditem{{\em ICSI Meeting Recorder Project: Channel skew in ICSI-recorded
+  meetings}}{2006}{Ellis_01}
+{\em ICSI Meeting Recorder Project: Channel skew in ICSI-recorded meetings}:
+  2006.
+\newline\harvardurl{http://www.icsi.berkeley.edu/~dpwe/research/mtgrcdr/chansk%
+ew.html}
+
+\harvarditem{{\em {ICSI} Meetings Recorder corpus}}{2006}{ICSI_corpus_web}
+{\em {ICSI} Meetings Recorder corpus}: 2006.
+\newline\harvardurl{http://www.icsi.berkeley.edu/Speech/mr}
+
+\harvarditem{Ifeachor and Jervis}{1996}{Ifeachor_96}
+Ifeachor, E. and Jervis, B.: 1996, {\em Digital signal processing: a practical
+  approach}, Addison-Wesley.
+
+\harvarditem[Ikbal et~al.]{Ikbal, Misra, Sivadas, Hermansky,  and
+  Bourlard}{2004}{Ikbal_2004}
+Ikbal, S., Misra, H., Sivadas, S., Hermansky, H.,  and Bourlard, H.: 2004,
+  Entropy based combination of tandem representations for noise robust asr,
+  {\em Proc. International Conference on Speech and Language Processing}, South
+  Korea.
+
+\harvarditem{improvements of the {E-HMM} based speaker diarization system
+  for~meetings records}{2006}{Fredouille_2006}
+improvements of the {E-HMM} based speaker diarization system for~meetings
+  records, T.: 2006, The rich transcription 2006 spring meeting recognition
+  evaluation, {\em NIST 2006 Spring Rich Transcrition Evaluation Workshop},
+  Washington DC, USA.
+
+\harvarditem{{\em Interactive Multimodal Information Management ({IM2})
+  website}}{2006}{IM2_web}
+{\em Interactive Multimodal Information Management ({IM2}) website}: 2006.
+\newline\harvardurl{http://www.im2.ch}
+
+\harvarditem[Istrate et~al.]{Istrate, Fredouille, Meignier, Besacier and
+  Bonastre}{2005}{Istrate_2005}
+Istrate, D., Fredouille, C., Meignier, S., Besacier, L. and Bonastre, J.-F.:
+  2005, {NIST} {RT05S} evaluation: Pre-processing techniques and speaker
+  diarization on multiple microphone meetings, {\em {NIST} 2005 Spring Rich
+  Transcrition Evaluation Workshop}, Edinburgh, UK.
+
+\harvarditem[Janin et~al.]{Janin, Ang, Bhagat, Dhillon, Edwards,
+  Macias-Guarasa, Morgan, Peskin, Shriberg, Stolcke, Wooters and
+  Wrede}{2004}{Janin_1998}
+Janin, A., Ang, J., Bhagat, S., Dhillon, R., Edwards, J., Macias-Guarasa, J.,
+  Morgan, N., Peskin, B., Shriberg, E., Stolcke, A., Wooters, C. and Wrede, B.:
+  2004, The icsi meeting project: Resources and research, {\em ICCASP},
+  Montreal.
+
+\harvarditem[Janin et~al.]{Janin, Baron, Edwards, Ellis, Gelbart, Morgan,
+  Peskin, Pfau, Shriberg, Stolcke and Wooters}{2003}{ICSI_corpus_paper}
+Janin, A., Baron, D., Edwards, J., Ellis, D., Gelbart, D., Morgan, N., Peskin,
+  B., Pfau, T., Shriberg, E., Stolcke, A. and Wooters, C.: 2003, The {ICSI}
+  meeting corpus, {\em ICCASP}, Hong Kong.
+
+\harvarditem[Janin et~al.]{Janin, Stolcke, Anguera, Boakye, Cetin, Frankel and
+  Zheng}{2006}{Janin_06}
+Janin, A., Stolcke, A., Anguera, X., Boakye, K., Cetin, O., Frankel, J. and
+  Zheng, J.: 2006, The {ICSI-SRI} spring 2006 meeting recognition system, {\em
+  Proceedings of the Rich Transcription 2006 Spring Meeting Recognition
+  Evaluation}, Washington, USA.
+
+\harvarditem[Jin et~al.]{Jin, Kubala and Schwartz}{1997}{Jin_1997}
+Jin, H., Kubala, F. and Schwartz, R.: 1997, Automatic speaker clustering, {\em
+  DARPA Speech Recognition workshop}, Chantilly, USA.
+
+\harvarditem[Jin et~al.]{Jin, Laskowski, Schultz and Waibel}{2004}{Jin_2004}
+Jin, Q., Laskowski, K., Schultz, T. and Waibel, A.: 2004, Speaker segmentation
+  and clustering in meetings, {\em NIST 2004 Spring Rich Transcrition
+  Evaluation Workshop}, Montreal, Canada.
+
+\harvarditem{Johnson and Dudgeon}{1993}{Johnson_93}
+Johnson, D. and Dudgeon, D.: 1993, {\em Array signal processing}, Prentice
+  Hall.
+
+\harvarditem{Johnson}{1999}{Johnson_1999}
+Johnson, S.: 1999, Who spoke when? - automatic segmentation and clustering for
+  determining speaker turns, {\em Eurospeech-99}, Budapest, Hungary.
+
+\harvarditem{Johnson and Woodland}{1998}{Johnson_1998}
+Johnson, S. and Woodland, P.: 1998, Speaker clustering using direct
+  maximization of the {MLLR}-adapted likelihood, {\em Proc. International
+  Conference on Speech and Language Processing}, Vol.~5, pp.~1775--1779.
+
+\harvarditem{Juang and Rabiner}{1985}{RabinerDistance_1985}
+Juang, B. and Rabiner, L.: 1985, A probabilistic distance measure for hidden
+  markov models, {\em AT\&T Technical Journal~64}, AT\&T.
+
+\harvarditem{Kaneda}{1991}{Kaneda_91}
+Kaneda, Y.: 1991, Directivity characteristics of adaptive microphone-array for
+  noise reduction (amnor), {\em Journal of the Acoustical Society of Japan}
+  {\bf 12}(4),~179--187.
+
+\harvarditem{Kaneda and Ohga}{1986}{Kaneda_86}
+Kaneda, Y. and Ohga, J.: 1986, Adaptive microphone-array system for noise
+  reduction, {\em IEEE Trans. on Acoustics, Speech, and Signal Processing} .
+
+\harvarditem{Kass and Raftery}{1995}{Kass_1995}
+Kass, R.~E. and Raftery, A.~E.: 1995, Bayes factors, {\em Journal of the
+  American Statistics association} {\bf 90},~773--795.
+
+\harvarditem{Kataoka and Ichirose}{1990}{Kataoka_90}
+Kataoka, A. and Ichirose, Y.: 1990, A microphone array configuration for anmor
+  (adaptive microphone-array system for noise reduction), {\em Journal of the
+  Acoustical Society of Japan} {\bf 11}(6),~317--325.
+
+\harvarditem[Kemp et~al.]{Kemp, Schmidt, Westphal and Waibel}{2000}{Kemp_2000}
+Kemp, T., Schmidt, M., Westphal, M. and Waibel, A.: 2000, Strategies for
+  automatic segmentation of audio data, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Istanbul, Turkey,
+  pp.~1423--1426.
+
+\harvarditem[Kim et~al.]{Kim, Ertelt and Sikora}{2005}{Kim_2005}
+Kim, H.-G., Ertelt, D. and Sikora, T.: 2005, Hybrid speaker-based segmentation
+  system using model-level clustering, {\em Proc. IEEE International Conference
+  on Acoustics, Speech and Signal Processing}, Philadelphia, USA.
+
+\harvarditem{Knapp and Carter}{1976}{Knapp_76}
+Knapp, C.~H. and Carter, G.~C.: 1976, The generalized correlation method for
+  estimation of time delay, {\em IEEE Transactions on Acoustics, Speech and
+  Signal Processing} {\bf ASSP-24}(4),~320--327.
+
+\harvarditem{Kohonen}{1990}{Kohonen_1990}
+Kohonen, T.: 1990, The self-organizing map, {\em Proceedings of the IEEE} {\bf
+  78}(9),~1464--1480.
+
+\harvarditem{Krim and Viberg}{1996}{Krim_96}
+Krim, H. and Viberg, M.: 1996, Two decades of array signal processing research,
+  {\em IEEE Signal Processing Magazine} pp.~67--94.
+
+\harvarditem[Kristjansson et~al.]{Kristjansson, Deligne and
+  Olsen}{2005}{Kristjansson_2005}
+Kristjansson, T., Deligne, S. and Olsen, P.: 2005, Voicing features for robust
+  speech detection, {\em Proc. International Conference on Speech and Language
+  Processing}, Lisbon, Portugal.
+
+\harvarditem[Kubala et~al.]{Kubala, Jin, Matsoukas, Gnuyen, Schwartz and
+  Machoul}{1997}{Kubala_1997}
+Kubala, F., Jin, H., Matsoukas, S., Gnuyen, L., Schwartz, R. and Machoul, J.:
+  1997, The 1996 {BBN} byblos {HUB}-4 transcription system, {\em Speech
+  Recognition Workshop}, pp.~90--93.
+
+\harvarditem{Lapidot}{2003}{Lapidot_2003}
+Lapidot, I.: 2003, {SOM} as likelihood estimator for speaker clustering, {\em
+  Eurospeech}, Geneva, Switzerland.
+
+\harvarditem[Lapidot et~al.]{Lapidot, Gunterman and Cohen}{2002}{Lapidot_2002}
+Lapidot, I., Gunterman, H. and Cohen, A.: 2002, Unsupervised speaker
+  recognition based on competition between self-organizing-maps, {\em IEEE
+  Transactions on Neural Networks} {\bf 13}(4),~877--887.
+
+\harvarditem{Lathoud and McCowan}{2003}{Lathoud_2003}
+Lathoud, G. and McCowan, I.~A.: 2003, Location based speaker segmentation, {\em
+  Proc. IEEE International Conference on Acoustics, Speech and Signal
+  Processing}.
+
+\harvarditem{Lathoud, McCowan and Odobez}{2004}{Lathoud_2004}
+Lathoud, G., McCowan, I. and Odobez, J.: 2004, Unsupervised location-based
+  segmentation of multi-party speech, {\em ICASSP-NIST Meeting Recognition
+  Workshop}.
+
+\harvarditem{Lathoud, Odobez and McCowan}{2004}{Lathoud_2004b}
+Lathoud, G., Odobez, J.-M. and McCowan, I.: 2004, Short-term spatio-temporal
+  clustering of sporadic and concurrent events, {\em Technical Report IDIAP-RR
+  04-14}, IDIAP.
+
+\harvarditem{Lee}{1998}{Lee_1998}
+Lee, K.-F.: 1998, {\em Large vocabulary speaker-independent continuous speech
+  recognition: the {SPHINX} system}, PhD thesis, Carnegie Mellon University,
+  Pittsburgh, PA, USA.
+
+\harvarditem{Leeuwen and Huijbregts}{2006}{VanLeeuwen_2006}
+Leeuwen, D. A.~V. and Huijbregts, M.: 2006, The {AMI} speaker diarization
+  system for {NIST} {RT06s} meeting data, {\em NIST 2006 Spring Rich
+  Transcrition Evaluation Workshop}, Washington DC, USA.
+
+\harvarditem[Li et~al.]{Li, Zheng, Tsai,  and Zhou}{2002}{qili_2002}
+Li, Q., Zheng, J., Tsai, A.,  and Zhou, Q.: 2002, Robust endpoint detection and
+  energy normalization for real-time speech and speaker recognition, {\em IEEE
+  Transactions on Speech and Audio Processing} {\bf 10(3)}.
+
+\harvarditem{Li}{2005}{Li_2005}
+Li, X.: 2005, {\em Combination and Generation of Parallel Feature Streams for
+  Improved Speech Recognition}, PhD thesis, ECE Department, CMU.
+
+\harvarditem{Liu and Kubala}{1999}{Liu_1999}
+Liu, D. and Kubala, F.: 1999, Fast speaker change detection for broadcast news
+  transcription and indexing, {\em Eurospeech-99}, Vol.~3, Budapest, Hungary,
+  pp.~1031--1034.
+
+\harvarditem{Lopez and Ellis}{2000a}{Lopez_2000}
+Lopez, J.~F. and Ellis, D. P.~W.: 2000a, Using acoustic condition clustering to
+  improve acoustic change detection on broadcast news, {\em Proc. International
+  Conference on Speech and Language Processing}, Beijing, China.
+
+\harvarditem{Lopez and Ellis}{2000b}{Ferreiros_2000}
+Lopez, J.~F. and Ellis, D. P.~W.: 2000b, Using acoustic condition clustering to
+  improve acoustic change detection on broadcast news, {\em Proc. International
+  Conference on Speech and Language Processing}, Beijing, China.
+
+\harvarditem[Lu et~al.]{Lu, Li and Zhang}{2001}{Lu_2001b}
+Lu, L., Li, S.~Z. and Zhang, H.-J.: 2001, Content-based audio segmentation
+  using support vector machines, {\em ACM Multimedia Conference}, pp.~203--211.
+
+\harvarditem{Lu and Zhang}{2002a}{Lu_2002c}
+Lu, L. and Zhang, H.-J.: 2002a, Real-time unsupervised speaker change
+  detection, {\em ICPR'02}, Vol.~2, Quebec City, Canada.
+
+\harvarditem{Lu and Zhang}{2002b}{Lu_2002b}
+Lu, L. and Zhang, H.-J.: 2002b, Speaker change detection and tracking in
+  real-time news broadcasting analysis, {\em ACM International Conference on
+  Multimedia}, pp.~602--610.
+
+\harvarditem[Lu et~al.]{Lu, Zhang and Jiang}{2002}{Lu_2002a}
+Lu, L., Zhang, H.-J. and Jiang, H.: 2002, Content analysis for audio
+  classification and segmentation, {\em IEEE Transactions on Speech and Audio
+  Processing} {\bf 10}(7),~504--516.
+
+\harvarditem{MacKay}{1997}{MacKay_1997}
+MacKay, D. J.~C.: 1997, Ensemble learning for hidden {M}arkov models.
+\newblock {\tt
+  http://www.inference.phy.cam.ac.uk/mackay/abstracts/ensemblePaper.html}.
+
+\harvarditem[Malegaonkar et~al.]{Malegaonkar, Ariyaeeinia, Sivakumaran and
+  Fortuna}{2006}{Malegaonkar_2006}
+Malegaonkar, A., Ariyaeeinia, A., Sivakumaran, P. and Fortuna, J.: 2006,
+  Unsupervised speaker change detection using probabilistic pattern matching,
+  {\em IEEE Signal Processing Letters} {\bf 13}(8),~509--512.
+
+\harvarditem[Marro et~al.]{Marro, Mahieux and Simmer}{1998}{Marro_98}
+Marro, C., Mahieux, Y. and Simmer, K.: 1998, Analysis of noise reduction and
+  dereverberation techniques based on microphone arrays with postfiltering,
+  {\em IEEE Trans. on Speech and Audio Processing} .
+
+\harvarditem{McCowan}{2001}{McCowan_01b}
+McCowan, I.: 2001, {\em Robust Speech Recognition using microphone arrays}, PhD
+  thesis, Queensland University of Technology, Australia.
+
+\harvarditem[McCowan et~al.]{McCowan, Pelecanos and
+  Sridharan}{2001}{McCowan_01}
+McCowan, I.~A., Pelecanos, J. and Sridharan, S.: 2001, Robust speaker
+  recognition using microphone arrays, {\em IEEE Speaker Odyssey recognition
+  workshop}.
+
+\harvarditem[McCowan et~al.]{McCowan, Gatica-Perez, Bengio, Lathoud, Barnard
+  and Zhang}{2005}{M4_corpus_paper}
+McCowan, I., Gatica-Perez, D., Bengio, S., Lathoud, G., Barnard, M. and Zhang,
+  D.: 2005, Automatic analysis of multimodal group actions in meetings, {\em
+  IEEE Trans. on Pattern Analysis and Machine Intelligence} {\bf 27},~305--317.
+
+\harvarditem{McCowan, Marro and Mauuary}{2000}{McCowan_00}
+McCowan, I., Marro, C. and Mauuary, L.: 2000, Robust speech recognition using
+  near-field superdirective beamforming with post-filtering, {\em Proc. IEEE
+  International Conference on Acoustics, Speech and Signal Processing}, Vol.~3,
+  pp.~1723--1726.
+
+\harvarditem{McCowan, Moore and Sridharan}{2000}{McCowan_00b}
+McCowan, I., Moore, D. and Sridharan, S.: 2000, Speech enhancement using
+  near-field superdirectivity with an adaptive sidelobe canceler and
+  post-filter, {\em Australian International Conference on Speech Science and
+  Technology}, pp.~268--273.
+
+\harvarditem[Meignier et~al.]{Meignier, Bonastre and
+  Igournet}{2001}{Meignier_2001}
+Meignier, S., Bonastre, J.-F. and Igournet, S.: 2001, {E-HMM} approach for
+  learning and adapting sound models for speaker indexing, {\em A speaker
+  Oddissey}, Chania, Crete, pp.~175--180.
+
+\harvarditem[Meignier et~al.]{Meignier, Moraru, Fredouille, Besacier and
+  Bonastre}{2004}{Meignier_2004}
+Meignier, S., Moraru, D., Fredouille, C., Besacier, L. and Bonastre, J.-F.:
+  2004, Benefits of prior acoustic segmentation for automatic speaker
+  segmentation, {\em Proc. IEEE International Conference on Acoustics, Speech
+  and Signal Processing}, Montreal, Canada.
+
+\harvarditem{Meinedo and Neto}{2003}{Meinedo_2003}
+Meinedo, H. and Neto, J.: 2003, Audio segmentation, classification and
+  clustering in a broadcast news task, {\em Proc. IEEE International Conference
+  on Acoustics, Speech and Signal Processing}, Hong-Kong, China.
+
+\harvarditem[Metze et~al.]{Metze, Fugen, Pan, Schultz and Yu}{2004}{Metze_2004}
+Metze, F., Fugen, C., Pan, Y., Schultz, T. and Yu, H.: 2004, The {ISL} {RT-04S}
+  meetings transcription system, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}, Montreal, Canada.
+
+\harvarditem[Mirghafori et~al.]{Mirghafori, Stolcke, Wooters, Pirinen, Bulyko,
+  Gelbart, Graciarena, Otterson, Peskin and Ostendorf}{2004}{Mirghafori_04}
+Mirghafori, N., Stolcke, A., Wooters, C., Pirinen, T., Bulyko, I., Gelbart, D.,
+  Graciarena, M., Otterson, S., Peskin, B. and Ostendorf, M.: 2004, From
+  switchboard to meetings: Development of the 2004 {ICSI-SRI-UW} meeting
+  recognition system, {\em Proc. International Conference on Speech and
+  Language Processing}, Jeju Island, Korea.
+
+\harvarditem{Mirghafori and Wooters}{2006}{Mirghafori_2006}
+Mirghafori, N. and Wooters, C.: 2006, Nuts and flakes: A study of data
+  characteristics in speaker diarization, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Toulouse, France.
+
+\harvarditem[Misra et~al.]{Misra, Bourlard,  and Tyagi}{2003}{Misra_2003}
+Misra, H., Bourlard, H.,  and Tyagi, V.: 2003, New entropy based combination
+  rules in hmm/ann multi-stream asr, {\em Proc. IEEE International Conference
+  on Acoustics, Speech and Signal Processing}, Hong Kong.
+
+\harvarditem[Moh et~al.]{Moh, Nguyen and Junqua}{2003}{Moh_2003}
+Moh, Y., Nguyen, P. and Junqua, J.-C.: 2003, Towards domain independent speaker
+  clustering, {\em Proc. IEEE International Conference on Acoustics, Speech and
+  Signal Processing}, Hong Kong.
+
+\harvarditem[Moraru et~al.]{Moraru, Ben and Gravier}{2005}{Moraru_2005}
+Moraru, D., Ben, M. and Gravier, G.: 2005, Experiments on speaker tracking and
+  segmentation in radio broadcast news, {\em Proc. International Conference on
+  Speech and Language Processing}, Lisbon, Portugal.
+
+\harvarditem{Moraru, Besacier, Meignier, Fredouille and francois
+  Bonastre}{2004}{Moraru_2004b}
+Moraru, D., Besacier, L., Meignier, S., Fredouille, C. and francois Bonastre,
+  J.: 2004, Speaker diarization in the elisa consodrium over the last 4 years,
+  {\em NIST 2004 Spring Rich Transcrition Evaluation Workshop}, Montreal,
+  Canada.
+
+\harvarditem[Moraru et~al.]{Moraru, Meignier, Besacier, Bonastre and
+  Magrin-Chagnolleau}{2002}{Moraru_2002}
+Moraru, D., Meignier, S., Besacier, L., Bonastre, J.-F. and Magrin-Chagnolleau,
+  I.: 2002, The {ELISA} consortium approaches in speaker segmentation during
+  the {NIST} 2002 speaker recognition evaluation, {\em NIST 2002 Spring Rich
+  Transcrition Evaluation Workshop}.
+
+\harvarditem{Moraru, Meignier, Besacier, Bonastre and
+  Magrin-Chagnolleau}{2004}{Moraru_2003}
+Moraru, D., Meignier, S., Besacier, L., Bonastre, J.-F. and Magrin-Chagnolleau,
+  I.: 2004, The {ELISA} consortium approaches in speaker segmentation during
+  the {NIST} 2002 speaker recognition evaluation, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Montreal, Canada.
+
+\harvarditem{Moraru, Meignier, Fredouille, Besacier and
+  Bonastre}{2004}{Moraru_2004}
+Moraru, D., Meignier, S., Fredouille, C., Besacier, L. and Bonastre, J.-F.:
+  2004, The {ELISA} consortium approaches in broadcast news speaker
+  segmentation during the {NIST} 2003 rich transcription evaluation, {\em Proc.
+  IEEE International Conference on Acoustics, Speech and Signal Processing},
+  Montreal, Canada.
+
+\harvarditem{Mori and Nakagawa}{2001}{Mori_2001}
+Mori, K. and Nakagawa, S.: 2001, Speaker change detection and speaker
+  clustering using {VQ} distortion for broadcast news speech recognition, {\em
+  Proc. IEEE International Conference on Acoustics, Speech and Signal
+  Processing}, Vol.~1, Salt Lake City, USA, pp.~413--416.
+
+\harvarditem{{\em Multimodal Meeting Manager ({M4}) website}}{2006}{M4_web}
+{\em Multimodal Meeting Manager ({M4}) website}: 2006.
+\newline\harvardurl{http://www.m4project.org}
+
+\harvarditem{Nakagawa and Suzuki}{1993}{Nakagawa_1993}
+Nakagawa, S. and Suzuki, H.: 1993, A new speech recognition method based on
+  {VQ}-distortion and hmm, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}, Vol.~2, Minneapolis, USA,
+  pp.~676--679.
+
+\harvarditem{{\em National Institute for Standards and
+  Technology}}{2006}{NIST_web}
+{\em National Institute for Standards and Technology}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech}
+
+\harvarditem{Nguyen}{2003}{Nguyen_2003}
+Nguyen, P.: 2003, {SWAMP}: An isometric frontend for speaker clustering, {\em
+  NIST 2003 Rich Transcription Workshop}, Boston, USA.
+
+\harvarditem{Nishida and Kawahara}{2003}{Nishida_2003}
+Nishida, M. and Kawahara, T.: 2003, Unsupervised speaker indexing using speaker
+  model selection based on bayesian information criterion, {\em Proc. IEEE
+  International Conference on Acoustics, Speech and Signal Processing}, Hong
+  Kong.
+
+\harvarditem{{\em {NIST} Fall Rich Transcription Evaluation
+  website}}{2006}{NIST_rt_web_2004}
+{\em {NIST} Fall Rich Transcription Evaluation website}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/tests/rt/rt2004/fall}
+
+\harvarditem{{\em {NIST} Fall Rich Transcription on meetings 2006 Evaluation
+  Plan}}{2006}{NIST_rt_eval_plan_2006}
+{\em {NIST} Fall Rich Transcription on meetings 2006 Evaluation Plan}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/tests/rt/rt2006/spring/docs/rt0%
+6s-meeting-eval-plan-V2.pdf}
+
+\harvarditem{{\em {NIST} MD-eval-v21 {DER} evaluation
+  script}}{2006}{NIST_mdeval_script}
+{\em {NIST} MD-eval-v21 {DER} evaluation script}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/tests/rt/rt2006/spring/code/md-%
+eval-v21.pl}
+
+\harvarditem{{\em {NIST} Pilot Meeting Corpus website}}{2006}{NIST_corpus}
+{\em {NIST} Pilot Meeting Corpus website}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/test\_beds/mr\_proj/meeting\_co%
+rpus\_1}
+
+\harvarditem{{\em {NIST} Rich Transcription evaluations, website:
+  http://www.nist.gov/speech/tests/rt}}{2006}{NIST_rt_web}
+{\em {NIST} Rich Transcription evaluations, website:
+  http://www.nist.gov/speech/tests/rt}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/tests/rt}
+
+\harvarditem{{\em {NIST} Speech Recognition Evaluation}}{2006}{nist_sre}
+{\em {NIST} Speech Recognition Evaluation}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/tests/spk/index.htm}
+
+\harvarditem{{\em {NIST} Speech tools and {API}s}}{2006}{NIST_sqap}
+{\em {NIST} Speech tools and {API}s}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/tools/index.htm}
+
+\harvarditem{{\em {NIST} Spring Rich Transcription Evaluation in Meetings
+  website,
+  http://www.nist.gov/speech/tests/rt/rt2005/spring}}{2006}{NIST_Meetings_web}
+{\em {NIST} Spring Rich Transcription Evaluation in Meetings website,
+  http://www.nist.gov/speech/tests/rt/rt2005/spring}: 2006.
+\newline\harvardurl{http://www.nist.gov/speech/tests/rt/rt2005/spring}
+
+\harvarditem[Omar et~al.]{Omar, Chaudhari and Ramaswamy}{2005}{Kamal_2005}
+Omar, M.~K., Chaudhari, U. and Ramaswamy, G.: 2005, Blind change detection for
+  audio segmentation, {\em Proc. IEEE International Conference on Acoustics,
+  Speech and Signal Processing}, Philadelphia, USA.
+
+\harvarditem[Ouellet et~al.]{Ouellet, Boulianne and Kenny}{2005}{Ouellet_2005}
+Ouellet, P., Boulianne, G. and Kenny, P.: 2005, Fravors of gaussian warping,
+  {\em Proc. International Conference on Speech and Language Processing},
+  Lisbon, Portugal.
+
+\harvarditem[Pardo et~al.]{Pardo, Anguera and Wooters}{2006a}{Pardo_2006a}
+Pardo, J.~M., Anguera, X. and Wooters, C.: 2006a, Speaker diarization for
+  multi-microphone meetings using only between-channel differences, {\em MLMI
+  2006}.
+
+\harvarditem[Pardo et~al.]{Pardo, Anguera and Wooters}{2006b}{Pardo_2006b}
+Pardo, J.~M., Anguera, X. and Wooters, C.: 2006b, Speaker diarization for
+  multiple distant microphone meetings: Mixing acoustic features and
+  inter-channel time differences, {\em Proc. International Conference on Speech
+  and Language Processing}.
+
+\harvarditem{{\em Pattern analysis, Statistical modeling and Computational
+  learning (Pascal) website}}{2006}{Pascal_web}
+{\em Pattern analysis, Statistical modeling and Computational learning (Pascal)
+  website}: 2006.
+\newline\harvardurl{http://www.pascal-network.org/}
+
+\harvarditem{Pelecanos and Sridharan}{2001}{Pelecanos_2001}
+Pelecanos, J. and Sridharan, S.: 2001, Feature warping for robust speaker
+  verification, {\em ISCA Speaker Recognition Workshop odyssey}, Crete, Grece.
+
+\harvarditem{Perez-Freire and Garcia-Mateo}{2004}{Perez-Freire_2004}
+Perez-Freire, L. and Garcia-Mateo, C.: 2004, A multimedia approach for audio
+  segmentation in {TV} broadcast news, {\em Proc. IEEE International Conference
+  on Acoustics, Speech and Signal Processing}, Montreal, Canada, pp.~369--372.
+
+\harvarditem{Pwint and Sattar}{2005}{Pwint_2005}
+Pwint, M. and Sattar, F.: 2005, A segmentation method for noisy speech using
+  genetic algorithm, {\em Proc. IEEE International Conference on Acoustics,
+  Speech and Signal Processing}, Philadelphia, USA.
+
+\harvarditem[Rentzeperis et~al.]{Rentzeperis, Stergiou, Boukis, Pnevmatikakis
+  and Polymenakos}{2006}{Rentzeperis_2006}
+Rentzeperis, E., Stergiou, A., Boukis, C., Pnevmatikakis, A. and Polymenakos,
+  L.~C.: 2006, The 2006 athens information technology speech activity detection
+  and speaker diarization systems, {\em NIST 2006 Spring Rich Transcrition
+  Evaluation Workshop}, Washington DC, USA.
+
+\harvarditem[Reynolds et~al.]{Reynolds, Singer, Carlson, O'Leary, McLaughlin
+  and Zixxman}{1998}{Reynolds_1998}
+Reynolds, D.~A., Singer, E., Carlson, B.~A., O'Leary, G.~C., McLaughlin, J.~J.
+  and Zixxman, M.~A.: 1998, Blind clustering of speech utterances based on
+  speaker and language characteristics, {\em Proc. International Conference on
+  Speech and Language Processing}, Sidney, Australia.
+
+\harvarditem{Reynolds and Torres-Carrasquillo}{2004}{Reynolds_2004}
+Reynolds, D. and Torres-Carrasquillo, P.: 2004, The {MIT Lincoln Laboratories}
+  {RT-04F} diarization systems: Applications to broadcast audio and telephone
+  conversations, {\em Fall 2004 Rich Transcription Workshop {(RT04)}},
+  Palisades, NY.
+
+\harvarditem{Roch and Cheng}{2004}{Roch_2004}
+Roch, M. and Cheng, Y.: 2004, Speaker segmentation using the {MAP}-adapted
+  bayesian information criterion, {\em Odyssey-04}, Toledo, Spain,
+  pp.~349--354.
+
+\harvarditem{Rombouts and M.Moonen}{2003}{Rombouts_03}
+Rombouts, G. and M.Moonen: 2003, Qrd-based unconstrained optimal filtering for
+  acoustic noise reduction, {\em IEEE Trans. Signal Processing} {\bf
+  83}(9),~1889--1904.
+
+\harvarditem[Rosca et~al.]{Rosca, Balan and Beaugeant}{2003}{Rosca_03}
+Rosca, J., Balan, R. and Beaugeant, C.: 2003, Multi-channel psychoacoustically
+  motivated speech enhancement, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}.
+
+\harvarditem[Ross et~al.]{Ross, Jain and Qian}{2001}{Ross_2001}
+Ross, A., Jain, A.~K. and Qian, J.~Z.: 2001, Information fusion in biometrics,
+  {\em 3rd International Conference on Audio and Video-Based Person
+  Authentication}.
+
+\harvarditem{Roth}{1971}{Roth_71}
+Roth, P.: 1971, Effective measurements using digital signal analysis, {\em IEEE
+  Spectrum} {\bf 8},~62--70.
+
+\harvarditem[Rougui et~al.]{Rougui, Rziza, Aboutajdine, Gelgon and
+  Martinez}{2006}{Rougui_2006}
+Rougui, J., Rziza, M., Aboutajdine, D., Gelgon, M. and Martinez, J.: 2006, Fast
+  incremental clustering of gaussian mixture speaker models for scaling up
+  retrieval in on-line broadcast, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}, Toulouse, France.
+
+\harvarditem[Sanchez-Bote et~al.]{Sanchez-Bote, Gonzalez-Rodriguez and
+  Ortega-Garcia}{2003}{Sanchez_03}
+Sanchez-Bote, J., Gonzalez-Rodriguez, J. and Ortega-Garcia, J.: 2003, A
+  real-time auditory-basec microphone array assessed with e-rasti evaluation
+  proposal, {\em Proc. IEEE International Conference on Acoustics, Speech and
+  Signal Processing}.
+
+\harvarditem[Sankar et~al.]{Sankar, Beaufays and Digalakis}{1995}{Sankar_1995}
+Sankar, A., Beaufays, F. and Digalakis, V.: 1995, Training data clustering for
+  improved speech recognition, {\em Eurospeech-95}, Madrid, Spain.
+
+\harvarditem[Sankar et~al.]{Sankar, Weng, Stolcke and
+  Grande}{1998}{Sankar_1998}
+Sankar, A., Weng, F., Stolcke, Z. R.~A. and Grande, R.~R.: 1998, Development of
+  {SRI}'s 1997 broadcast news transcription system, {\em DARPA Broadcast News
+  Transcription and Understanding Workshop}, Landsdowne, USA.
+
+\harvarditem{Schmidt}{1986}{Schmidt_86}
+Schmidt, R.: 1986, Multiple emitter location and signal parameter estimation,
+  {\em IEEE Transactions on Antennas and Propagation} .
+
+\harvarditem{Schwarz}{1971}{Schwarz_1971}
+Schwarz, G.: 1971, A sequential student test, {\em The Annals of Statistics}
+  {\bf 42}(3),~1003--1009.
+
+\harvarditem{Schwarz}{1978}{Schwarz_1978}
+Schwarz, G.: 1978, Estimating the dimension of a model, {\em The Annals of
+  Statistics} {\bf 6},~461--464.
+
+\harvarditem{Shaobing~Chen and Gopalakrishnan}{1998}{Chen_1998a}
+Shaobing~Chen, S. and Gopalakrishnan, P.: 1998, Speaker, environment and
+  channel change detection and clustering via the bayesian information
+  criterion, {\em Proceedings DARPA Broadcast News Transcription and
+  Understanding Workshop}, Virginia, USA.
+
+\harvarditem{Shinozaki and Ostendorf}{2007}{Shinozaki_2006}
+Shinozaki, T. and Ostendorf, M.: 2007, Cross-validation {EM} training for
+  robust parameter estimation, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing} .
+\newblock submitted.
+
+\harvarditem{sian Cheng and min Wang}{2003}{Cheng_2003}
+sian Cheng, S. and min Wang, H.: 2003, A sequential metric-based audio
+  segmentation method via the bayesian information criterion, {\em
+  Eurospeech'03}, Geneva, Switzerland.
+
+\harvarditem{sian Cheng and min Wang}{2004}{Cheng_2004}
+sian Cheng, S. and min Wang, H.: 2004, {METRIC}-{SEQDAC}: A hybrid approach for
+  audio segmentation, {\em Proc. International Conference on Speech and
+  Language Processing}, Jeju, South Korea.
+
+\harvarditem[Siegler et~al.]{Siegler, Jain, Raj and Stern}{1997}{Siegler_1997}
+Siegler, M.~A., Jain, U., Raj, B. and Stern, R.~M.: 1997, Automatic
+  segmentation, classification and clustering of broadcast news audio, {\em
+  DARPA Speech Recognition Workshop}, Chantilly, pp.~97--99.
+
+\harvarditem{{\em Similar Network of Excellence website}}{2006}{Similar_web}
+{\em Similar Network of Excellence website}: 2006.
+\newline\harvardurl{http://www.similar.cc/cms/default.asp?id=0}
+
+\harvarditem[Sinha et~al.]{Sinha, Tranter, Gales and
+  Woodland}{2005}{Sinha_2005}
+Sinha, R., Tranter, S.~E., Gales, J. J.~F. and Woodland, P.~C.: 2005, The
+  cambridge university march 2005 speaker diarisation system, {\em European
+  Conference on Speech Communication and Technology (Interspeech)}, Lisbon,
+  Portugal, pp.~2437--2440.
+
+\harvarditem[Siu et~al.]{Siu, Yu and Gish}{1992}{Siu_1992}
+Siu, M.-H., Yu, G. and Gish, H.: 1992, An unsupervised, sequential learning
+  algorithm for the segmentation of speech waveforms with multiple speakers,
+  {\em Proc. IEEE International Conference on Acoustics, Speech and Signal
+  Processing}, Vol.~2, San Francisco, USA, pp.~189--192.
+
+\harvarditem[Sivakumaran et~al.]{Sivakumaran, Fortuna and
+  Ariyaeeinia}{2001}{Sivakumaran_2001}
+Sivakumaran, P., Fortuna, J. and Ariyaeeinia, A.: 2001, On the use of the
+  bayesian information criterion in multiple speaker detection, {\em
+  Eurospeech'01}, Scandinavia.
+
+\harvarditem[Solomonov et~al.]{Solomonov, Mielke, Schmidt and
+  Gish}{1998}{Solomonoff_1998}
+Solomonov, A., Mielke, A., Schmidt, M. and Gish, H.: 1998, Clustering speakers
+  by their voices, {\em Proc. IEEE International Conference on Acoustics,
+  Speech and Signal Processing}, Vol.~2, Seattle, USA, pp.~757--760.
+
+\harvarditem{{\em Speech in noisy environments}}{2006}{spine_web}
+{\em Speech in noisy environments}: 2006.
+\newline\harvardurl{http://www.speech.sri.com/projects/spine/}
+
+\harvarditem{{\em Spring 2005 {(RT-05S)} Rich Transcription Meeting Recognition
+  Evaluation Plan}}{n.d.}{NIST_RT05s}
+{\em Spring 2005 {(RT-05S)} Rich Transcription Meeting Recognition Evaluation
+  Plan}: n.d.
+\newline\harvardurl{http://www.nist.gov/speech/tests/rt/rt2005/spring/rt05s-me%
+eting-eval-plan-V1.pdf}
+
+\harvarditem{{\em Spring 2006 {(RT-06S)} Rich Transcription Meeting Recognition
+  Evaluation Plan}}{n.d.}{NIST_RT06s}
+{\em Spring 2006 {(RT-06S)} Rich Transcription Meeting Recognition Evaluation
+  Plan}: n.d.
+\newline\harvardurl{http://www.nist.gov/speech/tests/rt/rt2006/spring/docs/rt0%
+6s-meeting-eval-plan-V2.pdf}
+
+\harvarditem[Stolcke et~al.]{Stolcke, Anguera, Boakye, Cetin, Grezl, Janin,
+  Mandal, Peskin, Wooters and Zheng}{2005}{Stolcke_2005}
+Stolcke, A., Anguera, X., Boakye, K., Cetin, O., Grezl, F., Janin, A., Mandal,
+  A., Peskin, B., Wooters, C. and Zheng, J.: 2005, Further progress in meeting
+  recognition: The icsi-sri spring 2005 speech-to-text evaluation system, {\em
+  RT05s Meetings Recognition Evaluation}, Edinburgh, Great Brittain.
+
+\harvarditem{Strassel and Glenn}{2004}{LDC_corpus_paper}
+Strassel, S. and Glenn, M.: 2004, Shared linguistic resources for human
+  language technology in the meeting domain, {\em ICASSP-DARPA Meetings
+  Diarization Workshop}, Montreal, Canada.
+
+\harvarditem[Sturim et~al.]{Sturim, Reynolds, Singer and
+  J.P.Campbell}{2001}{Sturim_2001}
+Sturim, D., Reynolds, D., Singer, E. and J.P.Campbell: 2001, Speaker indexing
+  in large audio databases using anchor models, {\em Proc. IEEE International
+  Conference on Acoustics, Speech and Signal Processing}, Salt Lake City, USA.
+
+\harvarditem{Tager}{1998a}{Tager_98}
+Tager, W.: 1998a, {\em Etudes en traitement d'antenne pour la prise de son},
+  PhD thesis, Universite de Rennes.
+
+\harvarditem{Tager}{1998b}{Tager_98b}
+Tager, W.: 1998b, Near field superdirectivity (nfsd), {\em Proc. IEEE
+  International Conference on Acoustics, Speech and Signal Processing},
+  pp.~2045--2048.
+
+\harvarditem{Tranter}{2005}{Tranter_2005}
+Tranter, S.: 2005, Two-way cluster voting to improve speaker diarization
+  performance, {\em Proc. IEEE International Conference on Acoustics, Speech
+  and Signal Processing}, Montreal, Canada.
+
+\harvarditem{Tranter and Reynolds}{2004}{Tranter_2004}
+Tranter, S. and Reynolds, D.: 2004, Speaker diarization for broadcast news,
+  {\em ODYSSEY'04}, Toledo, Spain.
+
+\harvarditem{Trees}{1968}{VanTrees_68}
+Trees, H.~V.: 1968, {\em Detection Estimation and Modulation Theory}, Vol.~1,
+  Wiley.
+
+\harvarditem{Tritschler and Gopinath}{1999}{Tritschler_1999}
+Tritschler, A. and Gopinath, R.: 1999, Improved speaker segmentation and
+  segments clustering using the bayesian information criterion, {\em
+  Eurospeech'99}, pp.~679--682.
+
+\harvarditem[Tsai et~al.]{Tsai, Cheng, Chao and Wang}{2005}{Tsai_2005}
+Tsai, W.-H., Cheng, S.-S., Chao, Y.-H. and Wang, H.-M.: 2005, Clustering speech
+  utterances by speaker using eigenvoice-motivated vector space models, {\em
+  Proc. IEEE International Conference on Acoustics, Speech and Signal
+  Processing}, Philadelphia, USA.
+
+\harvarditem[Tsai et~al.]{Tsai, Cheng and Wang}{2004}{Tsai_2004}
+Tsai, W.-H., Cheng, S.-S. and Wang, H.-M.: 2004, Speaker clustering of speech
+  utterances using a voice characteristic reference space, {\em Proc.
+  International Conference on Speech and Language Processing}, Jeju Island,
+  Korea.
+
+\harvarditem{Tsai and Wang}{2006}{Tsai_2006}
+Tsai, W.-H. and Wang, H.-M.: 2006, On maximizing the within-cluster homogeneity
+  of speaker voice characteristics for speech utterance clustering, {\em Proc.
+  IEEE International Conference on Acoustics, Speech and Signal Processing},
+  Toulouse, France.
+
+\harvarditem{Valente}{2006}{Valente_2006}
+Valente, F.: 2006, Infinite models for speaker clustering, {\em Proc.
+  International Conference on Speech and Language Processing}, Pittsburgh, USA.
+
+\harvarditem{Valente and Wellekens}{2004}{Valente_2004}
+Valente, F. and Wellekens, C.: 2004, Variational bayesian speaker clustering,
+  {\em Speaker Odyssey}, Toledo, Spain.
+
+\harvarditem{Valente and Wellekens}{2005}{Valente_2005}
+Valente, F. and Wellekens, C.: 2005, Variational bayesian adaptation for
+  speaker clustering, {\em Proc. IEEE International Conference on Acoustics,
+  Speech and Signal Processing}, Lisbon, Portugal.
+
+\harvarditem[Valin et~al.]{Valin, Rouat and Michaud}{2004}{Valin_04}
+Valin, J., Rouat, J. and Michaud, F.: 2004, Microphone array post-filter for
+  separation of simultaneous non-stationary sources, {\em Proc. IEEE
+  International Conference on Acoustics, Speech and Signal Processing}.
+
+\harvarditem{van Leeuwen}{2005}{vanLeeuwen_2005}
+van Leeuwen, D.: 2005, The {TNO} speaker diarization system system for {NIST}
+  {RT05s} for meeting data, {\em {NIST} 2005 Spring Rich Transcrition
+  Evaluation Workshop}, Edinburgh, UK.
+
+\harvarditem{Vandecatseye and Martens}{2003}{Vandecatseye_2003}
+Vandecatseye, A. and Martens, J.-P.: 2003, A fast, accurate and stream-based
+  speaker segmentation and clustering algorithm, {\em Eurospeech'03}, Geneva,
+  Switzerland, pp.~941--944.
+
+\harvarditem[Vandecatseye et~al.]{Vandecatseye, Martens
+  et~al.}{2004}{Vandecatseye_2004}
+Vandecatseye, A., Martens, J.-P. et~al.: 2004, The cost278 pan-european
+  broadcast news database, {\em LREC'04}, Lisbon, Portugal.
+
+\harvarditem{Veen and Buckley}{1988}{Van_Veen_88}
+Veen, B.~V. and Buckley, K.: 1988, Beamforming: A versatile approach to spacial
+  filtering, {\em IEEE Transactions on Acoustics, Speech and Signal Processing}
+  .
+
+\harvarditem[Verlinde et~al.]{Verlinde, Chollet and
+  Acheroy}{2000}{Verlinde_2000}
+Verlinde, P., Chollet, G. and Acheroy, M.: 2000, Multi-modal identity
+  verification using expert fusion, {\em Information Fusion} {\bf
+  1}(1),~17--33.
+
+\harvarditem[Vescovi et~al.]{Vescovi, Cettolo and Rizzi}{2003}{Vescovi_2003}
+Vescovi, M., Cettolo, M. and Rizzi, R.: 2003, A {DP} algoritm for speaker
+  change detection, {\em Eurospeech'03}.
+
+\harvarditem{{\em Video analysis and content extraction for defense
+  intelligence (ARDA-VACE II)}}{2006}{vace_web}
+{\em Video analysis and content extraction for defense intelligence (ARDA-VACE
+  II)}: 2006.
+\newline\harvardurl{http://www.informedia.cs.cmu.edu/arda/vaceII.html}
+
+\harvarditem[Wactlar et~al.]{Wactlar, Hauptmann and
+  Witbrock}{1996}{Wactlar_1996}
+Wactlar, H., Hauptmann, A. and Witbrock, M.: 1996, News on-demand experiments
+  in speech recognition, {\em ARPA STL Workshop}.
+
+\harvarditem[Wegmann et~al.]{Wegmann, Scattone, Carp, Gillick, Roth and
+  Yamron}{1998}{Wegmann_1998}
+Wegmann, S., Scattone, F., Carp, I., Gillick, L., Roth, R. and Yamron, J.:
+  1998, Dragon system's 1997 broadcast news transcription system, {\em DARPA
+  Broadcast News Transcription and Understanding Workshop}, Landsdowne, USA.
+
+\harvarditem{Wiener and Norbert}{1949}{Wiener_49}
+Wiener and Norbert: 1949, {\em Extrapolation, Interpolation, and Smoothing of
+  Stationary Time Series}, Wiley.
+
+\harvarditem[Wilcox et~al.]{Wilcox, Chen, Kimber and
+  Balasubramanian}{1994}{Wilcox_1994}
+Wilcox, L., Chen, F., Kimber, D. and Balasubramanian, V.: 1994, Segmentation of
+  speech using speaker identification, {\em Proc. IEEE International Conference
+  on Acoustics, Speech and Signal Processing}, Vol.~1, Adelaide, Australia,
+  pp.~161--164.
+
+\harvarditem{Willsky and Jones}{1976}{Willsky_1976}
+Willsky, A.~S. and Jones, H.~L.: 1976, A generalized likelihood ratio approach
+  to the detection and estimation of jumps in linear systems, {\em IEEE
+  Transactions on Automatic Control} {\bf AC-21}(1),~108--112.
+
+\harvarditem[Woodland et~al.]{Woodland, Gales, Pye and
+  Young}{1997}{Woodland_1997}
+Woodland, P., Gales, M., Pye, D. and Young, S.: 1997, The development of the
+  1996 {HTK} broadcast news transcription system, {\em Speech Recorgnition
+  Workshop}, pp.~73--78.
+
+\harvarditem[Wooters et~al.]{Wooters, Fung, Peskin and
+  Anguera}{2004}{Wooters_2004}
+Wooters, C., Fung, J., Peskin, B. and Anguera, X.: 2004, Towards robust speaker
+  segmentation: The {ICSI-SRI} fall 2004 diarization system, {\em Fall 2004
+  Rich Transcription Workshop {(RT04)}}, Palisades, NY.
+
+\harvarditem[Wu et~al.]{Wu, Lu, Chen and Zhang}{2003a}{Wu_2003b}
+Wu, T., Lu, L., Chen, K. and Zhang, H.-J.: 2003a, {UBM}-based incremental
+  speaker adaptation, {\em ICME'03}, Vol.~2, pp.~721--724.
+
+\harvarditem[Wu et~al.]{Wu, Lu, Chen and Zhang}{2003b}{Wu_2003a}
+Wu, T., Lu, L., Chen, K. and Zhang, H.-J.: 2003b, {UBM}-based real-time speaker
+  segmentation for broadcasting news, {\em Proc. IEEE International Conference
+  on Acoustics, Speech and Signal Processing}.
+
+\harvarditem[Wu et~al.]{Wu, Lu, Chen and Zhang}{2003c}{Wu_2003c}
+Wu, T., Lu, L., Chen, K. and Zhang, H.-J.: 2003c, Universal background models
+  for real-time speaker change detection, {\em International Conference on
+  Multimedia Modeling}.
+
+\harvarditem[Yamaguchi et~al.]{Yamaguchi, Yamashita and
+  Matsunaga}{2005}{Yamaguchi_2005}
+Yamaguchi, M., Yamashita, M. and Matsunaga, S.: 2005, Spectral
+  cross-correlation features for audio indexing of broadcast news and meetings,
+  {\em Proc. International Conference on Speech and Language Processing}.
+
+\harvarditem[Young et~al.]{Young, Kershaw, Odell, Ollason, Valtchev and
+  Woodland}{2005}{Young_2005}
+Young, S., Kershaw, D., Odell, J., Ollason, D., Valtchev, V. and Woodland, P.:
+  2005, {\em The HTK Book}, Cambridge University Engineering Department.
+
+\harvarditem{Zdansky and Nouza}{2005}{Zdansky_2005}
+Zdansky, J. and Nouza, J.: 2005, Detection of acoustic change-points in audio
+  records via grobal {BIC} maximization and dynamic programming, {\em Proc.
+  International Conference on Speech and Language Processing}, Lisbon,
+  Portugal.
+
+\harvarditem{Zelinski}{1988}{Zelinski_88}
+Zelinski, R.: 1988, A microphone array with adaptive post-filtering for noise
+  reduction in reverberant rooms, {\em Proc. IEEE International Conference on
+  Acoustics, Speech and Signal Processing}, Vol.~5, pp.~2578--2581.
+
+\harvarditem[Zhang et~al.]{Zhang, Hansen and Rehar}{2004}{Zhang_04}
+Zhang, X., Hansen, J. and Rehar, K.: 2004, Speech enhancement based on a
+  combined multi-channel array with constrained iterative and auditory masked
+  processing, {\em Proc. IEEE International Conference on Acoustics, Speech and
+  Signal Processing}.
+
+\harvarditem{Zhou and Hansen}{2000}{Zhou_2000}
+Zhou, B. and Hansen, J.~H.: 2000, Unsupervised audio stream segmentation and
+  clustering via the bayesian information criterion, {\em Proc. International
+  Conference on Speech and Language Processing}, Vol.~3, Beijing, China,
+  pp.~714--717.
+
+\harvarditem[Zhu et~al.]{Zhu, Barras, Lamel and Gauvain}{2006}{Zhu_2006}
+Zhu, X., Barras, C., Lamel, L. and Gauvain, J.-L.: 2006, Speaker diarization:
+  from broadcast news to lectures, {\em NIST 2006 Spring Rich Transcrition
+  Evaluation Workshop}, Washington DC, USA.
+
+\harvarditem[Zhu et~al.]{Zhu, Barras, Meignier and Gauvain}{2005}{Zhu_2005}
+Zhu, X., Barras, C., Meignier, S. and Gauvain, J.-L.: 2005, Combining speaker
+  identification and bic for speaker diarization, {\em Proc. International
+  Conference on Speech and Language Processing}, Lisbon, Portugal.
+
+\harvarditem{Zochova and Radova}{2005}{Zochova_2005}
+Zochova, P. and Radova, V.: 2005, Modified {DISTBIC} algorithm for speaker
+  change detection, {\em Proc. International Conference on Speech and Language
+  Processing}, Lisbon, Portugal.
+
+\end{thebibliography}

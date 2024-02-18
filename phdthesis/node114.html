@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Baseline System Analysis</TITLE>
+<META NAME="description" CONTENT="Baseline System Analysis">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node115.html">
+<LINK REL="previous" HREF="node113.html">
+<LINK REL="up" HREF="node113.html">
+<LINK REL="next" HREF="node115.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1921"
+  HREF="node115.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1917"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1911"
+  HREF="node113.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1919"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1922"
+  HREF="node115.html">Reference Channel Estimation Analysis</A>
+<B> Up:</B> <A NAME="tex2html1918"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1912"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+ &nbsp; <B>  <A NAME="tex2html1920"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001041000000000000000">
+Baseline System Analysis</A>
+</H2>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7166"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.5:</STRONG>
+<I>RT06s system filter-and-sum performance</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">F&amp;S system</TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>SNR</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>DER</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system</TD>
+<TD ALIGN="RIGHT">30.20db</TD>
+<TD ALIGN="RIGHT">45.28db</TD>
+<TD ALIGN="RIGHT">17.15%</TD>
+<TD ALIGN="RIGHT">22.92%</TD>
+</TR>
+</TABLE>
+
+<A NAME="RT06s_DS"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#RT06s_DS">6.5</A> shows the SNR and DER results for the
+development and test sets. The SNR values are obtained in the same
+way as in section <A HREF="node47.html#bn_compare">3.2</A>, doing a lineal average of the
+values from each meeting source. The first thing to observe is
+that although the SNR for the test set is much higher than the
+development set, the DER values are otherwise, which raises a
+warning on how uncorrelated these two metrics are. This phenomenon
+will be repeated throughout the experiments in this section.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="uncorr_figure"></A><A NAME="7168"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.3:</STRONG>
+<I>Individual meetings DER vs. SNR vs. number of
+microphones in the RT06s system</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="716" HEIGHT="349" BORDER="0"
+ SRC="img489.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/uncorr_baseline,width=160mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+To further show the lack of correlation of the SNR vs. DER values,
+figure <A HREF="#uncorr_figure">6.3</A> shows the individual values for all
+shows (22 dev + 8 eval) used in the experiment in table
+<A HREF="#RT06s_DS">6.5</A>. The meetings in the X axis are sorted according to
+the number of available microphones (shown in parenthesis). Both
+the DER and SNR values share the same Y axis, although SNR is
+better the higher it goes and DER otherwise. No correlation can be
+observed neither between SNR and DER values nor with SNR and the
+number of channels in the meetings.
+
+<P>
+As for the SNR values it totally depends on the particular rooms,
+time of day of the recordings and the type of microphones being
+used. Two cases where values are stable are the AMI project
+meetings (including AMI and EDI recordings) which keep a very
+constant SNR value around 37db in average. The DER results depend
+on these and many other factors. In <A
+ HREF="node147.html#Mirghafori_2006">Mirghafori and Wooters (2006)</A>
+some of these factors are studied, referring to the high
+variability of the DER values as show flakiness.
+
+<P>
+Therefore, it becomes clear that SNR and DER do measure and are
+affected by different phenomena. A signal output with higher SNR
+(therefore higher signal quality) does not necessarily lead to a
+better DER. Given that the aim of this thesis is to improve the
+diarization output, the DER is the metric that will be most
+observed (and minimized) but the average SNR will still be shown
+for all cases as comparison. For other applications, like using
+the output signal for ASR, the SNR is still the metric to be
+maximized. Results for ASR using the presented filter&amp;sum system
+are shown in section <A HREF="node118.html#beamform_ASR">6.4.5</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1921"
+  HREF="node115.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1917"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1911"
+  HREF="node113.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1919"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1922"
+  HREF="node115.html">Reference Channel Estimation Analysis</A>
+<B> Up:</B> <A NAME="tex2html1918"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1912"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+ &nbsp; <B>  <A NAME="tex2html1920"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Robust Speaker Diarization System for Meetings</TITLE>
+<META NAME="description" CONTENT="Robust Speaker Diarization System for Meetings">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node47.html">
+<LINK REL="up" HREF="node41.html">
+<LINK REL="next" HREF="node56.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1116"
+  HREF="node56.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1112"
+  HREF="node41.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1108"
+  HREF="node54.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1114"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1117"
+  HREF="node56.html">Acoustic Signal Enhancement</A>
+<B> Up:</B> <A NAME="tex2html1113"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1109"
+  HREF="node54.html">Summary of Differences and</A>
+ &nbsp; <B>  <A NAME="tex2html1115"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00730000000000000000"></A>
+<A NAME="proposed_meetings"></A>
+<BR>
+Robust Speaker Diarization System for Meetings
+</H1>
+
+<P>
+The proposed speaker diarization system for meetings can be broken
+up into three/four main blocks, as shown in figure
+<A HREF="#full_system">3.5</A>. These are the single channel Signal-to-Noise
+Ratio (SNR) enhancement block, the multi-channel acoustic fusion
+and the segmentation and clustering system, which itself could be
+broken up into the speech/non-speech detection and the
+single-channel speaker diarization system.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="full_system"></A><A NAME="3582"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.5:</STRONG>
+<I>Main blocks involved in the meetings speaker
+diarization system</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="560" HEIGHT="280" BORDER="0"
+ SRC="img192.png"
+ ALT="\begin{figure}
+\centering {\epsfig{figure=figures/full_system,width=130mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+When only one channel is to be processed, the acoustic fusion
+block is bypassed and the individual, SNR enhanced, signal is
+processed directly by the segmentation and clustering blocks. The
+advantage of this architecture is obvious, there is no need to
+generate a different system or techniques depending on the number
+of microphones available as both the acoustic fusion and the
+segmentation and clustering blocks accept an acoustic channel as
+an input and can be simply turned on/off depending on the
+characteristics of the data. The following sections describe each
+of the blocks in more detail.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1118"
+  HREF="node56.html">Acoustic Signal Enhancement</A>
+<LI><A NAME="tex2html1119"
+  HREF="node57.html">Single Channel System Frontend</A>
+<LI><A NAME="tex2html1120"
+  HREF="node58.html">Speaker Clusters and Models Initialization</A>
+<UL>
+<LI><A NAME="tex2html1121"
+  HREF="node59.html">Models Training Using CV-EM and Clusters Segmentation</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1122"
+  HREF="node60.html">Clusters Merging and System Output</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1116"
+  HREF="node56.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1112"
+  HREF="node41.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1108"
+  HREF="node54.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1114"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1117"
+  HREF="node56.html">Acoustic Signal Enhancement</A>
+<B> Up:</B> <A NAME="tex2html1113"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1109"
+  HREF="node54.html">Summary of Differences and</A>
+ &nbsp; <B>  <A NAME="tex2html1115"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

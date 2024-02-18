@@ -1,0 +1,501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TDOA Post-Processing Analysis</TITLE>
+<META NAME="description" CONTENT="TDOA Post-Processing Analysis">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node117.html">
+<LINK REL="previous" HREF="node115.html">
+<LINK REL="up" HREF="node113.html">
+<LINK REL="next" HREF="node117.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1945"
+  HREF="node117.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1941"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1935"
+  HREF="node115.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1943"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1946"
+  HREF="node117.html">Signal Output Algorithms Analysis</A>
+<B> Up:</B> <A NAME="tex2html1942"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1936"
+  HREF="node115.html">Reference Channel Estimation Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1944"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001043000000000000000">
+TDOA Post-Processing Analysis</A>
+</H2>
+
+<P>
+The post-processing module (explained in <A HREF="node94.html#TDOA_post-process">5.2.3</A>)
+includes the noise thresholding algorithm and the TDOA values
+stability algorithm using Viterbi decoding. These do a
+post-processing of the computed TDOA values to select the final
+delays to be applied to each signal prior to doing the sum of the
+different channels. The noise thresholding algorithm detects those
+TDOA values that most probably come from a silence region and
+substitutes its value by the previous, more stable, delay value.
+It does it by finding the threshold that cuts 10% of the TDOA
+values as noise. The TDOA stability algorithm uses a double-pass
+Viterbi algorithm to select the optimum among all possible
+combinations of N-best computed TDOA values.
+
+<P>
+These modules are the second version of the initial algorithms
+implemented and presented in the RT05s system explained in
+<A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo (2005)</A>. On one hand, the initial algorithm for
+the noise thresholding used a fixed threshold set by hand (using
+development data) for all meetings. This caused problems in very
+noisy shows, as it will be shown in the results, where it is used
+as a comparison with a threshold = 0.1 over the GCC-PHAT value for
+each frame (whose values can range from 0 to 1). On the other
+hand, the first version of the stability 1-best selection
+algorithm used a simple distance based rules algorithm to either
+use the 1st-best value or some other value in the N-best list. If
+the difference between the TDOA value of the first element in the
+N-best TDOA list for a particular frame and the selected value for
+the previous frame was greater than a threshold it was searched in
+the N-best list if there was any other element which was closer,
+in which case that was the one selected.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7170"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.7:</STRONG>
+<I>Post-processing algorithms results</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">F&amp;S system</TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>SNR</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>DER</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system</TD>
+<TD ALIGN="RIGHT">30.20db</TD>
+<TD ALIGN="RIGHT">45.28db</TD>
+<TD ALIGN="RIGHT">17.15%</TD>
+<TD ALIGN="RIGHT">22.92%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT05s continuity algorithm</TD>
+<TD ALIGN="RIGHT">29.42db</TD>
+<TD ALIGN="RIGHT">42.90db</TD>
+<TD ALIGN="RIGHT">18.44%</TD>
+<TD ALIGN="RIGHT">23.17%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">No continuity algorithm</TD>
+<TD ALIGN="RIGHT">32.81db</TD>
+<TD ALIGN="RIGHT">44.71db</TD>
+<TD ALIGN="RIGHT">17.16%</TD>
+<TD ALIGN="RIGHT">23.63%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT05s fixed noise threshold</TD>
+<TD ALIGN="RIGHT">28.23db</TD>
+<TD ALIGN="RIGHT">42.96db</TD>
+<TD ALIGN="RIGHT">17.36%</TD>
+<TD ALIGN="RIGHT">22.36%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">No noise Threshold</TD>
+<TD ALIGN="RIGHT">28.79db</TD>
+<TD ALIGN="RIGHT">44.87db</TD>
+<TD ALIGN="RIGHT">18.31%</TD>
+<TD ALIGN="RIGHT">23.38%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">No post-process</TD>
+<TD ALIGN="RIGHT">31.38db</TD>
+<TD ALIGN="RIGHT">45.25db</TD>
+<TD ALIGN="RIGHT">18.72%</TD>
+<TD ALIGN="RIGHT">22.25%</TD>
+</TR>
+</TABLE>
+
+<A NAME="post_process_table"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#post_process_table">6.7</A> shows results for the RT06s system
+with the latest version of both algorithms presented, and compares
+them to using the RT05s versions or not using any algorithm (for
+either algorithm and in overall).
+
+<P>
+The development set SNR using the RT06s version of both algorithms
+is better than the RT05s algorithms combination, but is worse than
+not using any continuity algorithm or not using post-processing at
+all. The evaluation set SNR for RT06s, though, outperforms all
+other cases. As for the DER, on the development set, the RT06s
+system outperforms all other combinations. On the test set results
+are slightly worse on the proposed RT06s algorithms than not using
+anything or doing a fixed noise threshold. In overall, the RT06s
+post-processing algorithm outperforms the lack of postprocessing
+in am 8.3% relative on the development set, while it gets a 2.9%
+worse in the evaluation set.
+
+<P>
+The noise thesholding algorithm intends to be a simple
+speech/non-speech detector at the beamforming level. Initial tests
+were performed to include a more sophisticated detector but it was
+finally not used in any of the systems. On one hand the results
+did not reflect the improvements expected. On the other hand the
+beamforming module was pretended to be independent of any training
+data, so that it could be applied to any circumstance, which the
+speech/non-speech detector at the time did not allow.
+
+<P>
+The change of the noise thresholding to a percentage-based
+threshold in RT06s versus using a fixed threshold slightly
+benefits the results of DER in the development set while it gets
+worse in the test set. Such new algorithm was implemented given
+the problems obtained in processing very noisy meetings (as it was
+the case for the LDC meetings) which the RT05s algorithm labelled
+many frames as non-speech.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="percent_noise"></A><A NAME="7172"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.4:</STRONG>
+<I>Development set SNR modifying the percentage of
+noise threshold adjustment</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="449" HEIGHT="240" BORDER="0"
+ SRC="img490.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/percent_noise,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Figure <A HREF="#percent_noise">6.4</A> shows the SNR obtained for the
+development set by sweeping the percentage of frames with lowest
+GCC-PHAT values considered as noise. After 10% of the frames are
+selected the SNR results are very stable. This was the selected
+value for the RT06s system as it modifies as few frames as
+possible while achieving good performance. If instead of a 10%
+threshold, the maximum SNR point has been selected (20%) the
+results for the SNR and DER are shown in table
+<A HREF="#alt_noise_percent">6.8</A>:
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7173"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.8:</STRONG>
+<I>Results for various percentages of noise
+thresholding</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">F&amp;S system</TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>SNR</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>DER</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(10% noise theshold)</TD>
+<TD ALIGN="RIGHT">30.20db</TD>
+<TD ALIGN="RIGHT">45.28db</TD>
+<TD ALIGN="RIGHT">17.15%</TD>
+<TD ALIGN="RIGHT">22.92%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(20% noise theshold)</TD>
+<TD ALIGN="RIGHT">30.32db</TD>
+<TD ALIGN="RIGHT">44.09db</TD>
+<TD ALIGN="RIGHT">16.62%</TD>
+<TD ALIGN="RIGHT">22.00%</TD>
+</TR>
+</TABLE>
+ <A NAME="alt_noise_percent"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+By using the optimum value for the SNR in the development set it
+is observed that the evaluation set obtains a slightly worse SNR
+but both the dev and eval sets obtain an important improvement in
+DER. This optimum value was not found during the development of
+the RT06s system as the development set was slightly different
+than the one used in these experiments. These scores demonstrate
+the better performance of the noise thresholding using a
+percentage instead of using a fixed threshold or no thresholding,
+shown in table <A HREF="#post_process_table">6.7</A> above.
+
+<P>
+The use of the TDOA-selection continuity algorithm is justified by
+the results in table <A HREF="#post_process_table">6.7</A>. Results on DER
+comparing it to the RT05s algorithm results show a 6.9% relative
+improvement on the development set and a more modest 1% relative
+on the test set. Comparing it to not doing anything obtains
+similar results in the development set but a 3% relative
+improvement in the test set. This algorithm though requires the
+computation of a double Viterbi decoding of the multiple TDOA
+values, which can take a long time to compute, depending on the
+number of microphones to process. Although results are beneficiary
+to the system, it is doubtful if it is feasible to be used in a
+realtime application.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="weights_Viterbi"></A><A NAME="7175"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.5:</STRONG>
+<I>Development set SNR values modifying the Viterbi
+transition prob. weights in the F&amp;S algorithm</I></CAPTION>
+<TR><TD></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+To further study the effect of the double-Viterbi decoding, the
+behavior of three parameters in the algorithm are studied with
+respect to the SNR in the development set. These are the weights
+used to enhance the transition probabilities in each of the 2
+Viterbi decodings levels (see section <A HREF="node95.html#dual_pass_Viterbi">5.2.3</A> for
+more details) and the number of initial N-best TDOA values given
+to the algorithm to select from. Table <A HREF="#weights_Viterbi">6.5</A> shows
+the SNR for the development set by changing the relative weights
+of either the first or second Viterbi steps. The default value for
+both variables taken at 25 is a relative maximum of both curves
+(very similar to each other). Other values around the default ones
+obtain better SNR. For both cases in table
+<A HREF="#weights_Viterbi_table">6.9</A> the SNR and DER for the default RT06s
+case and for cases when either weight is set to 15 are shown.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7176"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.9:</STRONG>
+<I>Results for alternative Viterbi weights</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">F&amp;S system</TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>SNR</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>DER</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(All weights to 25)</TD>
+<TD ALIGN="RIGHT">30.20db</TD>
+<TD ALIGN="RIGHT">45.28db</TD>
+<TD ALIGN="RIGHT">17.15%</TD>
+<TD ALIGN="RIGHT">22.92%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(First Viterbi weight 15)</TD>
+<TD ALIGN="RIGHT">30.35db</TD>
+<TD ALIGN="RIGHT">45.50db</TD>
+<TD ALIGN="RIGHT">16.52%</TD>
+<TD ALIGN="RIGHT">23.29%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(Second Viterbi weight 15)</TD>
+<TD ALIGN="RIGHT">30.43db</TD>
+<TD ALIGN="RIGHT">42.93db</TD>
+<TD ALIGN="RIGHT">17.77%</TD>
+<TD ALIGN="RIGHT">23.82%</TD>
+</TR>
+</TABLE>
+
+<A NAME="weights_Viterbi_table"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+By selecting an alternative value for the weights in the first
+Viterbi decoding it obtains an improvement in the SNR of both
+devel and eval sets and DER in the development set, but the DER
+gets worse for the evaluation set. On the contrary, by using the
+alternative weight in the second Viterbi only the SNR in the
+development set improves. It is desirable to maintain both weights
+to the same value to avoid over-tuning to the data, which in
+average is better to be at 25, as set for the RT06s evaluation.
+
+<P>
+The third parameter to analyze in the algorithm is the number of
+N-best values to be considered by the algorithm when selecting the
+optimum TDOA value. The first Viterbi step does a local selection
+within each channel from the N-best possible TDOA values to the
+2-best, which then are considered by the second Viterbi in a
+global decoding among all TDOA values from all channels. The
+number of possible initial TDOA values is a parameter that
+describes how many possible peaks in the GCC-PHAT function have to
+be considered by the first Viterbi. These maxima might represent
+cases with multiple speakers in overlap or single speakers with
+impulsive noises. The selection of the right number of initial
+N-best values needs to account for concurrent acoustic events
+while avoiding false peaks in the GCC-PHAT function to be
+selected.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="nbest_snr"></A><A NAME="7178"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.6:</STRONG>
+<I>Development set SNR values modifying the number of
+N-best values used for TDOA selection</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="444" HEIGHT="234" BORDER="0"
+ SRC="img492.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/nbest_snr,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Figure <A HREF="#nbest_snr">6.6</A> shows the SNR for the development set by
+selecting from 2 to 10 initial N-best values. The RT06s system
+default value of 4 obtains a stable SNR behavior (not much change
+is seen in SNR around it). Choosing only the 2-best peaks of the
+TDOA values gives a slightly better SNR in the development set,
+and therefore it was compared to 4 by computing the SNR and DER on
+the test set, and shown in table <A HREF="#nbest_snr_table">6.10</A>:
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7179"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.10:</STRONG>
+<I>Results for alternative Viterbi weights</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">F&amp;S system</TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>SNR</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>DER</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(N-best 4)</TD>
+<TD ALIGN="RIGHT">30.20db</TD>
+<TD ALIGN="RIGHT">45.28db</TD>
+<TD ALIGN="RIGHT">17.15%</TD>
+<TD ALIGN="RIGHT">22.92%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(N-best 2)</TD>
+<TD ALIGN="RIGHT">30.70db</TD>
+<TD ALIGN="RIGHT">43.43db</TD>
+<TD ALIGN="RIGHT">18.86%</TD>
+<TD ALIGN="RIGHT">22.21%</TD>
+</TR>
+</TABLE>
+
+<A NAME="nbest_snr_table"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Although the SNR for the development set is slightly better using
+2-best than using 4-best, the DER for such set behaves very poorly
+compared to the RT06s system. The SNR for the eval set is worse
+than in the default system, although the DER slightly outperforms
+the default. The optimum value for diarization is therefore left
+at 4-best TDOA values.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1945"
+  HREF="node117.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1941"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1935"
+  HREF="node115.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1943"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1946"
+  HREF="node117.html">Signal Output Algorithms Analysis</A>
+<B> Up:</B> <A NAME="tex2html1942"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1936"
+  HREF="node115.html">Reference Channel Estimation Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1944"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

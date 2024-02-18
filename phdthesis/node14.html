@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Silence and Decoder-Based Segmentation</TITLE>
+<META NAME="description" CONTENT="Silence and Decoder-Based Segmentation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html582"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html578"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html572"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html580"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html583"
+  HREF="node15.html">Model-Based Segmentation</A>
+<B> Up:</B> <A NAME="tex2html579"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<B> Previous:</B> <A NAME="tex2html573"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+ &nbsp; <B>  <A NAME="tex2html581"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00622100000000000000">
+Silence and Decoder-Based Segmentation</A>
+</H3>
+
+<P>
+These techniques detect speaker changes hypothesizing that most
+changes between speakers will be through a silence segment. These
+have been traditionally implemented for using the segments for
+speech recognition, as it is very important to obtain clean speaker
+changes without cutting any words in half. Systems falling into this
+category are energy-based and decoder-based systems.
+
+<P>
+The energy-based systems use an energy detector to find the points
+where it is most probable to exist a speaker change. The detector
+normally obtains a curve with minimum/maximum points in potential
+silences. A threshold is usually used to determine them
+(<A
+ HREF="node147.html#Kemp_2000">Kemp et&nbsp;al. (2000)</A>, <A
+ HREF="node147.html#Wactlar_1996">Wactlar et&nbsp;al. (1996)</A>,
+<A
+ HREF="node147.html#Nishida_2003">Nishida and Kawahara (2003)</A>). In <A
+ HREF="node147.html#Siu_1992">Siu et&nbsp;al. (1992)</A> the MAD (Mean
+absolute deviation statistic), which measures the variability in
+energy within segments, is used instead in order to find the
+silence points.
+
+<P>
+In contrast, decoder-guided segmenters run a full recognition system
+and obtain the change points from the detected silence locations
+(<A
+ HREF="node147.html#Kubala_1997">Kubala et&nbsp;al. (1997)</A>, <A
+ HREF="node147.html#Woodland_1997">Woodland et&nbsp;al. (1997)</A>,
+<A
+ HREF="node147.html#Ferreiros_2000">Lopez and Ellis (2000b)</A>, <A
+ HREF="node147.html#Liu_1999">Liu and Kubala (1999)</A>,
+<A
+ HREF="node147.html#Wegmann_1998">Wegmann et&nbsp;al. (1998)</A>) they normally constrain the minimum
+duration of the silence segments to reduce false alarms. Some of
+these systems use extra information from the decoder, such as gender
+labels (<A
+ HREF="node147.html#Tranter_2004">Tranter and Reynolds, 2004</A>) or wide/narrow band plus music detectors
+(<A
+ HREF="node147.html#Hain_1998">Hain et&nbsp;al., 1998</A>). The output has normally been used as an input to
+recognition systems, but not for indexing or diarization as there is
+not a clear relationship between the existence of a silence in a
+recording and a change of speaker. In such systems they sometimes
+take these points as hypothetical speaker change points, and then
+use other techniques to define which of them actually mark a change
+of speaker and which do not.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html582"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html578"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html572"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html580"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html583"
+  HREF="node15.html">Model-Based Segmentation</A>
+<B> Up:</B> <A NAME="tex2html579"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<B> Previous:</B> <A NAME="tex2html573"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+ &nbsp; <B>  <A NAME="tex2html581"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

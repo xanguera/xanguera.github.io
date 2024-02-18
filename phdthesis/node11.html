@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speaker Segmentation</TITLE>
+<META NAME="description" CONTENT="Speaker Segmentation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html540"
+  HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html536"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html530"
+  HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html538"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html541"
+  HREF="node12.html">Metric-Based Segmentation</A>
+<B> Up:</B> <A NAME="tex2html537"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html531"
+  HREF="node10.html">Acoustic Features for Speaker</A>
+ &nbsp; <B>  <A NAME="tex2html539"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00620000000000000000"></A>
+<A NAME="segmentation"></A>
+<BR>
+Speaker Segmentation
+</H1>
+
+<P>
+Speaker segmentation has sometimes been referred to as speaker
+change detection and is closely related to acoustic change
+detection. For a given speech/audio stream, speaker segmentation/
+change detection systems find the times when there is a change of
+speaker in the audio. On a more general level, acoustic change
+detection aims at finding the times when there is a change in the
+acoustics in the recording, which includes speech/non-speech,
+music/speech and others. Acoustic change detection can detect
+boundaries within a speaker turn when the background conditions
+change.
+
+<P>
+Although erroneously, the  term ``speaker segmentation'' has
+sometimes been used instead of speaker diarization for systems
+performing both a segmentation into different speaker segments and a
+clustering of such segments into homogeneous groups. As it will be
+pointed out later on, many systems obtain a speaker diarization
+output by means of first performing a speaker segmentation and then
+grouping the segments belonging to the same speaker. Other times
+this distinction is not so clear as segmentation and clustering are
+mixed together. In this thesis a system will be said to perform
+speaker segmentation when all frames, assigned to any particular
+speaker ID, are contiguous in time. Otherwise the system will be
+said to perform speaker segmentation and clustering (or equivalently
+speaker diarization).
+
+<P>
+On a very general level, two main types of speaker segmentation
+systems can be found in the bibliography. The first kind are systems
+that perform a single processing pass of the acoustic data, from
+where the change-points are obtained. A second broad class of
+systems are those that perform multiple passes, refining the
+decision of change-point detection on successive iterations. This
+second class of systems include two-pass algorithms where in a first
+pass many change-points are suggested (more than there actually are,
+therefore with a high false alarm error rate) and in a second pass
+such changes are reevaluated and some are discarded. Also part of
+the second broad class of systems are those that use an iterative
+processing of some sort to converge into an optimum speaker
+segmentation output. Many of the algorithms to find the
+change-points reviewed in this section (including all of the
+metric-based techniques) can either work alone or in a two-step
+system together with another technique.
+
+<P>
+On another level, a general classification of the methods
+available for speaker segmentation will be used in this section to
+describe the different algorithms available. In the bibliography
+(<A
+ HREF="node147.html#Ajmera_2004">Ajmera (2004)</A>, <A
+ HREF="node147.html#Kemp_2000">Kemp et&nbsp;al. (2000)</A>,
+<A
+ HREF="node147.html#Chen_2002">Chen et&nbsp;al. (2002)</A>, <A
+ HREF="node147.html#Chen_1998a">Shaobing&nbsp;Chen and Gopalakrishnan (1998)</A>,
+<A
+ HREF="node147.html#Perez-Freire_2004">Perez-Freire and Garcia-Mateo (2004)</A>) three groups are defined:
+metric-based, silence-based and model-based algorithms. In this
+thesis this classification will be augmented with a fourth group
+(called ``others'') to amalgamate all other techniques that do not
+fit any of the three proposed classes. In the next section the
+metric-based techniques are reviewed in detail and in
+<A HREF="node13.html#other_segmentations">2.2.2</A> the other three groups are treated.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html542"
+  HREF="node12.html">Metric-Based Segmentation</A>
+<LI><A NAME="tex2html543"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<UL>
+<LI><A NAME="tex2html544"
+  HREF="node14.html">Silence and Decoder-Based Segmentation</A>
+<LI><A NAME="tex2html545"
+  HREF="node15.html">Model-Based Segmentation</A>
+<LI><A NAME="tex2html546"
+  HREF="node16.html">Segmentation Using Other Techniques</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html540"
+  HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html536"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html530"
+  HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html538"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html541"
+  HREF="node12.html">Metric-Based Segmentation</A>
+<B> Up:</B> <A NAME="tex2html537"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html531"
+  HREF="node10.html">Acoustic Features for Speaker</A>
+ &nbsp; <B>  <A NAME="tex2html539"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

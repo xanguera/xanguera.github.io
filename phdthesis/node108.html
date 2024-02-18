@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Diarization Error Rate</TITLE>
+<META NAME="description" CONTENT="Diarization Error Rate">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node109.html">
+<LINK REL="previous" HREF="node107.html">
+<LINK REL="up" HREF="node107.html">
+<LINK REL="next" HREF="node109.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1848"
+  HREF="node109.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1844"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1838"
+  HREF="node107.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1846"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1849"
+  HREF="node109.html">Signal-to-Noise Ratio</A>
+<B> Up:</B> <A NAME="tex2html1845"
+  HREF="node107.html">Evaluation Metrics</A>
+<B> Previous:</B> <A NAME="tex2html1839"
+  HREF="node107.html">Evaluation Metrics</A>
+ &nbsp; <B>  <A NAME="tex2html1847"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001013100000000000000">
+Diarization Error Rate</A>
+</H3>
+
+<P>
+The main metric that is used for speaker diarization experiments
+is the Diarization Error Rate (DER) as described and used by NIST
+in the RT evaluations (<A
+ HREF="node147.html#NIST_rt_eval_plan_2006"><EM>NIST Fall Rich Transcription on meetings 2006 Evaluation
+  Plan</EM>, 2006</A>). It is
+measured as the fraction of time that is not attributed correctly
+to a speaker or to non-speech. To measure it, a script names
+MD-eval-v12.pl (<A
+ HREF="node147.html#NIST_mdeval_script"><EM>NIST MD-eval-v21 DER evaluation
+  script</EM>, 2006</A>), developed by NIST, was
+used.
+
+<P>
+As per the definition of the task, the system hypothesis
+diarization output does not need to identify the speakers by name
+or definite ID, therefore the ID tags assigned to the speakers in
+both the hypothesis and the reference segmentation do not need to
+be the same. This is unlike the non-speech tags, which are marked
+as non labelled gaps between two speaker segments, and therefore
+do implicitly need to be identified.
+
+<P>
+The evaluation script first does an optimum one-to-one mapping of
+all speaker label ID between hypothesis and reference files. This
+allows the scoring of different ID tags between the two files. The
+Diarization Error Rate score is computed as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq_der"></A><!-- MATH
+ \begin{equation}
+DER = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot
+(\mbox{max}(N_{ref}(s), N_{hyp}(s)) -
+N_{correct}(s))}{\sum_{s=1}^{S} \mbox{dur}(s)
+ \cdot N_{ref}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="463" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img472.png"
+ ALT="$\displaystyle DER = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot (\mbox{max}(N_{re...
+...), N_{hyp}(s)) - N_{correct}(s))}{\sum_{s=1}^{S} \mbox{dur}(s) \cdot N_{ref}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where S is the total number of speaker segments where
+both reference and hypothesis files contain the same speaker/s
+pair/s. It is obtained by collapsing together the hypothesis and
+reference speaker turns. The terms <!-- MATH
+ $N_{ref}(s)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="62" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img473.png"
+ ALT="$ N_{ref}(s)$"></SPAN> and <!-- MATH
+ $N_{sys}(s)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img474.png"
+ ALT="$ N_{sys}(s)$"></SPAN>
+indicate the number of speaker speaking in segment <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img475.png"
+ ALT="$ s$"></SPAN>, and
+<!-- MATH
+ $N_{correct}(s)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="83" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img476.png"
+ ALT="$ N_{correct}(s)$"></SPAN> indicates the number of speakers that speak in
+segment <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img475.png"
+ ALT="$ s$"></SPAN> and have been correctly matched between reference and
+hypothesis. Segments labelled as non-speech are considered to
+contain 0 speakers. When all speakers/non-speech in a segment are
+correctly matched the error for that segment is 0.
+
+<P>
+The DER error can be decomposed into the errors coming from the
+different sources, which are:
+
+<P>
+
+<UL>
+<LI>Speaker error: percentage of scored time that a speaker ID
+is assigned to the wrong speaker. This type of error does not
+account for speakers in overlap not detected or any error coming
+from non-speech frames. It can be written as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+E_{Spkr} = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot
+(\mbox{min}(N_{ref}(s), N_{hyp}(s)) - N_{correct}(s))}{T_{score}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="460" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img477.png"
+ ALT="$\displaystyle E_{Spkr} = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot (\mbox{min}(N_{ref}(s), N_{hyp}(s)) - N_{correct}(s))}{T_{score}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $T_{score} = \sum_{s=1}^{S} \mbox{dur}(s)
+ \cdot N_{ref}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="113" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img478.png"
+ ALT="$ T_{score} = \sum_{s=1}^{S}$">&nbsp; &nbsp;dur<IMG
+ WIDTH="74" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img479.png"
+ ALT="$ (s)
+\cdot N_{ref}$"></SPAN> is the total scoring time, in the denominator in
+ eq. <A HREF="#eq_der">6.1</A>.
+
+<P>
+</LI>
+<LI>False alarm speech: percentage of scored time that a
+hypothesized speaker is labelled as a non-speech in the reference.
+It can be formulated as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+E_{FA} = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot (N_{hyp}(s)
+-N_{ref}(s))}{T_{score}} \ \ \ \ \forall \  (N_{hyp}(s)
+-N_{ref}(s)) > 0
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="543" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img480.png"
+ ALT="$\displaystyle E_{FA} = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot (N_{hyp}(s) -N_{ref}(s))}{T_{score}} \ \ \ \ \forall \ (N_{hyp}(s) -N_{ref}(s)) &gt; 0$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+computed only over segments where the reference segment is
+labelled as non-speech.
+
+<P>
+</LI>
+<LI>Missed speech: percentage of scored time that a hypothesized
+non-speech segment corresponds to a reference speaker segment. It
+can be expressed as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+E_{MISS} = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot (N_{ref}(s)
+-N_{hyp}(s))}{T_{score}} \ \ \ \ \forall \  (N_{ref}(s)
+-N_{hyp}(s)) > 0
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="560" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img481.png"
+ ALT="$\displaystyle E_{MISS} = \frac{\sum_{s=1}^{S} \mbox{dur}(s) \cdot (N_{ref}(s) -N_{hyp}(s))}{T_{score}} \ \ \ \ \forall \ (N_{ref}(s) -N_{hyp}(s)) &gt; 0$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+computed only over segments where the hypothesis segment is
+labelled as non-speech.
+
+<P>
+</LI>
+<LI>Overlap speaker: percentage of scored time that some of the
+multiple speakers in a segment do not get assigned to any speaker.
+This errors usually fuses either into the <SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img482.png"
+ ALT="$ E_{MISS}$"></SPAN> or <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img483.png"
+ ALT="$ E_{FA}$"></SPAN>,
+depending on wether it is the reference or the hypothesis
+containing non assigned speakers. If multiple speakers appear in
+both the reference and the hypothesis the error produced belongs
+to <SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img484.png"
+ ALT="$ E_{spkr}$"></SPAN>.
+
+<P>
+</LI>
+</UL>
+
+<P>
+Given all possible errors one can rewrite equation <A HREF="#eq_der">6.1</A> as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+DER = E_{spkr} + E_{MISS} + E_{FA} + E_{ovl}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="293" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img485.png"
+ ALT="$\displaystyle DER = E_{spkr} + E_{MISS} + E_{FA} + E_{ovl}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">5</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+When evaluating performance, a collar around every reference
+speaker turn can be defined which accounts for inexactitudes in
+the labelling of the data. It was estimated by NIST that a
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img379.png"
+ ALT="$ \pm$"></SPAN>250ms collar could account for all these differences. When
+there is people overlapping each other in the recording it is
+stated so in the reference file, with as many as 5 speaker turns
+being assigned to the same time instant. As pointed out in the
+denominator of eq. <A HREF="#eq_der">6.1</A>, the total evaluated time includes
+the overlaps. Errors produced when the system does not detect any
+or some of the multiple speakers in overlap count as missed
+speaker errors.
+
+<P>
+Once the performance is obtained for each individual meeting
+excerpt, the time weighted average is done among all meetings in a
+given set to obtain an overall average score. The scored time is
+the one used for such weighting, as it indicates the total
+(overlapped speaker included) time that has been evaluated in each
+excerpt.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1848"
+  HREF="node109.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1844"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1838"
+  HREF="node107.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1846"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1849"
+  HREF="node109.html">Signal-to-Noise Ratio</A>
+<B> Up:</B> <A NAME="tex2html1845"
+  HREF="node107.html">Evaluation Metrics</A>
+<B> Previous:</B> <A NAME="tex2html1839"
+  HREF="node107.html">Evaluation Metrics</A>
+ &nbsp; <B>  <A NAME="tex2html1847"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

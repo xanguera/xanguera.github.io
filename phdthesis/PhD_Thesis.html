@@ -1,0 +1,556 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Robust Speaker Diarization for Meetings</TITLE>
+<META NAME="description" CONTENT="Robust Speaker Diarization for Meetings">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html135"
+  HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up_g.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev_g.png"> 
+<A NAME="tex2html133"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html136"
+  HREF="node1.html">Resum</A>
+ &nbsp; <B>  <A NAME="tex2html134"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+ 
+<DIV ALIGN="CENTER">
+[width=.75]figures/LogoBlueUPC.eps
+
+</DIV>
+<DIV ALIGN="CENTER">
+<BR>
+<BR>
+<BR>
+<BR>
+<BR> <BIG CLASS="XXLARGE">PhD Thesis
+<BR></BIG> <BR>
+<BR>
+<BR>
+<BR>
+<BR> </DIV>
+<P>
+<DIV ALIGN="CENTER"><BIG CLASS="HUGE">R<SMALL>OBUST </SMALL>S<SMALL>PEAKER </SMALL>D<SMALL>IARIZATION</SMALL></BIG>
+<BR>
+<BR><BIG CLASS="HUGE"><SMALL>FOR MEETINGS</SMALL></BIG>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</DIV>
+<P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING=3>
+<TR><TH ALIGN="LEFT"><BIG CLASS="XLARGE">Author: </BIG></TH>
+<TH ALIGN="LEFT"><BIG CLASS="XLARGE">Xavier Anguera Mir&#243;</BIG></TH>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><BIG CLASS="XLARGE">Advisors: </BIG></TH>
+<TD ALIGN="LEFT"><BIG CLASS="XLARGE">Dr. Francisco Javier Hernando Peric&#225;s (UPC)</BIG></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT"><BIG CLASS="XLARGE">Dr. Chuck Wooters (ICSI)
+<BR></BIG></TD>
+</TR>
+</TABLE>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</DIV>
+<P>
+<DIV ALIGN="CENTER"><BIG CLASS="XLARGE">Speech Processing Group
+<BR>
+Department of Signal Theory and
+Communications
+<BR>
+Universitat Polit&#232;cnica de Catalunya
+<BR></BIG>
+<BR>
+<BR>
+<BR> <BIG CLASS="XLARGE">Barcelona, October 2006</BIG>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+
+<P>
+
+   <BR>
+    <DIV ALIGN="RIGHT">
+<EM><BIG CLASS="XLARGE">Als meus pares,
+<BR>(To my parents)
+</BIG></EM></DIV>
+   <BR>
+
+
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html137"
+  HREF="node1.html">Resum</A>
+<LI><A NAME="tex2html138"
+  HREF="node2.html">Contents</A>
+<LI><A NAME="tex2html139"
+  HREF="node3.html">List of Tables</A>
+<LI><A NAME="tex2html140"
+  HREF="node4.html">List of Figures</A>
+<LI><A NAME="tex2html141"
+  HREF="node5.html">Introduction</A>
+<UL>
+<LI><A NAME="tex2html142"
+  HREF="node6.html">Context and Motivations of this Thesis</A>
+<LI><A NAME="tex2html143"
+  HREF="node7.html">Definition of the Thesis Objectives</A>
+<LI><A NAME="tex2html144"
+  HREF="node8.html">Outline of the Thesis</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html145"
+  HREF="node9.html">State of the art</A>
+<UL>
+<LI><A NAME="tex2html146"
+  HREF="node10.html">Acoustic Features for Speaker Diarization</A>
+<LI><A NAME="tex2html147"
+  HREF="node11.html">Speaker Segmentation</A>
+<UL>
+<LI><A NAME="tex2html148"
+  HREF="node12.html">Metric-Based Segmentation</A>
+<LI><A NAME="tex2html149"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<UL>
+<LI><A NAME="tex2html150"
+  HREF="node14.html">Silence and Decoder-Based Segmentation</A>
+<LI><A NAME="tex2html151"
+  HREF="node15.html">Model-Based Segmentation</A>
+<LI><A NAME="tex2html152"
+  HREF="node16.html">Segmentation Using Other Techniques</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html153"
+  HREF="node17.html">Speaker Diarization</A>
+<UL>
+<LI><A NAME="tex2html154"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<UL>
+<LI><A NAME="tex2html155"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+<LI><A NAME="tex2html156"
+  HREF="node20.html">Top-down Clustering Techniques</A>
+<LI><A NAME="tex2html157"
+  HREF="node21.html">Combination of Clustering Methods</A>
+</UL>
+<LI><A NAME="tex2html158"
+  HREF="node22.html">Other Clustering Techniques</A>
+<LI><A NAME="tex2html159"
+  HREF="node23.html">Use of Support Information in Diarization</A>
+<UL>
+<LI><A NAME="tex2html160"
+  HREF="node24.html">Helping Diarization Using the Spoken Transcripts</A>
+<LI><A NAME="tex2html161"
+  HREF="node25.html">Speaker Diarization Using Multi-Channel Information</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html162"
+  HREF="node26.html">Speaker Diarization in Meetings</A>
+<UL>
+<LI><A NAME="tex2html163"
+  HREF="node27.html">Current Meeting Room Research Projects</A>
+<LI><A NAME="tex2html164"
+  HREF="node28.html">Databases</A>
+<LI><A NAME="tex2html165"
+  HREF="node29.html">NIST RT Speaker Diarization Systems for Meetings</A>
+<UL>
+<LI><A NAME="tex2html166"
+  HREF="node30.html">NIST 2002 Speaker Recognition Evaluation</A>
+<LI><A NAME="tex2html167"
+  HREF="node31.html">NIST 2004 Rich Transcription Spring Meeting Evaluation</A>
+<LI><A NAME="tex2html168"
+  HREF="node32.html">NIST 2005 Rich Transcription Spring Meeting Evaluation</A>
+<LI><A NAME="tex2html169"
+  HREF="node33.html">NIST 2006 Rich Transcription Spring Meeting Evaluation</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html170"
+  HREF="node34.html">Multichannel Acoustic Enhancement</A>
+<UL>
+<LI><A NAME="tex2html171"
+  HREF="node35.html">Introduction to Acoustic Array Processing</A>
+<UL>
+<LI><A NAME="tex2html172"
+  HREF="node36.html">Acoustic Signal Propagation</A>
+<LI><A NAME="tex2html173"
+  HREF="node37.html">Passive Apertures</A>
+<LI><A NAME="tex2html174"
+  HREF="node38.html">Linear Apertures Theory</A>
+</UL>
+<LI><A NAME="tex2html175"
+  HREF="node39.html">Microphone Array Beamforming</A>
+<LI><A NAME="tex2html176"
+  HREF="node40.html">Time Delay of Arrival Estimation</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html177"
+  HREF="node41.html">Speaker Diarization: from Broadcast News to Meetings</A>
+<UL>
+<LI><A NAME="tex2html178"
+  HREF="node42.html">The ICSI Broadcast News System</A>
+<UL>
+<LI><A NAME="tex2html179"
+  HREF="node43.html">Speech/non-Speech Detection and Parameters
+Extraction</A>
+<LI><A NAME="tex2html180"
+  HREF="node44.html">Clusters Initialization and Acoustic Modeling</A>
+<LI><A NAME="tex2html181"
+  HREF="node45.html">Clusters Comparison, Pruning and Clusters Merging</A>
+<LI><A NAME="tex2html182"
+  HREF="node46.html">Stopping Criterion and System Output</A>
+</UL>
+<LI><A NAME="tex2html183"
+  HREF="node47.html">Analysis of Differences from Broadcast News to Meetings</A>
+<UL>
+<LI><A NAME="tex2html184"
+  HREF="node48.html">Input Data Analysis: Broadcast News versus Meetings</A>
+<UL>
+<LI><A NAME="tex2html185"
+  HREF="node49.html">Signal to Noise Ratio</A>
+<LI><A NAME="tex2html186"
+  HREF="node50.html">Average Total Speaking Time</A>
+<LI><A NAME="tex2html187"
+  HREF="node51.html">Average Number of Speakers</A>
+<LI><A NAME="tex2html188"
+  HREF="node52.html">Average Speaker Turn Duration</A>
+<LI><A NAME="tex2html189"
+  HREF="node53.html">Meetings Domain Overlap Regions</A>
+</UL>
+<LI><A NAME="tex2html190"
+  HREF="node54.html">Summary of Differences and Proposed Changes</A>
+</UL>
+<LI><A NAME="tex2html191"
+  HREF="node55.html">Robust Speaker Diarization System for Meetings</A>
+<UL>
+<LI><A NAME="tex2html192"
+  HREF="node56.html">Acoustic Signal Enhancement</A>
+<LI><A NAME="tex2html193"
+  HREF="node57.html">Single Channel System Frontend</A>
+<LI><A NAME="tex2html194"
+  HREF="node58.html">Speaker Clusters and Models Initialization</A>
+<UL>
+<LI><A NAME="tex2html195"
+  HREF="node59.html">Models Training Using CV-EM and Clusters Segmentation</A>
+</UL>
+<LI><A NAME="tex2html196"
+  HREF="node60.html">Clusters Merging and System Output</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html197"
+  HREF="node61.html">Acoustic Modeling Algorithms for Speaker Diarization in Meetings</A>
+<UL>
+<LI><A NAME="tex2html198"
+  HREF="node62.html">Speech/Non-Speech Algorithm</A>
+<UL>
+<LI><A NAME="tex2html199"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with Variable
+threshold</A>
+<UL>
+<LI><A NAME="tex2html200"
+  HREF="node64.html">Data Preprocessing</A>
+<LI><A NAME="tex2html201"
+  HREF="node65.html">Derivative Filtering</A>
+<LI><A NAME="tex2html202"
+  HREF="node66.html">Time Constraints on Speech/non-Speech</A>
+</UL>
+<LI><A NAME="tex2html203"
+  HREF="node67.html">Model-based Speech/Non-Speech Decoder</A>
+<LI><A NAME="tex2html204"
+  HREF="node68.html">Hybrid Speech/non-Speech Detection</A>
+</UL>
+<LI><A NAME="tex2html205"
+  HREF="node69.html">Speaker Clusters Description and Modeling</A>
+<UL>
+<LI><A NAME="tex2html206"
+  HREF="node70.html">Friends-and-Enemies Initialization</A>
+<UL>
+<LI><A NAME="tex2html207"
+  HREF="node71.html">Initialization Algorithm Description</A>
+</UL>
+<LI><A NAME="tex2html208"
+  HREF="node72.html">Clusters and Models Complexity Selection</A>
+<UL>
+<LI><A NAME="tex2html209"
+  HREF="node73.html">Model Complexity Selection</A>
+<LI><A NAME="tex2html210"
+  HREF="node74.html">Automatic Selection of the Initial Number of
+Clusters</A>
+</UL>
+<LI><A NAME="tex2html211"
+  HREF="node75.html">Acoustic Modeling without Time Restrictions</A>
+</UL>
+<LI><A NAME="tex2html212"
+  HREF="node76.html">Cluster Purification Algorithms</A>
+<UL>
+<LI><A NAME="tex2html213"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<UL>
+<LI><A NAME="tex2html214"
+  HREF="node78.html">Speech and Non-Speech Modeling</A>
+<LI><A NAME="tex2html215"
+  HREF="node79.html">Frame-Based Cluster Purification Metrics</A>
+<LI><A NAME="tex2html216"
+  HREF="node80.html">Frame-Based Purification Implementation</A>
+</UL>
+<LI><A NAME="tex2html217"
+  HREF="node81.html">Segment-Level Cluster Purification</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html218"
+  HREF="node82.html">Multichannel Processing for Meetings</A>
+<UL>
+<LI><A NAME="tex2html219"
+  HREF="node83.html">Multichannel Acoustic Beamforming for Meetings</A>
+<UL>
+<LI><A NAME="tex2html220"
+  HREF="node84.html">Meeting Room Microphone Array Characteristics</A>
+<LI><A NAME="tex2html221"
+  HREF="node85.html">Filter-and-Sum Beamforming</A>
+</UL>
+<LI><A NAME="tex2html222"
+  HREF="node86.html">Multichannel Acoustic Beamforming System Implementation</A>
+<UL>
+<LI><A NAME="tex2html223"
+  HREF="node87.html">Individual Channels Signal Enhancement</A>
+<LI><A NAME="tex2html224"
+  HREF="node88.html">Meeting Information Extraction</A>
+<UL>
+<LI><A NAME="tex2html225"
+  HREF="node89.html">Reference Channel Computation</A>
+<LI><A NAME="tex2html226"
+  HREF="node90.html">Overall Channels Weighting Factor</A>
+<LI><A NAME="tex2html227"
+  HREF="node91.html">ICSI Meetings Skew Estimation</A>
+<LI><A NAME="tex2html228"
+  HREF="node92.html">GCC-PHAT Cross-Correlation</A>
+</UL>
+<LI><A NAME="tex2html229"
+  HREF="node93.html">TDOA Values Selection</A>
+<UL>
+<LI><A NAME="tex2html230"
+  HREF="node94.html">TDOA Post-Processing</A>
+<LI><A NAME="tex2html231"
+  HREF="node95.html">Dual-Pass Viterbi Post-Processing</A>
+</UL>
+<LI><A NAME="tex2html232"
+  HREF="node96.html">Output Signal Generation</A>
+<UL>
+<LI><A NAME="tex2html233"
+  HREF="node97.html">Automatic Channel Weight Adaptation</A>
+<LI><A NAME="tex2html234"
+  HREF="node98.html">Automatic Adaptive Channel Elimination</A>
+<LI><A NAME="tex2html235"
+  HREF="node99.html">Channels Sum and Output</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html236"
+  HREF="node100.html">Use of the Estimated Delays for Speaker Diarization</A>
+<UL>
+<LI><A NAME="tex2html237"
+  HREF="node101.html">TDOA Modeling and Features Fusion</A>
+<LI><A NAME="tex2html238"
+  HREF="node102.html">Automatic Features Weight Estimation</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html239"
+  HREF="node103.html">Experiments</A>
+<UL>
+<LI><A NAME="tex2html240"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+<UL>
+<LI><A NAME="tex2html241"
+  HREF="node105.html">Baseline Systems</A>
+<LI><A NAME="tex2html242"
+  HREF="node106.html">Databases</A>
+<LI><A NAME="tex2html243"
+  HREF="node107.html">Evaluation Metrics</A>
+<UL>
+<LI><A NAME="tex2html244"
+  HREF="node108.html">Diarization Error Rate</A>
+<LI><A NAME="tex2html245"
+  HREF="node109.html">Signal-to-Noise Ratio</A>
+</UL>
+<LI><A NAME="tex2html246"
+  HREF="node110.html">Reference Segmentation Selection and Calculation</A>
+</UL>
+<LI><A NAME="tex2html247"
+  HREF="node111.html">Experiments from Broadcast News to Meetings</A>
+<LI><A NAME="tex2html248"
+  HREF="node112.html">Speech/Non-Speech Detection Block</A>
+<LI><A NAME="tex2html249"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<UL>
+<LI><A NAME="tex2html250"
+  HREF="node114.html">Baseline System Analysis</A>
+<LI><A NAME="tex2html251"
+  HREF="node115.html">Reference Channel Estimation Analysis</A>
+<LI><A NAME="tex2html252"
+  HREF="node116.html">TDOA Post-Processing Analysis</A>
+<LI><A NAME="tex2html253"
+  HREF="node117.html">Signal Output Algorithms Analysis</A>
+<LI><A NAME="tex2html254"
+  HREF="node118.html">Use of the Beamformed Signal for ASR</A>
+</UL>
+<LI><A NAME="tex2html255"
+  HREF="node119.html">Speaker Diarization Module Experiments</A>
+<UL>
+<LI><A NAME="tex2html256"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<UL>
+<LI><A NAME="tex2html257"
+  HREF="node121.html">Number of Initial Clusters and Cluster Complexity
+selection</A>
+<LI><A NAME="tex2html258"
+  HREF="node122.html">Cross-Validation EM Training</A>
+<LI><A NAME="tex2html259"
+  HREF="node123.html">Friends-and-Enemies Clusters Initialization</A>
+<LI><A NAME="tex2html260"
+  HREF="node124.html">Frame and Segment Purification</A>
+<LI><A NAME="tex2html261"
+  HREF="node125.html">Multiple Feature Streams Automatic Weighting</A>
+</UL>
+<LI><A NAME="tex2html262"
+  HREF="node126.html">Algorithms Agglomeration Performance</A>
+</UL>
+<LI><A NAME="tex2html263"
+  HREF="node127.html">Overall Experiments and Analysis of Results</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html264"
+  HREF="node128.html">NIST Evaluations in Speaker Diarization</A>
+<UL>
+<LI><A NAME="tex2html265"
+  HREF="node129.html">NIST Rich Transcription Evaluations in Speaker Diarization for Meetings</A>
+<UL>
+<LI><A NAME="tex2html266"
+  HREF="node130.html">RT05s and RT06s Evaluation Conditions</A>
+<LI><A NAME="tex2html267"
+  HREF="node131.html">Methodology of the Evaluations</A>
+<LI><A NAME="tex2html268"
+  HREF="node132.html">Data used on the Speaker Diarization Evaluations</A>
+</UL>
+<LI><A NAME="tex2html269"
+  HREF="node133.html">ICSI Participation in the RT Evaluations</A>
+<UL>
+<LI><A NAME="tex2html270"
+  HREF="node134.html">Participation in the 2005 Spring Rich Transcription Evaluation</A>
+<UL>
+<LI><A NAME="tex2html271"
+  HREF="node135.html">Conference Room Systems</A>
+<LI><A NAME="tex2html272"
+  HREF="node136.html">Lecture Room Systems</A>
+<LI><A NAME="tex2html273"
+  HREF="node137.html">RT05s Official Performance Scores</A>
+</UL>
+<LI><A NAME="tex2html274"
+  HREF="node138.html">Participation in the 2006 Spring Rich Transcription Evaluation</A>
+<UL>
+<LI><A NAME="tex2html275"
+  HREF="node139.html">RT06s Official Performance Scores</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html276"
+  HREF="node140.html">Pros and Cons of the NIST Evaluations</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html277"
+  HREF="node141.html">Conclusions</A>
+<UL>
+<LI><A NAME="tex2html278"
+  HREF="node142.html">Overall Thesis Final Review</A>
+<LI><A NAME="tex2html279"
+  HREF="node143.html">Review of Objectives Completion</A>
+<LI><A NAME="tex2html280"
+  HREF="node144.html">Possible Future Work Topics</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html281"
+  HREF="node145.html">BIC Formulation for Gaussian Mixture Models</A>
+<LI><A NAME="tex2html282"
+  HREF="node146.html">Rich Transcription evaluation datasets</A>
+<LI><A NAME="tex2html283"
+  HREF="node147.html">Bibliography</A>
+<LI><A NAME="tex2html284"
+  HREF="node148.html">About this document ...</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

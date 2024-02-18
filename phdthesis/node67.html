@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Model-based Speech/Non-Speech Decoder</TITLE>
+<META NAME="description" CONTENT="Model-based Speech/Non-Speech Decoder">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node68.html">
+<LINK REL="previous" HREF="node63.html">
+<LINK REL="up" HREF="node62.html">
+<LINK REL="next" HREF="node68.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1289"
+  HREF="node68.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1285"
+  HREF="node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1279"
+  HREF="node66.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1287"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1290"
+  HREF="node68.html">Hybrid Speech/non-Speech Detection</A>
+<B> Up:</B> <A NAME="tex2html1286"
+  HREF="node62.html">Speech/Non-Speech Algorithm</A>
+<B> Previous:</B> <A NAME="tex2html1280"
+  HREF="node66.html">Time Constraints on Speech/non-Speech</A>
+ &nbsp; <B>  <A NAME="tex2html1288"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00812000000000000000">
+Model-based Speech/Non-Speech Decoder</A>
+</H2>
+
+<P>
+The second stage of the process consists of a model-based
+speech/non-speech detector which obtains an initial segmentation
+(used for training its models) from the output of the energy-based
+detector. It then produces the speech/non-speech labels that are
+used for the speaker diarization task. By training the models from
+the output of the energy-based detector, it avoids the need for
+any external training data (or pretrained models).
+
+<P>
+The model-based decoder is composed of a two states ergodic HMM
+(following the same architecture as the speaker Diarization
+system), where one state models silence using a single Gaussian
+model, and the speech state uses a GMM with <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img33.png"
+ ALT="$ M$"></SPAN> mixtures (<SPAN CLASS="MATH"><IMG
+ WIDTH="55" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img267.png"
+ ALT="$ M&gt;1$"></SPAN>).
+In each state a minimum duration <SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img171.png"
+ ALT="$ M\_D$"></SPAN> is imposed which is
+allowed to be different from the duration set in the energy-based
+detector. EM-ML is used to train the models and Viterbi to decode
+the acoustic data. An iterative segmentation-training is performed
+until the overall meeting likelihood stops increasing, then the
+system outputs the speech/non-speech labels.
+
+<P>
+In order for the speech and silence models to represent well the
+acoustic information, there needs to be enough frames of data in
+the input segmentation for each model. As seen in
+<A
+ HREF="node147.html#Anguera_2006a">Anguera, Wooters and Hernando (2006d)</A> and <A
+ HREF="node147.html#Anguera_2006a2">Anguera, Wooters and Hernando (2006b)</A> the
+silence data can be modeled with a single Gaussian with a very
+narrow variance. On the other hand, the speech information is much
+``broader'' and dependant on the speakers present in the meeting.
+It is therefore important for the data used in training the
+silence model to contain as little speech data as possible. This
+translates into a very small ``missed speech'' rate requirement in
+the energy based detector.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1289"
+  HREF="node68.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1285"
+  HREF="node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1279"
+  HREF="node66.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1287"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1290"
+  HREF="node68.html">Hybrid Speech/non-Speech Detection</A>
+<B> Up:</B> <A NAME="tex2html1286"
+  HREF="node62.html">Speech/Non-Speech Algorithm</A>
+<B> Previous:</B> <A NAME="tex2html1280"
+  HREF="node66.html">Time Constraints on Speech/non-Speech</A>
+ &nbsp; <B>  <A NAME="tex2html1288"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

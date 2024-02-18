@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speech/Non-Speech Algorithm</TITLE>
+<META NAME="description" CONTENT="Speech/Non-Speech Algorithm">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node69.html">
+<LINK REL="previous" HREF="node61.html">
+<LINK REL="up" HREF="node61.html">
+<LINK REL="next" HREF="node63.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1222"
+  HREF="node63.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1218"
+  HREF="node61.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1212"
+  HREF="node61.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1220"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1223"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Up:</B> <A NAME="tex2html1219"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+<B> Previous:</B> <A NAME="tex2html1213"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+ &nbsp; <B>  <A NAME="tex2html1221"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00810000000000000000"></A>
+<A NAME="spnsp"></A>
+<BR>
+Speech/Non-Speech Algorithm
+</H1>
+
+<P>
+In the broadcast news domain it was shown in
+<A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al. (2004)</A> that the speaker diarization performance
+can be improved by the use of a speech/non-speech detector as a
+first step to the agglomerative clustering process. The
+speech/non-speech system used in this previous work was based on
+acoustic models that needed to be trained on data as similar as
+possible to the test data. This poses a robustness problem when
+one intends to use the diarization system on ``unseen'' data, and
+slows down the portability of the system to new environments,
+where new training data needs to be labelled/located and new
+speech/non-speech models need to be trained. For this purpose an
+alternative was sought that would not require any training.
+
+<P>
+Among the systems that do not use acoustic models for
+speech/non-speech detection, the most widely used, when non-speech
+is considered mainly of a silence/noise nature, always include
+energy as a feature. The performance of such systems is dependent
+on setting appropriate thresholds which are typically tuned using
+some development data. Tests done with the energy-based decoder,
+that is part of the hybrid system presented below, showed that the
+optimum threshold depends on the meeting acoustics and therefore
+it should be tuned whenever data from a different source needed to
+be processed, falling in the same trap as with model-based
+detectors.
+
+<P>
+A novel system was designed and is presented in this thesis to
+perform speech/non-speech detection, and its application to
+speaker diarization in the meetings environment. Such system takes
+advantage of the fact that most non-speech in meetings is silence.
+It first performs an energy-based detection of the silence
+portions in the input data using energy derivative filtering based
+on <A
+ HREF="node147.html#qili_2002">Li et&nbsp;al. (2002)</A>. This system only needs a coarse setting
+of a threshold, which is then iteratively modified until
+hypothesizing a reasonable number of silence segments. The second
+stage of the system models speech and silence given the output
+from the first stage by using GMM models, and creates a final
+speech/non-speech segmentation to be used in the diarization
+system. By running this two-stage system, it is avoided to use any
+external training data to obtain an initial set of acoustic
+models. From these initial models several iterations are performed
+between segmenting the data and retraining the models to obtain
+the final speech/non-speech segmentation.
+
+<P>
+The introduced hybrid system therefore attempts at solving some of
+the problems from both model-based and energy-based
+speech/non-speech detectors. On one hand, it is avoided to
+accurate tune the energy threshold by using an iterative search of
+a rough speech/non-speech segmentation used to initialize the
+model-based decoder. On the other hand, by using such
+initialization on the model-based decoder, it is avoided having to
+train its models with pre-labelled data, resulting in a system
+that is freed of the need for training data.
+
+<P>
+In the following sections both the energy-based decoder and the
+model-based decoder used in the hybrid system are described.
+Finally, the combination of both systems into the hybrid decoder
+is explained.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1224"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with Variable
+threshold</A>
+<UL>
+<LI><A NAME="tex2html1225"
+  HREF="node64.html">Data Preprocessing</A>
+<LI><A NAME="tex2html1226"
+  HREF="node65.html">Derivative Filtering</A>
+<LI><A NAME="tex2html1227"
+  HREF="node66.html">Time Constraints on Speech/non-Speech</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1228"
+  HREF="node67.html">Model-based Speech/Non-Speech Decoder</A>
+<LI><A NAME="tex2html1229"
+  HREF="node68.html">Hybrid Speech/non-Speech Detection</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1222"
+  HREF="node63.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1218"
+  HREF="node61.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1212"
+  HREF="node61.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1220"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1223"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Up:</B> <A NAME="tex2html1219"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+<B> Previous:</B> <A NAME="tex2html1213"
+  HREF="node61.html">Acoustic Modeling Algorithms for</A>
+ &nbsp; <B>  <A NAME="tex2html1221"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>
