@@ -7,7 +7,7 @@ const tabs = [
     content: (
       <>
         <p>
-          I am the SVP of AI for language learning at Babel, where I take care
+          I am the SVP of AI for language learning at Babbel, where I take care
           of building awesome AI features for multilingual language learning.
         </p>
         <p>
