@@ -7,12 +7,8 @@ const tabs = [
     content: (
       <>
         <p>
-          I am the co-founder and CTO of ELSA, an AI-powered application to help
-          language students improve their English communication skills.
-        </p>
-        <p>
-          At ELSA I built the engineering and research teams and currently I
-          focus my time on developing our AI technology.
+          I am the SVP of AI for language learning at Babel, where I take care
+          of building awesome AI features for multilingual language learning.
         </p>
         <p>
           Prior to ELSA, I created an edtech startup called Sinkronigo that
