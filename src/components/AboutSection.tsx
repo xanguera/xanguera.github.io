@@ -11,7 +11,13 @@ const tabs = [
           of building awesome AI features for multilingual language learning.
         </p>
         <p>
-          Prior to ELSA, I created an edtech startup called Sinkronigo that
+          Prior to Babbel, I co-founded ELSA, an AI-powered application to help
+          language students improve their English communication skills. At ELSA
+          I played the role of CTO and led the engineering, research and pedagogy teams.
+        </p>
+        <p>
+          Before joining ELSA I became a solopreneur building a edtech startup called 
+          Sinkronigo that built speech-to-text alignment technology and 
           published speech-enabled ebooks for language learning.
         </p>
         <p>
