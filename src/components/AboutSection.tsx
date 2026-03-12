@@ -7,15 +7,17 @@ const tabs = [
     content: (
       <>
         <p>
-          I am the co-founder and CTO of ELSA, an AI-powered application to help
-          language students improve their English communication skills.
+          I am the SVP of AI for language learning at Babbel, where I take care
+          of building awesome AI features for multilingual language learning.
         </p>
         <p>
-          At ELSA I built the engineering and research teams and currently I
-          focus my time on developing our AI technology.
+          Prior to Babbel, I co-founded ELSA, an AI-powered application to help
+          language students improve their English communication skills. At ELSA
+          I played the role of CTO and led the engineering, research and pedagogy teams.
         </p>
         <p>
-          Prior to ELSA, I created an edtech startup called Sinkronigo that
+          Before joining ELSA I became a solopreneur building a edtech startup called 
+          Sinkronigo that built speech-to-text alignment technology and 
           published speech-enabled ebooks for language learning.
         </p>
         <p>
