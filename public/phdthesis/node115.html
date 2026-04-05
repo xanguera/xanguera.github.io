@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Reference Channel Estimation Analysis</TITLE>
+<META NAME="description" CONTENT="Reference Channel Estimation Analysis">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node116.html">
+<LINK REL="previous" HREF="node114.html">
+<LINK REL="up" HREF="node113.html">
+<LINK REL="next" HREF="node116.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1933"
+  HREF="node116.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1929"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1923"
+  HREF="node114.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1931"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1934"
+  HREF="node116.html">TDOA Post-Processing Analysis</A>
+<B> Up:</B> <A NAME="tex2html1930"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1924"
+  HREF="node114.html">Baseline System Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1932"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001042000000000000000">
+Reference Channel Estimation Analysis</A>
+</H2>
+
+<P>
+As explained in section <A HREF="node89.html#ref_channel_compute">5.2.2</A>, a
+cross-correlation based algorithm was proposed and implemented in
+the RT06s system in order to select the optimum channel to act as
+reference channel in the beamforming system. By automatically
+selecting this channel the system becomes independent of the human
+assignment of the SDM channel, which NIST selects in the RT
+datasets and which was used as reference in previous versions of
+the system.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7169"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.6:</STRONG>
+<I>Reference channel estimation results</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">F&amp;S system</TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>SNR</SPAN></TD>
+<TD ALIGN="CENTER" COLSPAN=2><SPAN>DER</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+<TD ALIGN="RIGHT">Dev</TD>
+<TD ALIGN="RIGHT">Eval</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system</TD>
+<TD ALIGN="RIGHT">30.20db</TD>
+<TD ALIGN="RIGHT">45.28db</TD>
+<TD ALIGN="RIGHT">17.15%</TD>
+<TD ALIGN="RIGHT">22.92%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Hand-picked reference channel</TD>
+<TD ALIGN="RIGHT">30.72db</TD>
+<TD ALIGN="RIGHT">45.53db</TD>
+<TD ALIGN="RIGHT">17.09%</TD>
+<TD ALIGN="RIGHT">22.49%</TD>
+</TR>
+</TABLE>
+
+<A NAME="channel_select"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#channel_select">6.6</A> shows the results of the RT06s system
+(with automatic selection) or the same system but using the SDM
+channel as reference. By automatic selection of the optimum
+channel the results become slightly worse both in SNR and DER.
+Although the DER of the development set is almost equal to the
+hand-picked reference channel case, in the test set there is a
+decrease in DER performance of 1.87% relative. By considering the
+development results, it is preferable and more robust to use the
+automatic selection of the reference channel, as it then becomes
+possible to use this system in areas other than the RT evaluation
+data, where there might not be any prior information on which
+microphone to select as the reference channel.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1933"
+  HREF="node116.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1929"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1923"
+  HREF="node114.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1931"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1934"
+  HREF="node116.html">TDOA Post-Processing Analysis</A>
+<B> Up:</B> <A NAME="tex2html1930"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1924"
+  HREF="node114.html">Baseline System Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1932"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

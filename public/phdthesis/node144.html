@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Possible Future Work Topics</TITLE>
+<META NAME="description" CONTENT="Possible Future Work Topics">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node143.html">
+<LINK REL="up" HREF="node141.html">
+<LINK REL="next" HREF="node145.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2301"
+  HREF="node145.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2297"
+  HREF="node141.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2293"
+  HREF="node143.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2299"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2302"
+  HREF="node145.html">BIC Formulation for Gaussian</A>
+<B> Up:</B> <A NAME="tex2html2298"
+  HREF="node141.html">Conclusions</A>
+<B> Previous:</B> <A NAME="tex2html2294"
+  HREF="node143.html">Review of Objectives Completion</A>
+ &nbsp; <B>  <A NAME="tex2html2300"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001230000000000000000">
+Possible Future Work Topics</A>
+</H1>
+
+<P>
+As with everything else in life, there is more that could be done,
+and it could not be otherwise in this thesis.
+
+<P>
+One topic within the meeting domain processing that has received
+quite some attention recently is speaker overlap detection. As
+such, it refers to the detection of the segments where more than
+one speaker is talking at the same time, and the output of an
+appropriate ID for each participant. In NIST RT06s evaluation the
+main metric included overlap for the first time and multiple
+research labs (including the author) researched techniques for its
+detection without any success in reducing the overall error. There
+is still work to be done in detecting when more than one person is
+speaking, which should come from the beamforming module (where
+speakers are well determined by their location) and from the
+diarization module (where data with multiple overlapping speakers
+has special acoustic properties compared to single speakers). Also
+in ASR systems for meetings it would be very beneficiary to create
+multiple signals in overlap regions, each one derived from the
+steering to every speaker.
+
+<P>
+Another area where there research should be directed is the
+creation of strong links between ASR transcription output and
+diarization. Although it is well established the use of
+diarization algorithms to help the ASR systems in model
+adaptation, it has only been briefly studied the use of ASR for
+diarization. It could be useful in a number of areas, like the
+definition of possible speaker change-points (ranging from
+boundaries at word level to discourse level), or in the assignment
+of speaker ID's (or the correct name) based on the transcription
+content (in which LIMSI has done some research). Also, both areas
+could benefit by the combination of plausible speaker labels with
+ASR N-best words for each instant, it being useful at decoding
+level to reduce the errors in both the ASR and diarization tasks.
+
+<P>
+In the topic of discourse modeling, speaker diarization could
+benefit from research on ways to model the turn-taking between the
+speakers. By using information at a higher level than pure
+acoustics, the transition probabilities between speakers could be
+appropriately set to help the decoding. One of such possible high
+level information is easily noticeable in broadcasted news where
+an anchor speaker is very probable to speak after every other
+speaker. Similar analysis could be made in the meetings domain and
+possibly classify the meetings into several types (more fine
+grained than the current lecture/conference classification) to
+apply different models to. Possible types could me: moderated
+meetings (with one person acting as anchor), structured meetings
+(people following an order, without anchor) and unstructured
+(where everyone intervenes at random, supposedly with higher
+amount of overlap regions). Also, it could be considered to split
+the meeting into several parts with each person's participation
+dependent on which part/topic the meeting is in.
+
+<P>
+One of the objectives of this thesis was to increase the
+robustness of the system to mismatches between the development
+data and the test data, and to make the system parameters less
+sensitive to the processed data by obtaining parameters more
+linked to the acoustics and by eliminating any model training step
+from the system. It has been shown in the experiments section that
+an important step forward has been taken in that direction. There
+is still more that can be done in this topic towards eliminating
+as many tuning parameters as possible, letting the algorithms
+select such parameters solely from the data. Also important is to
+better understand the underlying processes that lead the system to
+score very differently depending on every particular meeting
+(leading to ``easy'' and ``difficult'' meetings).
+
+<P>
+Finally, although current systems in the RT evaluations are
+defined with no application in mind, trying to be adaptable to any
+possible application, this poses a burden in the capacity of such
+systems to obtain the optimum score and makes them more
+computationally intensive as most of the algorithms used for
+diarization are iterative. It would be interesting to explore
+particular areas of application where, for example, the number of
+speakers in a meeting are known. This particular information would
+probably change the way that speaker diarization algorithms are
+designed and would allow for lower DER scores, most probably in
+the region where speaker identification techniques are nowadays.
+
+<P>
+
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2301"
+  HREF="node145.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2297"
+  HREF="node141.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2293"
+  HREF="node143.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2299"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2302"
+  HREF="node145.html">BIC Formulation for Gaussian</A>
+<B> Up:</B> <A NAME="tex2html2298"
+  HREF="node141.html">Conclusions</A>
+<B> Previous:</B> <A NAME="tex2html2294"
+  HREF="node143.html">Review of Objectives Completion</A>
+ &nbsp; <B>  <A NAME="tex2html2300"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

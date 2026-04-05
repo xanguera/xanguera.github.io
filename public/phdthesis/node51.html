@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Average Number of Speakers</TITLE>
+<META NAME="description" CONTENT="Average Number of Speakers">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node52.html">
+<LINK REL="previous" HREF="node50.html">
+<LINK REL="up" HREF="node48.html">
+<LINK REL="next" HREF="node52.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1074"
+  HREF="node52.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1070"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1064"
+  HREF="node50.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1072"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1075"
+  HREF="node52.html">Average Speaker Turn Duration</A>
+<B> Up:</B> <A NAME="tex2html1071"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1065"
+  HREF="node50.html">Average Total Speaking Time</A>
+ &nbsp; <B>  <A NAME="tex2html1073"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00721300000000000000">
+Average Number of Speakers</A>
+</H3>
+
+<P>
+Another parameter that describes the different subdomains of
+application is the number of expected speakers to be clustered.
+Given that the number of initial clusters needs to be higher than
+the optimum number of clusters, it is important to define an upper
+boundary on the number of speakers so that systems are ensured to
+be able to reach the optimum point. Although an optimal speaker
+diarization system using hierarchical agglomerative clustering
+should be able to start at a very high number of clusters and work
+its way down, in reality it makes a difference in the resulting
+performance the correct estimation of an appropriate upper limit
+for the number of clusters. This is explained more in detail in
+section <A HREF="node74.html#initial_num_clusters">4.2.2</A>.
+
+<P>
+The average number of speakers and their minimum and maximum
+values are represented for the three datasets in table
+<A HREF="#average_num_speakers">3.11</A>. One can observe how in general the
+broadcast news shows contain a vast amount of speakers (averaging
+19), although in the shows considered there was one case (CSPAN)
+with 4 speakers. This creates a very big variation (or standard
+deviation) between the values. The system processing the broadcast
+news data needs to ensure a good performance both when many
+speakers are present (with smaller speaking time) and when less
+are available. Without any automatic initial number of speakers
+detection algorithm, the system starts at 40 clusters.
+
+<P>
+In the case of meetings, the lecture room data contains many
+recordings where only the lecturer speaks, and other with several
+people, going to a maximum number of four speakers. The standard
+deviation is therefore smaller compared to broadcast news. On
+conference rooms the number of speakers range between 4 and 9,
+with an average of 5.25 speakers present. Without automatic
+detection the systems start at 10 or 16 clusters for meetings and
+at 5 or 10 for lecture room.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3015"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.11:</STRONG>
+<I>Average number of speaker for Rt04f
+and RT06s</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Domain</TD>
+<TD ALIGN="CENTER"># excerpts</TD>
+<TD ALIGN="CENTER">ave. spkrs</TD>
+<TD ALIGN="CENTER">min. spkrs</TD>
+<TD ALIGN="CENTER">max. spkrs</TD>
+<TD ALIGN="CENTER">std spkrs</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Meetings conference</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">5.25</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">2.05</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Meetings lecture</TD>
+<TD ALIGN="CENTER">28</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">1.49</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Broadcast news</TD>
+<TD ALIGN="CENTER">12</TD>
+<TD ALIGN="CENTER">19</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">29</TD>
+<TD ALIGN="CENTER">8.35</TD>
+</TR>
+</TABLE>
+ <A NAME="average_num_speakers"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1074"
+  HREF="node52.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1070"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1064"
+  HREF="node50.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1072"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1075"
+  HREF="node52.html">Average Speaker Turn Duration</A>
+<B> Up:</B> <A NAME="tex2html1071"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1065"
+  HREF="node50.html">Average Total Speaking Time</A>
+ &nbsp; <B>  <A NAME="tex2html1073"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

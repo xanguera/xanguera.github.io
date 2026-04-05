@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Linear Apertures Theory</TITLE>
+<META NAME="description" CONTENT="Linear Apertures Theory">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node37.html">
+<LINK REL="up" HREF="node35.html">
+<LINK REL="next" HREF="node39.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html887"
+  HREF="node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html883"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html879"
+  HREF="node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html885"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html888"
+  HREF="node39.html">Microphone Array Beamforming</A>
+<B> Up:</B> <A NAME="tex2html884"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Previous:</B> <A NAME="tex2html880"
+  HREF="node37.html">Passive Apertures</A>
+ &nbsp; <B>  <A NAME="tex2html886"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00651300000000000000">
+Linear Apertures Theory</A>
+</H3>
+
+<P>
+Over the general directivity pattern in eq. <A HREF="node37.html#directivity">2.27</A> one
+can apply some simplifications, oriented towards array processing:
+
+<P>
+
+<UL>
+<LI>The aperture has a linear shape: <!-- MATH
+ $\mathbf{r} = [x, 0, 0]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="89" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img131.png"
+ ALT="$ \mathbf{r} = [x, 0, 0]$"></SPAN>
+
+<P>
+</LI>
+<LI>A far-field signal is received (therefore <!-- MATH
+ $|\mathbf{r}| >
+\frac{2L^{2}}{\lambda}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img132.png"
+ ALT="$ \vert\mathbf{r}\vert &gt;
+\frac{2L^{2}}{\lambda}$"></SPAN>, with L being the total length of the
+aperture.
+
+<P>
+</LI>
+<LI>The aperture function is constant for all frequencies.
+
+<P>
+</LI>
+</UL>
+
+<P>
+In this case the directivity function simplifies to
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D_{R} (f, \alpha_{x} ) = L sinc(\alpha_{x} L)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="193" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img133.png"
+ ALT="$\displaystyle D_{R} (f, \alpha_{x} ) = L sinc(\alpha_{x} L)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">28</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+which contains zeros of reception at
+<!-- MATH
+ $\alpha_{x}=\frac{m\lambda}{L}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="71" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img134.png"
+ ALT="$ \alpha_{x}=\frac{m\lambda}{L}$"></SPAN> with <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.png"
+ ALT="$ m$"></SPAN> being a scalar value.
+
+<P>
+At all effects, a linear sensor array can be considered as a
+sampled version of a continuous linear aperture. One can obtain
+the aperture function of the array as the superposition of all
+individual element functions (<!-- MATH
+ $e_{n}(\cdot)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img135.png"
+ ALT="$ e_{n}(\cdot)$"></SPAN>) which are equivalent
+to the array function and measure the element's response for a
+particular direction of arrival. The aperture function is now
+written as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+A(f, x)=\sum_{n=-\frac{N-1}{2}}^{\frac{N-1}{2}}w_{n}(f) e_{n}(f, x
+- x_{n})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="286" HEIGHT="86" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.png"
+ ALT="$\displaystyle A(f, x)=\sum_{n=-\frac{N-1}{2}}^{\frac{N-1}{2}}w_{n}(f) e_{n}(f, x - x_{n})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">29</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+for an array with N elements, where <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img137.png"
+ ALT="$ e_{n}$"></SPAN> is the
+element function for element <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img138.png"
+ ALT="$ w_{n}(f)$"></SPAN> is the complex
+weighting for element <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img139.png"
+ ALT="$ x_{n}$"></SPAN> is the position of such
+element in the <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img140.png"
+ ALT="$ x$"></SPAN> axis.
+
+<P>
+For the far-field case, and considering all elements with
+identical element function, the directivity function can be
+computed as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D(f, \alpha_{x})= \sum_{n=-\frac{N-1}{2}}^{\frac{N-1}{2}}
+w_{n}(f)e^{j2\pi\alpha_{x}x_{n}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="262" HEIGHT="86" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.png"
+ ALT="$\displaystyle D(f, \alpha_{x})= \sum_{n=-\frac{N-1}{2}}^{\frac{N-1}{2}} w_{n}(f)e^{j2\pi\alpha_{x}x_{n}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">30</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+In where the complex weighting can be expressed as module and
+phase in the following way:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="complex_weight"></A><!-- MATH
+ \begin{equation}
+w_{n}(f) = a_{n}(f) e^{j\varphi_{n}(f)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="166" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img142.png"
+ ALT="$\displaystyle w_{n}(f) = a_{n}(f) e^{j\varphi_{n}(f)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">31</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img143.png"
+ ALT="$ a_{n}(f)$"></SPAN> can be used to control the shape of the
+directivity and <!-- MATH
+ $\varphi_{n}(f)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img144.png"
+ ALT="$ \varphi_{n}(f)$"></SPAN> to control the angular location
+of the main lobe, being both scalar functions.
+
+<P>
+Beamforming techniques that use a microphone array for acoustic
+enhancement of the signal play with these two parameters to obtain
+the desired shaping and steering of the lobes of the directivity
+pattern to certain locations in the space. Some of these
+techniques use the approximation of far-field signals done in here
+and others (fewer) consider near-field waves, with different
+directivity pattern development.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html887"
+  HREF="node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html883"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html879"
+  HREF="node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html885"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html888"
+  HREF="node39.html">Microphone Array Beamforming</A>
+<B> Up:</B> <A NAME="tex2html884"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Previous:</B> <A NAME="tex2html880"
+  HREF="node37.html">Passive Apertures</A>
+ &nbsp; <B>  <A NAME="tex2html886"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

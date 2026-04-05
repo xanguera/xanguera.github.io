@@ -1,0 +1,357 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Filter-and-Sum Beamforming</TITLE>
+<META NAME="description" CONTENT="Filter-and-Sum Beamforming">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node84.html">
+<LINK REL="up" HREF="node83.html">
+<LINK REL="next" HREF="node86.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1528"
+  HREF="node86.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1524"
+  HREF="node83.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1520"
+  HREF="node84.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1526"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1529"
+  HREF="node86.html">Multichannel Acoustic Beamforming System</A>
+<B> Up:</B> <A NAME="tex2html1525"
+  HREF="node83.html">Multichannel Acoustic Beamforming for</A>
+<B> Previous:</B> <A NAME="tex2html1521"
+  HREF="node84.html">Meeting Room Microphone Array</A>
+ &nbsp; <B>  <A NAME="tex2html1527"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00912000000000000000">
+Filter-and-Sum Beamforming</A>
+</H2>
+
+<P>
+The filter-and-sum beamforming is one of the simplest beamforming
+techniques but still gives a very good performance. It is based on
+the fact that applying different phase weights to the input
+channels the main lobe of the directivity pattern can be steered
+to a desired location, where the acoustic input comes from. It
+differs from the simpler delay-and-sum beamformer in that an
+independent weight is applied to each of the channels before
+summing them.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="mic_array"></A><A NAME="5144"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.1:</STRONG>
+<I>Linear microphone array with all
+microphones equidistant at distance d</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="371" HEIGHT="315" BORDER="0"
+ SRC="img348.png"
+ ALT="\begin{figure*}\psfrag{x0}{$x_{0}$}
+\psfrag{x1}{$x_{1}$}
+\psfrag{x2}{$x_{2}...
+...\centerline{\epsfig{figure=figures/discrete_array,width=90mm}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Let us consider the hypothetical case of a microphone array
+composed of <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN> microphones, as seen in figure <A HREF="#mic_array">5.1</A>,
+with identical frequency response and equal distance between any
+two adjacent microphones, of value d meters. If only the
+horizontal directivity pattern is considered (<!-- MATH
+ $\theta = \pi/2$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img349.png"
+ ALT="$ \theta = \pi/2$"></SPAN>)
+and have microphones with equal amplitude weights <!-- MATH
+ $a_{n}(f) =
+1/N$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="102" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img350.png"
+ ALT="$ a_{n}(f) =
+1/N$"></SPAN>, the main lobe can be steered to the direction <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img117.png"
+ ALT="$ \phi$"></SPAN>' using
+a basic delay-and-sum beamforming by applying the following phase
+weights to the channels:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\varphi_{n} = \frac{-2\pi(n-1)d cos(\phi')f}{c}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="211" HEIGHT="59" ALIGN="MIDDLE" BORDER="0"
+ SRC="img351.png"
+ ALT="$\displaystyle \varphi_{n} = \frac{-2\pi(n-1)d cos(\phi')f}{c}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Thus obtaining the following directivity pattern:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D(f,\phi) = \frac{1}{N}\sum_{n=1}^{N}e^{j\frac{2\pi f(n-1)d(cos
+\phi - cos \phi')}{c}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="282" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img352.png"
+ ALT="$\displaystyle D(f,\phi) = \frac{1}{N}\sum_{n=1}^{N}e^{j\frac{2\pi f(n-1)d(cos \phi - cos \phi')}{c}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where the term <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img353.png"
+ ALT="$ cos \phi'$"></SPAN> forces the main lobe to move
+to the direction <!-- MATH
+ $\phi = \phi'$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img354.png"
+ ALT="$ \phi = \phi'$"></SPAN>.
+
+<P>
+Such steering can be applied in real applications by inserting
+time delays to the different microphone inputs. In this case the
+delay to be applied to each microphone to steer at angle <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img355.png"
+ ALT="$ \phi'$"></SPAN>
+is:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\tau_{n}=\frac{(n-1)d cos \phi'}{c}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="150" HEIGHT="59" ALIGN="MIDDLE" BORDER="0"
+ SRC="img356.png"
+ ALT="$\displaystyle \tau_{n}=\frac{(n-1)d cos \phi'}{c}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Each of the microphone inputs is delayed a time <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img357.png"
+ ALT="$ \tau_{n}$"></SPAN> and
+then all signals are summed to obtain the delay-and-sum output, as
+it can be seen in figure <A HREF="#delay_sum">5.2</A>. The physical
+interpretation when the waveform front is considered flat is that
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img357.png"
+ ALT="$ \tau_{n}$"></SPAN> is the time that takes the same signal wave to reach
+each of the microphones.
+
+<P>
+By using such time delays equivalence the delay-and-sum output
+<SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img358.png"
+ ALT="$ y(t)$"></SPAN> can be written as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+y(t) = \frac{1}{N}\sum_{n=1}^{N}x_{n}(t-\tau_{n})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="185" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img359.png"
+ ALT="$\displaystyle y(t) = \frac{1}{N}\sum_{n=1}^{N}x_{n}(t-\tau_{n})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The basic delay-and-sum beamforming considers all channels to have
+an identical frequency response and then uses equal amplitude
+weights (<SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img360.png"
+ ALT="$ a_{n}$"></SPAN>) to all channels. In the application for meetings
+it will be considered that microphones have different (and
+unknown) frequency responses. This problem can be addressed by
+adding a non-uniform amplitude weight and making both amplitude
+and phase weights frequency dependent. Therefore obtaining a
+filter-and-sum beamforming system output as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="weight_sum"></A><!-- MATH
+ \begin{equation}
+y(f)=\sum_{n=1}^{N}w_{n}(f)x_{n}(f) \equiv \sum_{n=1}^{N}a_{n}(f)
+x_{n}(f)e^{-2\pi f\frac{(n-1)d cos \phi'}{c}j} \Longleftrightarrow
+y(t)=\sum_{n=1}^{N}a_{n}(t)x_{n}(t-\tau_{n})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="666" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img361.png"
+ ALT="$\displaystyle y(f)=\sum_{n=1}^{N}w_{n}(f)x_{n}(f) \equiv \sum_{n=1}^{N}a_{n}(f)...
+...s \phi'}{c}j} \Longleftrightarrow y(t)=\sum_{n=1}^{N}a_{n}(t)x_{n}(t-\tau_{n})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">5</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img362.png"
+ ALT="$ w(f)$"></SPAN> is determined by eq. <A HREF="node38.html#complex_weight">2.31</A>.
+
+<P>
+Figure <A HREF="#delay_sum">5.2</A> represents what is seen in equation
+<A HREF="#weight_sum">5.5</A>. The input signal (considered to be coming from a
+distant source and flat) arrives to each microphone from an angle
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img363.png"
+ ALT="$ \phi^{'}$"></SPAN> at a different time instant. The signals from the
+different microphones are passed through a filter <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img364.png"
+ ALT="$ w_{i}$"></SPAN>,
+independent for each microphone (1 through <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN>), which accounts
+for an amplitude and time delay (as seen in eq. <A HREF="#weight_sum">5.5</A>).
+The output or ``enhanced'' signal is the sum of all filtered
+individual signals.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="delay_sum"></A><A NAME="5152"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.2:</STRONG>
+<I>Filter and sum algorithm blocks
+diagram</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="497" HEIGHT="311" BORDER="0"
+ SRC="img365.png"
+ ALT="\begin{figure*}\psfrag{w1(f)}{$w_{1}(f)$}
+\psfrag{w2(f)}{$w_{2}(f)$}\psf...
+...
+\centerline{\epsfig{figure=figures/delay_sum2,width=110mm}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+This type of beamforming technique was selected for the
+implementation of the meetings system because it agrees with all
+desired characteristics. Furthermore, its simplicity allows for a
+fast implementation, normally under real-time, that allows it to
+eventually be used in a real-time system.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1528"
+  HREF="node86.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1524"
+  HREF="node83.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1520"
+  HREF="node84.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1526"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1529"
+  HREF="node86.html">Multichannel Acoustic Beamforming System</A>
+<B> Up:</B> <A NAME="tex2html1525"
+  HREF="node83.html">Multichannel Acoustic Beamforming for</A>
+<B> Previous:</B> <A NAME="tex2html1521"
+  HREF="node84.html">Meeting Room Microphone Array</A>
+ &nbsp; <B>  <A NAME="tex2html1527"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

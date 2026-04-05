@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The ICSI Broadcast News System</TITLE>
+<META NAME="description" CONTENT="The ICSI Broadcast News System">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node47.html">
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="up" HREF="node41.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html952"
+  HREF="node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html948"
+  HREF="node41.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html942"
+  HREF="node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html950"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html953"
+  HREF="node43.html">Speech/non-Speech Detection and Parameters</A>
+<B> Up:</B> <A NAME="tex2html949"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html943"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+ &nbsp; <B>  <A NAME="tex2html951"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00710000000000000000"></A>
+<A NAME="bn_system"></A>
+<BR>
+The ICSI Broadcast News System
+</H1>
+
+<P>
+The broadcast news (BN) system currently used at ICSI and which
+has been used as a base for the meetings system, was originally
+created by Jitendra Ajmera circa 2003. He built the system while
+he was a PhD student at EPFL (Lausanne, Switzerland) and IDIAP
+(Martigny, Switzerland) and implemented it at ICSI while visiting
+for 6 months. During Ajmera's stay, ICSI participated in the NIST
+2003 Rich transcription of broadcast news spring evaluation with
+the developed system, and soon afterwards in the RT03f (``who
+spoke the words'' evaluation). The diarization system was then
+improved and ICSI participated again in the RT04f evaluation
+(<A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al., 2004</A>), also in broadcast news.
+
+<P>
+The system is a bottom-up agglomerative clustering approach that
+uses a modified version of the BIC distance (<A
+ HREF="node147.html#Ajmera_2003a">Ajmera et&nbsp;al., 2003</A>) in
+order to iteratively merge the closest clusters until the same BIC
+distance determines the system to stop. Speaker segmentation of
+the data is not done explicitly before the clustering part, but it
+is done via Viterbi decoding of the data given the current speaker
+models at every iteration. For a thorough description of the
+system refer to <A
+ HREF="node147.html#Ajmera_2004">Ajmera (2004)</A>.
+
+<P>
+The philosophy behind the system and all research that has been
+done towards implementation of the meetings system is based on
+these key concepts:
+
+<P>
+
+<OL>
+<LI>Make the system as robust as possible to data within the
+same domain which the system has not been adapted to.
+
+<P>
+</LI>
+<LI>Allow for a fast adaptation of the system to use it in new
+domains (i.e. broadcast news, meetings, telephone speech, and
+others).
+
+<P>
+</LI>
+</OL>
+
+<P>
+These key concepts were put into practice by imposing
+the following guidelines:
+
+<P>
+
+<UL>
+<LI>Use as few training data as possible so that the system can
+be easily adapted to new domains and is not over-tuned to the data
+it is trained on.
+
+<P>
+</LI>
+<LI>Avoid as much as possible the use of thresholds and tuning
+parameters. If not possible, try to define parameters that once
+tuned can achieve good performance in different kinds of data.
+</LI>
+</UL>
+
+<P>
+The implementation of the broadcast news system used as a baseline
+for the meetings domain was presented to the RT04f broadcast news
+evaluation (<A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al., 2004</A>), which is the latest broadcast news
+evaluation conducted by NIST within the EARS (Effective Affordable
+Reusable Speech-to-Text) program. It differs from the original
+diarization system created by Ajmera (<A
+ HREF="node147.html#Ajmera_2003b">Ajmera and Wooters, 2003</A>) in four
+main points. First the inclusion of a speech/non-speech detector
+to filter out the non-speech segments prior to doing any further
+processing to the data and the discontinuation of use of a
+speech/music classifier used in the RT03s evaluation. Also, the
+parameterization used was MFCC, instead of PLP used until then.
+Finally, the inclusion of am iterative segmentation-training loop
+in the algorithm to allow models to converge to the clusters data.
+
+<P>
+It can be seen in figure <A HREF="#bn_blocks">3.1</A> the main blocks
+constituting the system. In the following sections a detailed
+description of the different blocks is given.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="bn_blocks"></A><A NAME="2514"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.1:</STRONG>
+<I>ICSI Speaker Diarization for Broadcast
+News blocks diagram</I></CAPTION>
+<TR><TD></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html954"
+  HREF="node43.html">Speech/non-Speech Detection and Parameters
+Extraction</A>
+<LI><A NAME="tex2html955"
+  HREF="node44.html">Clusters Initialization and Acoustic Modeling</A>
+<LI><A NAME="tex2html956"
+  HREF="node45.html">Clusters Comparison, Pruning and Clusters Merging</A>
+<LI><A NAME="tex2html957"
+  HREF="node46.html">Stopping Criterion and System Output</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html952"
+  HREF="node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html948"
+  HREF="node41.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html942"
+  HREF="node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html950"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html953"
+  HREF="node43.html">Speech/non-Speech Detection and Parameters</A>
+<B> Up:</B> <A NAME="tex2html949"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html943"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+ &nbsp; <B>  <A NAME="tex2html951"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

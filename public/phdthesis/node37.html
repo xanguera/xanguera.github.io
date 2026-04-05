@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Passive Apertures</TITLE>
+<META NAME="description" CONTENT="Passive Apertures">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node38.html">
+<LINK REL="previous" HREF="node36.html">
+<LINK REL="up" HREF="node35.html">
+<LINK REL="next" HREF="node38.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html877"
+  HREF="node38.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html873"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html867"
+  HREF="node36.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html875"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html878"
+  HREF="node38.html">Linear Apertures Theory</A>
+<B> Up:</B> <A NAME="tex2html874"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Previous:</B> <A NAME="tex2html868"
+  HREF="node36.html">Acoustic Signal Propagation</A>
+ &nbsp; <B>  <A NAME="tex2html876"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00651200000000000000">
+Passive Apertures</A>
+</H3>
+
+<P>
+In order to describe the effect of the signal when received by a
+microphone array, the theory behind transmission/reception of
+propagating waves needs to be reviewed. An <SPAN  CLASS="textit">aperture</SPAN> is
+defined as a spacial region designed to emit (active) or receive
+(passive) propagating waves. The concept of aperture is very broad
+and is used for many different kinds of waves.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="aperture"></A><A NAME="2082"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2.2:</STRONG>
+<I>Example of a passive aperture
+response to different incoming signals</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="494" HEIGHT="311" BORDER="0"
+ SRC="img121.png"
+ ALT="\begin{figure*}
+\centerline{\epsfig{figure=figures/equiv_signal,width=110mm}}
+\end{figure*}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+As can be seen in figure <A HREF="#aperture">2.2</A>, a passive aperture has a
+particular spacial orientation in space and therefore alters the
+receiving signal in a different way for each frequency and
+location. In this context the <SPAN  CLASS="textit">aperture function</SPAN> or
+<SPAN  CLASS="textit">sensitivity function</SPAN> (<!-- MATH
+ $A(f,\mathbf{r})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img122.png"
+ ALT="$ A(f,\mathbf{r})$"></SPAN>, with impulsive
+response <!-- MATH
+ $\alpha(t,\mathbf{r})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="52" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.png"
+ ALT="$ \alpha(t,\mathbf{r})$"></SPAN>) is defined as such response of
+the aperture to the incoming signal <!-- MATH
+ $x(\tau,\mathbf{r})
+{\mathcal{F} \atop \Longleftrightarrow} X(f,\mathbf{r})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="136" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.png"
+ ALT="$ x(\tau,\mathbf{r})
+{\mathcal{F} \atop \Longleftrightarrow} X(f,\mathbf{r})$"></SPAN>,
+resulting on <!-- MATH
+ $X_{R}(f,\mathbf{r})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="69" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img125.png"
+ ALT="$ X_{R}(f,\mathbf{r})$"></SPAN> as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+x_{R}(t,\mathbf{r})=\int_{-\infty}^{\infty}
+x(\tau,\mathbf{r})\alpha(t-\tau,\mathbf{r}) d \tau { \mathcal{F}
+\atop \Longleftrightarrow} X_{R}(f,\mathbf{r}) =
+X(f,\mathbf{r})A(f,\mathbf{r})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="496" HEIGHT="57" ALIGN="MIDDLE" BORDER="0"
+ SRC="img126.png"
+ ALT="$\displaystyle x_{R}(t,\mathbf{r})=\int_{-\infty}^{\infty} x(\tau,\mathbf{r})\a...
+...atop \Longleftrightarrow} X_{R}(f,\mathbf{r}) = X(f,\mathbf{r})A(f,\mathbf{r})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">26</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The aperture function is defined for a particular direction of
+arrival. In order to measure and characterize the response of an
+aperture for all directions, the directivity pattern (or beam
+pattern) is defined as the aperture response to each frequency and
+direction of arrival. It is given by:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="directivity"></A><!-- MATH
+ \begin{equation}
+D_{R} (f, \boldsymbol{\alpha} ) = \mathcal{F}_{\mathbf{r}} \{A(f,
+\mathbf{r} )\} = \int_{-\infty}^{\infty}A (f, \mathbf{r} )e^{j2\pi
+\boldsymbol{\alpha} \mathbf{r}} d \mathbf{r}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="363" HEIGHT="57" ALIGN="MIDDLE" BORDER="0"
+ SRC="img127.png"
+ ALT="$\displaystyle D_{R} (f, \boldsymbol{\alpha} ) = \mathcal{F}_{\mathbf{r}} \{A(f,...
+...\infty}A (f, \mathbf{r} )e^{j2\pi \boldsymbol{\alpha} \mathbf{r}} d \mathbf{r}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">27</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $\mathcal{F}_{\mathbf{r}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img128.png"
+ ALT="$ \mathcal{F}_{\mathbf{r}}$"></SPAN> is the 3D fourier
+transform, <!-- MATH
+ $\mathbf{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img109.png"
+ ALT="$ \mathbf{r}$"></SPAN> now indicates a point along the aperture
+and <!-- MATH
+ $\boldsymbol{\alpha}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img129.png"
+ ALT="$ \boldsymbol{\alpha}$"></SPAN> is the direction vector of the wave
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+\boldsymbol{\alpha}=\frac{1}{\lambda}[\sin\theta \cos\phi \;\;
+\sin\theta \sin\phi \;\; \cos\theta]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="268" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img130.png"
+ ALT="$\displaystyle \boldsymbol{\alpha}=\frac{1}{\lambda}[\sin\theta \cos\phi \;\;
+\sin\theta \sin\phi \;\; \cos\theta]
+$">
+</DIV><P></P>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html877"
+  HREF="node38.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html873"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html867"
+  HREF="node36.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html875"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html878"
+  HREF="node38.html">Linear Apertures Theory</A>
+<B> Up:</B> <A NAME="tex2html874"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Previous:</B> <A NAME="tex2html868"
+  HREF="node36.html">Acoustic Signal Propagation</A>
+ &nbsp; <B>  <A NAME="tex2html876"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

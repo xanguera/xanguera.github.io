@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Reference Channel Computation</TITLE>
+<META NAME="description" CONTENT="Reference Channel Computation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node90.html">
+<LINK REL="previous" HREF="node88.html">
+<LINK REL="up" HREF="node88.html">
+<LINK REL="next" HREF="node90.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1593"
+  HREF="node90.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1589"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1583"
+  HREF="node88.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1591"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1594"
+  HREF="node90.html">Overall Channels Weighting Factor</A>
+<B> Up:</B> <A NAME="tex2html1590"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1584"
+  HREF="node88.html">Meeting Information Extraction</A>
+ &nbsp; <B>  <A NAME="tex2html1592"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00922100000000000000"></A>
+<A NAME="ref_channel_compute"></A>
+<BR>
+Reference Channel Computation
+</H3>
+
+<P>
+In a typical implementation of a time-delay based beamforming
+system one needs to select one of the channels as the reference
+channel. This channel is compared to all others and the time delay
+of arrival (TDOA) is estimated for each pair. It is important for
+this channel to be the best representative of the acoustics in the
+meeting, as the correct estimation of the delays of each of the
+channels depends on the chosen reference.
+
+<P>
+In the meetings transcribed by NIST to be used for the Rich
+Transcription evaluations (<A
+ HREF="node147.html#NIST_rt_web"><EM>NIST Rich Transcription evaluations, website:
+  http://www.nist.gov/speech/tests/rt</EM>, 2006</A>) there is one
+microphone indicated to be the most centrally located in the room.
+Such microphone is chosen empirically given the room layout and
+the prior knowledge of the microphone types. This module
+overpasses that decision and selects one microphone automatically
+given a criterion based on acoustics. This is intended for system
+robustness in cases where absolutely no information on the room
+layout and the microphone placements is available. Two possible
+acoustic criterions were investigated to select such channel:
+
+<P>
+
+<UL>
+<LI>A selection based on <SPAN  CLASS="textbf">Signal to Noise ratio</SPAN> (SNR). A
+simple speech/non-speech detection based on energy is applied to
+each of the channels independently and the SNR is computed. The
+channel with better SNR is chosen to be the reference channel.
+This poses a problem on how accurate is the speech/non-speech
+detection and how it correlates between channels. The algorithm
+implementation computed speech/non-speech for each channel
+independently and then computed the SNR for each one, giving mixed
+results. An SNR computation using some combined speech/non-speech
+technique where all channels could be taken into account to come
+up with one single segmentation could have improved this selection
+algorithm.
+
+<P>
+</LI>
+<LI>A selection based on <SPAN  CLASS="textbf">average cross-correlation</SPAN>
+between channels: The cross-correlation (GCC-PHAT) is computed for
+all possible channel combinations for a block of duration 1s. This
+is repeated for <SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img375.png"
+ ALT="$ M=200$"></SPAN> blocks linearly spaced along the
+recording. For each channel <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN> the average cross-correlation is
+computed as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\frac{}{\mbox{cross\_correlation}_{i}} =
+\frac{1}{MN}\sum_{m=1}^{M} \sum_{j=1, j \neq i}^{N} xcorr(i, j)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="365" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img376.png"
+ ALT="$\displaystyle \frac{}{\mbox{cross\_correlation}_{i}} = \frac{1}{MN}\sum_{m=1}^{M} \sum_{j=1, j \neq i}^{N} xcorr(i, j)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">7</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN> is the number of channels and <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img33.png"
+ ALT="$ M$"></SPAN> indicates
+the number of blocks used in the average. In the implementation
+GCC-PHAT cross-correlation was used as described below.
+
+<P>
+The channel with the highest average cross-correlation was chosen
+as reference channel. By using this metric it takes into account
+the amount of time each speaker speaks in total and the quality of
+each microphone. In the case where all microphones were the same
+and all speakers spoke the same amount of time, the chosen
+microphone should be the most physically centrally located one,
+coinciding with what NIST reports in the RT evaluations.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1593"
+  HREF="node90.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1589"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1583"
+  HREF="node88.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1591"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1594"
+  HREF="node90.html">Overall Channels Weighting Factor</A>
+<B> Up:</B> <A NAME="tex2html1590"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1584"
+  HREF="node88.html">Meeting Information Extraction</A>
+ &nbsp; <B>  <A NAME="tex2html1592"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

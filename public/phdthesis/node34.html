@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Multichannel Acoustic Enhancement</TITLE>
+<META NAME="description" CONTENT="Multichannel Acoustic Enhancement">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node26.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node35.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html832"
+  HREF="node35.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html828"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html824"
+  HREF="node33.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html830"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html833"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Up:</B> <A NAME="tex2html829"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html825"
+  HREF="node33.html">NIST 2006 Rich Transcription</A>
+ &nbsp; <B>  <A NAME="tex2html831"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00650000000000000000"></A>
+<A NAME="art_multichannel"></A>
+<BR>
+Multichannel Acoustic Enhancement
+</H1>
+
+<P>
+Possibly the most noticeable difference when performing speaker
+diarization in the meetings environment versus other domains (like
+broadcast news or telephone speech) is the availability, at times,
+of multiple channels which are laid out inside the meetings room,
+synchronously recording what occurs in the meeting.
+
+<P>
+In order to take advantage of this fact one needs to explore an
+area of signal processing that differs from standard speech
+modeling techniques pointed out in previous sections and which
+constitutes a complex topic of research by itself. This is the
+area of microphone array beamforming for speech/acoustic
+enhancement (see for example <A
+ HREF="node147.html#Van_Veen_88">Veen and Buckley (1988)</A>,
+<A
+ HREF="node147.html#Krim_96">Krim and Viberg (1996)</A>). Although the task at hand differs from some
+of the assumptions taken in the beamforming theory, it will be
+found beneficiary to take it as a background for the use of all
+the microphones available.
+
+<P>
+Microphone array beamforming techniques usually take advantage of
+the fact that the same acoustic signal arrives to each of the
+microphones (forming the shape decided for the array) at a
+slightly different time due to the delay of propagation of the
+signal through the air. By combining the signals of all
+microphones (in different ways) one can simulate a directional
+microphone whose acoustic beam focuses on the speaker or acoustic
+event which is predominant, at each instant, in the meetings room.
+There are multiple acoustic beamforming techniques which require
+different degrees of knowledge on the microphone characteristics
+and the location of the speakers.
+
+<P>
+First, a theoretical overview of acoustic signal beamforming is
+given in <A HREF="node35.html#array_theory">2.5.1</A>, followed by a look at the most
+predominant acoustic beamforming techniques in
+<A HREF="node39.html#beamform_review">2.5.2</A>. In the task at hand one does not know a
+priory how many speakers there are, or their locations in the
+room, therefore several possible techniques to find the Time Delay
+of Arrival (TDOA) between microphone pairs will also be reviewed
+in <A HREF="node40.html#TDOA_review">2.5.3</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html834"
+  HREF="node35.html">Introduction to Acoustic Array Processing</A>
+<UL>
+<LI><A NAME="tex2html835"
+  HREF="node36.html">Acoustic Signal Propagation</A>
+<LI><A NAME="tex2html836"
+  HREF="node37.html">Passive Apertures</A>
+<LI><A NAME="tex2html837"
+  HREF="node38.html">Linear Apertures Theory</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html838"
+  HREF="node39.html">Microphone Array Beamforming</A>
+<LI><A NAME="tex2html839"
+  HREF="node40.html">Time Delay of Arrival Estimation</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html832"
+  HREF="node35.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html828"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html824"
+  HREF="node33.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html830"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html833"
+  HREF="node35.html">Introduction to Acoustic Array</A>
+<B> Up:</B> <A NAME="tex2html829"
+  HREF="node9.html">State of the art</A>
+<B> Previous:</B> <A NAME="tex2html825"
+  HREF="node33.html">NIST 2006 Rich Transcription</A>
+ &nbsp; <B>  <A NAME="tex2html831"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

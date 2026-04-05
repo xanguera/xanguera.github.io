@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Databases</TITLE>
+<META NAME="description" CONTENT="Databases">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node107.html">
+<LINK REL="previous" HREF="node105.html">
+<LINK REL="up" HREF="node104.html">
+<LINK REL="next" HREF="node107.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1822"
+  HREF="node107.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1818"
+  HREF="node104.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1812"
+  HREF="node105.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1820"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1823"
+  HREF="node107.html">Evaluation Metrics</A>
+<B> Up:</B> <A NAME="tex2html1819"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+<B> Previous:</B> <A NAME="tex2html1813"
+  HREF="node105.html">Baseline Systems</A>
+ &nbsp; <B>  <A NAME="tex2html1821"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001012000000000000000"></A>
+<A NAME="exp_databases"></A>
+<BR>
+Databases
+</H2>
+
+<P>
+In the experiments in this thesis the datasets used were obtained
+from the data available for the Rich Transcription (RT)
+evaluations for the meetings domain. So far the evaluations on
+meetings have been RT02, RT04s, RT05s and RT06s. On the later two
+years only the conference room type data has been used as it
+contains a richer variety of speakers and with characteristics
+matching more closely the aim of the algorithms presented in the
+thesis.
+
+<P>
+From all available datasets, two groups have been defined as
+development and test. The RT02, RT04s and RT05s sets form the
+development set, with a total of 24 meeting excerpts, ranging from
+10 to 12 minutes in duration each. The RT06s set has been used as
+a test set (with 8 meeting excerpts), to compare the system
+improvements on data not used to tune its parameters. Figure
+<A HREF="#summary_data">6.1</A> summarizes the data available in each one of
+the RT sets used. For a complete list of the individual files
+refer to appendix <A HREF="node146.html#rt_data_info">B</A>.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="6622"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.1:</STRONG>
+<I>Summary of datasets used in the experiments</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Dataset</TD>
+<TD ALIGN="RIGHT"># excerpts</TD>
+<TD ALIGN="RIGHT">ave. duration</TD>
+<TD ALIGN="CENTER" COLSPAN=6><SPAN>meeting sources</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">CMU</TD>
+<TD ALIGN="RIGHT">ICSI</TD>
+<TD ALIGN="RIGHT">LDC</TD>
+<TD ALIGN="RIGHT">NIST</TD>
+<TD ALIGN="RIGHT">AMI  EDI</TD>
+<TD ALIGN="RIGHT">VT</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT02</TD>
+<TD ALIGN="RIGHT">8</TD>
+<TD ALIGN="RIGHT">674.286</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT04s</TD>
+<TD ALIGN="RIGHT">8</TD>
+<TD ALIGN="RIGHT">593.185</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT05s</TD>
+<TD ALIGN="RIGHT">10</TD>
+<TD ALIGN="RIGHT">722.210</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s</TD>
+<TD ALIGN="RIGHT">8</TD>
+<TD ALIGN="RIGHT">1080.442</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">2</TD>
+</TR>
+</TABLE> 
+<A NAME="summary_data"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+These sets contain a few special characteristics that need to be
+taken into account. On one hand, the development set contains four
+meetings that only contain one available microphone. These are two
+pairs of two CMU meetings recorded for the RT02 and RT04s
+evaluations. These are not suitable to evaluate the beamforming
+performance but are left in the development data to obtain fair
+and comparable results.
+
+<P>
+On the other hand, the meeting NIST_20050412-1303 from RT05s
+dataset contains one speaker which was participating in the
+meeting through a telephone device. As will be described later on,
+using forced alignments to robustly evaluate the data leads to
+results where this speaker was not included in the reference files
+and therefore causes a big bias in the scores. Depending on the
+test performed this meeting will be eliminated to allow for a fair
+comparison (when doing so it will be clearly stated).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1822"
+  HREF="node107.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1818"
+  HREF="node104.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1812"
+  HREF="node105.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1820"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1823"
+  HREF="node107.html">Evaluation Metrics</A>
+<B> Up:</B> <A NAME="tex2html1819"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+<B> Previous:</B> <A NAME="tex2html1813"
+  HREF="node105.html">Baseline Systems</A>
+ &nbsp; <B>  <A NAME="tex2html1821"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,843 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Algorithms Agglomeration Performance</TITLE>
+<META NAME="description" CONTENT="Algorithms Agglomeration Performance">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node120.html">
+<LINK REL="up" HREF="node119.html">
+<LINK REL="next" HREF="node127.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2071"
+  HREF="node127.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2067"
+  HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2063"
+  HREF="node125.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2069"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2072"
+  HREF="node127.html">Overall Experiments and Analysis</A>
+<B> Up:</B> <A NAME="tex2html2068"
+  HREF="node119.html">Speaker Diarization Module Experiments</A>
+<B> Previous:</B> <A NAME="tex2html2064"
+  HREF="node125.html">Multiple Feature Streams Automatic</A>
+ &nbsp; <B>  <A NAME="tex2html2070"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001052000000000000000">
+Algorithms Agglomeration Performance</A>
+</H2>
+
+<P>
+In the previous section each algorithm proposed has been tested on
+its own, against the baseline system described in
+<A HREF="node105.html#baseline_system">6.1.1</A>. Table <A HREF="#summary_results_indiv">6.17</A>
+summarizes the results of each algorithm as applied independently
+to the baseline system, either being only the TDOA-MDM system for
+the weights computation, or the average of all three systems. The
+last column shows the rank in improvement over the baseline
+obtained by each system. This rank is used to determine the order
+of application of the algorithms in agglomerate to conform the
+final system.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7919"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.17:</STRONG>
+<I>Summary of DER improvements for the individual
+algorithms in the development set</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER">DER Devel</TD>
+<TD ALIGN="CENTER">Improvement</TD>
+<TD ALIGN="CENTER">rank</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline TDOA-MDM</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER">-</TD>
+<TD ALIGN="CENTER">-</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Automatic weighting</TD>
+<TD ALIGN="CENTER">14.16%</TD>
+<TD ALIGN="CENTER">14.12%</TD>
+<TD ALIGN="CENTER">1</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline average</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+<TD ALIGN="CENTER">-</TD>
+<TD ALIGN="CENTER">-</TD>
+</TR>
+<TR><TD ALIGN="LEFT"># init clusters + complexity</TD>
+<TD ALIGN="CENTER">17.39%</TD>
+<TD ALIGN="CENTER">7.05%</TD>
+<TD ALIGN="CENTER">2</TD>
+</TR>
+<TR><TD ALIGN="LEFT">CV-EM Training</TD>
+<TD ALIGN="CENTER">17.50%</TD>
+<TD ALIGN="CENTER">6.46%</TD>
+<TD ALIGN="CENTER">4</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Friends-and-enemies init</TD>
+<TD ALIGN="CENTER">17.47%</TD>
+<TD ALIGN="CENTER">6.62%</TD>
+<TD ALIGN="CENTER">3</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Frame purification</TD>
+<TD ALIGN="CENTER">18.03%</TD>
+<TD ALIGN="CENTER">3.63%</TD>
+<TD ALIGN="CENTER">5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Segment purificaton</TD>
+<TD ALIGN="CENTER">18.23%</TD>
+<TD ALIGN="CENTER">2.56%</TD>
+<TD ALIGN="CENTER">6</TD>
+</TR>
+</TABLE>
+ <A NAME="summary_results_indiv"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Given the previous section procedure, emphasis must be given to
+the big difference in some cases between the three systems that
+are being tested (SDM, MDM and TDOA-MDM), therefore it occurs that
+some of the algorithms obtain better results with one system than
+with the other. Results obtained as an average are lower in
+improvement percentage than what could be obtained in a targeted
+application. By using an average of three systems and an extended
+development set (20-24 meeting excerpts) the level of uncertainty
+of the results (very typical in speaker diarization, being called
+``flakiness'') is reduced.
+
+<P>
+In this section the baseline system is iteratively augmented with
+the different individual algorithms and further analysis on the
+parameters studied in the previous section is performed to assess
+that the same settings (or others) are the optimum in each step.
+Optimally a full system should be built and a full search done
+over all parameters space to find the optimum set, but the big
+number of dimensions of this space and number of algorithms
+disallow this procedure. Instead, a greedy algorithm iteratively
+adapts each algorithm to perform optimally within the system.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="tdoa_gauss"></A><A NAME="7921"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.16:</STRONG>
+<I>DER variation with the number of
+Gaussian mixtures initially assigned to the TDOA models</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="444" HEIGHT="250" BORDER="0"
+ SRC="img511.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/sil_gauss,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The first algorithm to be included into the system is the
+automatic weighting of the TDOA and acoustic streams using an
+initial weight <!-- MATH
+ $W_{1}=0.65$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="83" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img512.png"
+ ALT="$ W_{1}=0.65$"></SPAN>. At this point, and given that the
+second algorithm to include is the model complexity selection for
+the acoustic features, it is interesting to see how the complexity
+of the TDOA models in the TDOA-MDM system affect the behavior of
+the system. Figure <A HREF="#tdoa_gauss">6.16</A> shows how 1 Gaussian mixture
+is the optimum complexity to be used for the TDOA models
+initially. Such complexity increases for the TDOA models as the
+different clusters merge by creating models that contain the sum
+of both parents complexities.
+
+<P>
+As hinted above, the algorithms to include in the next step are
+the model complexity selection and number of initial clusters.
+Figure <A HREF="#full_ccr">6.17</A> shows the evolution of the DER when changing
+the values of the CCR parameter for the three considered systems.
+As it happened when studying the individual system, the TDOA-MDM
+system performs better with lower CCR values than the other two.
+The optimum working point remains at CCR=7.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="full_ccr"></A><A NAME="7923"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.17:</STRONG>
+<I>DER variation with the CCR
+parameter in the agglomerate system</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="433" HEIGHT="248" BORDER="0"
+ SRC="img513.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/full_ccr,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Table <A HREF="#full_ccr_table">6.18</A> shows the development and evaluation
+sets DER scores for all systems considered up to this point, and
+the average. It compares the current results with those of the
+baseline and the system at the prior agglomerative step, so that
+improvements in overall can be observed as well as relative
+improvements of using this technique in the agglomerate. While the
+average DER are all better than the baseline for all cases, in the
+evaluation set the SDM system performs much worse than the
+baseline. Compared to the prior system (the stream-weight
+selection) an improvement is seen mostly in the test set where the
+prior system got worse results than the baseline, but combined
+with this algorithm obtains a 17.03% DER versus a 18.65% DER, a
+net gain of 1.62%.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7924"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.18:</STRONG>
+<I>Results for the model complexity and number of
+initial clusters in the agglomerate system</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Development set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">SDM</TD>
+<TD ALIGN="CENTER">MDM</TD>
+<TD ALIGN="CENTER">TDOA-MDM</TD>
+<TD ALIGN="CENTER">Ave</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">20.6%</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">prior system</TD>
+<TD ALIGN="CENTER">20.6%</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">14.16%</TD>
+<TD ALIGN="CENTER">17.93%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Complex + init. number</TD>
+<TD ALIGN="CENTER">18.61%</TD>
+<TD ALIGN="CENTER">18.49%</TD>
+<TD ALIGN="CENTER">14.49%</TD>
+<TD ALIGN="CENTER">17.19%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Evaluation set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">24.54%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+<TD ALIGN="CENTER">18.65%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">24.54%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+<TD ALIGN="CENTER">20.87%</TD>
+<TD ALIGN="CENTER">23.97%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Complex + init. number</TD>
+<TD ALIGN="CENTER">28.84%</TD>
+<TD ALIGN="CENTER">23.68%</TD>
+<TD ALIGN="CENTER">17.03%</TD>
+<TD ALIGN="CENTER">23.18%</TD>
+</TR>
+</TABLE>
+
+<A NAME="full_ccr_table"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Next, the friends-and-enemies algorithm is evaluated when used in
+conjunction with the previous systems. In the previous section it
+was determined that the combinations of metric and init segment
+selection corresponding to 2-2 and 3-3 gave the best results.
+Figure <A HREF="#full_friends">6.18</A> show the average DER when using either
+set of parameters. Although the optimum number of friends was 3
+when evaluating the algorithm by itself, it is clear in this case
+that the minimum for both combinations goes to 4 friends.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="full_friends"></A><A NAME="7926"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.18:</STRONG>
+<I>DER variation with the number of
+friends in the agglomerate system</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="460" HEIGHT="258" BORDER="0"
+ SRC="img514.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/full_friends,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In Table <A HREF="#full_friends_table">6.19</A> results are shown for the
+development and evaluation sets for both metric sets with 4
+friends per cluster, comparing them to the prior best system and
+to the baseline.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7927"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.19:</STRONG>
+<I>Results for the friends-and-enemies algorithm</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Development set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">SDM</TD>
+<TD ALIGN="CENTER">MDM</TD>
+<TD ALIGN="CENTER">TDOA-MDM</TD>
+<TD ALIGN="CENTER">Ave</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">20.6%</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">18.61%</TD>
+<TD ALIGN="CENTER">18.49%</TD>
+<TD ALIGN="CENTER">14.49%</TD>
+<TD ALIGN="CENTER">17.19%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Friends-and-Enemies (1-1)</TD>
+<TD ALIGN="CENTER">19.72%</TD>
+<TD ALIGN="CENTER">16.58%</TD>
+<TD ALIGN="CENTER">17.02%</TD>
+<TD ALIGN="CENTER">17.77%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Friends-and-Enemies (2-2)</TD>
+<TD ALIGN="CENTER">19.37%</TD>
+<TD ALIGN="CENTER">17.57%</TD>
+<TD ALIGN="CENTER">14.9%</TD>
+<TD ALIGN="CENTER">17.28%</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Evaluation set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">24.54%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+<TD ALIGN="CENTER">18.65%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">28.84%</TD>
+<TD ALIGN="CENTER">23.68%</TD>
+<TD ALIGN="CENTER">17.03%</TD>
+<TD ALIGN="CENTER">23.18%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Friends-and-Enemies (1-1)</TD>
+<TD ALIGN="CENTER">30.84%</TD>
+<TD ALIGN="CENTER">25.16%</TD>
+<TD ALIGN="CENTER">15.38%</TD>
+<TD ALIGN="CENTER">23.79%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Friends-and-Enemies (2-2)</TD>
+<TD ALIGN="CENTER">29.31%</TD>
+<TD ALIGN="CENTER">30.65%</TD>
+<TD ALIGN="CENTER">14.09%</TD>
+<TD ALIGN="CENTER">24.68%</TD>
+</TR>
+</TABLE>
+
+<A NAME="full_friends_table"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Although in the development set the MDM system is improved in both
+metric alternatives with respect to the prior and baseline
+systems, this is not enough to obtain an average better result. In
+the evaluation set the same thing happens, being this time the
+TDOA-MDM system which obtains much better results than previously,
+but they are masked by the bad performance in SDM and MDM
+conditions. Even though the system shows that can be useful for
+certain tasks and conditions, in average in the agglomerate system
+it shows unable to improve the average performance at this point,
+therefore it is not included for the next step.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="full_em_iter"></A><A NAME="7929"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.19:</STRONG>
+<I>DER variation with the number of EM
+iterations of a standard EM-ML training algorithm</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="453" HEIGHT="242" BORDER="0"
+ SRC="img515.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/full_em_iter,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Following this algorithm, the next one in succession is the CV-EM
+training algorithm. The function of the CV-EM algorithm as used in
+this thesis is to execute at each training step the optimum number
+of iterations that allow the cluster models to optimally model the
+data without overfitting to it or undertraining. In order to
+compare this algorithm to the standard EM-ML training algorithm in
+figure <A HREF="#full_em_iter">6.19</A> the average DER is evaluated in terms of
+the number of iterations of EM training for the system at this
+point using standard EM-ML. The optimum amount of iterations is 5,
+as has been used in the baseline system.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="full_parallel"></A><A NAME="7931"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.20:</STRONG>
+<I>DER variation with the number CV-EM
+parallel models</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="612" HEIGHT="262" BORDER="0"
+ SRC="img516.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/full_parallel,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+When using the CV-EM algorithm at this point in the system, figure
+<A HREF="#full_parallel">6.20</A> shows the DER for all three considered systems
+when selecting different number of CV-EM parallel models. contrary
+to the same test performed with the algorithm in isolation, in
+this case all three systems observe a very similar behavior to the
+number of used models. This can be explained with the increased
+robustness of the system by using the previously applied
+algorithms, which makes its performance much more stable and less
+flaky to small changes in the parameters. In the current CV-EM
+application the optimum number of models is 25, although 20 would
+be a good choice too, as results are very stable in that region.
+Using 15 or less models increases the DER, probably because the
+different models contain data that starts to be too different to
+each model's and therefore leads the EM steps to obtain divergent
+parameters for the models.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7932"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.20:</STRONG>
+<I>Results for the CV-EM training algorithm in the
+agglomerate system</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Development set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">SDM</TD>
+<TD ALIGN="CENTER">MDM</TD>
+<TD ALIGN="CENTER">TDOA-MDM</TD>
+<TD ALIGN="CENTER">Ave</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">20.6%</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">18.61%</TD>
+<TD ALIGN="CENTER">18.49%</TD>
+<TD ALIGN="CENTER">14.49%</TD>
+<TD ALIGN="CENTER">17.19%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">CV-Em training</TD>
+<TD ALIGN="CENTER">18.78%</TD>
+<TD ALIGN="CENTER">16.92%</TD>
+<TD ALIGN="CENTER">15.81%</TD>
+<TD ALIGN="CENTER">17.17%</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Evaluation set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">24.54%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+<TD ALIGN="CENTER">18.65%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">28.84%</TD>
+<TD ALIGN="CENTER">23.68%</TD>
+<TD ALIGN="CENTER">17.03%</TD>
+<TD ALIGN="CENTER">23.18%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">CV-EM training</TD>
+<TD ALIGN="CENTER">25.0%</TD>
+<TD ALIGN="CENTER">23.68%</TD>
+<TD ALIGN="CENTER">16.69%</TD>
+<TD ALIGN="CENTER">21.79%</TD>
+</TR>
+</TABLE>
+ <A NAME="full_parallel_table"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#full_parallel_table">6.20</A> shows the results comparing the
+inclusion to the CV-EM training algorithm to the prior system
+(which does not include the friends-and-enemies initialization)
+and to the baseline system. In the development set the main
+improvement comes from the MDM system, leading to a final slight
+gain over the prior system. In the evaluation set results are much
+improved and a 5.9% relative improvement is observed.
+
+<P>
+The next algorithm to introduce, according to the order of
+individual improvement, is the frame purification algorithm. When
+used in isolation, the algorithm achieved optimum performance when
+using 50% of the possible Gaussians and keeping 70% of the
+frames (eliminating the 30% with highest evaluated metric). In
+order to test both parameters in this setting the first sweep is
+pursued on the % of frames while keeping the 50% Gaussians
+fixed.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="full_frame1"></A><A NAME="7934"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.21:</STRONG>
+<I>DER variation with the frame %
+acceptance for frame purification algorithm</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="457" HEIGHT="272" BORDER="0"
+ SRC="img517.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/full_frame1,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Figure <A HREF="#full_frame1">6.21</A> shows the DER for the three compared
+systems for different frame acceptance percentages. The case of
+100% corresponds to the prior algorithm, without any frame
+purification. In all cases the curves show a high DER at 60%
+which have a stable improvement as the percentage of acceptd
+frames increases (with exception of 80% in TDOA-MDM). Both SDM
+and TDOA-MDM obtain several values with better DER than the 100%
+case, but in MDM this always behaves better. The optimum working
+point according to the average DER is at 90% of frames accepted.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="full_frame2"></A><A NAME="7936"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.22:</STRONG>
+<I>DER variation with the Gaussian %
+used in the frame purification algorithm</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="457" HEIGHT="272" BORDER="0"
+ SRC="img518.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/full_frame2,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Fixing now the % of frames at 0.9, the different values for the
+% of Gaussians used is studied. Figure <A HREF="#full_frame2">6.22</A> shows
+the DER when the percentage goes from 20% to 100%. SDM and MDM
+systems have a very flat behavior, which is disrupted in the
+TDOA-MDM system from 40$ to 60%. The optimum points are at 25%
+and 100%, which are equivalent to the 2nd and 1st metrics shown
+in the algorithm description.
+
+<P>
+These results have a double interpretation. On one hand, by the
+success of the algorithm in improving the DER it is proven that
+acoustic frames with high likelihood are more prone at conveying
+information that is not useful at discriminating between speakers.
+This could be used in other fields, like speaker identification,
+where techniques based on frame bagging are already in use to omit
+those frames with the lowest likelihoods.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7937"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.21:</STRONG>
+<I>Results for the frame purification algorithm in the
+agglomerate system</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Development set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">SDM</TD>
+<TD ALIGN="CENTER">MDM</TD>
+<TD ALIGN="CENTER">TDOA-MDM</TD>
+<TD ALIGN="CENTER">Ave</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">20.6%</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">18.78%</TD>
+<TD ALIGN="CENTER">16.92%</TD>
+<TD ALIGN="CENTER">15.81%</TD>
+<TD ALIGN="CENTER">17.17%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Frame purification (25% Gauss)</TD>
+<TD ALIGN="CENTER">17.75%</TD>
+<TD ALIGN="CENTER">17.45%</TD>
+<TD ALIGN="CENTER">15.11%</TD>
+<TD ALIGN="CENTER">16.77%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Frame purification (100% Gauss)</TD>
+<TD ALIGN="CENTER">18.0%</TD>
+<TD ALIGN="CENTER">17.49%</TD>
+<TD ALIGN="CENTER">14.92%</TD>
+<TD ALIGN="CENTER">16.80%</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Evaluation set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">24.54%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+<TD ALIGN="CENTER">18.65%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">25.0%</TD>
+<TD ALIGN="CENTER">23.68%</TD>
+<TD ALIGN="CENTER">16.69%</TD>
+<TD ALIGN="CENTER">21.79%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Frame purification (25% Gauss)</TD>
+<TD ALIGN="CENTER">21.57%</TD>
+<TD ALIGN="CENTER">23.09%</TD>
+<TD ALIGN="CENTER">15.82%</TD>
+<TD ALIGN="CENTER">20.16%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Frame purification (100% Gauss)</TD>
+<TD ALIGN="CENTER">24.24%</TD>
+<TD ALIGN="CENTER">23.24%</TD>
+<TD ALIGN="CENTER">15.55%</TD>
+<TD ALIGN="CENTER">21.01%</TD>
+</TR>
+</TABLE>
+ <A NAME="fullframetable"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#fullframetable">6.21</A> shows the DER for the frame
+purification algorithm (both using 25% and 100% of Gaussians).
+All algorithms show an excellent performance both in the
+development set and in the evaluation set, outperforming the
+baseline and the prior algorithm (agglomerate system with CV-EM
+training). This is a 7.4% and 3.5% relative on the evaluation
+set using either the 25% or 100% of Gaussians (respectively).
+
+<P>
+Finally, the segment purification algorithm is evaluated using the
+system composed of all successful prior systems. Table
+<A HREF="#fullsegmenttable">6.22</A> shows the results in comparison with the
+prior system (selected with 25% Gaussians used) and the baseline.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7938"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.22:</STRONG>
+<I>Results for the segment purification algorithm in
+the agglomerate system</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Development set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">SDM</TD>
+<TD ALIGN="CENTER">MDM</TD>
+<TD ALIGN="CENTER">TDOA-MDM</TD>
+<TD ALIGN="CENTER">Ave</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">20.6%</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">17.75%</TD>
+<TD ALIGN="CENTER">17.45%</TD>
+<TD ALIGN="CENTER">15.11%</TD>
+<TD ALIGN="CENTER">16.77%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Segment purification</TD>
+<TD ALIGN="CENTER">17.65%</TD>
+<TD ALIGN="CENTER">17.94%</TD>
+<TD ALIGN="CENTER">14.89%</TD>
+<TD ALIGN="CENTER">16.82%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Evaluation set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">24.54%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+<TD ALIGN="CENTER">18.65%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Prior system</TD>
+<TD ALIGN="CENTER">21.57%</TD>
+<TD ALIGN="CENTER">23.09%</TD>
+<TD ALIGN="CENTER">15.82%</TD>
+<TD ALIGN="CENTER">20.16%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Segment purification</TD>
+<TD ALIGN="CENTER">23.07%</TD>
+<TD ALIGN="CENTER">23.47%</TD>
+<TD ALIGN="CENTER">15.12%</TD>
+<TD ALIGN="CENTER">20.55%</TD>
+</TR>
+</TABLE>
+ <A NAME="fullsegmenttable"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Results are mixed, improving in certain systems and being worse in
+others. In average both the development and evaluation sets obtain
+worse results than the prior system. An interesting effect is also
+noticed in that for both the development and evaluation the MDM
+system performs worse than the SDM, which indicates that somehow
+the segment purification system can identify better the segments
+from alien speakers when only one channel is used. Given the
+results and the high computational load that the segment
+purification poses on the system, this is taken out of the
+experiments system.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2071"
+  HREF="node127.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2067"
+  HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2063"
+  HREF="node125.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2069"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2072"
+  HREF="node127.html">Overall Experiments and Analysis</A>
+<B> Up:</B> <A NAME="tex2html2068"
+  HREF="node119.html">Speaker Diarization Module Experiments</A>
+<B> Previous:</B> <A NAME="tex2html2064"
+  HREF="node125.html">Multiple Feature Streams Automatic</A>
+ &nbsp; <B>  <A NAME="tex2html2070"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

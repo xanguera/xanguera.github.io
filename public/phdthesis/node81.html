@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Segment-Level Cluster Purification</TITLE>
+<META NAME="description" CONTENT="Segment-Level Cluster Purification">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node77.html">
+<LINK REL="up" HREF="node76.html">
+<LINK REL="next" HREF="node82.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1460"
+  HREF="node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1456"
+  HREF="node76.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1452"
+  HREF="node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1458"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1461"
+  HREF="node82.html">Multichannel Processing for Meetings</A>
+<B> Up:</B> <A NAME="tex2html1457"
+  HREF="node76.html">Cluster Purification Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html1453"
+  HREF="node80.html">Frame-Based Purification Implementation</A>
+ &nbsp; <B>  <A NAME="tex2html1459"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00832000000000000000"></A>
+<A NAME="segment_purify"></A>
+<BR>
+Segment-Level Cluster Purification
+</H2>
+
+<P>
+There are some situations where a cluster retains speaker segments
+from more than one speaker; the segment-level cluster purification
+algorithm is a proposed mechanism used to force splitting these
+cluster into two parts. The algorithm detects the segments in each
+cluster that are likely to belong to another speaker and reassigns
+one of them to a new cluster in each iteration of the
+agglomerative clustering algorithm. The algorithm works as
+follows:
+
+<P>
+
+<OL>
+<LI>Find the segment that best represents each model (highest
+normalized likelihood). This is done to isolate the effect of a
+big speaker model when trying to determine if it contains any
+segments from more than one speaker. The most representative
+segment is very probable to contain only data from one speaker and
+it is more reliable to compare it with other segments of similar
+size.
+
+<P>
+</LI>
+<LI>Compute, within each cluster, the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC value between
+the best segment (found in step 1) and each of the other segments.
+If all pairs have a value greater than a minimum purity
+(empirically set to -50) that model is labelled as ``pure'' and is
+not checked again in subsequent iterations.
+
+<P>
+</LI>
+<LI>The segment that most differs from its model's best segment
+is assigned to a new model. All models are retrained and the data
+is resegmented with Viterbi.
+</LI>
+</OL>
+
+<P>
+In order to avoid instability, the algorithm is run at most
+<SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> times (<SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> being the number of initial
+clusters). Doing so avoids clusters continuously split and merge
+the same segments over and over.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1460"
+  HREF="node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1456"
+  HREF="node76.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1452"
+  HREF="node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1458"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1461"
+  HREF="node82.html">Multichannel Processing for Meetings</A>
+<B> Up:</B> <A NAME="tex2html1457"
+  HREF="node76.html">Cluster Purification Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html1453"
+  HREF="node80.html">Frame-Based Purification Implementation</A>
+ &nbsp; <B>  <A NAME="tex2html1459"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

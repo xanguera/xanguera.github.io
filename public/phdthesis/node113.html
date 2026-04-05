@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Acoustic Beamforming Experiments</TITLE>
+<META NAME="description" CONTENT="Acoustic Beamforming Experiments">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node119.html">
+<LINK REL="previous" HREF="node112.html">
+<LINK REL="up" HREF="node103.html">
+<LINK REL="next" HREF="node114.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1904"
+  HREF="node114.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1900"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1894"
+  HREF="node112.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1902"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1905"
+  HREF="node114.html">Baseline System Analysis</A>
+<B> Up:</B> <A NAME="tex2html1901"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1895"
+  HREF="node112.html">Speech/Non-Speech Detection Block</A>
+ &nbsp; <B>  <A NAME="tex2html1903"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001040000000000000000"></A> <A NAME="beamform_exp"></A>
+<BR>
+Acoustic Beamforming Experiments
+</H1>
+
+<P>
+In this section an analysis is made on the appropriateness of the
+different techniques implemented for the acoustic beamforming of
+the multiple available signals into an ``enhanced'' signal. The
+experiments were conducted using both development and evaluation
+sets as described in <A HREF="node106.html#exp_databases">6.1.2</A> where 4 meetings from CMU
+were taken out of the development set as they only contained a
+single microphone.
+
+<P>
+The experiments use as a comparison system the filter&amp;sum (F&amp;S)
+beamforming used in the RT06s NIST evaluation, which contains all
+the modules and algorithms described in section
+<A HREF="node86.html#multi-implement">5.2</A>. This implementation is the one used in the
+following section to test the appropriateness of all the
+algorithms in the single-channel diarization module. Each module
+is evaluated by comparing the performance of the system with and
+without it, maintaining all other modules in place.
+
+<P>
+The metrics used in the experiments process in this section are
+the Signal-to-Noise ratio (SNR) and the Diarization Error Rate
+(DER) as described in <A HREF="node107.html#eval_metrics">6.1.3</A>. In order to conduct a
+fair comparison, the F&amp;S was obtained for each considered
+beamformed signal and the SNR was computed . After this, the DER
+was obtained by running the diarization module on that signal
+(previously parameterized) using the optimum diarization
+parameters according to the results in section
+<A HREF="node119.html#diary_experiments">6.5</A>. The TDOA values were not used in this
+analysis and the speech/non-speech labels were kept constant to
+those of the RT06s system (used as the baseline system) as
+computed and explained in section <A HREF="node68.html#hybrid">4.1.3</A>. This was done in
+order to focus on the changes in DER only from the change in the
+beamforming module.
+
+<P>
+The modules within the beamforming that were analyzed are:
+
+<P>
+
+<UL>
+<LI>Reference channel estimation
+
+<P>
+</LI>
+<LI>Use of a noise threshold
+
+<P>
+</LI>
+<LI>Use of TDOA stability algorithms
+
+<P>
+</LI>
+<LI>Use of bad frames elimination in the output
+
+<P>
+</LI>
+<LI>Use of output weights adaptation
+
+<P>
+</LI>
+</UL>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1906"
+  HREF="node114.html">Baseline System Analysis</A>
+<LI><A NAME="tex2html1907"
+  HREF="node115.html">Reference Channel Estimation Analysis</A>
+<LI><A NAME="tex2html1908"
+  HREF="node116.html">TDOA Post-Processing Analysis</A>
+<LI><A NAME="tex2html1909"
+  HREF="node117.html">Signal Output Algorithms Analysis</A>
+<LI><A NAME="tex2html1910"
+  HREF="node118.html">Use of the Beamformed Signal for ASR</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1904"
+  HREF="node114.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1900"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1894"
+  HREF="node112.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1902"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1905"
+  HREF="node114.html">Baseline System Analysis</A>
+<B> Up:</B> <A NAME="tex2html1901"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1895"
+  HREF="node112.html">Speech/Non-Speech Detection Block</A>
+ &nbsp; <B>  <A NAME="tex2html1903"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

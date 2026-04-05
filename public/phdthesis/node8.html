@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Outline of the Thesis</TITLE>
+<META NAME="description" CONTENT="Outline of the Thesis">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html473"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html469"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html465"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html471"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html474"
+  HREF="node9.html">State of the art</A>
+<B> Up:</B> <A NAME="tex2html470"
+  HREF="node5.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html466"
+  HREF="node7.html">Definition of the Thesis</A>
+ &nbsp; <B>  <A NAME="tex2html472"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00530000000000000000"></A>
+<A NAME="intro_outline"></A>
+<BR>
+Outline of the Thesis
+</H1>
+
+<P>
+This thesis is split into seven main chapters on the topic of
+robust speaker diarization for meetings. A brief description
+follows of what is to be found in each chapter.
+
+<P>
+Chapter <A HREF="node9.html#state_art">2</A> takes a look into the proposed problem: how
+to robustly and optimally determine ``Who spoke when?'' in a meeting
+domain where multiple microphones are usually available for
+recording. In order to address it, a review of what features have
+been previously used in speaker-related problems is followed by an
+analysis of the state of the art in speaker segmentation, which
+plays an important part in many speaker diarization algorithms. Then
+a review of previously proposed diarization algorithms and
+implementations sets the ground for a description of the projects,
+databases and systems that, to the date, have had their main focus
+in the meetings domain. Finally, and given the multichannel nature
+of a meeting room, acoustic enhancement theory is introduced to
+process multiple microphones, and the main techniques are reviewed
+for the purpose of obtaining a single ``enhanced'' channel from
+multiple inputs.
+
+<P>
+Chapter <A HREF="node41.html#system_intro">3</A> leads the reader through the system
+implementation, basing it in the diarization system that existed for
+broadcast news prior to this thesis work. An initial review of the
+ideas behind the system and the implementation of the broadcast news
+speaker diarization system is followed by an analysis of the
+differences and needs in order to adapt it to the meetings domain.
+Finally, a description of the meetings implementation in comparison
+to the prior system is pursued. Each of the blocks and algorithms
+that have been reused, refurbished or created from scratch for the
+meetings domain are introduced, while leaving for later chapters the
+description in detail of the novel algorithms presented in this
+thesis.
+
+<P>
+Chapter <A HREF="node61.html#acoustic_modeling">4</A> describes in detail all the novel
+techniques introduced in this thesis for the processing of single
+channel acoustic data. These include a new speech/non-speech
+decoder which improves the previous version by being totally
+train-free and more adapted to the diarization process. Also,
+several algorithms for speaker clusters description and modeling,
+including algorithms for description of the  number of clusters,
+model complexity selection, a new training algorithm and two
+cluster purification algorithms.
+
+<P>
+Chapter <A HREF="node82.html#multich_process">5</A> describes in detail the particular
+characteristics of using multiple channels in a meeting room and
+how the diarization processing can benefit from them. A
+filter&amp;sum beamforming algorithm is selected for the task. The
+algorithm basic description and its implementation is described,
+explaining both well known and novel algorithms used for it. Also
+in this chapter a description of the use of the Time Delay of
+Arrival (TDOA) between channels as a parallel feature stream for
+the diarization module is pursued. Finally, a novel algorithm for
+the weight determination between TDOA and acoustic features is
+described.
+
+<P>
+Chapter <A HREF="node103.html#experiments">6</A> describes the experiments to show the
+appropriateness of all techniques. First, it describes the setup
+for running the experiments and then shows and explains the
+results for each one, comparing it to a baseline derived from the
+original broadcast news system prior to this thesis work or from
+intermediate (well established) points.
+
+<P>
+Chapter <A HREF="node128.html#nist_evals">7</A> describes the content and motivations
+behind the NIST Rich Transcription evaluations, which has been the
+tool used to assess the quality and to compare the proposed
+diarization system to other research systems and is the source of
+all datasets used in the experiments. A description of ICSI's
+submissions for 2005 and 2006 is explained in detail and results
+for those evaluations are given.
+
+<P>
+Finally, chapter <A HREF="node141.html#conclusions">8</A> summarizes the major
+contributions and results obtained in this thesis and proposes
+some improvements and future work.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html473"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html469"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html465"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html471"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html474"
+  HREF="node9.html">State of the art</A>
+<B> Up:</B> <A NAME="tex2html470"
+  HREF="node5.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html466"
+  HREF="node7.html">Definition of the Thesis</A>
+ &nbsp; <B>  <A NAME="tex2html472"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

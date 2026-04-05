@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speech and Non-Speech Modeling</TITLE>
+<META NAME="description" CONTENT="Speech and Non-Speech Modeling">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node79.html">
+<LINK REL="previous" HREF="node77.html">
+<LINK REL="up" HREF="node77.html">
+<LINK REL="next" HREF="node79.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1428"
+  HREF="node79.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1424"
+  HREF="node77.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1418"
+  HREF="node77.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1426"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1429"
+  HREF="node79.html">Frame-Based Cluster Purification Metrics</A>
+<B> Up:</B> <A NAME="tex2html1425"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Previous:</B> <A NAME="tex2html1419"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+ &nbsp; <B>  <A NAME="tex2html1427"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00831100000000000000">
+Speech and Non-Speech Modeling</A>
+</H3>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="histogram"></A><A NAME="4815"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.9:</STRONG>
+<I>Speech-silence histogram for a full
+meeting</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="292" HEIGHT="7" BORDER="0"
+ SRC="img325.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/pur_histogram,width=65mm,
+angle=-90}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In order to see the effect of typical acoustic speaker models with
+non-speech data an experiment was performed on all the data
+belonging to an ICSI meeting used in the RT04s evaluation. All the
+acoustic frames <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$ X$"></SPAN> from that meetings were split into speech
+frames <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img326.png"
+ ALT="$ X_{0}$"></SPAN> and non-speech frames <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$ X_{1}$"></SPAN> according to the
+reference segmentation file provided by NIST. A speaker model with
+5 Gaussian Mixtures was trained using only the speech-labelled
+frames <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$ X_{1}$"></SPAN>. Then both speech and non-speech frames were
+evaluated using such model and two normalized histograms were
+created from the resulting likelihood scores, as can be seen in
+Figure&nbsp;<A HREF="#histogram">4.9</A>.
+
+<P>
+The scores of the non-speech frames <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img326.png"
+ ALT="$ X_{0}$"></SPAN> are mainly located in
+the higher part of the histogram, indicating that <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img326.png"
+ ALT="$ X_{0}$"></SPAN> usually
+obtains higher likelihood scores than <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$ X_{1}$"></SPAN> even when evaluating
+it on a model trained only with <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$ X_{1}$"></SPAN> data. Part of the <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$ X_{1}$"></SPAN>
+frames are also in the upper part of the histogram, which are most
+probably non-speech frames that are labelled as speech in the
+reference file. Even with the use of a speech/non-speech detector,
+a residual error of around 5% of non-speech data enters the
+clustering system. In order to purify a cluster both the
+non-speech (undetected) data and the speech-labelled non-speech
+data needs to be eliminated while maintaining the rest of acoustic
+frames that discriminate between speakers. It is clear that
+likelihood can be used to detect and filter out these frames.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="gmm_sil"></A><A NAME="4817"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.10:</STRONG>
+<I>Observed assignment of frames to
+Gaussian mixtures</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="452" HEIGHT="381" BORDER="0"
+ SRC="img328.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/pur_gmm_sil,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+A possible explanation for this behavior is illustrated in
+Figure&nbsp;<A HREF="#gmm_sil">4.10</A> where a cluster model <!-- MATH
+ $\Theta_{A}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img329.png"
+ ALT="$ \Theta_{A}$"></SPAN>, using M
+Gaussian mixtures, is trained using acoustic data <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$ X_{1}$"></SPAN> labelled
+as speech by the speech/non-speech detector. After training the
+model, a group of Gaussian mixtures <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ M_{1}$"></SPAN> adapt their mean and
+variances to model the subset of the speaker data <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img330.png"
+ ALT="$ X_{1,1}$"></SPAN> ,
+while another group of Gaussians <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$ M_{2}$"></SPAN> appears to model the
+subset of data <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img331.png"
+ ALT="$ X_{1,2}$"></SPAN> which are nons-speech frames remaining in
+<SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$ X_{1}$"></SPAN>. Since the number of frames in <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img330.png"
+ ALT="$ X_{1,1}$"></SPAN> is typically much
+larger than those of <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img331.png"
+ ALT="$ X_{1,2}$"></SPAN>, the number of Gaussian mixtures
+ssociated to each subgroup are <!-- MATH
+ $|M_{1}| >> |M_{2}|$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="110" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img332.png"
+ ALT="$ \vert M_{1}\vert &gt;&gt; \vert M_{2}\vert$"></SPAN> and, at times,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img333.png"
+ ALT="$ \vert M_{2}\vert$"></SPAN> could be <SPAN CLASS="MATH">0</SPAN> if the non-speech data is minimal.
+Furthermore, the variance of the non-speech Gaussian mixtures in
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$ M_{2}$"></SPAN> is always much smaller than <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ M_{1}$"></SPAN>. This is the reason
+why any non-speech frame evaluated by the model gets a higher
+score than a speech frame. This is taken advantage of in the frame
+level purification algorithm.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="cross_plot"></A><A NAME="4819"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.11:</STRONG>
+<I>Evaluation of metric 1 on two clusters
+given their models</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="360" HEIGHT="1" BORDER="0"
+ SRC="img334.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/pur_cross_lkld,width=80mm,
+angle=-90}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+To further prove that the acoustic frames with a higher likelihood
+are those which are less suitable to discriminate between speaker
+models another experiment was performed taking two speaker
+clusters trained with acoustic data for two different speakers
+according to the reference segmentation. Figure <A HREF="#cross_plot">4.11</A>
+illustrates the relationship between the likelihood scores of the
+data used in training each of the two models and evaluated on both
+models. It is possible to determine an axis between the likelihood
+values of the two models. The distance to this axis indicates the
+discriminative power of the data from each cluster. Frames from
+both clusters with the highest likelihood values are grouped
+together on this axis, indicating how badly they can differentiate
+between speakers.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1428"
+  HREF="node79.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1424"
+  HREF="node77.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1418"
+  HREF="node77.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1426"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1429"
+  HREF="node79.html">Frame-Based Cluster Purification Metrics</A>
+<B> Up:</B> <A NAME="tex2html1425"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+<B> Previous:</B> <A NAME="tex2html1419"
+  HREF="node77.html">Frame-Level Cluster Purification</A>
+ &nbsp; <B>  <A NAME="tex2html1427"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

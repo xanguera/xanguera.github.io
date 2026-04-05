@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Multiple Feature Streams Automatic Weighting</TITLE>
+<META NAME="description" CONTENT="Multiple Feature Streams Automatic Weighting">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node124.html">
+<LINK REL="up" HREF="node120.html">
+<LINK REL="next" HREF="node126.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2061"
+  HREF="node126.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2057"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2053"
+  HREF="node124.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2059"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2062"
+  HREF="node126.html">Algorithms Agglomeration Performance</A>
+<B> Up:</B> <A NAME="tex2html2058"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2054"
+  HREF="node124.html">Frame and Segment Purification</A>
+ &nbsp; <B>  <A NAME="tex2html2060"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001051500000000000000">
+Multiple Feature Streams Automatic Weighting</A>
+</H3>
+
+<P>
+In order to test the effectiveness of the automatic weighting
+scheme for multi-stream feature sets only the MDM system with TDOA
+values was used. By setting the weights automatically each meeting
+can compute the optimum relationship between the acoustic and TDOA
+features. In fact, given that TDOA features determine the identity
+of the speaker by his/her physical location in the room, it can
+suffer from modeling errors whenever the speakers move around the
+room, which in the RT meetings only happens in a few cases.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="weights_manual"></A><A NAME="7529"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.13:</STRONG>
+<I>DER scores for the baseline system setting the
+relative weights by hand on development data</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="793" HEIGHT="264" BORDER="0"
+ SRC="img501.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/weights_manual,width=140mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The alternative to automatically setting the weights is to define
+a relative weight by using a development set and applying it to
+all meetings in the test set. This alternative lacks from the
+flexibility to consider all meetings different, and can diverge
+from the development to the test set, lacking on robustness to
+changes. Figure <A HREF="#weights_manual">6.13</A> shows the DER on the
+development set for the TDOA-MDM system, where the relative weight
+between TDOA and acoustic features has been set a priory. It is
+easily observable the big dynamic range of DER scores obtained
+along the various possible weights. Given the computed values, the
+optimum working weight is at <SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img471.png"
+ ALT="$ W_{1}=0.9$"></SPAN> with a DER of 16.49%.
+
+<P>
+By using the proposed automatic weighting it computes the weights
+after the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values are obtained for all cluster pairs.
+This could be done after each iteration of the agglomerative
+clustering and therefore a decision must be made wether the
+initial iteration weights are kept throughout the process or they
+are allowed to readapt by using the new <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC pairs.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="weights_evol"></A><A NAME="7531"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.14:</STRONG>
+<I>DER evolution with the weight computation
+iterations</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="437" HEIGHT="226" BORDER="0"
+ SRC="img502.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/weights_evol,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+It was observed in figure <A HREF="node102.html#cmu_weights">5.13</A> in section
+<A HREF="node102.html#weight_estimation">5.3.2</A> that the weights usually converge to a
+stable value after several agglomerative clustering iterations. It
+must be seen wether these weights obtain an appropriate DER
+result. Figure <A HREF="#weights_evol">6.14</A> shows the evolution of the DER
+computed using the development set by changing the number of
+iterations in which the weights are reestimated. The DER decreases
+as the number of iterations increase, with the exception of
+iteration 3, and stabilizing around iteration 9. This indicates
+that the system tends to obtain better values for the weight as it
+progresses, and therefore there is no need in the final system to
+tune for the number of iterations. Instead, it was allowed to
+adapt a new weight as long as the stopping criterion did not stop
+the system.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="initial_weights"></A><A NAME="7533"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.15:</STRONG>
+<I>DER evolution changing the initial feature stream
+weights</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="793" HEIGHT="240" BORDER="0"
+ SRC="img503.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/initial_weights,width=140mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+On final parameter of the weighting algorithm is the initial
+weights to be used in the system initialization and the initial
+segmentation, before the first clustering occurs. In order to
+study the effect of the chosen initial weight in figure
+<A HREF="#initial_weights">6.15</A> the DER variation is computed for the
+development set using the automatic weighting algorithm not
+limiting the number of adaptation iterations and setting the
+initial weights. The final system DER for the development data
+changes depending on the initial weight setting, being the optimum
+setting at <!-- MATH
+ $W_{1, init}= 0.65$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="109" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img504.png"
+ ALT="$ W_{1, init}= 0.65$"></SPAN>. This variation is thought minimal
+compared to the DER variation observed when using a manual setting
+and shown in figure <A HREF="#weights_manual">6.13</A>. In fact, by selecting a
+non informative initial weight <!-- MATH
+ $W_{i} = 0.5$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img505.png"
+ ALT="$ W_{i} = 0.5$"></SPAN> there is only a
+0.57% absolute DER loss, which might be acceptable for many
+applications where the nature of the data changes rapidly and it
+becomes a burden to tune the system every time.
+
+<P>
+In table <A HREF="#table_results_weights">6.16</A> the DER is computed for
+several implementations. The mono-stream system uses only acoustic
+features, the other systems use both acoustics and TDOA values,
+differing in the way that the weights are found. The system
+``inv-entropy'' performs a frame-wise inverse entropy weight
+estimation as described in <A
+ HREF="node147.html#Misra_2003">Misra et&nbsp;al. (2003)</A>. The ``manual
+weights'' system finds the optimum weights using a development set
+and is set to <!-- MATH
+ $\mathcal{W}_{1} = 0.9$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img506.png"
+ ALT="$ \mathcal{W}_{1} = 0.9$"></SPAN>. The other two lines show
+results using the automatic weighting with different initial
+weights, <!-- MATH
+ $\mathcal{W}_{1}=0.9$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img506.png"
+ ALT="$ \mathcal{W}_{1} = 0.9$"></SPAN>, optimum in the development set for
+the manual case and <!-- MATH
+ $\mathcal{W}_{1}=0.65$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img507.png"
+ ALT="$ \mathcal{W}_{1}=0.65$"></SPAN> optimum in the
+development set for the automatic weight setting.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7534"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.16:</STRONG>
+<I>DER results for different weight selection
+algorithms</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER">weight</TD>
+<TD ALIGN="CENTER">DER Devel</TD>
+<TD ALIGN="CENTER">DER Test</TD>
+</TR>
+<TR><TD ALIGN="LEFT">mono-stream MDM baseline</TD>
+<TD ALIGN="CENTER">n/a</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">26.50%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">inverse entropy</TD>
+<TD ALIGN="CENTER">auto</TD>
+<TD ALIGN="CENTER">24.94%</TD>
+<TD ALIGN="CENTER">28.57%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">manual weights</TD>
+<TD ALIGN="CENTER">optimum(0.9)</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">18.65</SPAN>%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">auto-weights</TD>
+<TD ALIGN="CENTER">0.9 + auto</TD>
+<TD ALIGN="CENTER">14.4%</TD>
+<TD ALIGN="CENTER">20.07%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">auto-weights</TD>
+<TD ALIGN="CENTER">opt(0.65) + auto</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">14.16</SPAN>%</TD>
+<TD ALIGN="CENTER">20.87%</TD>
+</TR>
+</TABLE>
+ <A NAME="table_results_weights"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Given these results it is seen that using inverse entropy does not
+achieve good results. In average the entropy method assigns higher
+weight to the TDOA values while all optimum performance points do
+otherwise. Also, observe that all the multi-stream methods (except
+inverse entropy) greatly outperform the mono-stream baseline
+system.
+
+<P>
+Automatic weighting obtains, in its optimum point, a relative
+14.1% improvement versus manual weighting in the development set.
+Manually setting the weight achieves the best performance in the
+test set, although values for the DER around that point obtain
+much higher errors (DER = 22.85 for <!-- MATH
+ $\mathcal{W}_{1}=0.85$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img508.png"
+ ALT="$ \mathcal{W}_{1}=0.85$"></SPAN> and DER
+= 22.29 for <!-- MATH
+ $\mathcal{W}_{1}=0.95$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img509.png"
+ ALT="$ \mathcal{W}_{1}=0.95$"></SPAN>) which makes it doubtful of its
+robustness in other data sets. On the other hand, the values for
+the automatic weighting algorithm in the test set remain stable
+(DER = 20.5% in average) for most observed weights.
+
+<P>
+Such system could be expanded to compute the weights for more than
+2 streams, becoming it much easier to automatically do it than
+having to perform a sweep of possible values using a development
+set. Even in performance is not improved in all cases, by using
+the automatic algorithm it becomes much easier to adapt the system
+to new domains quickly, which follows one of the thesis
+objectives.
+
+<P>
+Given these results, the automatic setting of the relative weights
+between features is set to use an unlimited number of adaptation
+iterations, with an initial weight <!-- MATH
+ $W_{i}=0.65$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="81" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img510.png"
+ ALT="$ W_{i}=0.65$"></SPAN>. This is the first
+algorithm to be added to the baseline system in the following
+chapter as it only affects one of the systems evaluated.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2061"
+  HREF="node126.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2057"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2053"
+  HREF="node124.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2059"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2062"
+  HREF="node126.html">Algorithms Agglomeration Performance</A>
+<B> Up:</B> <A NAME="tex2html2058"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2054"
+  HREF="node124.html">Frame and Segment Purification</A>
+ &nbsp; <B>  <A NAME="tex2html2060"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

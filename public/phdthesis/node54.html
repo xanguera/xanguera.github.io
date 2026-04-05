@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Summary of Differences and Proposed Changes</TITLE>
+<META NAME="description" CONTENT="Summary of Differences and Proposed Changes">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node48.html">
+<LINK REL="up" HREF="node47.html">
+<LINK REL="next" HREF="node55.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1106"
+  HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1102"
+  HREF="node47.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1098"
+  HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1104"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1107"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Up:</B> <A NAME="tex2html1103"
+  HREF="node47.html">Analysis of Differences from</A>
+<B> Previous:</B> <A NAME="tex2html1099"
+  HREF="node53.html">Meetings Domain Overlap Regions</A>
+ &nbsp; <B>  <A NAME="tex2html1105"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00722000000000000000">
+Summary of Differences and Proposed Changes</A>
+</H2>
+
+<P>
+In a more theoretical point of view there are many other
+differences between meetings and broadcast news that need the
+system builder's attention when converting a system to the other
+domain. In table <A HREF="#diff_BN-Mee">3.14</A> some of these differences a
+pointed out (some of them already studied in this section) and in
+some cases a proposed solution, as described in this thesis, is
+given.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3023"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.14:</STRONG>
+<I>Main differences between Meetings and Broadcast
+News recordings</I></CAPTION>
+<TR><TD>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Meetings Environment</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Broadcast News Environment</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Proposed solution</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Reduced amount of speakers, limited by the capacity of the room,
+but unknown</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Totally unknown amount of speakers</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Automatic number of initial clusters estimation</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>There are neither music or commercials</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>There can be
+commercials and background music with speech</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Changed speech/non-speech detector</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>There are impulsive noises (doors shut down, pens fall, speakers
+touch their mics...)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Different background
+conditions occur when reporting from the field</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Changed speech/nonspeech detector</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>All recordings take place in the same setting (there could be
+people call into the meeting with a phone)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Recordings alternate
+between studio and field (different bandwidth
+conditions).</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Different meetings can take place in different settings (rooms,
+microphones positions/number,...)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Recordings for the same
+program take place in the same studio.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Acoustic beamforming without layout constraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Major use of spontaneous speech, with more silences and filling
+words/sounds</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Much more scripted speech with professional
+narrators.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Frame and segment purification algorithms</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>The average speaker turn can be very small (for example yes/no
+answers)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>The average speaker turn is longer</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Reduced minimum duration in decoding</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Normal existence of overlapping regions where two or more people
+speak at the same time</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Normally there is no (or very little) overlapping speech</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>The recordings are performed using several microphones</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Only
+one channel is available</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Acoustic beamforming to collapse all channels into one</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>The far-field channels (microphones in the meeting table)
+regularly have worse quality than closer mics</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>The speech
+quality is the regular broadcasting quality.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=142>Acoustic beamforming tries to enhance the signal</TD>
+</TR>
+</TABLE>
+ <A NAME="diff_BN-Mee"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1106"
+  HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1102"
+  HREF="node47.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1098"
+  HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1104"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1107"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Up:</B> <A NAME="tex2html1103"
+  HREF="node47.html">Analysis of Differences from</A>
+<B> Previous:</B> <A NAME="tex2html1099"
+  HREF="node53.html">Meetings Domain Overlap Regions</A>
+ &nbsp; <B>  <A NAME="tex2html1105"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

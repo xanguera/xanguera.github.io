@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>NIST 2006 Rich Transcription Spring Meeting Evaluation</TITLE>
+<META NAME="description" CONTENT="NIST 2006 Rich Transcription Spring Meeting Evaluation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node32.html">
+<LINK REL="up" HREF="node29.html">
+<LINK REL="next" HREF="node34.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html822"
+  HREF="node34.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html818"
+  HREF="node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html814"
+  HREF="node32.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html820"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html823"
+  HREF="node34.html">Multichannel Acoustic Enhancement</A>
+<B> Up:</B> <A NAME="tex2html819"
+  HREF="node29.html">NIST RT Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html815"
+  HREF="node32.html">NIST 2005 Rich Transcription</A>
+ &nbsp; <B>  <A NAME="tex2html821"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00643400000000000000">
+NIST 2006 Rich Transcription Spring Meeting Evaluation</A>
+</H3>
+
+<P>
+The RT06s evaluation continues its parallel testing of conference
+room data and lecture room data. This year five laboratories
+ participated in the evaluation, making it a very good evaluation
+ in terms of new systems and ideas. For a full description refer
+ to <A
+ HREF="node147.html#Fiscus_2006">Fiscus, Ajot, Michet and Garofolo (2006)</A>. An overview of the systems in RT06s
+ follows:
+
+<P>
+
+<UL>
+<LI>The Athens Information Technology (AIT) system
+(<A
+ HREF="node147.html#Rentzeperis_2006">Rentzeperis et&nbsp;al., 2006</A>) uses a speaker segmentation and then
+clustering steps. The classic BIC implementation (<A
+ HREF="node147.html#Chen_1998a">Shaobing&nbsp;Chen and Gopalakrishnan, 1998</A>)
+is used for speaker segmentation as their primary system. A
+contrastive system uses a silence-based method cutting segments in
+silence points. A first step of the clustering process it also
+uses BIC to merge adjacent segments believed to be from the same
+speaker. Finally, all segments are modeled with GMM and a
+likelihood based technique is used to cluster them.
+
+<P>
+</LI>
+<LI>The LIMSI system (<A
+ HREF="node147.html#Zhu_2006">Zhu et&nbsp;al., 2006</A>) adapts their
+high-performance system presented for RT04f (<A
+ HREF="node147.html#Zhu_2005">Zhu et&nbsp;al., 2005</A>) in
+order to process lecture room data. It is based on a 2-stage
+processing where a BIC agglomerative clustering precedes a speaker
+identification module where cross likelihood (<A
+ HREF="node147.html#Reynolds_1998">Reynolds et&nbsp;al., 1998</A>)
+is used to finish the clustering. In this system the speech
+activity detection module is reworked to adapt it to the lecture
+acoustics by using a likelihood ratio between pretrained speech
+and silence models. The MDM condition is processed by randomly
+selecting one of the channels in the set and running the system in
+that one alone.
+
+<P>
+</LI>
+<LI>The LIA system (<A
+ HREF="node147.html#Fredouille_2006">improvements of the E-HMM based speaker diarization system
+  for&nbsp;meetings records, 2006</A>) presents a single
+system based on the EHMM top-down hierarchical clustering that has
+been presented in previous evaluations. In this submission there
+are a few improvements to the system. One improvement deals with
+the selection of new speakers added to the system, which is
+modified to take into account all currently selected speakers to
+make it more robust and allow for all speakers to fall at least in
+one cluster. Also, a segment purification algorithm is proposed
+following <A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo (2005)</A> in order to purify the
+existing clusters from segments belonging to other speakers.
+Furthermore, some feature normalization techniques were applied at
+the frontend level. Finally, an algorithm to detect overlapping
+speech was proposed, although it did not succeed in lowering the
+final diarization error rate.
+
+<P>
+</LI>
+<LI>The AMI team (<A
+ HREF="node147.html#VanLeeuwen_2006">Leeuwen and Huijbregts, 2006</A>) was formed by TNO and
+University of Twente. They presented three systems to the
+evaluation. The first system is very similar to what was presented
+by TNO in RT05s (<A
+ HREF="node147.html#vanLeeuwen_2005">van Leeuwen, 2005</A>). The other two systems use
+a hierarchical clustering following the work at ICSI and presented
+in <A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo (2005)</A>. One of the two systems improves in
+runtime by considering a Viterbi-based clusters merging criterion.
+Each cluster is taken out of the ergodic HMM model (one at a time)
+and a Viterbi decoding gives the likelihood of the rest modeling
+the data. The cluster which causes the least loss in likelihood is
+eliminated and merged with the rest. The system iterates while the
+overall likelihood increases.
+
+<P>
+</LI>
+<LI>The ICSI system (<A
+ HREF="node147.html#Anguera_2006f">Anguera, Wooters and Pardo, 2006b</A>) is based on the system
+for RT05s (<A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo, 2005</A>) and includes many new ideas which
+will be covered in the rest of this thesis. The main step forward
+is the total independence from training data achieved by the
+creation of a new hybrid speech/non-speech detector
+(<A
+ HREF="node147.html#Anguera_2006b">Anguera, Aguilo, Wooters, Nadeu and Hernando, 2006</A>) and the inclusion of delays as an independent
+feature stream.
+
+<P>
+</LI>
+</UL>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html822"
+  HREF="node34.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html818"
+  HREF="node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html814"
+  HREF="node32.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html820"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html823"
+  HREF="node34.html">Multichannel Acoustic Enhancement</A>
+<B> Up:</B> <A NAME="tex2html819"
+  HREF="node29.html">NIST RT Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html815"
+  HREF="node32.html">NIST 2005 Rich Transcription</A>
+ &nbsp; <B>  <A NAME="tex2html821"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

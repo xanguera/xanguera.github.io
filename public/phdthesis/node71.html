@@ -1,0 +1,441 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Initialization Algorithm Description</TITLE>
+<META NAME="description" CONTENT="Initialization Algorithm Description">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node70.html">
+<LINK REL="up" HREF="node70.html">
+<LINK REL="next" HREF="node72.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1340"
+  HREF="node72.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1336"
+  HREF="node70.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1332"
+  HREF="node70.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1338"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1341"
+  HREF="node72.html">Clusters and Models Complexity</A>
+<B> Up:</B> <A NAME="tex2html1337"
+  HREF="node70.html">Friends-and-Enemies Initialization</A>
+<B> Previous:</B> <A NAME="tex2html1333"
+  HREF="node70.html">Friends-and-Enemies Initialization</A>
+ &nbsp; <B>  <A NAME="tex2html1339"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00821100000000000000"></A>
+<A NAME="friends_enemies"></A>
+<BR>
+Initialization Algorithm Description
+</H3>
+
+<P>
+The proposed initialization algorithm, called friends-and-enemies
+initialization,  is designed to split the acoustic data to be
+processed into <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> clusters, where <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> is determined
+beforehand by the algorithm presented in
+<A HREF="node74.html#initial_num_clusters">4.2.2</A> or manually set by the user. In the
+agglomerative clustering scheme presented for the meeting domain,
+it corresponds to the initial number of clusters used to start the
+agglomerative process. Each of the resulting initial clusters has
+a duration which is not restricted to be equal to any other
+cluster.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="blocks"></A><A NAME="4346"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.5:</STRONG>
+<I>Clusters initialization blocks
+diagram</I></CAPTION>
+<TR><TD></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The complete initialization is composed of three distinct blocks,
+as shown in Figure <A HREF="#process">4.6</A>. The first block performs a
+speaker-change detection on the acoustic data to identify segments
+with a high probability of containing only one acoustic event.
+Such acoustic events can either be silence, various noises, an
+individual speaker or various speakers overlapping each other.
+This first step is performed using the modified Bayesian
+Information Criterion (BIC) metric (introduced by
+<A
+ HREF="node147.html#Ajmera_2003b">Ajmera and Wooters (2003)</A>) computed between two models created
+from the data in two adjacent windows of size <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img51.png"
+ ALT="$ W$"></SPAN>, connected at
+the evaluated possible change point. The modified <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC
+metric is computed over all the acoustic data every <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img273.png"
+ ALT="$ S$"></SPAN> frames. A
+possible change point is selected if <SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img274.png"
+ ALT="$ BIC &lt; 0$"></SPAN>, it corresponds to
+a local minimum of the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values around it, and there is
+no other possible change point with smaller <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC value
+which is closer than <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN> frames to it. In the implementation
+<SPAN CLASS="MATH"><IMG
+ WIDTH="55" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img276.png"
+ ALT="$ W=2$"></SPAN> second windows are used, with a scroll <SPAN CLASS="MATH"><IMG
+ WIDTH="62" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img277.png"
+ ALT="$ S = 0.5$"></SPAN> seconds.
+Each window is modeled using a model with 5 Gaussian mixtures
+(therefore with 10 Gaussians for the combined model) and a <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img275.png"
+ ALT="$ MD$"></SPAN> of
+3 seconds, equal to the minimum speaker turn duration used in the
+following agglomerative-clustering process.
+
+<P>
+The second block in the initialization algorithm creates clusters
+by identifying the segments defined in the first part as friends
+or enemies of each other. It is considered that two given acoustic
+segments are friends if they contain acoustically homogeneous
+data; only the best friends are brought together to form a
+cluster. In the same way, it is considered that two segments are
+enemies if they contain very dissimilar acoustic data. It is
+intended to obtain <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN> final enemy groups (the desired final
+number of clusters) consisting of <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img279.png"
+ ALT="$ F$"></SPAN> segments each, which are
+friends of each other. Three different similarity metrics were
+experimented with to compare each segment pair <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.png"
+ ALT="$ S_{1}$"></SPAN> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img281.png"
+ ALT="$ S_{2}$"></SPAN>. On the first place a geometric mean of the frame
+cross-likelihood as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="fr-en_metric1"></A><!-- MATH
+ \begin{equation}
+d_{1}(S_{1}, S_{2}) = \frac{\log \mathcal{L}(S_{1}|\Theta_{S_{2}})
++ \log \mathcal{L}(S_{2}|\Theta_{S_{1}})}{(N_{S_{1}} + N_{S_{2}})}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="334" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img282.png"
+ ALT="$\displaystyle d_{1}(S_{1}, S_{2}) = \frac{\log \mathcal{L}(S_{1}\vert\Theta_{S_{2}}) + \log \mathcal{L}(S_{2}\vert\Theta_{S_{1}})}{(N_{S_{1}} + N_{S_{2}})}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">6</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img283.png"
+ ALT="$ N_{S_{i}}$"></SPAN> is the number of frames in segment
+<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN>, and <!-- MATH
+ $\Theta_{S_{i}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img284.png"
+ ALT="$ \Theta_{S_{i}}$"></SPAN> is a model with 5 Gaussian Mixtures
+trained with <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.png"
+ ALT="$ S_{i}$"></SPAN>.
+
+<P>
+The second metric normalizes each term by the number of frames in
+the linear domain instead, resulting in a penalty to the
+cross-likelihood as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="fr-en_metric2"></A><!-- MATH
+ \begin{equation}
+d_{2}(S_{1}, S_{2}) = \log lkld(S_{1}|\Theta_{S_{2}}) + \log
+lkld(S_{2}|\Theta_{S_{1}}) - \log L_{S_{1}} - \log L_{S_{2}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="514" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img285.png"
+ ALT="$\displaystyle d_{2}(S_{1}, S_{2}) = \log lkld(S_{1}\vert\Theta_{S_{2}}) + \log lkld(S_{2}\vert\Theta_{S_{1}}) - \log L_{S_{1}} - \log L_{S_{2}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">7</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The third metric does a full cross-likelihood as introduced by
+Rabiner in <A
+ HREF="node147.html#RabinerDistance_1985">Juang and Rabiner (1985)</A>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="fr-en_metric3"></A><!-- MATH
+ \begin{equation}
+d_{3}(S_{1}, S_{2}) = \log lkld(S_{1}|\Theta_{S_{2}}) + \log
+lkld(S_{2}|\Theta_{S_{1}}) - \log lkld(S_{1}|\Theta_{S_{1}}) -
+\log lkld(S_{2}|\Theta_{S_{2}})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="647" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img286.png"
+ ALT="$\displaystyle d_{3}(S_{1}, S_{2}) = \log lkld(S_{1}\vert\Theta_{S_{2}}) + \log...
+...}) - \log lkld(S_{1}\vert\Theta_{S_{1}}) - \log lkld(S_{2}\vert\Theta_{S_{2}})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">8</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+All three metrics are bigger the closest the segments are to each
+other. In order to initiate the process one needs to define an
+initial segment. Again, three criteria have been considered:
+
+<P>
+
+<OL>
+<LI>Select the segment which is most representative of the
+meeting, which might indicate that it belongs to the speaker with
+most participation. In order to find it, a global GMM with 16
+Gaussian mixtures is trained using all data in the meeting and the
+segment with biggest likelihood (normalized using geometric mean)
+is chosen.
+
+<P>
+</LI>
+<LI>Select the segment which is the least representative of the
+meeting, which might indicate that it belongs to the speaker with
+smallest participation. Using the same GMM model as before, the
+segment with smallest averaged likelihood is chosen.
+
+<P>
+</LI>
+<LI>Select the segment with the closest average distance to all
+other segments. Using one of the distances presented above, the
+average of distances between each segment and all other segments
+is computed and the maximum is chosen.
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="process"></A><A NAME="4362"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.6:</STRONG>
+<I>Friends-and-enemies clusters
+initialization process</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="693" HEIGHT="15" BORDER="0"
+ SRC="img287.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/friends_process,width=120mm,
+angle=-90}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Figure <A HREF="#process">4.6</A> shows an example case on how the algorithm
+works. In the horizontal axis the speaker segments as found by the
+first block, are represented. The vertical axis shows the distance
+value associated to each segment. In step (0) the initial segment
+needs to be determined. In this example the criterion 2 is used to
+find the segment with smallest averaged likelihood, <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.png"
+ ALT="$ S_{1}$"></SPAN>.
+
+<P>
+Then, in step (1a) the data in <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.png"
+ ALT="$ S_{1}$"></SPAN> is used to train a model
+with 5 Gaussian mixtures (<!-- MATH
+ $\Theta_{S1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \Theta_{S1}$"></SPAN>) and compute either metric
+<!-- MATH
+ $d_{1 \cdots 3}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img289.png"
+ ALT="$ d_{1 \cdots 3}$"></SPAN> between itself and all other segments. The <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img290.png"
+ ALT="$ F-1$"></SPAN>
+segments with bigger value are its friends. In this example, <SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img291.png"
+ ALT="$ F=3$"></SPAN>
+and the selected friends for <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.png"
+ ALT="$ S_{1}$"></SPAN> are chosen to be <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img292.png"
+ ALT="$ S_{5}$"></SPAN> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img293.png"
+ ALT="$ S_{7}$"></SPAN>. In step (1b), a new model is trained from all data in
+this first cluster (<!-- MATH
+ $\Theta_{1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img294.png"
+ ALT="$ \Theta_{1}$"></SPAN>) and the same metric as before is
+computed, except that now it is measured between all segments in
+the model and each of the remaining segments.
+
+<P>
+A new enemy <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img281.png"
+ ALT="$ S_{2}$"></SPAN> is selected as the segment with smaller value
+to the first cluster. Also in the same way, in step (2a) <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img290.png"
+ ALT="$ F-1$"></SPAN>
+friends are chosen  for <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img281.png"
+ ALT="$ S_{2}$"></SPAN> and in (2b) we select a new enemy
+for both previously established clusters. This is done by
+computing the sum of the used metric for each segment given all
+predefined groups. The processing continues until the desired
+number of initial clustering <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.png"
+ ALT="$ N$"></SPAN> is reached or it runs out of free
+segments.
+
+<P>
+At that point in the third block all created models are used to
+reassign the acoustic data into the <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> classes. This is
+done using a Viterbi decoding where the resulting segmentation is
+not constrained to the predefined speaker changes, therefore any
+previous speaker change detection errors can be corrected. All
+data gets assigned to its closest cluster, classifying any
+acoustic frames not assigned in the previous block. Finally, one
+cluster model is trained from each of the resulting clusters.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1340"
+  HREF="node72.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1336"
+  HREF="node70.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1332"
+  HREF="node70.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1338"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1341"
+  HREF="node72.html">Clusters and Models Complexity</A>
+<B> Up:</B> <A NAME="tex2html1337"
+  HREF="node70.html">Friends-and-Enemies Initialization</A>
+<B> Previous:</B> <A NAME="tex2html1333"
+  HREF="node70.html">Friends-and-Enemies Initialization</A>
+ &nbsp; <B>  <A NAME="tex2html1339"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

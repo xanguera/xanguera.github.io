@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Meetings Domain Overlap Regions</TITLE>
+<META NAME="description" CONTENT="Meetings Domain Overlap Regions">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node52.html">
+<LINK REL="up" HREF="node48.html">
+<LINK REL="next" HREF="node54.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1096"
+  HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1092"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1088"
+  HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1094"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1097"
+  HREF="node54.html">Summary of Differences and</A>
+<B> Up:</B> <A NAME="tex2html1093"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1089"
+  HREF="node52.html">Average Speaker Turn Duration</A>
+ &nbsp; <B>  <A NAME="tex2html1095"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00721500000000000000">
+Meetings Domain Overlap Regions</A>
+</H3>
+
+<P>
+Given the analysis performed in the previous subsection, it was
+found interesting to look at the overlap regions in more detail.
+These are found with less frequency in the broadcast news data and
+it only started being evaluated with the start of the meetings
+domain evaluations. Nowadays overlap is considered an important
+feature of the meeting data and therefore is included in the main
+metric in the NIST RT evaluations. An analysis of the overlap was
+performed for both forced-alignments and hand-alignments in the
+conference room data, and it is shown in table
+<A HREF="#overlap_conference">3.13</A>. In it, the average, maximum and standard
+deviation segment length is computed for the overlap regions alone
+and for the regions without any overlap.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3019"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.13:</STRONG>
+<I>Overlap analysis between hand and
+forced alignments in RT06s conference room meetings</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">type</TD>
+<TD ALIGN="CENTER">average</TD>
+<TD ALIGN="CENTER">max length</TD>
+<TD ALIGN="CENTER">std.</TD>
+<TD ALIGN="CENTER">average</TD>
+<TD ALIGN="CENTER">max. length</TD>
+<TD ALIGN="CENTER">std.</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">overlap</TD>
+<TD ALIGN="CENTER">overlap</TD>
+<TD ALIGN="CENTER">overlap</TD>
+<TD ALIGN="CENTER">non-ovl</TD>
+<TD ALIGN="CENTER">non-ovl</TD>
+<TD ALIGN="CENTER">non-ovl</TD>
+</TR>
+<TR><TD ALIGN="LEFT">hand alignment</TD>
+<TD ALIGN="CENTER">1.19</TD>
+<TD ALIGN="CENTER">10.97</TD>
+<TD ALIGN="CENTER">1.032</TD>
+<TD ALIGN="CENTER">2.77</TD>
+<TD ALIGN="CENTER">74.10</TD>
+<TD ALIGN="CENTER">4.22</TD>
+</TR>
+<TR><TD ALIGN="LEFT">forced alignment</TD>
+<TD ALIGN="CENTER">0.54</TD>
+<TD ALIGN="CENTER">6.23</TD>
+<TD ALIGN="CENTER">0.468</TD>
+<TD ALIGN="CENTER">1.52</TD>
+<TD ALIGN="CENTER">14.63</TD>
+<TD ALIGN="CENTER">1.71</TD>
+</TR>
+</TABLE>
+ 
+<A NAME="overlap_conference"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+From the average duration of the overlap regions one can see how
+much difference in average length there is between both
+transcription sources. The hand alignments are double the length
+than the forced-alignments in average, probably due to the
+difference in how the transcriptions are created. A human
+transcriber upon listening to an overlap region might have
+labelled it grossly, allowing for a few extra milliseconds in
+either side. The forced-alignments are based on the uttered words,
+which are tightly aligned by the ASR system. One drawback of the
+forced-alignments on overlap regions comes when the transcribers
+that wrote down the words miss the words or sounds existing in the
+overlaps, and therefore the transcription is not aligned
+correctly. Finally, on the overlap results, note that the values
+on the hand-alignments have a much bigger standard deviation than
+the automatically generate ones.
+
+<P>
+Regarding the analysis of values in the regions without any
+overlap, the same observation as in the previous subsection can be
+made. The average length of the speaker turns is bigger in the
+hand-alignments, probably due to the consistent miss of small
+silence regions, shown also by the values of the maximum segment
+lengths.
+
+<P>
+To further analyze the duration of the overlaps, in figure
+<A HREF="#overlap_histo">3.4</A> the histograms of the lengths of the overlap
+segments in both forced-alignments and hand-alignments is shown.
+As hinted by the averages, the peak of the forced-alignment
+overlaps falls around 0.5 seconds, while the peak of the
+hand-alignments is around 1 second and has a broader range of
+bigger values than the forced-alignments.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="overlap_histo"></A><A NAME="3021"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.4:</STRONG>
+<I>Overlap histograms in RT06s conference room
+meetings</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="544" HEIGHT="264" BORDER="0"
+ SRC="img191.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/overlap,width=120mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1096"
+  HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1092"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1088"
+  HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1094"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1097"
+  HREF="node54.html">Summary of Differences and</A>
+<B> Up:</B> <A NAME="tex2html1093"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1089"
+  HREF="node52.html">Average Speaker Turn Duration</A>
+ &nbsp; <B>  <A NAME="tex2html1095"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

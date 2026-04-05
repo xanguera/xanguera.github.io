@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Automatic Selection of the Initial Number of Clusters</TITLE>
+<META NAME="description" CONTENT="Automatic Selection of the Initial Number of Clusters">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node73.html">
+<LINK REL="up" HREF="node72.html">
+<LINK REL="next" HREF="node75.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1376"
+  HREF="node75.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1372"
+  HREF="node72.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1368"
+  HREF="node73.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1374"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1377"
+  HREF="node75.html">Acoustic Modeling without Time</A>
+<B> Up:</B> <A NAME="tex2html1373"
+  HREF="node72.html">Clusters and Models Complexity</A>
+<B> Previous:</B> <A NAME="tex2html1369"
+  HREF="node73.html">Model Complexity Selection</A>
+ &nbsp; <B>  <A NAME="tex2html1375"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00822200000000000000"></A> <A NAME="initial_num_clusters"></A>
+<BR>
+Automatic Selection of the Initial Number of
+Clusters
+</H3>
+
+<P>
+In order to perform an agglomerative clustering on the data an
+initial number of clusters <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> needs to be defined. This
+value needs to be higher than the actual number of speakers to
+allow the system to perform some iterations before finding the
+optimum number of clusters <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img195.png"
+ ALT="$ K_{opt}$"></SPAN>. It also cannot be too big,
+as each model needs a minimum cluster occupancy to be trained
+properly, and to avoid unnecessary computation.
+
+<P>
+In prior work (<A
+ HREF="node147.html#Anguera_2005">Anguera, Wooters, Peskin and Aguilo (2005)</A> for the meetings domain
+and <A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al. (2004)</A> for broadcast news data), the number
+of initial clusters was fixed within each domain. In the meetings
+domain, it was set to either 10 or 16 initial clusters, and in the
+broadcast news domain it was set to 40 initial clusters. The
+selection of these values had to be tuned to be greater than the
+possible number of speakers in any given recording while
+maximizing the performance. As pointed out earlier, this leads to
+suboptimal results when conditions change.
+
+<P>
+With the following method, the number of initial clusters is
+defined on a per recording basis by taking into account the total
+amount of data available for clustering:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+K_{init} = \frac{N_{total}}{G_{clusinit} CCR_{gauss}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="206" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img299.png"
+ ALT="$\displaystyle K_{init} = \frac{N_{total}}{G_{clusinit} CCR_{gauss}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">10</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The number of initial clusters is a function of the amount of data
+available for clustering <SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img300.png"
+ ALT="$ N_{total}$"></SPAN>, the number of Gaussian
+mixtures to initially assign per cluster <!-- MATH
+ $G_{clusinit}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img301.png"
+ ALT="$ G_{clusinit}$"></SPAN> (as in
+prior work, <!-- MATH
+ $G_{clus}=5$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img302.png"
+ ALT="$ G_{clus}=5$"></SPAN>) and the Cluster Complexity Ratio
+<!-- MATH
+ $CCR_{gauss}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="80" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img298.png"
+ ALT="$ CCR_{gauss}$"></SPAN> presented in the previous section. This initializes
+the system using an average complexity of <!-- MATH
+ $G_{clusinit}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img301.png"
+ ALT="$ G_{clusinit}$"></SPAN> and the
+amount of data per cluster as defined by <!-- MATH
+ $CCR_{gauss}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="80" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img298.png"
+ ALT="$ CCR_{gauss}$"></SPAN>. This
+technique does not try to guess the real number of speakers
+present in a recording, but rather sets an upper boundary to the
+number of speakers that is closely coupled with the complexity
+selection algorithm and which allows a correct modeling of each
+initial cluster for each particular recording by determining the
+optimum amount of data it should be trained with.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1376"
+  HREF="node75.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1372"
+  HREF="node72.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1368"
+  HREF="node73.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1374"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1377"
+  HREF="node75.html">Acoustic Modeling without Time</A>
+<B> Up:</B> <A NAME="tex2html1373"
+  HREF="node72.html">Clusters and Models Complexity</A>
+<B> Previous:</B> <A NAME="tex2html1369"
+  HREF="node73.html">Model Complexity Selection</A>
+ &nbsp; <B>  <A NAME="tex2html1375"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

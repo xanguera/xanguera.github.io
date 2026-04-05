@@ -1,0 +1,396 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Time Delay of Arrival Estimation</TITLE>
+<META NAME="description" CONTENT="Time Delay of Arrival Estimation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node39.html">
+<LINK REL="up" HREF="node34.html">
+<LINK REL="next" HREF="node41.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html909"
+  HREF="node41.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html905"
+  HREF="node34.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html901"
+  HREF="node39.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html907"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html910"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+<B> Up:</B> <A NAME="tex2html906"
+  HREF="node34.html">Multichannel Acoustic Enhancement</A>
+<B> Previous:</B> <A NAME="tex2html902"
+  HREF="node39.html">Microphone Array Beamforming</A>
+ &nbsp; <B>  <A NAME="tex2html908"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00653000000000000000"></A>
+<A NAME="TDOA_review"></A>
+<BR>
+Time Delay of Arrival Estimation
+</H2>
+
+<P>
+In order to apply almost any of the array beamforming techniques
+in an acoustic signal, and given that the location of the acoustic
+source is not given, one needs a way to estimate the TDOA between
+channels or the Direction of Arrival (DOA) of the signal. In
+practice the DOA estimation is much less used for signal
+enhancement in this domain as its requirements and computational
+cost are normally higher than for TDOA. DOA estimation has also
+been considered less suitable than TDOA for broadband signals.
+
+<P>
+There have been many techniques proposed in the past in order to
+estimate the TDOA between a pair of sensors, like the use of LMS
+adaptive filters used in sonar (<A
+ HREF="node147.html#Reed_81">F.&nbsp;Reed and Bershad (1981)</A>,
+<A
+ HREF="node147.html#Schmidt_86">Schmidt (1986)</A>).
+
+<P>
+However, the approaches that have become more popular on recent
+years have been those based on the cross-correlation of the
+signals. Given two real signals, <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.png"
+ ALT="$ x_{1}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.png"
+ ALT="$ x_{2}$"></SPAN>, the
+cross-correlation between them is defined as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+R_{x_{1}x_{2}}(m) = E[x_{1}(n) \cdot x^{*}_{2}(n-m)]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="255" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.png"
+ ALT="$\displaystyle R_{x_{1}x_{2}}(m) = E[x_{1}(n) \cdot x^{*}_{2}(n-m)]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">34</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+although, as in practice one cannot work with infinite
+signals, it is estimated as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\hat{R}_{x_{1}x_{2}} = x_{1}(n) * x_{2}(n-m) =
+\sum_{n=-N}^{N}x_{1}(n)\cdot x^{*}_{2}(n-m)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="406" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img152.png"
+ ALT="$\displaystyle \hat{R}_{x_{1}x_{2}} = x_{1}(n) * x_{2}(n-m) = \sum_{n=-N}^{N}x_{1}(n)\cdot x^{*}_{2}(n-m)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">35</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where each signal has length N. In order to do this
+computation in a more efficient way, both signals are first
+Fourier transformed, the product is computed and then the inverse
+Fourier transform is applied.
+
+<P>
+When the cross-correlation between two signals is computed where
+one of the signals is a (similar) delayed version of the other by
+a time T, the main peak of the cross-correlation will be located
+at either time <SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img153.png"
+ ALT="$ \pm T$"></SPAN> (depending on which signal is <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.png"
+ ALT="$ x_{1}$"></SPAN> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.png"
+ ALT="$ x_{2}$"></SPAN>). In real applications though, there are many disturbing
+factors that will affect the position of the peak or will mask it.
+These factors can be noise, reverberation and others. The case of
+reverberation has been greatly studied in the literature
+(<A
+ HREF="node147.html#Champagne_96">Champagne et&nbsp;al. (1996)</A>, <A
+ HREF="node147.html#Brandstein_96">Brandstein and Silverman (1997)</A>).
+
+<P>
+Addressing this problem, the Generalized Cross Correlation (GCC)
+was introduced (<A
+ HREF="node147.html#Knapp_76">Knapp and Carter, 1976</A>). It implements a frequency domain
+weighting of the cross correlation according to different
+criteria, in order to make it more robust to external disturbing
+factors. The general expression for the GCC is:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+R^{GCC}_{x_{1}x_{2}}(m) = \mathcal{F}^{-1}(X_{1}(w)\cdot
+X^{*}_{2}(w)\cdot \psi(w))
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="310" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img154.png"
+ ALT="$\displaystyle R^{GCC}_{x_{1}x_{2}}(m) = \mathcal{F}^{-1}(X_{1}(w)\cdot X^{*}_{2}(w)\cdot \psi(w))$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">36</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img155.png"
+ ALT="$ \psi$"></SPAN> is a weighting function. If <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img156.png"
+ ALT="$ \psi = 1$"></SPAN> for
+all <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img157.png"
+ ALT="$ w$"></SPAN> the standard cross correlation formula is obtained.
+
+<P>
+The first weighting function that will be considered is the
+<SPAN  CLASS="textit">Roth correlation</SPAN> (<A
+ HREF="node147.html#Roth_71">Roth, 1971</A>), which weights the cross
+correlation according to the Signal to Noise Ratio (SNR) value of
+the signal. Its results approximate an optimum linear Wiener-Hopf
+filter (<A
+ HREF="node147.html#VanTrees_68">Trees, 1968</A>). Frequency bands with a low SNR obtain a
+poor estimate of the cross correlation and therefore are
+attenuated versus high SNR bands.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\psi_{ROTH}(w)=\frac{1}{X_{1}(w) \cdot X^{*}_{1}(w)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="224" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img158.png"
+ ALT="$\displaystyle \psi_{ROTH}(w)=\frac{1}{X_{1}(w) \cdot X^{*}_{1}(w)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">37</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+A variation of the ROTH weight is the Smoothed Coherence Factor
+(<SPAN  CLASS="textit">SCOT</SPAN>) (<A
+ HREF="node147.html#Carter_73">Carter et&nbsp;al., 1973</A>) which acts upon the same SNR-based
+weighting concept, but allows both signals being compared to have
+a different spectral noise density function.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\psi_{SCOT}(w)=\frac{1}{\sqrt{X_{1}(w) \cdot X^{*}_{1}(w) \cdot
+X_{2}(w) \cdot X^{*}_{2}(w)}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="362" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img159.png"
+ ALT="$\displaystyle \psi_{SCOT}(w)=\frac{1}{\sqrt{X_{1}(w) \cdot X^{*}_{1}(w) \cdot X_{2}(w) \cdot X^{*}_{2}(w)}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">38</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+In environments with high reverberation, the Phase Transform
+(<SPAN  CLASS="textit">PHAT</SPAN>) weighting function (<A
+ HREF="node147.html#Knapp_76">Knapp and Carter, 1976</A>) is the most
+appropriate as it normalizes the amplitude of the spectral density
+of the two signal and uses only the phase information to compute
+the cross correlation. It is applied to speech signals in
+reverberant rooms by <A
+ HREF="node147.html#Brandstein_96">Brandstein and Silverman (1997)</A>.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\psi_{PHAT}(w)=\frac{1}{|X_{1}(w) \cdot X^{*}_{2}(w)|}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="233" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img160.png"
+ ALT="$\displaystyle \psi_{PHAT}(w)=\frac{1}{\vert X_{1}(w) \cdot X^{*}_{2}(w)\vert}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">39</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The GCC-PHAT achieves very good performance when the SNR of the
+signal is high, but deteriorates when the noise level increases.
+This is the solution used as weighting function in the beamforming
+implementation proposed in this thesis.
+
+<P>
+Another weighting function of interest is the <SPAN  CLASS="textit">Hannan &amp;
+Thomson</SPAN> (<A
+ HREF="node147.html#Knapp_76">Knapp and Carter (1976)</A>, <A
+ HREF="node147.html#Brandstein_95">Brandstein et&nbsp;al. (1995)</A>), also
+known as Maximum Likelihood (ML) correlation, which also tries to
+maximize the SNR ratio of the signal. For speech applications,
+<A
+ HREF="node147.html#Brandstein_95">Brandstein et&nbsp;al. (1995)</A> proposed the approximation:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\psi_{ML}(w) =
+\frac{|X_{1}(w)||X_{2}(w)|}{|N_{1}(w)|^{2}|X_{2}(w)|^{2}|N_{2}(w)|^{2}|X_{1}(w)|^{2}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="356" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img161.png"
+ ALT="$\displaystyle \psi_{ML}(w) = \frac{\vert X_{1}(w)\vert\vert X_{2}(w)\vert}{\ve...
+...\vert^{2}\vert X_{2}(w)\vert^{2}\vert N_{2}(w)\vert^{2}\vert X_{1}(w)\vert^{2}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">40</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img162.png"
+ ALT="$ N_{1}(w)$"></SPAN> is the noise power spectra.
+
+<P>
+Finally, the Eckart filter (<A
+ HREF="node147.html#Eckart_52">Eckart, 1952</A>) maximizes the
+deflection criterion, i.e. the ratio of the change in mean
+correlation output due to signal present compared to the standard
+deviation of correlation output due to noise alone. The weighting
+function achieving this is:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\psi_{eckart} = \frac{S_{1}(w)S^{*}_{1}(w)}{N_{1}(w)N^{*}_{1}(w)
+\cdot N_{2}(w)N^{*}_{2}(w)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="290" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img163.png"
+ ALT="$\displaystyle \psi_{eckart} = \frac{S_{1}(w)S^{*}_{1}(w)}{N_{1}(w)N^{*}_{1}(w) \cdot N_{2}(w)N^{*}_{2}(w)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">41</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img164.png"
+ ALT="$ S_{1}(w)$"></SPAN> is the speech power spectra.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html909"
+  HREF="node41.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html905"
+  HREF="node34.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html901"
+  HREF="node39.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html907"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html910"
+  HREF="node41.html">Speaker Diarization: from Broadcast</A>
+<B> Up:</B> <A NAME="tex2html906"
+  HREF="node34.html">Multichannel Acoustic Enhancement</A>
+<B> Previous:</B> <A NAME="tex2html902"
+  HREF="node39.html">Microphone Array Beamforming</A>
+ &nbsp; <B>  <A NAME="tex2html908"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

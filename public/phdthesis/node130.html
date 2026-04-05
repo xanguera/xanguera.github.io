@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>RT05s and RT06s Evaluation Conditions</TITLE>
+<META NAME="description" CONTENT="RT05s and RT06s Evaluation Conditions">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node131.html">
+<LINK REL="previous" HREF="node129.html">
+<LINK REL="up" HREF="node129.html">
+<LINK REL="next" HREF="node131.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2132"
+  HREF="node131.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2128"
+  HREF="node129.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2122"
+  HREF="node129.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2130"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2133"
+  HREF="node131.html">Methodology of the Evaluations</A>
+<B> Up:</B> <A NAME="tex2html2129"
+  HREF="node129.html">NIST Rich Transcription Evaluations</A>
+<B> Previous:</B> <A NAME="tex2html2123"
+  HREF="node129.html">NIST Rich Transcription Evaluations</A>
+ &nbsp; <B>  <A NAME="tex2html2131"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001111000000000000000">
+RT05s and RT06s Evaluation Conditions</A>
+</H2>
+
+<P>
+This section focuses on the two latest evaluations performed on
+the meetings domain, namely RT05s and RT06s. These two are similar
+in that two different subdomains were proposed, with different
+microphone configurations within each subdomain. All systems were
+allowed to run with unlimited runtime speed so that they could be
+comparable within the same metrics. The speed of each system was
+reported as part of the system description.
+
+<P>
+In brief, the two proposed subdomains were:
+
+<P>
+
+<UL>
+<LI><SPAN  CLASS="textbf">Conference room meetings</SPAN>: These are conducted
+around a meetings table with several participants involved in an
+active conversation among them. It contains various amounts of
+speaker overlap (depending on the nature of the meeting). These
+have been the focus of research of several projects including the
+European AMI project.
+
+<P>
+</LI>
+<LI><SPAN  CLASS="textbf">Lecture room meetings</SPAN>: These are conducted in a
+lecture setting where a lecturer gives a presentation in front of
+an audience, which normally interrupts with questions during the
+talk. In these meetings the lecturer normally speaks for most of
+the time during the talk, and it becomes more balanced during
+question and answer sections. It has been the focus of research of
+the European CHIL project.
+</LI>
+</UL>
+
+<P>
+In each one of the meeting rooms there are multiple microphones
+available which record the signal synchronously.In some settings
+there are also cameras, but these fall outside of the scope of the
+speaker diarization evaluation. The microphones are clustered in
+different groups to determine different conditions/evaluation
+subtasks. The following list points out the terminology used for
+each of the possible groups and wether it is used in the speaker
+diarization evaluation and in which domain:
+
+<P>
+<DL>
+<DT><STRONG><SPAN  CLASS="textbf">SDM</SPAN></STRONG></DT>
+<DD>(Single Distant Microphone): This is defined
+as one of the centrally located microphones in the room, located
+on the meetings table. This microphone is always part of the
+bigger MDM group. Both lecture and conference room subdomains run
+this task.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">MDM</SPAN></STRONG></DT>
+<DD>(Multiple Distant Microphones): These are a
+set of microphones situated on the meeting table. All participants
+in the conference room subdomain sit around the table as well as
+participants on the lecture room subdomain except for the
+lecturer. This task also exists in both subdomains.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">MM3A</SPAN></STRONG></DT>
+<DD>(Multiple Mark III Microphone Arrays): The
+lecture meetings contain one or two of these arrays, which were
+built by NIST and contain 64 microphones setup linearly.
+Diarization could be run on either 64 channels or a beamformed
+version of it distributed by Karlsruhe University for RT06s.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">MSLA</SPAN></STRONG></DT>
+<DD>(Multiple Source Localization Microphone
+Arrays): These are four groups of four microphones positioned into
+a ``T'' shape array which were originally defined for speaker
+localization. They are only found in the lecture subdomain.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">ADM</SPAN></STRONG></DT>
+<DD>(All Distant Microphones): In lecture room
+recordings this task allows the system to use all possible
+microphones previously explained (all except for the IHM
+microphones). The conference room subdomain does not usually
+define this task as all distant microphones are of MDM type.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">IHM</SPAN></STRONG></DT>
+<DD>(Individual Headphone Microphone Arrays):
+Although not evaluated in the diarization evaluations, these
+microphones are worn by some of the participants in the meetings.
+They are a task in the STT evaluation and are also used when
+creating the forced-alignment reference segmentations for speaker
+diarization.
+
+<P>
+</DD>
+</DL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2132"
+  HREF="node131.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2128"
+  HREF="node129.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2122"
+  HREF="node129.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2130"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2133"
+  HREF="node131.html">Methodology of the Evaluations</A>
+<B> Up:</B> <A NAME="tex2html2129"
+  HREF="node129.html">NIST Rich Transcription Evaluations</A>
+<B> Previous:</B> <A NAME="tex2html2123"
+  HREF="node129.html">NIST Rich Transcription Evaluations</A>
+ &nbsp; <B>  <A NAME="tex2html2131"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

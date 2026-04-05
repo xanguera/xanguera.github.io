@@ -1,0 +1,823 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Signal to Noise Ratio</TITLE>
+<META NAME="description" CONTENT="Signal to Noise Ratio">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node50.html">
+<LINK REL="previous" HREF="node48.html">
+<LINK REL="up" HREF="node48.html">
+<LINK REL="next" HREF="node50.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1050"
+  HREF="node50.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1046"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1040"
+  HREF="node48.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1048"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1051"
+  HREF="node50.html">Average Total Speaking Time</A>
+<B> Up:</B> <A NAME="tex2html1047"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1041"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+ &nbsp; <B>  <A NAME="tex2html1049"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00721100000000000000"></A>
+<A NAME="spqa_tool"></A>
+<BR>
+Signal to Noise Ratio
+</H3>
+
+<P>
+The first parameter obtained from the input signals is the signal
+to noise ratio (SNR). It was computed using the <SPAN  CLASS="textit">stnr</SPAN> tool
+from the NIST Speech Quality Assurance Package (SPQA)
+(<A
+ HREF="node147.html#NIST_sqap"><EM>NIST Speech tools and APIs</EM>, 2006</A>) which is also used in the acoustic beamforming
+system evaluated in the experiments section. This program
+estimates the SNR of a file, defined as
+<P><!-- MATH
+ \begin{displaymath}
+10 log \frac{{\rm 
+peak\_speech\_power}}{{\rm mean\_noise\_power}}
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="192" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img189.png"
+ ALT="$\displaystyle 10 log \frac{{\rm
+peak\_speech\_power}}{{\rm mean\_noise\_power}}$">
+</DIV><P></P>
+where
+power refers to the Root Mean Square (RMS) of the signal over a
+sliding window of 20ms, with a scrolling size of 10ms. A histogram
+is created using the RMS values and then the noise and speech
+values are computed.
+
+<P>
+To determine the noise average power, a raised cosine function is
+fitted to the peak in the left hand side of the histogram (lowest
+values) using a search algorithm to minimize the Chi-Square
+distance between the histogram and the function. The midpoint of
+such function is considered the mean noise power. Then the
+obtained raised cosine is subtracted from the histogram in order
+to estimate the speech power distribution. The peak speech power
+is defined as the histogram bin midpoint where the 95% of the
+power falls below it. Given that the speech power contains
+additive noise, the computed noise power is subtracted from it to
+use it in the SNR formula.
+
+<P>
+As speech and noise do not exist independently in the recorded
+signal, this method is only an approximation of the SNR. The
+result from this tool might not be comparable to the result from
+other tools, but according to the authors it is consistent to
+results using the same tool and therefore adequate to compare the
+quality difference of several signals as it is intended in this
+section. It must be noted that for a few cases this algorithm is
+known to give erroneous results, therefore it should be taken as
+an information source and the average should be taken to avoid
+misreadings.
+
+<P>
+In order to compute the SNR values, both for the meetings and for
+the broadcast news recording, only the regions determined to be
+part of the evaluation were considered. As pointed out before,
+some of the recordings contain more acoustic data than the
+evaluated region, which sometimes is excluded due to problems with
+the microphones (in meetings) or because it contains commercials
+or very noisy acoustics (in broadcast news).
+
+<P>
+First of all, the SNR is computed for the files in the RT04f data
+set. As it can be seen in table <A HREF="#bn_show_snr">3.4</A> the speech peak
+power remains constant at a very high value, with an average of
+65db, while the noise average power is very variable and ranges
+from around 15db to around 62db. Such averages are taken over the
+SNR values in log domain, and aim at indicating the overall
+quality of the dataset.
+
+<P>
+Some of the shows contain news material where reporters give their
+chronicles from the field, with a high level of background noise,
+while the conductor is in the studio, with a very good quality
+microphone in a controlled environment. The shows that contain
+less or none of the field recordings achieve a very good SNR
+(around 50db) while others perform very poorly (for example the
+CNN headline news, ABC and CNBC shows).
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3008"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.4:</STRONG>
+<I>Estimated SNR for RT04f Broadcast
+News shows</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Show_ID</TD>
+<TD ALIGN="CENTER">Speech Peak Power</TD>
+<TD ALIGN="CENTER">Noise ave. Power</TD>
+<TD ALIGN="CENTER">SNR</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031202_050216_CNN_ENG</TD>
+<TD ALIGN="CENTER">66.5</TD>
+<TD ALIGN="CENTER">14.75</TD>
+<TD ALIGN="CENTER">51.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031202_203013_CNBC_ENG</TD>
+<TD ALIGN="CENTER">60</TD>
+<TD ALIGN="CENTER">57.75</TD>
+<TD ALIGN="CENTER">2.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031203_183814_ABC_ENG</TD>
+<TD ALIGN="CENTER">66.75</TD>
+<TD ALIGN="CENTER">60.75</TD>
+<TD ALIGN="CENTER">6</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031204_130035_CNN_ENG</TD>
+<TD ALIGN="CENTER">67.25</TD>
+<TD ALIGN="CENTER">53.75</TD>
+<TD ALIGN="CENTER">13.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031206_163852_CSPAN_ENG</TD>
+<TD ALIGN="CENTER">61</TD>
+<TD ALIGN="CENTER">30.5</TD>
+<TD ALIGN="CENTER">30.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031209_193152_ABC_ENG</TD>
+<TD ALIGN="CENTER">65</TD>
+<TD ALIGN="CENTER">61.25</TD>
+<TD ALIGN="CENTER">3.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031209_193946_PBS_ENG</TD>
+<TD ALIGN="CENTER">63.25</TD>
+<TD ALIGN="CENTER">20.75</TD>
+<TD ALIGN="CENTER">42.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031215_204057_CNNHL_ENG</TD>
+<TD ALIGN="CENTER">68.25</TD>
+<TD ALIGN="CENTER">61.75</TD>
+<TD ALIGN="CENTER">6.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031215_231058_WBN_ENG</TD>
+<TD ALIGN="CENTER">67</TD>
+<TD ALIGN="CENTER">16.5</TD>
+<TD ALIGN="CENTER">50.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031217_184122_ABC_ENG</TD>
+<TD ALIGN="CENTER">66.75</TD>
+<TD ALIGN="CENTER">22.75</TD>
+<TD ALIGN="CENTER">44</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031218_004126_PBS_ENG</TD>
+<TD ALIGN="CENTER">65</TD>
+<TD ALIGN="CENTER">55.5</TD>
+<TD ALIGN="CENTER">9.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">20031219_202502_CNBC_ENG</TD>
+<TD ALIGN="CENTER">62</TD>
+<TD ALIGN="CENTER">32</TD>
+<TD ALIGN="CENTER">30</TD>
+</TR>
+<TR><TD ALIGN="LEFT">average</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">64.89</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">40.66</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">24.22</SPAN></TD>
+</TR>
+</TABLE>
+ <A NAME="bn_show_snr"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+In the meetings domain the SNR is computed separately for the
+conference and lecture room sets. On the conference room set each
+of the rooms contains a variable number of microphones, mostly
+separated into 2 groups: the microphones situated in the middle of
+the table (labelled MDM) and the head-mounted microphones, worn by
+some of the participants (labelled IHM). Although the speaker
+diarization system presented in this thesis does not analyze the
+IHM case, the SNR for these microphones is also computed for
+comparison purposes.
+
+<P>
+Tables <A HREF="#MDM_conf-meeting_snr">3.5</A> and <A HREF="#IHM_conf-meeting_snr">3.6</A>
+show average SNR for the MDM and IHM channels in the RT06s
+meetings in the conference room. In both tables the number of
+microphones available is indicated in the second column. Then, the
+third though fifth columns indicate the average (in the linear
+domain) of the SNR values for all channels in each meeting. As the
+variety of microphones causes them to have very diverse quality
+levels, the last two columns indicate the maximum and minimum SNR
+values to give an idea of how disperse these are. Finally, the
+averages (in the log domain, as done in the broadcast news
+results) are computed for all meetings.
+
+<P>
+The speech quality for all cases is approximately the same (around
+65db). The noise level for the MDM channels is much higher than
+the Broadcast news channels, which causes a decrease in SNR of
+almost 5db. The Average noise level is lower for the IHM channels
+than for the MDM or the broadcast news shows which leads to an
+overall better SNR. This is due to the proximity of these
+microphones to the speakers and that a meeting room contains less
+noise than some broadcast news shows. It is interesting to point
+out the outstanding quality of the IHM channels used in the
+Edimburgh recordings (within the AMI project), but at the same
+time these meetings have some of the worse quality MDM
+microphones.
+
+<P>
+In overall, the MDM channels in the conference room are of less
+quality than the average in the broadcast news, but they remain
+more constant in quality across meetings.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3009"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.5:</STRONG>
+<I>Estimated SNR for RT06s Conference
+Meetings, MDM channels</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Show_ID</TD>
+<TD ALIGN="CENTER"># channels</TD>
+<TD ALIGN="CENTER">Ave. Speech</TD>
+<TD ALIGN="CENTER">Ave. Noise</TD>
+<TD ALIGN="CENTER">Ave.</TD>
+<TD ALIGN="CENTER">Min.</TD>
+<TD ALIGN="CENTER">Max.</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">Power</TD>
+<TD ALIGN="CENTER">Power</TD>
+<TD ALIGN="CENTER">SNR</TD>
+<TD ALIGN="CENTER">SNR</TD>
+<TD ALIGN="CENTER">SNR</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">CMU_20050912-0900</SMALL></TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">67.95</TD>
+<TD ALIGN="CENTER">49.22</TD>
+<TD ALIGN="CENTER">18.52</TD>
+<TD ALIGN="CENTER">18</TD>
+<TD ALIGN="CENTER">18.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">CMU_20050914-0900</SMALL></TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">61.72</TD>
+<TD ALIGN="CENTER">47.56</TD>
+<TD ALIGN="CENTER">14.02</TD>
+<TD ALIGN="CENTER">13.5</TD>
+<TD ALIGN="CENTER">14.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">EDI_20050216-1051</SMALL></TD>
+<TD ALIGN="CENTER">16</TD>
+<TD ALIGN="CENTER">56.06</TD>
+<TD ALIGN="CENTER">39.45</TD>
+<TD ALIGN="CENTER">18.30</TD>
+<TD ALIGN="CENTER">7.25</TD>
+<TD ALIGN="CENTER">19.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">EDI_20050218-0900</SMALL></TD>
+<TD ALIGN="CENTER">16</TD>
+<TD ALIGN="CENTER">60.56</TD>
+<TD ALIGN="CENTER">41.88</TD>
+<TD ALIGN="CENTER">18.43</TD>
+<TD ALIGN="CENTER">16.5</TD>
+<TD ALIGN="CENTER">19</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">NIST_20051024-0930</SMALL></TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">73.07</TD>
+<TD ALIGN="CENTER">56.41</TD>
+<TD ALIGN="CENTER">25.15</TD>
+<TD ALIGN="CENTER">15.75</TD>
+<TD ALIGN="CENTER">26</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">NIST_20051102-1323</SMALL></TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">72.02</TD>
+<TD ALIGN="CENTER">55.48</TD>
+<TD ALIGN="CENTER">19.47</TD>
+<TD ALIGN="CENTER">15.5</TD>
+<TD ALIGN="CENTER">20.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">VT_20050623-1400</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">59.72</TD>
+<TD ALIGN="CENTER">36.51</TD>
+<TD ALIGN="CENTER">26.96</TD>
+<TD ALIGN="CENTER">21.25</TD>
+<TD ALIGN="CENTER">27.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">VT_20051027-1400</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">63.64</TD>
+<TD ALIGN="CENTER">37.89</TD>
+<TD ALIGN="CENTER">25.34</TD>
+<TD ALIGN="CENTER">22.25</TD>
+<TD ALIGN="CENTER">25.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT">average</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">64.34</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">45.55</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">20.77</SPAN></TD>
+<TD ALIGN="CENTER">-</TD>
+<TD ALIGN="CENTER">-</TD>
+</TR>
+</TABLE>
+ <A NAME="MDM_conf-meeting_snr"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3010"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.6:</STRONG>
+<I>Estimated SNR for RT06s Conference
+Meetings, IHM channels</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Show_ID</TD>
+<TD ALIGN="CENTER"># channels</TD>
+<TD ALIGN="CENTER">Ave. Speech</TD>
+<TD ALIGN="CENTER">Ave. Noise</TD>
+<TD ALIGN="CENTER">Ave.</TD>
+<TD ALIGN="CENTER">Min.</TD>
+<TD ALIGN="CENTER">Max.</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">Power</TD>
+<TD ALIGN="CENTER">Power</TD>
+<TD ALIGN="CENTER">SNR</TD>
+<TD ALIGN="CENTER">SNR</TD>
+<TD ALIGN="CENTER">SNR</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">CMU_20050912-0900</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">70.14</TD>
+<TD ALIGN="CENTER">42.39</TD>
+<TD ALIGN="CENTER">40.39</TD>
+<TD ALIGN="CENTER">16</TD>
+<TD ALIGN="CENTER">41</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">CMU_20050914-0900</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">72.89</TD>
+<TD ALIGN="CENTER">40.89</TD>
+<TD ALIGN="CENTER">46.39</TD>
+<TD ALIGN="CENTER">32</TD>
+<TD ALIGN="CENTER">47</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">EDI_20050216-1051</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">57.39</TD>
+<TD ALIGN="CENTER">13.89</TD>
+<TD ALIGN="CENTER">63.14</TD>
+<TD ALIGN="CENTER">43.5</TD>
+<TD ALIGN="CENTER">63.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">EDI_20050218-0900</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">60.89</TD>
+<TD ALIGN="CENTER">23.39</TD>
+<TD ALIGN="CENTER">61.39</TD>
+<TD ALIGN="CENTER">33.5</TD>
+<TD ALIGN="CENTER">62</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">NIST_20051024-0930</SMALL></TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">70.59</TD>
+<TD ALIGN="CENTER">41.36</TD>
+<TD ALIGN="CENTER">38.79</TD>
+<TD ALIGN="CENTER">18.5</TD>
+<TD ALIGN="CENTER">39.76</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">NIST_20051102-1323</SMALL></TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">68.91</TD>
+<TD ALIGN="CENTER">41.79</TD>
+<TD ALIGN="CENTER">39.59</TD>
+<TD ALIGN="CENTER">16</TD>
+<TD ALIGN="CENTER">40.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">VT_20050623-1400</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">68.24</TD>
+<TD ALIGN="CENTER">42.30</TD>
+<TD ALIGN="CENTER">36.06</TD>
+<TD ALIGN="CENTER">25.5</TD>
+<TD ALIGN="CENTER">36.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">VT_20051027-1400</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">58.19</TD>
+<TD ALIGN="CENTER">25.40</TD>
+<TD ALIGN="CENTER">41.12</TD>
+<TD ALIGN="CENTER">31</TD>
+<TD ALIGN="CENTER">41.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT">average</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">65.91</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">33.93</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">45.86</SPAN></TD>
+<TD ALIGN="CENTER">-</TD>
+<TD ALIGN="CENTER">-</TD>
+</TR>
+</TABLE>
+ <A NAME="IHM_conf-meeting_snr"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Finally, table <A HREF="#MDM_lect-meeting_snr">3.7</A> shows the computed
+averages for the RT06s meetings in the lecture room dataset. In
+the same way as in <A HREF="#MDM_conf-meeting_snr">3.5</A>, for each recording
+several distant microphones are available. The Average between
+microphones is done in the linear domain while the average over
+all recordings is done in the log domain.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="3011"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.7:</STRONG>
+<I>Estimated SNR for RT06s Lecture
+Room Meetings, MDM channels</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Show_ID</TD>
+<TD ALIGN="CENTER">#</TD>
+<TD ALIGN="CENTER">Ave. Speech</TD>
+<TD ALIGN="CENTER">Ave. Noise</TD>
+<TD ALIGN="CENTER">Ave.</TD>
+<TD ALIGN="CENTER">Min.</TD>
+<TD ALIGN="CENTER">Max.</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">channels</TD>
+<TD ALIGN="CENTER">Power</TD>
+<TD ALIGN="CENTER">Power</TD>
+<TD ALIGN="CENTER">SNR</TD>
+<TD ALIGN="CENTER">SNR</TD>
+<TD ALIGN="CENTER">SNR</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">AIT_20051010/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">51.15</TD>
+<TD ALIGN="CENTER">23.14</TD>
+<TD ALIGN="CENTER">27.90</TD>
+<TD ALIGN="CENTER">24.25</TD>
+<TD ALIGN="CENTER">28.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">AIT_20051011_B/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">51.65</TD>
+<TD ALIGN="CENTER">22.30</TD>
+<TD ALIGN="CENTER">28.91</TD>
+<TD ALIGN="CENTER">25.5</TD>
+<TD ALIGN="CENTER">29.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">AIT_20051011_C/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">48.22</TD>
+<TD ALIGN="CENTER">22.81</TD>
+<TD ALIGN="CENTER">26.66</TD>
+<TD ALIGN="CENTER">22.25</TD>
+<TD ALIGN="CENTER">27.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">AIT_20051011_D/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">49.90</TD>
+<TD ALIGN="CENTER">22.64</TD>
+<TD ALIGN="CENTER">27.16</TD>
+<TD ALIGN="CENTER">24</TD>
+<TD ALIGN="CENTER">27.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">IBM_20050819/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">58.84</TD>
+<TD ALIGN="CENTER">46.75</TD>
+<TD ALIGN="CENTER">12.09</TD>
+<TD ALIGN="CENTER">9.75</TD>
+<TD ALIGN="CENTER">12.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">IBM_20050822/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">61.77</TD>
+<TD ALIGN="CENTER">47.57</TD>
+<TD ALIGN="CENTER">13.77</TD>
+<TD ALIGN="CENTER">10</TD>
+<TD ALIGN="CENTER">14.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">IBM_20050823/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">59.03</TD>
+<TD ALIGN="CENTER">48.02</TD>
+<TD ALIGN="CENTER">13.02</TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">13.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">IBM_20050830/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">60.59</TD>
+<TD ALIGN="CENTER">47.41</TD>
+<TD ALIGN="CENTER">13.30</TD>
+<TD ALIGN="CENTER">11</TD>
+<TD ALIGN="CENTER">13.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">ITC_20050503/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">59.25</TD>
+<TD ALIGN="CENTER">42.78</TD>
+<TD ALIGN="CENTER">16.85</TD>
+<TD ALIGN="CENTER">14.75</TD>
+<TD ALIGN="CENTER">17.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">ITC_20050607/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">60.54</TD>
+<TD ALIGN="CENTER">45.28</TD>
+<TD ALIGN="CENTER">36.30</TD>
+<TD ALIGN="CENTER">15</TD>
+<TD ALIGN="CENTER">37</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050420_A/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">77.55</TD>
+<TD ALIGN="CENTER">58.55</TD>
+<TD ALIGN="CENTER">22.30</TD>
+<TD ALIGN="CENTER">13.25</TD>
+<TD ALIGN="CENTER">23</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050420_A/Segment2</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">77.55</TD>
+<TD ALIGN="CENTER">58.55</TD>
+<TD ALIGN="CENTER">20.70</TD>
+<TD ALIGN="CENTER">14</TD>
+<TD ALIGN="CENTER">21.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050427_B/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">81.30</TD>
+<TD ALIGN="CENTER">64.05</TD>
+<TD ALIGN="CENTER">18.30</TD>
+<TD ALIGN="CENTER">13</TD>
+<TD ALIGN="CENTER">19</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050504_A/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">82.80</TD>
+<TD ALIGN="CENTER">67.30</TD>
+<TD ALIGN="CENTER">17.25</TD>
+<TD ALIGN="CENTER">14.5</TD>
+<TD ALIGN="CENTER">17.75</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050504_B/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">82.80</TD>
+<TD ALIGN="CENTER">69.05</TD>
+<TD ALIGN="CENTER">13.63</TD>
+<TD ALIGN="CENTER">13</TD>
+<TD ALIGN="CENTER">14</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050504_B/Segment2</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">81.55</TD>
+<TD ALIGN="CENTER">67.30</TD>
+<TD ALIGN="CENTER">14.83</TD>
+<TD ALIGN="CENTER">12.25</TD>
+<TD ALIGN="CENTER">15.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050525_A/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">82.55</TD>
+<TD ALIGN="CENTER">67.30</TD>
+<TD ALIGN="CENTER">15.49</TD>
+<TD ALIGN="CENTER">6.25</TD>
+<TD ALIGN="CENTER">16</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050525_A/Segment2</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">82.80</TD>
+<TD ALIGN="CENTER">67.80</TD>
+<TD ALIGN="CENTER">14.84</TD>
+<TD ALIGN="CENTER">8.75</TD>
+<TD ALIGN="CENTER">15.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050525_B/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">78.05</TD>
+<TD ALIGN="CENTER">67.80</TD>
+<TD ALIGN="CENTER">10.07</TD>
+<TD ALIGN="CENTER">4.25</TD>
+<TD ALIGN="CENTER">10.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050525_C/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">82.55</TD>
+<TD ALIGN="CENTER">68.80</TD>
+<TD ALIGN="CENTER">14.24</TD>
+<TD ALIGN="CENTER">-2.5</TD>
+<TD ALIGN="CENTER">14.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050615_A/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">79.30</TD>
+<TD ALIGN="CENTER">66.30</TD>
+<TD ALIGN="CENTER">13.60</TD>
+<TD ALIGN="CENTER">12.25</TD>
+<TD ALIGN="CENTER">14.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050622_B/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">67.64</TD>
+<TD ALIGN="CENTER">59.33</TD>
+<TD ALIGN="CENTER">11.30</TD>
+<TD ALIGN="CENTER">8.25</TD>
+<TD ALIGN="CENTER">12.0</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050622_C/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">74.07</TD>
+<TD ALIGN="CENTER">60.35</TD>
+<TD ALIGN="CENTER">16.55</TD>
+<TD ALIGN="CENTER">13.0</TD>
+<TD ALIGN="CENTER">17.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UKA_20050622_C/Segment2</SMALL></TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">75.06</TD>
+<TD ALIGN="CENTER">61.31</TD>
+<TD ALIGN="CENTER">15.31</TD>
+<TD ALIGN="CENTER">12.25</TD>
+<TD ALIGN="CENTER">16</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UPC_20050706/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">79.66</TD>
+<TD ALIGN="CENTER">51.65</TD>
+<TD ALIGN="CENTER">31.89</TD>
+<TD ALIGN="CENTER">27.5</TD>
+<TD ALIGN="CENTER">32.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UPC_20050720/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">71.15</TD>
+<TD ALIGN="CENTER">56.40</TD>
+<TD ALIGN="CENTER">16.65</TD>
+<TD ALIGN="CENTER">6.25</TD>
+<TD ALIGN="CENTER">17.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UPC_20050722/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">71.15</TD>
+<TD ALIGN="CENTER">53.90</TD>
+<TD ALIGN="CENTER">17.07</TD>
+<TD ALIGN="CENTER">16.75</TD>
+<TD ALIGN="CENTER">17.25</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><SMALL CLASS="SCRIPTSIZE">UPC_20050727/Segment1</SMALL></TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">67.90</TD>
+<TD ALIGN="CENTER">50.42</TD>
+<TD ALIGN="CENTER">17.18</TD>
+<TD ALIGN="CENTER">16.75</TD>
+<TD ALIGN="CENTER">17.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">average</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">69.87</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">53.03</SPAN></TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">18.47</SPAN></TD>
+<TD ALIGN="CENTER">-</TD>
+<TD ALIGN="CENTER">-</TD>
+</TR>
+</TABLE>
+ <A NAME="MDM_lect-meeting_snr"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Although all meeting recordings were done within the CHIL project,
+the specifications on the room layout and on the acoustic
+environment change within each lecture room. The speech average
+peak power changes immensely among the rooms (from around 50db on
+AIT recordings to around 80db on UKA decordings) remaining stable
+within the same lecture room. The same thing happens with the
+noise average power, which is the lowest for the AIT recordings
+and the highest for the UKA. This indicates that the recording
+settings were not set equally for all settings, being such
+difference possibly due solely to the amplification applied to the
+signal by the recording equipment.
+
+<P>
+Regarding the SNR over all the channels, the AIT recordings are
+constantly achieving SNR values on the twenties, while the other
+shows are usually on the tens, with a global average of 18.47,
+which is slightly lower in average than the meetings in the
+conference room subdomain. The differences between minimum and
+maximum SNR values remain in the same line as in
+<A HREF="#MDM_conf-meeting_snr">3.5</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1050"
+  HREF="node50.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1046"
+  HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1040"
+  HREF="node48.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1048"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1051"
+  HREF="node50.html">Average Total Speaking Time</A>
+<B> Up:</B> <A NAME="tex2html1047"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+<B> Previous:</B> <A NAME="tex2html1041"
+  HREF="node48.html">Input Data Analysis: Broadcast</A>
+ &nbsp; <B>  <A NAME="tex2html1049"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

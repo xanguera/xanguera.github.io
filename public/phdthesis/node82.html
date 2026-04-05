@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Multichannel Processing for Meetings</TITLE>
+<META NAME="description" CONTENT="Multichannel Processing for Meetings">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node103.html">
+<LINK REL="previous" HREF="node61.html">
+<LINK REL="up" HREF="PhD_Thesis.html">
+<LINK REL="next" HREF="node83.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1472"
+  HREF="node83.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1468"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1462"
+  HREF="node81.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1470"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1473"
+  HREF="node83.html">Multichannel Acoustic Beamforming for</A>
+<B> Up:</B> <A NAME="tex2html1469"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html1463"
+  HREF="node81.html">Segment-Level Cluster Purification</A>
+ &nbsp; <B>  <A NAME="tex2html1471"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00900000000000000000"></A>
+<A NAME="multich_process"></A>
+<BR>
+Multichannel Processing for Meetings
+</H1>
+
+<P>
+In meeting room recordings there is normally access to more than
+one microphone that recorded what occurred in the room
+synchronously, bringing spacial diversity. It is desirable to take
+advantage of such signal multiplicity by using multichannel
+algorithms like acoustic beamforming techniques. In section
+<A HREF="node34.html#art_multichannel">2.5</A> the basic microphone array theory and the
+main techniques covered by the literature in the topic of acoustic
+beamforming were reviewed, as well as its use for speech
+enhancement and the methods previously applied to the meetings
+environment to this effect.
+
+<P>
+In order to use multichannel beamforming techniques in the
+meetings domain one needs to consider the set of multiple
+microphones to constitute a microphone array. The characterization
+and use of this array is not done in a classical manner as the
+locations and characteristics of the available microphones can be
+non-conventional. The system to be used is required to be robust
+and not require much prior information as the microphones can be
+located anywhere (with varying distances between them) and can be
+of very different quality and characteristics (both in directivity
+and type). By applying the appropriate techniques, in most cases
+it is possible to obtain a signal quality gain and to improve
+speaker diarization and speech recognition results.
+
+<P>
+One of the necessary steps to perform acoustic beamforming on this
+environment, with the selected techniques, is the estimation of
+delays between channels using cross-correlation techniques. Such
+delays output can be also used as an input to the speaker
+diarization system to cluster the different speakers in a meeting
+room by their locations (derived from the delays). Although by
+themselves they do not carry as much information as the acoustic
+signal, when combined with it using a multi-stream diarization
+system (presented in this section) important gains are observed
+with respect to using acoustic alone.
+
+<P>
+First, in section <A HREF="node83.html#filter-and-sum">5.1</A> the real issues encountered
+in a meeting room multichannel layout are exposed and a
+filter-and-sum algorithm is proposed and described to process the
+data. Then in section <A HREF="node86.html#multi-implement">5.2</A> the full acoustic
+beamforming implementation developed and used for the speaker
+diarization and Automatic Speech Recognition (ASR) tasks is
+covered. Finally, in section <A HREF="node100.html#multi_delays">5.3</A> the use of the
+delays obtained from the speaker location estimation is explained,
+describing how they improve the acoustic diarization performance
+by combining both types of features and how the weighting between
+features is automatically computed.
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1474"
+  HREF="node83.html">Multichannel Acoustic Beamforming for Meetings</A>
+<UL>
+<LI><A NAME="tex2html1475"
+  HREF="node84.html">Meeting Room Microphone Array Characteristics</A>
+<LI><A NAME="tex2html1476"
+  HREF="node85.html">Filter-and-Sum Beamforming</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1477"
+  HREF="node86.html">Multichannel Acoustic Beamforming System Implementation</A>
+<UL>
+<LI><A NAME="tex2html1478"
+  HREF="node87.html">Individual Channels Signal Enhancement</A>
+<LI><A NAME="tex2html1479"
+  HREF="node88.html">Meeting Information Extraction</A>
+<UL>
+<LI><A NAME="tex2html1480"
+  HREF="node89.html">Reference Channel Computation</A>
+<LI><A NAME="tex2html1481"
+  HREF="node90.html">Overall Channels Weighting Factor</A>
+<LI><A NAME="tex2html1482"
+  HREF="node91.html">ICSI Meetings Skew Estimation</A>
+<LI><A NAME="tex2html1483"
+  HREF="node92.html">GCC-PHAT Cross-Correlation</A>
+</UL>
+<LI><A NAME="tex2html1484"
+  HREF="node93.html">TDOA Values Selection</A>
+<UL>
+<LI><A NAME="tex2html1485"
+  HREF="node94.html">TDOA Post-Processing</A>
+<LI><A NAME="tex2html1486"
+  HREF="node95.html">Dual-Pass Viterbi Post-Processing</A>
+</UL>
+<LI><A NAME="tex2html1487"
+  HREF="node96.html">Output Signal Generation</A>
+<UL>
+<LI><A NAME="tex2html1488"
+  HREF="node97.html">Automatic Channel Weight Adaptation</A>
+<LI><A NAME="tex2html1489"
+  HREF="node98.html">Automatic Adaptive Channel Elimination</A>
+<LI><A NAME="tex2html1490"
+  HREF="node99.html">Channels Sum and Output</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html1491"
+  HREF="node100.html">Use of the Estimated Delays for Speaker Diarization</A>
+<UL>
+<LI><A NAME="tex2html1492"
+  HREF="node101.html">TDOA Modeling and Features Fusion</A>
+<LI><A NAME="tex2html1493"
+  HREF="node102.html">Automatic Features Weight Estimation</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1472"
+  HREF="node83.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1468"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1462"
+  HREF="node81.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1470"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1473"
+  HREF="node83.html">Multichannel Acoustic Beamforming for</A>
+<B> Up:</B> <A NAME="tex2html1469"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html1463"
+  HREF="node81.html">Segment-Level Cluster Purification</A>
+ &nbsp; <B>  <A NAME="tex2html1471"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,4 +1,4 @@
-import headshot from "@/assets/headshot.png";
+import headshot from "@/assets/headshot.jpeg";
 
 const HeroSection = () => {
   return (
