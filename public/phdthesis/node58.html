@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speaker Clusters and Models Initialization</TITLE>
+<META NAME="description" CONTENT="Speaker Clusters and Models Initialization">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node60.html">
+<LINK REL="previous" HREF="node57.html">
+<LINK REL="up" HREF="node55.html">
+<LINK REL="next" HREF="node59.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1157"
+  HREF="node59.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1153"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1147"
+  HREF="node57.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1155"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1158"
+  HREF="node59.html">Models Training Using CV-EM</A>
+<B> Up:</B> <A NAME="tex2html1154"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1148"
+  HREF="node57.html">Single Channel System Frontend</A>
+ &nbsp; <B>  <A NAME="tex2html1156"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00733000000000000000"></A>
+<A NAME="speaker_clusters"></A>
+<BR>
+Speaker Clusters and Models Initialization
+</H2>
+
+<P>
+In order to initialize the hierarchical bottom-up agglomerative
+clustering one needs to first define an initial number of clusters
+<SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN>, bigger than the optimum number of clusters <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img195.png"
+ ALT="$ K_{opt}$"></SPAN>.
+The system defined for broadcast news used <!-- MATH
+ $K_{init}=40$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="83" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img196.png"
+ ALT="$ K_{init}=40$"></SPAN> clusters,
+value chosen empirically given some development data. It was found
+that even though the optimum number of clusters in a recording is
+independent of the length of such recording, in terms of selecting
+an initial number of clusters for the agglomerative system the
+total length of the available data has to be considered to allow
+for clusters to be well trained and best represent the speakers.
+By making the <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> constant for any kind of data used in the
+system makes some recordings do not perform as well since the
+initial models either contain too much or too few acoustic data.
+In the system presented here for meetings, this initial number is
+made dependent on the amount of data after the speech/non-speech
+detection. A new parameter called Cluster Complexity Ratio (CCR)
+represents the relationship between data and cluster complexity.
+The algorithm used is further described in detail in
+<A HREF="node74.html#initial_num_clusters">4.2.2</A>.
+
+<P>
+The same CCR parameter is also used throughout the agglomerative
+clustering process to determine the complexity (number of Gaussian
+mixtures) of the speaker models. Such mechanism ensures that all
+models remain at a complexity relative to the amount of data that
+they are trained with, and therefore remain comparable to each
+other. This is further explained in section <A HREF="node73.html#complex_select">4.2.2</A>.
+
+<P>
+Given the data assigned to each cluster, in order to obtain an
+initial GMM model with a certain complexity the technique used in
+the baseline system has been replaced by another one in order to
+obtain better initialized models. It was seen in experiments that
+the initial models play an important role in the overall
+performance of the system as the initial position for the mixtures
+is an important factor in how well the model can be trained using
+EM-ML and therefore how representative it will be of the data.
+This is particularly crucial in speaker diarization where small
+models (initially 5 Gaussians) are used due to little training
+data.
+
+<P>
+The broadcast news system uses a method that resembles the
+<SPAN  CLASS="textit">HCompV</SPAN> routine in the HTK toolkit (<A
+ HREF="node147.html#Young_2005">Young et&nbsp;al., 2005</A>) for
+initialization without a reference transcription. Given a set of
+acoustic vectors <!-- MATH
+ $X = \{x[1] \dots x[N]\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="151" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img197.png"
+ ALT="$ X = \{x[1] \dots x[N]\}$"></SPAN> and a desired GMM with
+complexity M Gaussians, the first Gaussian is computed via the
+sufficient statistics of the data <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$ X$"></SPAN> as
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+\mu_{1}=\frac{1}{size(X)}\sum_{i=1}^{N} x[i]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="167" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle \mu_{1}=\frac{1}{size(X)}\sum_{i=1}^{N} x[i]$">
+</DIV><P></P>
+<P><!-- MATH
+ \begin{displaymath}
+\sigma^{2}_{1} = \frac{1}{M} (\frac{1}{N} \sum_{i=1}^{N} x^{2}[i] -
+\mu_{1}^{2})
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="205" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img199.png"
+ ALT="$\displaystyle \sigma^{2}_{1} = \frac{1}{M} (\frac{1}{N} \sum_{i=1}^{N} x^{2}[i] -
+\mu_{1}^{2})$">
+</DIV><P></P>
+
+<P>
+For the rest of the Gaussian mixtures, equidistant points in <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$ X$"></SPAN>
+are chosen as means and the same variance as in Gaussian 1 is
+used:
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+\mu_{i} = X[i \cdot \frac{N}{M} ]
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="110" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img200.png"
+ ALT="$\displaystyle \mu_{i} = X[i \cdot \frac{N}{M} ]$">
+</DIV><P></P>
+<P><!-- MATH
+ \begin{displaymath}
+\sigma^{2}_{i} = \sigma^{2}_{1}
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="64" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img201.png"
+ ALT="$\displaystyle \sigma^{2}_{i} = \sigma^{2}_{1}$">
+</DIV><P></P>
+
+<P>
+with Gaussian weights kept equal for all mixtures,
+<!-- MATH
+ $W_{i} = \frac{1}{M}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="68" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img202.png"
+ ALT="$ W_{i} = \frac{1}{M}$"></SPAN>.
+
+<P>
+This method has two obvious drawbacks. On one hand, as pointed out
+above, this technique does not consider a global ML approach and
+therefore Gaussian mixtures can easily end up in local maxima. On
+the other hand, it does not ensure that all the acoustic space of
+the acoustic data is covered by the positioned Gaussians.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="gauss_split"></A><A NAME="3586"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.7:</STRONG>
+<I>Speaker models initialization based on Gaussian
+splitting</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="468" HEIGHT="478" BORDER="0"
+ SRC="img203.png"
+ ALT="\begin{figure}
+\centering {\epsfig{figure=figures/init_sv,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The introduced technique is inspired on the split and vanish
+techniques used in the GMTK toolkit (<A
+ HREF="node147.html#Bilmes_2002">Bilmes and Zweig, 2002</A>) and the
+mixture incrementing function in HTK. As seen in figure
+<A HREF="#gauss_split">3.7</A>, the initial mean and variance of data <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$ X$"></SPAN> are
+computed in the same way as in the previous technique (step 1).
+Then the algorithm iteratively splits each of the <SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img204.png"
+ ALT="$ M'_{prev}$"></SPAN>
+Gaussian mixtures into two mixtures, obtaining a total of
+<SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img205.png"
+ ALT="$ M'_{new}$"></SPAN> mixtures, while <!-- MATH
+ $2M'_{new}<M$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="98" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img206.png"
+ ALT="$ 2M'_{new}&lt;M$"></SPAN>, the desired model
+complexity. The <SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img205.png"
+ ALT="$ M'_{new}$"></SPAN> Gaussian mixtures are computed from
+their previous counterpart by
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+\sigma^{2}_{new1} = \sigma^{2}_{new2} = \sigma^{2}_{prev}
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="172" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img207.png"
+ ALT="$\displaystyle \sigma^{2}_{new1} = \sigma^{2}_{new2} = \sigma^{2}_{prev}$">
+</DIV><P></P>
+<P><!-- MATH
+ \begin{displaymath}
+\mu_{new1}=\mu_{prev} + 0.2\sigma_{prev} \ \ \ \mu_{new2}=\mu_{prev} - 0.2\sigma_{prev}
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="391" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img208.png"
+ ALT="$\displaystyle \mu_{new1}=\mu_{prev} + 0.2\sigma_{prev} \ \ \ \mu_{new2}=\mu_{prev} - 0.2\sigma_{prev}$">
+</DIV><P></P>
+<P><!-- MATH
+ \begin{displaymath}
+W_{new1} = W_{new2} = \frac{W_{prev}}{2}
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="196" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img209.png"
+ ALT="$\displaystyle W_{new1} = W_{new2} = \frac{W_{prev}}{2}$">
+</DIV><P></P>
+
+<P>
+After each split, a single step EM training of the current models
+given data <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.png"
+ ALT="$ X$"></SPAN> is performed to allow for the Gaussian mixtures to
+adapt mean and variance to the data.
+
+<P>
+Once an extra splitting iteration would overpass the desired
+number of desired Gaussian mixtures, the algorithm moves into a
+single Gaussian split mode (step 3). In it the Gaussian selected
+to split is the one with the highest weight, and it is split in
+the same way as shown before. Some experiments were performed with
+different alternative splitting/vanishing procedures but to
+initialize GMM models with a small number of Gaussian mixtures it
+was seen that performance would diminish any time that vanishing
+was applied, therefore the technique applied here only uses a
+splitting procedure. Also, the defunct function implemented by HTK
+to discard Gaussians with low weigh was seen to be perjudicial for
+the GMM models grown here.
+
+<P>
+Once the number of initial cluster <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ K_{init}$"></SPAN> is defined, in the
+broadcast news system it was explained how speaker clusters were
+initialized by evenly assigning the available data into the
+different clusters and doing several segmentation-training
+iterations to allow for homogeneous data to cluster together.
+While this mechanism is very simple and gives surprisingly good
+results, it does not ensure that the final clusters contain only
+data from one cluster (i.e. with a high purity).
+
+<P>
+In order to improve on the linear initialization technique,
+several alternative methods were tested, including K-means at the
+segment level, E-HMM top-down clustering (<A
+ HREF="node147.html#Meignier_2001">Meignier et&nbsp;al., 2001</A>) and
+others, finally designing a brand new algorithm that has been
+called the friends-and-enemies initialization and is further
+explained in section <A HREF="node70.html#friends_and_enemies">4.2.1</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1159"
+  HREF="node59.html">Models Training Using CV-EM and Clusters Segmentation</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1157"
+  HREF="node59.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1153"
+  HREF="node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1147"
+  HREF="node57.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1155"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1158"
+  HREF="node59.html">Models Training Using CV-EM</A>
+<B> Up:</B> <A NAME="tex2html1154"
+  HREF="node55.html">Robust Speaker Diarization System</A>
+<B> Previous:</B> <A NAME="tex2html1148"
+  HREF="node57.html">Single Channel System Frontend</A>
+ &nbsp; <B>  <A NAME="tex2html1156"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

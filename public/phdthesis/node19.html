@@ -1,0 +1,638 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bottom-up Clustering Techniques</TITLE>
+<META NAME="description" CONTENT="Bottom-up Clustering Techniques">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node20.html">
+<LINK REL="previous" HREF="node18.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node20.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html651"
+  HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html647"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html641"
+  HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html649"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html652"
+  HREF="node20.html">Top-down Clustering Techniques</A>
+<B> Up:</B> <A NAME="tex2html648"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<B> Previous:</B> <A NAME="tex2html642"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+ &nbsp; <B>  <A NAME="tex2html650"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00631100000000000000">
+Bottom-up Clustering Techniques</A>
+</H3>
+
+<P>
+This is by far the mostly used approach for speaker clustering as
+it welcomes the use of the speaker segmentation techniques to
+define a clustering starting point. It is also referred as
+agglomerative clustering and has been used for many years in
+pattern classification (see for example <A
+ HREF="node147.html#Duda_1973">Duda and Hart (1973)</A>).
+Normally a matrix distance between all current clusters (distance
+of any with any) is computed and the closest pair is merged
+iteratively until the stopping criterion is met.
+
+<P>
+One of the earliest research done in speaker clustering for speech
+recognition was proposed in <A
+ HREF="node147.html#Jin_1997">Jin et&nbsp;al. (1997)</A>, using the Gish
+distance (<A
+ HREF="node147.html#Gish_1991">Gish et&nbsp;al., 1991</A>) as distance matrix, with a weight to
+favor neighbors merging. As stoping criterion, the minimization of
+a penalized version (to avoid over-merging) of the within-cluster
+dispersion matrix is proposed as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+W_{Jin}=\Big|\sum^{K}_{k=1}N_{k}\Sigma_{k}\Big|\sqrt{k}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="176" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img70.png"
+ ALT="$\displaystyle W_{Jin}=\Big\vert\sum^{K}_{k=1}N_{k}\Sigma_{k}\Big\vert\sqrt{k}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">15</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img71.png"
+ ALT="$ K$"></SPAN> is the number of clusters considered,
+<!-- MATH
+ $\Sigma_{k}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.png"
+ ALT="$ \Sigma_{k}$"></SPAN> is the covariance matrix of cluster <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ k$"></SPAN>, with <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img74.png"
+ ALT="$ N_{k}$"></SPAN>
+acoustic segments and <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ \vert\cdot\vert$"></SPAN> indicating the determinant.
+
+<P>
+Around the same time, in <A
+ HREF="node147.html#Siegler_1997">Siegler et&nbsp;al. (1997)</A> the KL2
+divergence distance was used as a distance metric and a stopping
+criterion was determined with a merging threshold. It shows that
+the KL2 distance works better than the Mahalanobis distance for
+speaker clustering. Also in <A
+ HREF="node147.html#Zhou_2000">Zhou and Hansen (2000)</A> the KL2 metric
+is used as a cluster distance metric. In this work they first
+split the speech segments into male/female and perform clustering
+on each one independently; this reduces computation (the number of
+cluster-pair combinations is smaller) and gives them better
+results.
+
+<P>
+In general, the use of statistics-based distance metrics (not
+requiring any models to be trained) is limited in speaker
+clustering as they implicitly define distances between single mean
+and covariance matrices from each set, which in speaker clustering
+falls short many times in modeling the amount of data available
+from one speaker. Some people have adapted these distances and
+obtained multi-Gaussian equivalents.
+
+<P>
+In <A
+ HREF="node147.html#Rougui_2006">Rougui et&nbsp;al. (2006)</A> they propose a distance between two
+GMM models based on the KL distance. Given two models <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ M_{1}$"></SPAN> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$ M_{2}$"></SPAN>, with <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.png"
+ ALT="$ K_{1}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.png"
+ ALT="$ K_{2}$"></SPAN> Gaussian mixtures each, and
+Gaussian weights <!-- MATH
+ $W_{1}(i), i=1 \dots K_{1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="142" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$ W_{1}(i), i=1 \dots K_{1}$"></SPAN> and <!-- MATH
+ $W_{2}(j), j=1
+\dots K_{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="147" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.png"
+ ALT="$ W_{2}(j), j=1
+\dots K_{2}$"></SPAN>, the distance from <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ M_{1}$"></SPAN> to <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$ M_{2}$"></SPAN> is
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+d(M_{1}, M_{2})=\sum_{i=1}^{K_{1}} W_{1}(i) \min_{j=1}^{K_{2}}
+KL(\mathcal{N}_{1}(i), \mathcal{N}_{2}(j))
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="348" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img82.png"
+ ALT="$\displaystyle d(M_{1}, M_{2})=\sum_{i=1}^{K_{1}} W_{1}(i) \min_{j=1}^{K_{2}} KL(\mathcal{N}_{1}(i), \mathcal{N}_{2}(j))$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">16</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $\mathcal{N}_{.}(i)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.png"
+ ALT="$ \mathcal{N}_{.}(i)$"></SPAN> is one of the Gaussians from
+the model.
+
+<P>
+In <A
+ HREF="node147.html#Beigi_1998b">Beigi et&nbsp;al. (1998)</A> a distance between two GMM models is
+proposed by using the distances between the individual Gaussian
+mixtures. A distance matrix of <!-- MATH
+ $d(i,j), \forall i,j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="88" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.png"
+ ALT="$ d(i,j), \forall i,j$"></SPAN> between all
+possible Gaussian pairs in the two models is processed (distances
+proposed are the Euclidean, Mahalanobis and KL) and then the
+weighted minima for each row and column is used to compute the
+final distance.
+
+<P>
+In <A
+ HREF="node147.html#Ben_2004">Ben et&nbsp;al. (2004)</A> and <A
+ HREF="node147.html#Moraru_2005">Moraru et&nbsp;al. (2005)</A> cluster
+models are obtained via MAP adaptation from a GMM trained on the
+whole show. A novel distance between GMM models is derived from
+the LK2 distance for the particular case where only means are
+adapted (and therefore weights and variances are identical in both
+models). Such distance is defined as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D(M_{1}, M_{2}) = \sqrt{\sum_{m=1}^{M} \sum_{d=1}^{D} W_{m}
+\frac{(\mu_{1}(m,d) - \mu_{2}(m,d))^2}{\sigma_{m,d}^{2}}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="394" HEIGHT="85" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.png"
+ ALT="$\displaystyle D(M_{1}, M_{2}) = \sqrt{\sum_{m=1}^{M} \sum_{d=1}^{D} W_{m} \frac{(\mu_{1}(m,d) - \mu_{2}(m,d))^2}{\sigma_{m,d}^{2}}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">17</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $\mu_{1}(m,d)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="68" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.png"
+ ALT="$ \mu_{1}(m,d)$"></SPAN> and <!-- MATH
+ $\mu_{2}(m,d)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="68" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img87.png"
+ ALT="$ \mu_{2}(m,d)$"></SPAN> are the mean
+<SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img88.png"
+ ALT="$ d^{th}$"></SPAN> components for the mean vector for Gaussian <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.png"
+ ALT="$ m$"></SPAN>,
+<!-- MATH
+ $\sigma_{m,d}^{2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.png"
+ ALT="$ \sigma_{m,d}^{2}$"></SPAN> is the <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img88.png"
+ ALT="$ d^{th}$"></SPAN> variance component for Gaussian
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.png"
+ ALT="$ m$"></SPAN> and M, D are the number of mixtures and dimension of the GMM
+models respectively.
+
+<P>
+In <A
+ HREF="node147.html#Ben_2004">Ben et&nbsp;al. (2004)</A> a threshold is applied to such distance
+to serve as stopping criterion, while in <A
+ HREF="node147.html#Moraru_2005">Moraru et&nbsp;al. (2005)</A>
+the BIC for the global system is used instead.
+
+<P>
+Leaving behind the statistics-based methods, in
+<A
+ HREF="node147.html#Gauvain_1998">Gauvain et&nbsp;al. (1998)</A> and <A
+ HREF="node147.html#Barras_2004">Barras et&nbsp;al. (2004)</A> a GLR
+metric with two penalty terms is proposed, penalizing for large
+number of segments and clusters in the model, with tuning
+parameters. Iterative Viterbi decoding and merging iterations find
+the optimum clustering, which is stopped using the same metric.
+
+<P>
+<A
+ HREF="node147.html#Solomonoff_1998">Solomonov et&nbsp;al. (1998)</A> also uses GLR and compares it to KL2
+as distance matrices and iteratively merges clusters until it
+maximizes the estimated cluster purity, defined as the average
+over all segments and all clusters of the ratio of segments
+belonging to cluster <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN> among the <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> closest segments to segment
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ k$"></SPAN> (which belongs to <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN>). The same stopping criterion is used in
+<A
+ HREF="node147.html#Tsai_2004">Tsai et&nbsp;al. (2004)</A>, where several methods are presented to
+create a different reference space for the acoustic vectors that
+better represents similarities between speakers. The reference
+space defines a speaker space to which feature vectors are
+projected, and the cosine measure is used as a distance matrix. It
+is claimed that such projections are more representative of the
+speakers.
+
+<P>
+Other research is done using GLR as distance metric, including
+<A
+ HREF="node147.html#Siu_1992">Siu et&nbsp;al. (1992)</A> for pilot-controller clustering and
+<A
+ HREF="node147.html#Jin_2004">Jin et&nbsp;al. (2004)</A> for meetings diarization (using BIC as
+stopping criterion).
+
+<P>
+The most commonly used distance and stopping criteria is again
+BIC, which was initially proposed for clustering in
+<A
+ HREF="node147.html#Chen_1998a">Shaobing&nbsp;Chen and Gopalakrishnan (1998)</A> and <A
+ HREF="node147.html#Chen_1998b">Chen and Gopalakrishnan (1998)</A>. The pair-wise
+distance matrix is computed for each iteration and the pair with
+biggest <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC value is merged. The process finishes when all
+pairs have a <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img93.png"
+ ALT="$ &lt;0$"></SPAN>. In some later research
+(<A
+ HREF="node147.html#Chen_2002">Chen et&nbsp;al. (2002)</A>, <A
+ HREF="node147.html#Tritschler_1999">Tritschler and Gopinath (1999)</A>,
+<A
+ HREF="node147.html#Tranter_2004">Tranter and Reynolds (2004)</A>, <A
+ HREF="node147.html#Cettolo_2003">Cettolo and Vescovi (2003)</A> for Italian
+language and <A
+ HREF="node147.html#Meinedo_2003">Meinedo and Neto (2003)</A> for Portuguese language)
+propose modifications to the penalty term and differences in the
+segmentation setup.
+
+<P>
+In <A
+ HREF="node147.html#Sankar_1995">Sankar et&nbsp;al. (1995)</A> and <A
+ HREF="node147.html#Heck_1997">Heck and Sankar (1997)</A> the
+symmetric relative entropy distance (<A
+ HREF="node147.html#RabinerDistance_1985">Juang and Rabiner, 1985</A>) is
+used for speaker clustering towards speaker adaptation in ASR.
+This distance is similar to <A
+ HREF="node147.html#Anguera_2005c">Anguera (2005)</A> and
+equivalent to <A
+ HREF="node147.html#Malegaonkar_2006">Malegaonkar et&nbsp;al. (2006)</A>, both used for speaker
+segmentation. It is defined as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D(M_{1}, M_{2})=\frac{1}{2}[D_{\lambda_{1}, \lambda_{2}} +
+D_{\lambda_{2}, \lambda_{1}}]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="252" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img94.png"
+ ALT="$\displaystyle D(M_{1}, M_{2})=\frac{1}{2}[D_{\lambda_{1}, \lambda_{2}} + D_{\lambda_{2}, \lambda_{1}}]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">18</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <!-- MATH
+ $D_{\lambda_{i}, \lambda_{j}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.png"
+ ALT="$ D_{\lambda_{i}, \lambda_{j}}$"></SPAN> is defined as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D_{\lambda_{i}, \lambda_{j}}=\log p(\mathcal{X}_{i}|M_{i})-log
+p(\mathcal{X}_{i}|M_{j})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="280" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img96.png"
+ ALT="$\displaystyle D_{\lambda_{i}, \lambda_{j}}=\log p(\mathcal{X}_{i}\vert M_{i})-log p(\mathcal{X}_{i}\vert M_{j})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">19</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+An empirically set threshold on the distance is used as a stopping
+criterion. Later on, the same authors propose in
+<A
+ HREF="node147.html#Sankar_1998">Sankar et&nbsp;al. (1998)</A> a clustering based on a single GMM model
+trained on all the show and the weights being adapted on each
+cluster. The distance used then is a weighted by counts entropy
+change due to merging two clusters (<A
+ HREF="node147.html#Digalakis_1996">Digalakis et&nbsp;al., 1996</A>).
+
+<P>
+In <A
+ HREF="node147.html#Barras_2004">Barras et&nbsp;al. (2004)</A>, <A
+ HREF="node147.html#Zhu_2005">Zhu et&nbsp;al. (2005)</A>,
+<A
+ HREF="node147.html#Zhu_2006">Zhu et&nbsp;al. (2006)</A> and later <A
+ HREF="node147.html#Sinha_2005">Sinha et&nbsp;al. (2005)</A> propose a
+diarization system making use of speaker identification techniques
+in the area of speaker modeling. A clustering system initially
+proposed in <A
+ HREF="node147.html#Gauvain_1998">Gauvain et&nbsp;al. (1998)</A> is used to determine an
+initial segmentation in <A
+ HREF="node147.html#Barras_2004">Barras et&nbsp;al. (2004)</A>,
+<A
+ HREF="node147.html#Zhu_2005">Zhu et&nbsp;al. (2005)</A> and <A
+ HREF="node147.html#Zhu_2006">Zhu et&nbsp;al. (2006)</A>, while a standard
+speaker change detection algorithm is used in
+<A
+ HREF="node147.html#Sinha_2005">Sinha et&nbsp;al. (2005)</A>. The systems then use standard
+agglomerative clustering via BIC, with a <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> penalty value
+set to obtain more clusters than optimum (under-cluster the data).
+On the speaker diarization part, it first classifies each cluster
+for gender and bandwidth (in broadcast news) and uses a Universal
+Background Model (UBM) and MAP adaptation to derive speaker models
+from each cluster. In most cases a local feature warping
+normalization (<A
+ HREF="node147.html#Pelecanos_2001">Pelecanos and Sridharan, 2001</A>) is applied to the features to
+reduce non-stationary effects of the acoustic environment. The
+speaker models are then compared using a metric between clusters
+called cross likelihood distance (<A
+ HREF="node147.html#Reynolds_1998">Reynolds et&nbsp;al., 1998</A>), and defined
+as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D(X_{1}, X_{2})=\frac{1}{N_{1}}log
+\frac{p(X_{1}|M_{2-\text{UBM}})}{p(X_{1}|\text{UBM})} +
+\frac{1}{N_{2}}log
+\frac{p(X_{2}|M_{1-\text{UBM}})}{p(X_{2}|\text{UBM})}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="466" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.png"
+ ALT="$\displaystyle D(X_{1}, X_{2})=\frac{1}{N_{1}}log \frac{p(X_{1}\vert M_{2-\text...
+...ac{1}{N_{2}}log \frac{p(X_{2}\vert M_{1-\text{UBM}})}{p(X_{2}\vert\text{UBM})}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">20</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.png"
+ ALT="$ M_{i-UBM}$"></SPAN> indicates that the model has been MAP
+adapted from the UBM model. An empirically set threshold stops the
+iterative merging process.
+
+<P>
+The same cross-likelihood metric is used in
+<A
+ HREF="node147.html#Nishida_2003">Nishida and Kawahara (2003)</A> to compare two clusters. In this paper
+emphasis is given to the selection of the appropriate model when
+training data is very small. It proposes a vector quantization
+(VQ) based method to model small segments, by defining a model
+called common variance GMM (CVGMM) where Gaussian weights are set
+uniform and variance is tied among Gaussians and set to the
+variance of all models. For each cluster BIC is used to select
+either GMM or CVGMM as the model to be used.
+
+<P>
+Some other people integrate the segmentation with the clustering
+by using a model-based segmentation/clustering scheme. This is the
+case in <A
+ HREF="node147.html#Ajmera_2002">Ajmera et&nbsp;al. (2002)</A>, <A
+ HREF="node147.html#Ajmera_2003b">Ajmera and Wooters (2003)</A> and
+<A
+ HREF="node147.html#Wooters_2004">Wooters et&nbsp;al. (2004)</A> where an initial segmentation is used to
+train speaker models that iteratively decode and retrain on the
+acoustic data. A threshold-free BIC metric (<A
+ HREF="node147.html#Ajmera_2003a">Ajmera et&nbsp;al., 2003</A>) is
+used to merge the closest clusters at each iteration and as
+stopping criterion.
+
+<P>
+In <A
+ HREF="node147.html#Wilcox_1994">Wilcox et&nbsp;al. (1994)</A> a penalized GLR is proposed within an
+traditional agglomerative clustering approach. The penalty factor
+favors merging clusters which are close in time. To model the
+clusters, a general GMM is built from all the data in the
+recording and only the weights are adapted to each cluster as in
+<A
+ HREF="node147.html#Sankar_1998">Sankar et&nbsp;al. (1998)</A>. A refinement stage composed of iterative
+Viterbi decoding and EM training follows the clustering, to
+redefine segment boundaries, until likelihood converges.
+
+<P>
+In <A
+ HREF="node147.html#Moh_2003">Moh et&nbsp;al. (2003)</A> a novel approach to speaker clustering is
+proposed using speaker triangulation to cluster the speakers.
+Given a set of clusters <!-- MATH
+ $C_{k}, k=1 \dots K$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="117" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img99.png"
+ ALT="$ C_{k}, k=1 \dots K$"></SPAN> and the group of
+non-overlapped acoustic segments <!-- MATH
+ $X_{s}, j=s \dots S$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="111" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.png"
+ ALT="$ X_{s}, j=s \dots S$"></SPAN> which
+populate the different subsets/clusters. The first step generates
+the coordinates vector of each cluster according to each segment
+(modeled with a full covariance Gaussian model) by computing the
+likelihood of each cluster to each segment. The similarity between
+two clusters is then defined as the cross correlation between such
+vectors as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+C(k, j)= \sum_{s}p(C_{k}|X_{s})p(C_{j}|X_{s})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="246" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.png"
+ ALT="$\displaystyle C(k, j)= \sum_{s}p(C_{k}\vert X_{s})p(C_{j}\vert X_{s})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">21</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+merging those clusters with higher similarity. This can
+also be considered as a projection of the acoustic data into a
+speaker space prior to the distance computation.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html651"
+  HREF="node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html647"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html641"
+  HREF="node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html649"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html652"
+  HREF="node20.html">Top-down Clustering Techniques</A>
+<B> Up:</B> <A NAME="tex2html648"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<B> Previous:</B> <A NAME="tex2html642"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+ &nbsp; <B>  <A NAME="tex2html650"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

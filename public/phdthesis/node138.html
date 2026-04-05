@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Participation in the 2006 Spring Rich Transcription Evaluation</TITLE>
+<META NAME="description" CONTENT="Participation in the 2006 Spring Rich Transcription Evaluation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node134.html">
+<LINK REL="up" HREF="node133.html">
+<LINK REL="next" HREF="node139.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2231"
+  HREF="node139.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2227"
+  HREF="node133.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2223"
+  HREF="node137.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2229"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2232"
+  HREF="node139.html">RT06s Official Performance Scores</A>
+<B> Up:</B> <A NAME="tex2html2228"
+  HREF="node133.html">ICSI Participation in the</A>
+<B> Previous:</B> <A NAME="tex2html2224"
+  HREF="node137.html">RT05s Official Performance Scores</A>
+ &nbsp; <B>  <A NAME="tex2html2230"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001122000000000000000">
+Participation in the 2006 Spring Rich Transcription Evaluation</A>
+</H2>
+
+<P>
+For the RT06s evaluation a total of 23 systems were presented in
+the multiple tasks and subtasks proposed. Each system uses one or
+more of the improvements presented in this thesis. The common
+characteristics of all systems are:
+
+<P>
+
+<UL>
+<LI>Frontend composed of at least an acoustic stream with
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img519.png"
+ ALT="$ 19^{th}$"></SPAN> order MFCC, no deltas, 30 msec analysis window, 10 msec
+step size.
+
+<P>
+</LI>
+<LI>Each initial cluster is modeled with a GMM with five
+Gaussian mixtures.
+
+<P>
+</LI>
+<LI>Iterative segmentation/training.
+
+<P>
+</LI>
+<LI>segment purification is not used in any system.
+
+<P>
+</LI>
+<LI>a hybrid energy/model based speech/non-speech detector is
+used instead of last year's model-based pre-trained system.
+
+<P>
+</LI>
+</UL>
+
+<P>
+In the following list the main characteristics of the systems
+presented are explained. Across tasks, systems with the same ID
+are equal or very similar, just differing on a few parameters.
+Their characteristics are:
+
+<P>
+<DL>
+<DT><STRONG><SPAN  CLASS="textbf">p-wdels:</SPAN></STRONG></DT>
+<DD>This is the primary system presented this
+year for all multi-microphone conditions. It uses most of the
+proposed improvements of this thesis, and all changes in the
+diarization code from last year's evaluation.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">c-newspnspdelay:</SPAN></STRONG></DT>
+<DD>This system is presented for the
+multi-microphone cases and is composed of RT05s evaluation code
+using the new filter&amp;sum algorithm, this year's hybrid
+speech/non-speech detector and taking advantage of the delays for
+clustering. It uses a minimum duration of 3 seconds, 1/5 initial
+Gaussian mixtures for delays/acoustics and a split weight of
+0.1/0.9 between the streams fixed for all meetings. It is intended
+to compare the improvements of using delays in the system compared
+to last year's performance.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">c-wdelsfix:</SPAN></STRONG></DT>
+<DD>This system is identical to p-wdels in
+all parts except the decision of the initial number of clusters,
+which is fixed to 16 and 10 clusters for conference and lecture
+rooms, respectively. It intends to compare the robustness of the
+initial number of clusters selection.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">c/p-nodels:</SPAN></STRONG></DT>
+<DD>This system contains all of RT06s
+improvements with respect to filter&amp;sum (when available, in MDM),
+speech/non-speech detection and other diarization algorithms
+except the inclusion of the delays as an extra feature stream.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">c-oldbase:</SPAN></STRONG></DT>
+<DD>This system uses all improvements in
+filter&amp;sum (when available, in MDM) and speech/non-speech
+detection while using the RT05s core speaker diarization system.
+It is meant to serve as a baseline result for RT06s systems.
+
+<P>
+</DD>
+<DT><STRONG><SPAN  CLASS="textbf">c-guessone:</SPAN></STRONG></DT>
+<DD>This system guesses one speaker for
+all of the show. In RT05s this was presented as the primary system
+for lecture room data, showing the need to beat this system in
+order to think of speaker diarization in the lecture data as a
+reasonable task. In RT06s it is also presented as a baseline
+lecture-room system to be compared with the other lecture-room
+systems.
+
+<P>
+</DD>
+</DL>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html2233"
+  HREF="node139.html">RT06s Official Performance Scores</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2231"
+  HREF="node139.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2227"
+  HREF="node133.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2223"
+  HREF="node137.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2229"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2232"
+  HREF="node139.html">RT06s Official Performance Scores</A>
+<B> Up:</B> <A NAME="tex2html2228"
+  HREF="node133.html">ICSI Participation in the</A>
+<B> Previous:</B> <A NAME="tex2html2224"
+  HREF="node137.html">RT05s Official Performance Scores</A>
+ &nbsp; <B>  <A NAME="tex2html2230"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Clusters Initialization and Acoustic Modeling</TITLE>
+<META NAME="description" CONTENT="Clusters Initialization and Acoustic Modeling">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node45.html">
+<LINK REL="previous" HREF="node43.html">
+<LINK REL="up" HREF="node42.html">
+<LINK REL="next" HREF="node45.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html980"
+  HREF="node45.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html976"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html970"
+  HREF="node43.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html978"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html981"
+  HREF="node45.html">Clusters Comparison, Pruning and</A>
+<B> Up:</B> <A NAME="tex2html977"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html971"
+  HREF="node43.html">Speech/non-Speech Detection and Parameters</A>
+ &nbsp; <B>  <A NAME="tex2html979"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00712000000000000000"></A>
+<A NAME="linear_initialization"></A>
+<BR>
+Clusters Initialization and Acoustic Modeling
+</H2>
+
+<P>
+The system implemented at ICSI for broadcast news is based on an
+agglomerative clustering process that iteratively merges clusters
+until getting to the optimum number of clusters. In order to
+initialize the system one needs to obtain an initial set of
+clusters <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img71.png"
+ ALT="$ K$"></SPAN> (where <!-- MATH
+ $K > K_{opt}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="78" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img166.png"
+ ALT="$ K &gt; K_{opt}$"></SPAN>, the optimum number of clusters
+representing the number of speakers in the recording). During the
+implementation of the original system two alternatives were
+considered, on one hand, a k-means algorithm was tested in order
+to split the data into <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img71.png"
+ ALT="$ K$"></SPAN> clusters containing homogeneous frames.
+Another alternative was to split the data into even sized pieces.
+The second was finally selected due to its simplicity and the good
+results that it achieved on most data.
+
+<P>
+The linear initialization of the data into clusters is a simple
+algorithm that clusters the data according to its temporal
+proximity rather than acoustic proximity, allowing for models to
+be trained with acoustic data of very different acoustic
+characteristics that belongs to the same speaker.
+
+<P>
+In order to create <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img71.png"
+ ALT="$ K$"></SPAN> clusters the clusters initialization
+algorithm first splits the show into <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ P$"></SPAN> partitions (where <SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img167.png"
+ ALT="$ P=2$"></SPAN>
+for Broadcast news). Then for each partition the data is split
+into <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img71.png"
+ ALT="$ K$"></SPAN> segments of the same size and labelled <SPAN CLASS="MATH"><IMG
+ WIDTH="55" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img168.png"
+ ALT="$ 1 \dots K$"></SPAN>. The
+initial data for cluster <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ k$"></SPAN> (where <!-- MATH
+ $k \epsilon 1 \dots K$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img169.png"
+ ALT="$ k \epsilon 1 \dots K$"></SPAN>) is the
+union of the data labelled <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ k$"></SPAN> for each of the partitions. This
+technique is thought to work better than a more elaborate
+frame-level k-means algorithm because it takes into account the
+possible acoustic variation of the speech belonging to a single
+speaker. By clustering the data with k-means one cannot ensure
+that the resulting clusters contain frames from the same speaker,
+but maybe it contains acoustic frames that belong to the same
+phonetic class from several speaker.
+
+<P>
+Each initial cluster obtained via linear initialization it will
+most certainly have data belonging to more than one
+source/speaker. In order for the clusters to achieve some speaker
+homogeneity before stating the merging iterations the algorithm
+performs three iterations of models training and Viterbi
+segmentation of the data. Next section goes into more detail how
+clusters are modeled. The resulting clusters tend to contain data
+from a single speaker or at least a majority of it.
+
+<P>
+There are some occasions when using linear initialization that it
+creates clusters with acoustic segments from more than one
+speaker, causing them potential merging errors and therefore a
+decrease in performance. In the improvements for the meetings room
+data a new initialization algorithm and a segment purification
+algorithm, that detects and splits such clusters, will be
+proposed.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="bn_topology"></A><A NAME="2518"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.2:</STRONG>
+<I>Acoustic models for speaker clustering</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="263" HEIGHT="425" BORDER="0"
+ SRC="img170.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/hmm,width=60mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The broadcast news clustering algorithm models the acoustic data
+using an ergodic hidden Markov model (HMM) topology, as seen in
+figure <A HREF="#bn_topology">3.2</A>, where each initial state corresponds to
+one of the initial clusters. Upon completion of the algorithm's
+execution, each remaining state is considered to represent a
+different speaker. Each state contains a set of <SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img171.png"
+ ALT="$ M\_D$"></SPAN> sub-states,
+imposing a minimum duration of staying in any model. Each one of
+the sub-states has a probability density function modeled via a
+Gaussian mixture model (GMM). The same GMM model is tied to all
+sub-states in any given state. Upon entering a state at time <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN>,
+the model forces a jump to the following sub-state with
+probability <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img172.png"
+ ALT="$ 1.0$"></SPAN> until the last sub-state is reached. In that
+sub-state, we can remain in the same sub-state with transition
+weight <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN>, or jump to the first sub-state of another state
+with weight <SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img173.png"
+ ALT="$ \beta/M$"></SPAN>, where <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img33.png"
+ ALT="$ M$"></SPAN> is the number of active
+states/clusters at that time. The diarization system for broadcast
+news used values <!-- MATH
+ $\alpha=0.9$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.png"
+ ALT="$ \alpha=0.9$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img175.png"
+ ALT="$ \beta=0.1$"></SPAN> with the intention
+of favoring the system to stay in the same cluster and therefore
+model speaker turns bigger than <SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img171.png"
+ ALT="$ M\_D$"></SPAN> frames. As will be shown,
+this implicitly models the maximum length for a speaker term. In
+the meetings system it is modified to reduce such constraint.
+
+<P>
+Each of the GMM models initially has a complexity of 5 Gaussian
+mixtures, which was optimized using development data from previous
+evaluations. Upon deciding that two clusters belong to the same
+speaker, one of the clusters/models is eliminated from the HMM
+topology, M is reduced by 1 and the resulting model is trained
+from scratch with a complexity being the sum of the previous two
+models. This ensures that the complexity of the overall system
+after any particular iteration remains constant and therefore the
+overall likelihood of the data given the overall HMM model can be
+compared between iterations.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html980"
+  HREF="node45.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html976"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html970"
+  HREF="node43.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html978"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html981"
+  HREF="node45.html">Clusters Comparison, Pruning and</A>
+<B> Up:</B> <A NAME="tex2html977"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html971"
+  HREF="node43.html">Speech/non-Speech Detection and Parameters</A>
+ &nbsp; <B>  <A NAME="tex2html979"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

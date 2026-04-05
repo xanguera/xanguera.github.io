@@ -1,0 +1,409 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Automatic Features Weight Estimation</TITLE>
+<META NAME="description" CONTENT="Automatic Features Weight Estimation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node101.html">
+<LINK REL="up" HREF="node100.html">
+<LINK REL="next" HREF="node103.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1744"
+  HREF="node103.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1740"
+  HREF="node100.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1736"
+  HREF="node101.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1742"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1745"
+  HREF="node103.html">Experiments</A>
+<B> Up:</B> <A NAME="tex2html1741"
+  HREF="node100.html">Use of the Estimated</A>
+<B> Previous:</B> <A NAME="tex2html1737"
+  HREF="node101.html">TDOA Modeling and Features</A>
+ &nbsp; <B>  <A NAME="tex2html1743"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00932000000000000000"></A>
+<A NAME="weight_estimation"></A>
+<BR>
+Automatic Features Weight Estimation
+</H2>
+
+<P>
+As seen in equations <A HREF="node101.html#eq_bic">5.21</A> and <A HREF="node101.html#eq_lkld">5.20</A>, in order to
+combine the acoustic and TDOA features one needs to determine an
+optimum set of weights <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img457.png"
+ ALT="$ W_{i}$"></SPAN> that define how relevant each one
+is. Without an automatic way to determine such value it needs to
+be found using development data and performing a sweep of the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img457.png"
+ ALT="$ W_{i}$"></SPAN> parameters optimizing the Diarization Error Rate (DER)
+score. This constitutes a problem of robustness due to the
+possible big differences between the development and test sets in
+terms of the relative importance between features. It also becomes
+a tedious job if the number of parallel feature streams is big.
+Some of the factors that reduce the ability of a feature set to
+optimally represent the speakers in a recording (and therefore its
+relevance should be reduced) are:
+
+<P>
+
+<UL>
+<LI>Acoustics from speakers with very similar voices.
+
+<P>
+</LI>
+<LI>TDOA values for people very close together.
+
+<P>
+</LI>
+<LI>TDOA values for people in symmetry with most of the
+microphones.
+
+<P>
+</LI>
+<LI>TDOA values in noisy environments (where approximation of
+the correct TDOA value is difficult) or with multiple impulsive
+noises.
+
+<P>
+</LI>
+<LI>TDOA values when the speakers are moving around.
+</LI>
+</UL>
+
+<P>
+When setting the values by hand they are normally defined for all
+meetings equally and therefore they do not account for
+peculiarities due to the meeting room (noisier rooms) or to the
+nature of the meetings (kind of usual attendees or wether they
+move from their seats). The automatic weight setting algorithm
+presented here is able to compute the optimum values for each
+meeting independently.
+
+<P>
+Prior art in weights selection for features fusion needs to be
+searched for in areas other than speaker diarization, like in
+speaker verification and biometric fusion techniques
+(<A
+ HREF="node147.html#Fierrez-Aguilar_2003">Fi&#233;rrez-Aguilar et&nbsp;al. (2003)</A>, <A
+ HREF="node147.html#Ross_2001">Ross et&nbsp;al. (2001)</A>,
+<A
+ HREF="node147.html#Verlinde_2000">Verlinde et&nbsp;al. (2000)</A>) and in speech recognition
+(<A
+ HREF="node147.html#Misra_2003">Misra et&nbsp;al. (2003)</A>, <A
+ HREF="node147.html#Ikbal_2004">Ikbal et&nbsp;al. (2004)</A>,
+<A
+ HREF="node147.html#Li_2005">Li (2005)</A>). Throughout the literature a well used
+technique for automatic weighting of different feature streams is
+based on the feature vectors entropy.
+
+<P>
+Initial tests were performed using the inverse entropy as relative
+weight to see how discriminant each feature stream was. This was
+done by obtaining the weights in a frame-basis via the inverse
+entropy of the posterior probabilities of the cluster models given
+the data. For MFCC, PLP and other acoustic features these
+entropies were comparable to each other and could therefore
+determine a correct relative weight between features, as shown in
+<A
+ HREF="node147.html#Misra_2003">Misra et&nbsp;al. (2003)</A>. When using it with TDOA values their GMM
+models are such that low entropy values are obtained for almost
+every frame, regardless of how accurate the TDOA values can
+represent a real speaker position.
+
+<P>
+The proposed technique in this thesis uses the Bayesian
+Information Criterion (BIC) to compare how well each feature
+stream differentiates between clusters in order to determine an
+appropriate stream weighting. The <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values are
+independent of the complexity and topology of the models being
+used and are a good indication of how close two clusters are.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="BIC_values"></A><A NAME="6300"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.12:</STRONG>
+<I>First merge cluster-pair BIC values and histogram
+for acoustic and TDOA features</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="744" HEIGHT="313" BORDER="0"
+ SRC="img460.png"
+ ALT="\begin{figure}
+\centering
+\begin{tabular}{cc}
+\epsfig{figure=figures/BIC_val...
+...s for cluster-pairs &amp; Histogram cluster-pairs \\
+\end{tabular}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Given the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values between all cluster pairs for the
+acoustic and TDOA models, figure <A HREF="#BIC_values">5.12</A> shows the values
+and their histograms for the meeting EDI_20050216-1051 from the
+RT06s evaluation data set, computed for all pairs (given 22
+initial clusters) for the first iteration of the clustering. The
+TDOA values are much bigger in average and contain more positive
+values than the acoustic values. If a weight <SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img461.png"
+ ALT="$ W_{1}=0.5$"></SPAN> (equal
+relevance) is considered, the TDOA BIC values would mask the
+acoustics and decide which pair to merge, possibly leading to
+errors as not all the information is considered. In order to allow
+for different feature streams to contribute in equal conditions in
+the merging decision it is needed to transform both <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC
+value sets to have the same scale using the <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img462.png"
+ ALT="$ W_{1}$"></SPAN> weight. This
+way the TDOA values with overall high <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC are penalized
+versus the acoustic values in order to be comparable to each
+other. For a general case of M feature streams, the weight <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img457.png"
+ ALT="$ W_{i}$"></SPAN>
+assigned to each stream <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN> is defined as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\mathcal{W}_{i}=\frac{\frac{1}{\sqrt{P_{i}}}}{\sum_{j=1}^{M}\frac{1}{\sqrt{P_{j}}}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="133" HEIGHT="72" ALIGN="MIDDLE" BORDER="0"
+ SRC="img463.png"
+ ALT="$\displaystyle \mathcal{W}_{i}=\frac{\frac{1}{\sqrt{P_{i}}}}{\sum_{j=1}^{M}\frac{1}{\sqrt{P_{j}}}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">22</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img464.png"
+ ALT="$ P_{i}$"></SPAN> is computed from the N <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values
+computed for all cluster pairs <!-- MATH
+ $x_{j}, x_{k}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img465.png"
+ ALT="$ x_{j}, x_{k}$"></SPAN> from each feature
+stream as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="standard_dev_fusion"></A><!-- MATH
+ \begin{equation}
+P_{i} = \frac{1}{N} \sum_{j=1}^{j=N-1} \sum_{k=j+1}^{k=N} \Delta
+BIC^{2}_{i}(x_{j}, x_{k})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="276" HEIGHT="75" ALIGN="MIDDLE" BORDER="0"
+ SRC="img466.png"
+ ALT="$\displaystyle P_{i} = \frac{1}{N} \sum_{j=1}^{j=N-1} \sum_{k=j+1}^{k=N} \Delta BIC^{2}_{i}(x_{j}, x_{k})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">23</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+This process is equivalent to a variance normalization of single
+Gaussians modeling each feature stream with zero mean. Setting the
+mean to zero avoids moving the decision threshold in the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC comparison, as defined by the BIC theory.
+
+<P>
+The automatic computation of the <!-- MATH
+ $\mathcal{W}_{i}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img467.png"
+ ALT="$ \mathcal{W}_{i}$"></SPAN> weight is
+performed at the first clustering step, when the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC
+values are computed. At the initial segmentation step, no weight
+has been automatically defined and therefore some initial weight
+still needs to be determined by hand, or it can be set to an
+uninformative <!-- MATH
+ $\mathcal{W}_{1}= \mathcal{W}_{2} = 0.5$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="123" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img468.png"
+ ALT="$ \mathcal{W}_{1}= \mathcal{W}_{2} = 0.5$"></SPAN>.
+
+<P>
+On subsequent clustering iterations the models usually represent
+the clusters better and obtain <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values which are more
+accurate. In order to allow the system to refine the weight as the
+merging iterations progress, the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values are kept for
+all cluster pairs that disappeared during previous iterations and
+existing pairs are recomputed. Then a new weight is computed
+taking into account both old and updated values in order to allow
+for a weight adaptation, containing enough samples for a robust
+computation.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="cmu_weights"></A><A NAME="6304"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.13:</STRONG>
+<I>Acoustic weight evolution with the number of
+iterations for meeting CMU_20050912-0900</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="438" HEIGHT="235" BORDER="0"
+ SRC="img469.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/cmu_weights,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+To illustrate the effect of the weight adaptation as the system
+iterates, figure <A HREF="#cmu_weights">5.13</A> shows the evolution of the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img457.png"
+ ALT="$ W_{i}$"></SPAN> weight over the initial 10 iterations of the algorithm for
+meeting CMU_20050912-0900 (in the RT06s data set). It is common
+on all meetings to start with bigger values for the acoustic part
+and to see it reduced overtime and converging to a final value
+(<!-- MATH
+ $W_{1} = 0.71$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="83" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img470.png"
+ ALT="$ W_{1} = 0.71$"></SPAN> in this case, converging after 5 iterations). The
+optimum weight always enhances the acoustic values versus the TDOA
+values for all shows, both when computed automatically or
+manually. By doing it automatically each show obtains its own
+optimum value, which would had been set to <SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img471.png"
+ ALT="$ W_{1}=0.9$"></SPAN> manually
+for RT06s set (including this meeting).
+
+<P>
+In the experiments section the effect of the number of iterations
+in which the weight is computed versus the final DER score is
+computed. It is found that weights always converge to constant
+values with optimum DER values, therefore leading to a robust
+solution with one less tuning parameter.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1744"
+  HREF="node103.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1740"
+  HREF="node100.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1736"
+  HREF="node101.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1742"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1745"
+  HREF="node103.html">Experiments</A>
+<B> Up:</B> <A NAME="tex2html1741"
+  HREF="node100.html">Use of the Estimated</A>
+<B> Previous:</B> <A NAME="tex2html1737"
+  HREF="node101.html">TDOA Modeling and Features</A>
+ &nbsp; <B>  <A NAME="tex2html1743"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

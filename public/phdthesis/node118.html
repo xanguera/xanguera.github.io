@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Use of the Beamformed Signal for ASR</TITLE>
+<META NAME="description" CONTENT="Use of the Beamformed Signal for ASR">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node117.html">
+<LINK REL="up" HREF="node113.html">
+<LINK REL="next" HREF="node119.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1967"
+  HREF="node119.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1963"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1959"
+  HREF="node117.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1965"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1968"
+  HREF="node119.html">Speaker Diarization Module Experiments</A>
+<B> Up:</B> <A NAME="tex2html1964"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1960"
+  HREF="node117.html">Signal Output Algorithms Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1966"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001045000000000000000"></A>
+<A NAME="beamform_ASR"></A>
+<BR>
+Use of the Beamformed Signal for ASR
+</H2>
+
+<P>
+The beamforming system presented for this thesis was also used to
+obtain an enhanced signal for the ASR systems at ICSI presented to
+the RT NIST evaluations. For RT05s the same beamforming system was
+used for ASR than for diarization. As explained in
+<A
+ HREF="node147.html#Stolcke_2005">Stolcke et&nbsp;al. (2005)</A>, evaluated in the RT04s eval set, and
+not considering the CMU mono-channel meetings, the new beamforming
+outperformed in 2.8% absolute (from 42.9% word error rate to
+40.1%) the previous beamforming system in use at ICSI, which was
+based on delay&amp;sum of full speech segments.
+
+<P>
+For the RT06s system the beamforming module was tuned separately
+from the diarization module to optimize for Word Error Rate (WER)
+with is a word-based metric (not as the DER, which is time-based).
+This lead to a system which was more robust than the RT05s
+beamformer.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7181"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.12:</STRONG>
+<I>WER using RT06s ASR system including the presented
+beamformer</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">dataset</TD>
+<TD ALIGN="RIGHT">SDM</TD>
+<TD ALIGN="RIGHT">MDM</TD>
+<TD ALIGN="RIGHT">ADM</TD>
+<TD ALIGN="RIGHT">MM3A</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT05s</TD>
+<TD ALIGN="RIGHT">47.7%</TD>
+<TD ALIGN="RIGHT">45.8%</TD>
+<TD ALIGN="RIGHT">38.6%</TD>
+<TD ALIGN="RIGHT">-</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s</TD>
+<TD ALIGN="RIGHT">57.3%</TD>
+<TD ALIGN="RIGHT">55.5%</TD>
+<TD ALIGN="RIGHT">51%</TD>
+<TD ALIGN="RIGHT">56%</TD>
+</TR>
+</TABLE>
+ <A NAME="results_ASR"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+As seen in <A
+ HREF="node147.html#Janin_06">Janin et&nbsp;al. (2006)</A> and reproduced in table
+<A HREF="#results_ASR">6.12</A> the RT05s and RT06s datasets were used to
+evaluate the RT06s ASR submission in terms of WER. In both
+datasets there is an improvement of almost 2% absolute by using a
+single channel or the MDM beamformed signal, where the ASR system
+only differs in the F&amp;S algorithm use and minor tuning
+parameters, optimized for each case.
+
+<P>
+This improvement becomes much larger between the MDM and ADM
+cases, where the improvement is exclusively due to the increase of
+microphones available in the ADM case and therefore to the
+improvement in signal quality due to the beamforming processing.
+
+<P>
+The mark III microphone arrays (MM3a) were available for the RT06s
+evaluation. Tests performed comparing results with other state of
+the art beamforming systems showed that the proposed beamformer
+achieves an excellent performance.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1967"
+  HREF="node119.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1963"
+  HREF="node113.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1959"
+  HREF="node117.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1965"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1968"
+  HREF="node119.html">Speaker Diarization Module Experiments</A>
+<B> Up:</B> <A NAME="tex2html1964"
+  HREF="node113.html">Acoustic Beamforming Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1960"
+  HREF="node117.html">Signal Output Algorithms Analysis</A>
+ &nbsp; <B>  <A NAME="tex2html1966"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

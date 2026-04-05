@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>ICSI Meetings Skew Estimation</TITLE>
+<META NAME="description" CONTENT="ICSI Meetings Skew Estimation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node92.html">
+<LINK REL="previous" HREF="node90.html">
+<LINK REL="up" HREF="node88.html">
+<LINK REL="next" HREF="node92.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1617"
+  HREF="node92.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1613"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1607"
+  HREF="node90.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1615"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1618"
+  HREF="node92.html">GCC-PHAT Cross-Correlation</A>
+<B> Up:</B> <A NAME="tex2html1614"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1608"
+  HREF="node90.html">Overall Channels Weighting Factor</A>
+ &nbsp; <B>  <A NAME="tex2html1616"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00922300000000000000">
+ICSI Meetings Skew Estimation</A>
+</H3>
+
+<P>
+This module was created to deal with all meetings that come from
+the ICSI Meeting Corpus which have a error in the synchronization
+of the channels. This was originally detected and reported in
+<A
+ HREF="node147.html#Ellis_01"><EM>ICSI Meeting Recorder Project: Channel skew in ICSI-recorded
+  meetings</EM> (2006)</A>, indicating that the hardware used for the
+recordings was found not to keep an exact synchronism between the
+different acoustic channels, having a skew between channels of
+multiples of 2.64ms. It is not possible to know beforehand the
+amount of skew of each of the channels as they did not follow a
+consistent ordering in their connections to the hardware being
+used, therefore it is needed to automatically detect such skew for
+it not to affect in the beamforming processing.
+
+<P>
+The artificially generated skew does not affect the general
+processing of the channels by an ASR system as it does not need
+exact time alignment between the channels (in terms of ms). It
+does though pose a problem when computing the delays between
+channels as it introduces an artificial delay between channel
+pairs which forces to use a bigger analysis window for the ICSI
+meetings than with other meetings in order to compute such delays
+accurately, increasing the possibility of delay estimation error
+and reducing the precision of such values. This module is
+therefore used to estimate the skew between each channel and the
+reference channel (in the case of ICSI meetings) and use it as a
+constant bias in the rest of the delay computations from then on.
+
+<P>
+In order to estimate the bias a similar technique was used as when
+estimating the reference channel and the weighting factor. Given
+signal <SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img381.png"
+ ALT="$ x_{i}[n]$"></SPAN> to compute the skew for, the cross-correlation
+is computed of it with the reference signal for <SPAN CLASS="MATH"><IMG
+ WIDTH="59" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img382.png"
+ ALT="$ P = 25$"></SPAN> blocks of
+20 seconds each, evenly spaced along the recording. Such segment's
+length has been determined in order to ensure that there is some
+speech within the windows being compared. The average skew is
+obtained for that channel by averaging the time delays of arrival
+(TDOA) obtained for each of the segments when their
+cross-correlation function is maximized. The process can be
+summarized in:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+Skew_{i} = \frac{1}{P}\sum_{m=1}^{P} TDOA_{m}(x_{m}^{i},
+x_{m}^{ref})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="270" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img383.png"
+ ALT="$\displaystyle Skew_{i} = \frac{1}{P}\sum_{m=1}^{P} TDOA_{m}(x_{m}^{i}, x_{m}^{ref})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">9</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1617"
+  HREF="node92.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1613"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1607"
+  HREF="node90.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1615"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1618"
+  HREF="node92.html">GCC-PHAT Cross-Correlation</A>
+<B> Up:</B> <A NAME="tex2html1614"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1608"
+  HREF="node90.html">Overall Channels Weighting Factor</A>
+ &nbsp; <B>  <A NAME="tex2html1616"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

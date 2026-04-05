@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Time Constraints on Speech/non-Speech</TITLE>
+<META NAME="description" CONTENT="Time Constraints on Speech/non-Speech">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node65.html">
+<LINK REL="up" HREF="node63.html">
+<LINK REL="next" HREF="node67.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1277"
+  HREF="node67.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1273"
+  HREF="node63.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1269"
+  HREF="node65.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1275"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1278"
+  HREF="node67.html">Model-based Speech/Non-Speech Decoder</A>
+<B> Up:</B> <A NAME="tex2html1274"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Previous:</B> <A NAME="tex2html1270"
+  HREF="node65.html">Derivative Filtering</A>
+ &nbsp; <B>  <A NAME="tex2html1276"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00811300000000000000"></A>
+<A NAME="timeconstraints"></A>
+<BR>
+Time Constraints on Speech/non-Speech
+</H3>
+
+<P>
+After the energy is filtered for the third time one needs to
+impose some time constraints to avoid changing too quickly between
+<SPAN  CLASS="textit">speech</SPAN> and <SPAN  CLASS="textit">non-speech</SPAN>. A finite state machine (FSM)
+has been implemented for this purpose. In this FSM described in
+figure <A HREF="#fsm">4.3</A> the time constraints are forced through
+<SPAN  CLASS="textit">enter&nbsp;times</SPAN> and <SPAN  CLASS="textit">leave&nbsp;times</SPAN> according to the values
+of <!-- MATH
+ $\hat{e}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.png"
+ ALT="$ \hat{e}[n]$"></SPAN> using two thresholds (<SPAN  CLASS="textit">enter&nbsp;thrld</SPAN>,
+<!-- MATH
+ $\Theta_{enter}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img260.png"
+ ALT="$ \Theta_{enter}$"></SPAN> and <SPAN  CLASS="textit">leave&nbsp;thrld</SPAN>, <!-- MATH
+ $\Theta_{leave}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img261.png"
+ ALT="$ \Theta_{leave}$"></SPAN>) on each
+sample. The selection of the right thresholds is crucial to the
+correctness of the detector and, although the energies have been
+initially normalized, might differ from meeting to meeting. The
+threshold <SPAN  CLASS="textit">enter&nbsp;thrld</SPAN> is defined to be an order of
+magnitude bigger than <SPAN  CLASS="textit">leave&nbsp;thrld</SPAN> and its value is
+iteratively defined by the hybrid system described below. As for
+the appropriate minimum time of either speech or non-speech states
+it must be estimated using development data, but as it will be
+shown, it is more independent to meeting room variations than the
+threshold values.
+
+<P>
+Inside the FSM, the conditions to go from <SPAN  CLASS="textit">non-speech</SPAN> to
+<SPAN  CLASS="textit">speech</SPAN> are the same to go from <SPAN  CLASS="textit">speech</SPAN> to <SPAN  CLASS="textit">non
+speech</SPAN>. This way to go from <SPAN  CLASS="textit">speech</SPAN> to <SPAN  CLASS="textit">non-speech</SPAN>,
+<!-- MATH
+ $\hat{e}[n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.png"
+ ALT="$ \hat{e}[n]$"></SPAN> has to be higher than the threshold to enter
+(<!-- MATH
+ $\Theta_{enter}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img260.png"
+ ALT="$ \Theta_{enter}$"></SPAN>), and vice versa:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><SPAN CLASS="MATH"><IMG
+ WIDTH="280" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img262.png"
+ ALT="$\displaystyle \hat{e}[n_1]\geq\Theta_{enter}{\ }\&amp;{\ }State_t=NSP \rightarrow{\ }$"></SPAN></TD>
+<TD NOWRAP ALIGN="LEFT"><SPAN CLASS="MATH"><IMG
+ WIDTH="123" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img263.png"
+ ALT="$\displaystyle {\ }State_{t+1}=SP$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+<A NAME="lenterexit">&nbsp;&nbsp;&nbsp;</A></TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><SPAN CLASS="MATH"><IMG
+ WIDTH="255" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img264.png"
+ ALT="$\displaystyle \hat{e}[n_2]\leq\Theta_{exit}{\ }\&amp;{\ }State_t=SP \rightarrow{\ }$"></SPAN></TD>
+<TD NOWRAP ALIGN="LEFT"><SPAN CLASS="MATH"><IMG
+ WIDTH="139" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img265.png"
+ ALT="$\displaystyle {\ }State_{t+1}=NSP$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">5</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where NSP is a non-speech state and SP is a speech state.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fsm"></A><A NAME="3989"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4.3:</STRONG>
+<I>State machine used to apply time
+constraints.</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="556" HEIGHT="378" BORDER="0"
+ SRC="img266.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/spnsp_mateu2,width=\columnwidth}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1277"
+  HREF="node67.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1273"
+  HREF="node63.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1269"
+  HREF="node65.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1275"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1278"
+  HREF="node67.html">Model-based Speech/Non-Speech Decoder</A>
+<B> Up:</B> <A NAME="tex2html1274"
+  HREF="node63.html">Energy-Based Speech/non-Speech Detector with</A>
+<B> Previous:</B> <A NAME="tex2html1270"
+  HREF="node65.html">Derivative Filtering</A>
+ &nbsp; <B>  <A NAME="tex2html1276"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Clusters and Models Complexity Selection</TITLE>
+<META NAME="description" CONTENT="Clusters and Models Complexity Selection">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node75.html">
+<LINK REL="previous" HREF="node70.html">
+<LINK REL="up" HREF="node69.html">
+<LINK REL="next" HREF="node73.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1352"
+  HREF="node73.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1348"
+  HREF="node69.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1342"
+  HREF="node71.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1350"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1353"
+  HREF="node73.html">Model Complexity Selection</A>
+<B> Up:</B> <A NAME="tex2html1349"
+  HREF="node69.html">Speaker Clusters Description and</A>
+<B> Previous:</B> <A NAME="tex2html1343"
+  HREF="node71.html">Initialization Algorithm Description</A>
+ &nbsp; <B>  <A NAME="tex2html1351"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00822000000000000000">
+Clusters and Models Complexity Selection</A>
+</H2>
+
+<P>
+This section describes two algorithms that are used to
+automatically determine the number of Gaussian mixtures per model
+and the number of initial clusters to be used in the system. In
+the baseline system these values were tuned using development
+data. This approach though was considered deficient as it assumes
+that both development and test data perform the same way. It was
+seen that the appropriate number of clusters and the complexity of
+each model at each stage are strongly dependent on the amount of
+data available, therefore any difference in the length of the data
+to be clustered between development and test was seen to harm the
+performance. Furthermore, each meeting contains a different amount
+of data after the speech/non-speech detection, which makes any
+defined parameters not tuned to the particular meeting's
+properties.
+
+<P>
+In order to determine the number of Gaussian mixtures and the
+number of initial clusters, the algorithms presented below base
+their selection on information on each particular recording rather
+than defining a pre-fixed value for all recordings of a certain
+type. In order to do this, a new parameter is defined which is
+called Cluster Complexity Ratio (CCR), and which defines a ratio
+between the amount of data being modeled and the mixtures needed
+to represent it. The CCR ratio is defined using development data,
+and it is used to define recording-specific values for the above
+mentioned parameters. Although the CCR still needs tuning, it
+allows for individual parameters to be determined for each show,
+adding robustness to the system.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1354"
+  HREF="node73.html">Model Complexity Selection</A>
+<LI><A NAME="tex2html1355"
+  HREF="node74.html">Automatic Selection of the Initial Number of
+Clusters</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1352"
+  HREF="node73.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1348"
+  HREF="node69.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1342"
+  HREF="node71.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1350"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1353"
+  HREF="node73.html">Model Complexity Selection</A>
+<B> Up:</B> <A NAME="tex2html1349"
+  HREF="node69.html">Speaker Clusters Description and</A>
+<B> Previous:</B> <A NAME="tex2html1343"
+  HREF="node71.html">Initialization Algorithm Description</A>
+ &nbsp; <B>  <A NAME="tex2html1351"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

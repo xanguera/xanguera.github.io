@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Top-down Clustering Techniques</TITLE>
+<META NAME="description" CONTENT="Top-down Clustering Techniques">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node21.html">
+<LINK REL="previous" HREF="node19.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node21.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html663"
+  HREF="node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html659"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html653"
+  HREF="node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html661"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html664"
+  HREF="node21.html">Combination of Clustering Methods</A>
+<B> Up:</B> <A NAME="tex2html660"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<B> Previous:</B> <A NAME="tex2html654"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+ &nbsp; <B>  <A NAME="tex2html662"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00631200000000000000">
+Top-down Clustering Techniques</A>
+</H3>
+
+<P>
+In the current literature there are fewer systems that start from
+one cluster and iteratively split until the stopping criterion is
+met than the previously presented systems, doing otherwise.
+
+<P>
+In <A
+ HREF="node147.html#Johnson_1998">Johnson and Woodland (1998)</A> a top-down clustering method is
+proposed for speaker clustering towards ASR, and in
+<A
+ HREF="node147.html#Johnson_1999">Johnson (1999)</A> and <A
+ HREF="node147.html#Tranter_2004">Tranter and Reynolds (2004)</A> it is
+applied to speaker diarization. The algorithm splits the data
+iteratively into four sub-clusters and allows for merging clusters
+that are very similar to each other. In <A
+ HREF="node147.html#Johnson_1998">Johnson and Woodland (1998)</A>
+it proposes two different implementations of the algorithm. On one
+hand it proposes an MLLR likelihood optimization technique to
+obtain resulting clusters well adapted to the ASR MLLR adaptation
+step. On the other hand it proposes the Arithmetic Harmonic
+Sphericity (AHS) metric (<A
+ HREF="node147.html#Bimbot_1993">Bimbot and Mathan, 1993</A>) to assign speech
+segments to the created sub-clusters at each stage, and uses a
+minimum occupancy stopping criterion. The AHS is defined for
+single Gaussian models as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+d(X_{1}, X_{2})=\log[tr(\Sigma_{X_{2}}\Sigma_{X_{1}}^{-1}) \cdot
+tr(\Sigma_{X_{1}}\Sigma_{X_{2}}^{-1})]-2\log(D)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="412" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.png"
+ ALT="$\displaystyle d(X_{1}, X_{2})=\log[tr(\Sigma_{X_{2}}\Sigma_{X_{1}}^{-1}) \cdot tr(\Sigma_{X_{1}}\Sigma_{X_{2}}^{-1})]-2\log(D)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>.<SPAN CLASS="arabic">22</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img103.png"
+ ALT="$ D$"></SPAN> is the dimensionality of the data and <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img104.png"
+ ALT="$ tr$"></SPAN> is
+the trace function.
+
+<P>
+In <A
+ HREF="node147.html#Johnson_1999">Johnson (1999)</A> and <A
+ HREF="node147.html#Tranter_2004">Tranter and Reynolds (2004)</A> the
+AHS-based algorithm is used for speaker diarization and the
+stopping criterion is changed to be a cost-based function
+depending on several criteria.
+
+<P>
+In <A
+ HREF="node147.html#Meignier_2001">Meignier et&nbsp;al. (2001)</A> and <A
+ HREF="node147.html#Anguera_2004b">Anguera and Hernando (2004a)</A> an
+initial cluster is trained with all the acoustic data available.
+Iterative decoding/MAP adaptation of new models is performed where
+new clusters are split using a likelihood metric averaged over a
+window. The variation of the overall likelihood of the data given
+all models is used as a stopping criterion. In
+<A
+ HREF="node147.html#Anguera_2004b">Anguera and Hernando (2004a)</A> a similar approach is followed and a
+repository model is further introduced to improve the purity of
+the created clusters.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html663"
+  HREF="node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html659"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html653"
+  HREF="node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html661"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html664"
+  HREF="node21.html">Combination of Clustering Methods</A>
+<B> Up:</B> <A NAME="tex2html660"
+  HREF="node18.html">Hierarchical Clustering Techniques</A>
+<B> Previous:</B> <A NAME="tex2html654"
+  HREF="node19.html">Bottom-up Clustering Techniques</A>
+ &nbsp; <B>  <A NAME="tex2html662"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

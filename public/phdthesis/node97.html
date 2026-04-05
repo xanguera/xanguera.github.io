@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Automatic Channel Weight Adaptation</TITLE>
+<META NAME="description" CONTENT="Automatic Channel Weight Adaptation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node98.html">
+<LINK REL="previous" HREF="node96.html">
+<LINK REL="up" HREF="node96.html">
+<LINK REL="next" HREF="node98.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1688"
+  HREF="node98.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1684"
+  HREF="node96.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1678"
+  HREF="node96.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1686"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1689"
+  HREF="node98.html">Automatic Adaptive Channel Elimination</A>
+<B> Up:</B> <A NAME="tex2html1685"
+  HREF="node96.html">Output Signal Generation</A>
+<B> Previous:</B> <A NAME="tex2html1679"
+  HREF="node96.html">Output Signal Generation</A>
+ &nbsp; <B>  <A NAME="tex2html1687"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00924100000000000000"></A>
+<A NAME="auto_channel_weight"></A>
+<BR>
+Automatic Channel Weight Adaptation
+</H3>
+
+<P>
+In the typical formulation of the filter&amp;sum processing, the
+additive noise components on each of the channels are expected to
+be random processes with very similar power density distributions.
+This allows the noise on each channel to be statistically
+cancelled and the relevant signal enhanced when the delay-adjusted
+channels are summed. In standard beamforming systems, this noise
+cancellation is achieved through the use of identical microphones
+placed only a few inches apart one from each other.
+
+<P>
+In the meetings room it is considered that all of the distant
+microphones form a microphone array. However, by having different
+types of microphones there is a change in the characteristics of
+the signal being recorded and therefore a change in the power
+density distributions of the resulting additive noises. Also when
+two microphones are far from each other, the speech they record
+will be affected by noise of a different nature, due to the room's
+impulse response, and will have different amplitude depending on
+the position of the speaker talking.
+
+<P>
+This issue is addressed by weighting each channel in the
+filter&amp;sum processing. The weights are adapted continuously
+during the meeting. This is inspired by the fact that the
+different channels will have different signal quality depending on
+their relative distance to the person speaking, which probably
+changes constantly during a recording.
+
+<P>
+The weight for channel <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> at segment <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img110.png"
+ ALT="$ c$"></SPAN> (<!-- MATH
+ $\mathcal{W}_{n}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img434.png"
+ ALT="$ \mathcal{W}_{n}[c]$"></SPAN>)
+is computed in the following way:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\mathcal{W}_{n}[c] = \left\{ \begin{array}{l r} \frac{1}{N} & c=0 \\
+\\
+(1-\alpha)\cdot \mathcal{W}_{n}[c-1] + \alpha \cdot avexcorr_{n}[c] & \ \ \ \textrm{otherwise} \\
+\end{array} \right.
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="490" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img435.png"
+ ALT="$\displaystyle \mathcal{W}_{n}[c] = \left\{ \begin{array}{l r} \frac{1}{N} &amp; c=0...
+...alpha \cdot avexcorr_{n}[c] &amp; \ \ \ \textrm{otherwise} \\  \end{array} \right.$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">17</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN> is the adaptation ratio, which was
+empirically set to <!-- MATH
+ $\alpha = 0.05$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="70" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img436.png"
+ ALT="$ \alpha = 0.05$"></SPAN>, c is the segment being
+processed, and <!-- MATH
+ $avexcorr_{n}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="99" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img437.png"
+ ALT="$ avexcorr_{n}[c]$"></SPAN> is the average of the
+cross-correlation between channel <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.png"
+ ALT="$ n$"></SPAN> and all other channels being
+all delayed using the selected <!-- MATH
+ $TDOA_{n}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="85" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img438.png"
+ ALT="$ TDOA_{n}[c]$"></SPAN> value for that
+channel:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+avexcorr_{n}[c] = \frac{1}{N-1} \sum^{N-1}_{j=1, j\ne n}
+\sum_{k=0}^{W} x_{n}[cS-TDOA_{n}[c]-k] x_{j}[cS-TDOA_{j}[c]-k]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="612" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img439.png"
+ ALT="$\displaystyle avexcorr_{n}[c] = \frac{1}{N-1} \sum^{N-1}_{j=1, j\ne n} \sum_{k=0}^{W} x_{n}[cS-TDOA_{n}[c]-k] x_{j}[cS-TDOA_{j}[c]-k]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">18</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+where S and W are respectively the scroll/segment size
+and window size of the filter&amp;sum processing
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1688"
+  HREF="node98.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1684"
+  HREF="node96.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1678"
+  HREF="node96.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1686"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1689"
+  HREF="node98.html">Automatic Adaptive Channel Elimination</A>
+<B> Up:</B> <A NAME="tex2html1685"
+  HREF="node96.html">Output Signal Generation</A>
+<B> Previous:</B> <A NAME="tex2html1679"
+  HREF="node96.html">Output Signal Generation</A>
+ &nbsp; <B>  <A NAME="tex2html1687"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>GCC-PHAT Cross-Correlation</TITLE>
+<META NAME="description" CONTENT="GCC-PHAT Cross-Correlation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node91.html">
+<LINK REL="up" HREF="node88.html">
+<LINK REL="next" HREF="node93.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1627"
+  HREF="node93.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1623"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1619"
+  HREF="node91.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1625"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1628"
+  HREF="node93.html">TDOA Values Selection</A>
+<B> Up:</B> <A NAME="tex2html1624"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1620"
+  HREF="node91.html">ICSI Meetings Skew Estimation</A>
+ &nbsp; <B>  <A NAME="tex2html1626"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00922400000000000000"></A>
+<A NAME="GCC_PHAT"></A>
+<BR>
+GCC-PHAT Cross-Correlation
+</H3>
+
+<P>
+The computation of the time delay of arrival (TDOA) between each
+of the considered channels and the reference channel is repeated
+along the recording in order for the beamforming to respond to
+changes in the speaker. In this implementation it is computed
+every 250ms (called segment size or analysis scroll) over a window
+of 500ms (called the analysis window) which covers the current
+analysis segment and the next. The size of the analysis window and
+of the segment size constitute a tradeoff. A big analysis window
+or segment window lead to a reduction in the resolution of changes
+in the TDOA. On the other hand, using a very small analysis window
+reduces the robustness of the cross-correlation estimation, as
+less acoustic frames are used to compute it. The reduction of the
+segment size also increases the computational cost of the system,
+while not increasing the quality of the output signal.
+
+<P>
+In order to compute the TDOA between the reference channel and any
+other channel for any given segment it is usual to estimate it as
+the delay that causes the cross-correlation between the two
+signals segments to be maximum. In order to improve robustness
+against reverberation it is normal practice to use the Generalized
+Cross Correlation with Phase Transform (GCC-PHAT) as presented by
+<A
+ HREF="node147.html#Knapp_76">Knapp and Carter (1976)</A> and <A
+ HREF="node147.html#Brandstein_96">Brandstein and Silverman (1997)</A>.
+
+<P>
+Given two signals <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img384.png"
+ ALT="$ x_{i}(n)$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="46" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img385.png"
+ ALT="$ x_{j}(n)$"></SPAN> the GCC-PHAT is
+defined as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="GPHAT"></A><!-- MATH
+ \begin{equation}
+\hat{G}_{PHAT}(f) = \frac{X_{i}(f)
+[X_{j}(f)]^{*}}{|X_{i}(f) [X_{j}(f)]^{*}|}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="229" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img386.png"
+ ALT="$\displaystyle \hat{G}_{PHAT}(f) = \frac{X_{i}(f) [X_{j}(f)]^{*}}{\vert X_{i}(f) [X_{j}(f)]^{*}\vert}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">10</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<BR>
+<P>
+Where <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img387.png"
+ ALT="$ X_{i}(f)$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="50" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img388.png"
+ ALT="$ X_{j}(f)$"></SPAN> are the Fourier
+transforms of the two signals and <SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img389.png"
+ ALT="$ [\ ]^{*}$"></SPAN> denotes the complex
+conjugate. The TDOA for these two microphones is estimated as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="GCC_PHAT_time"></A><!-- MATH
+ \begin{equation}
+\hat{d}_{PHAT}(i,j) = {arg max \atop d}
+\big(\hat{R}_{PHAT}(d)\big)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="275" HEIGHT="47" ALIGN="MIDDLE" BORDER="0"
+ SRC="img390.png"
+ ALT="$\displaystyle \hat{d}_{PHAT}(i,j) = {arg max \atop d} \big(\hat{R}_{PHAT}(d)\big)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">11</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<BR>
+<P>
+Where <!-- MATH
+ $\hat{R}_{PHAT}(d)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img391.png"
+ ALT="$ \hat{R}_{PHAT}(d)$"></SPAN> is the inverse Fourier
+transform of Eq. <A HREF="#GPHAT">5.10</A>.
+
+<P>
+Although the maximum value of <!-- MATH
+ $\hat{R}_{PHAT}(d)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="84" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img391.png"
+ ALT="$ \hat{R}_{PHAT}(d)$"></SPAN> corresponds to
+the estimated TDOA for that particular segment, there are three
+particular cases for which it was considered not appropriate to
+use the absolute maximum from the cross-correlation function. On
+one hand, the maximum can be due to a spurious noise or event not
+related to the speaker active at that time in the surrounding
+acoustic region, being the speaker of interest represented by
+another local maximum of the cross-correlation.
+
+<P>
+On the other hand, when two or more speakers are overlapping each
+other, each speaker will be represented by a maximum of the
+cross-correlation function, but the absolute maximum might not be
+constantly assigned to the same speaker, resulting on artificial
+speaker switching. In order to effectively enhance the signal it
+would be optimum to first detect when more than one speaker is
+speaking at the same time and then obtain a filter-and-sum signal
+for each one, stabilizing the selected delays and avoiding them
+from constant speaker switching. Due to a lack of an efficient
+overlap detector, this was not implemented in this thesis and
+remains as future work.
+
+<P>
+Also, when the segment that has been processed is entirely filled
+with non-speech acoustic data (either noise or random acoustic
+events) the GCC-PHAT function obtained will not be at all
+informative. In such case no source delay information can be
+extracted from the signal and the delays ought to be discarded and
+substituted by something more informative.
+
+<P>
+In the system implementation, to deal with such issues, the top M
+relative maximums in eq. <A HREF="#GCC_PHAT_time">5.11</A> are computed and
+several delay post-processing techniques are implemented to
+stabilize and choose the appropriate delay before aligning the
+signals for the sum. These are described below:
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1627"
+  HREF="node93.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1623"
+  HREF="node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1619"
+  HREF="node91.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1625"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1628"
+  HREF="node93.html">TDOA Values Selection</A>
+<B> Up:</B> <A NAME="tex2html1624"
+  HREF="node88.html">Meeting Information Extraction</A>
+<B> Previous:</B> <A NAME="tex2html1620"
+  HREF="node91.html">ICSI Meetings Skew Estimation</A>
+ &nbsp; <B>  <A NAME="tex2html1626"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

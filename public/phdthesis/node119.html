@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speaker Diarization Module Experiments</TITLE>
+<META NAME="description" CONTENT="Speaker Diarization Module Experiments">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node127.html">
+<LINK REL="previous" HREF="node113.html">
+<LINK REL="up" HREF="node103.html">
+<LINK REL="next" HREF="node120.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1979"
+  HREF="node120.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1975"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1969"
+  HREF="node118.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1977"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1980"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Up:</B> <A NAME="tex2html1976"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1970"
+  HREF="node118.html">Use of the Beamformed</A>
+ &nbsp; <B>  <A NAME="tex2html1978"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001050000000000000000"></A>
+<A NAME="diary_experiments"></A>
+<BR>
+Speaker Diarization Module Experiments
+</H1>
+
+<P>
+This section analyzes each of the proposed improvements to the
+mono-channel diarization module proposed in this thesis. The
+algorithms that are analyzed in this section are:
+
+<P>
+
+<UL>
+<LI>Number of initial clusters (section
+<A HREF="node74.html#initial_num_clusters">4.2.2</A>)
+
+<P>
+</LI>
+<LI>Cluster complexity selection (section <A HREF="node73.html#complex_select">4.2.2</A>)
+
+<P>
+</LI>
+<LI>Cross-Validation EM training (section <A HREF="node59.html#CV-EM_training">3.3.3</A>)
+
+<P>
+</LI>
+<LI>Friends-and-enemies clusters initialization (section
+<A HREF="node70.html#friends_and_enemies">4.2.1</A>)
+
+<P>
+</LI>
+<LI>Frame purification (section <A HREF="node77.html#sec:purif">4.3.1</A>)
+
+<P>
+</LI>
+<LI>Segment purification (section <A HREF="node81.html#segment_purify">4.3.2</A>)
+
+<P>
+</LI>
+<LI>Multiple feature streams automatic weighting (section
+<A HREF="node101.html#multiple_features">5.3.1</A>)
+</LI>
+</UL>
+
+<P>
+All experiments use the same baseline system as described in
+<A HREF="node105.html#baseline_system">6.1.1</A>. This uses the new hybrid speech/non-speech
+detector and the RT06s beamforming system when necessary. In order
+to evaluate all possible diarization working conditions, three
+different tasks are run:
+
+<P>
+
+<UL>
+<LI>The SDM system uses only the single SDM channel as defined
+by NIST for the RT datasets used in the experiments.
+
+<P>
+</LI>
+<LI>The MDM mono-stream system uses the beamforming of the
+multiple available channels to obtain a single acoustic channel
+for use by the system. The same configuration is used for the
+diarization of this channel as for the SDM channel.
+
+<P>
+</LI>
+<LI>The MDM multi-stream system uses the beamformed signal as
+well as the extracted TDOA values to add information to the
+diarization on the location of the speakers. Although this system
+uses the same acoustic channels as the pure MDM task, this
+evaluation condition is added as it behaves differently to the
+data than any of the other tasks.
+
+<P>
+</LI>
+</UL>
+
+<P>
+Experiments were performed in two steps to find the optimum
+parameters for all algorithms by using the development set. First,
+each algorithm was tested alone against the proposed baseline. One
+or two parameters for each algorithm were searched for the optimum
+configuration. Then, the different algorithms in the order of
+individual improvement (from most to least) were used together and
+the optimum parameters were searched for again, obtaining the
+optimum system according to the development. Finally, the
+evaluation set was used to test how the system performs with
+unseen data.
+
+<P>
+The optimization of the parameters is done using the arithmetic
+average of the three considered systems, with the exception of the
+multi-stream weight computation algorithm which only affects the
+system using the TDOA feature stream.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1981"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<UL>
+<LI><A NAME="tex2html1982"
+  HREF="node121.html">Number of Initial Clusters and Cluster Complexity
+selection</A>
+<LI><A NAME="tex2html1983"
+  HREF="node122.html">Cross-Validation EM Training</A>
+<LI><A NAME="tex2html1984"
+  HREF="node123.html">Friends-and-Enemies Clusters Initialization</A>
+<LI><A NAME="tex2html1985"
+  HREF="node124.html">Frame and Segment Purification</A>
+<LI><A NAME="tex2html1986"
+  HREF="node125.html">Multiple Feature Streams Automatic Weighting</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1987"
+  HREF="node126.html">Algorithms Agglomeration Performance</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1979"
+  HREF="node120.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1975"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1969"
+  HREF="node118.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1977"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1980"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Up:</B> <A NAME="tex2html1976"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1970"
+  HREF="node118.html">Use of the Beamformed</A>
+ &nbsp; <B>  <A NAME="tex2html1978"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

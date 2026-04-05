@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Lecture Room Systems</TITLE>
+<META NAME="description" CONTENT="Lecture Room Systems">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node137.html">
+<LINK REL="previous" HREF="node135.html">
+<LINK REL="up" HREF="node134.html">
+<LINK REL="next" HREF="node137.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2211"
+  HREF="node137.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2207"
+  HREF="node134.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2201"
+  HREF="node135.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2209"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2212"
+  HREF="node137.html">RT05s Official Performance Scores</A>
+<B> Up:</B> <A NAME="tex2html2208"
+  HREF="node134.html">Participation in the 2005</A>
+<B> Previous:</B> <A NAME="tex2html2202"
+  HREF="node135.html">Conference Room Systems</A>
+ &nbsp; <B>  <A NAME="tex2html2210"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001121200000000000000">
+Lecture Room Systems</A>
+</H3>
+
+<P>
+In the lecture room environment the submission consisted on
+primary systems for the tasks MDM, SDM and MSLA, and contrastive
+systems for MDM (two systems), SDM and MSLA (two systems).
+
+<P>
+Following is a brief description for each of these systems and
+their motivation:
+
+<P>
+
+<UL>
+<LI>MDM, SDM and MSLA primary condition
+(MDM/SDM/MSLA_p-omnione): It was observed in the development data
+that on many occasions it was possible to obtain the best
+performance by just guessing one speaker for the whole duration of
+the lecture. This is particularly true when the meeting excerpt
+consists only of the lecturer speaking, but is often also achieved
+in the question-and-answer section since many of the excerpts in
+the development data consisted of very short questions followed by
+long answers by the lecturer. They were therefore presented as the
+primary submissions, serving also as a baseline score for the
+lecture room environment. Contrary to what was observed in the
+development data, the contrastive (``real'') systems outperformed
+the primary (``guess one speaker'') submissions on the evaluation
+data. Depending on what data is to be processed (the length of the
+lecturer turn and the amount of silence in the recordings) it
+might not be feasible to improve upon a ``dummy'' system with the
+current state of the art diarization systems.
+
+<P>
+</LI>
+<LI>MDM using speech/non-speech detection (mdm_c-spnspone):
+This differs from the primary submission only on the use of the
+speech/non-speech (spnsp) detector to eliminate the areas of
+non-speech. On the development data it was observed that
+non-speech regions were only labelled (in the hand-made
+references) when there was a change of speakers, which never
+happened for the ``all lecturing'' sections. In a real system
+though it is important to detect these silences and not attribute
+them to speakers. This submission is meant to complement the
+previous one by trying to improve performance where between-speech
+silences are marked.
+
+<P>
+</LI>
+<LI>MDM using only the TableTop microphone (mdm_c-ttoppur):
+From the available five microphones in the lecture room, one
+microphone (labelled as ``TableTop'' microphone) is clearly of
+much better quality than all the others (which can be found via an
+SNR comparison among the channels). It is located in a different
+part of the room and is of a different kind, which could be the
+reason for its better performance. In the evaluation data it was
+found by using an SNR estimator and the standard diarization is
+used on it. No spnsp detection was used in this system.
+
+<P>
+</LI>
+<LI>SDM using the SDM channel with a minimum duration of 12
+seconds for each cluster (sdm_c-pur12s): This uses the clustering
+system on the SDM channel. It didn't use the spnsp detector
+either. It was observed that using a minimum duration of 12
+seconds, the issue of silences marked as speech in the reference
+files could be bypassed, and force the system to end with fewer
+clusters.
+
+<P>
+</LI>
+<LI>MSLA with standard filter&amp;sum (msla_c-nwsdpur12s): In
+order to combine the various available speaker-localization
+arrays, we used the filter&amp;sum processing, using a random channel
+from one of the arrays as the reference channel. The enhanced
+channel obtained was then clustered using the 12 second minimum
+duration system.
+
+<P>
+</LI>
+<LI>MSLA with weighted filter&amp;sum (msla_c-wsdpur12s): In the
+time between the conference room and lecture room submissions,
+experiments were performed with a first version of the weighted
+filter&amp;sum algorithm as presented in this thesis. It was applied
+to the MSLA channels in this system.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2211"
+  HREF="node137.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2207"
+  HREF="node134.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2201"
+  HREF="node135.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2209"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2212"
+  HREF="node137.html">RT05s Official Performance Scores</A>
+<B> Up:</B> <A NAME="tex2html2208"
+  HREF="node134.html">Participation in the 2005</A>
+<B> Previous:</B> <A NAME="tex2html2202"
+  HREF="node135.html">Conference Room Systems</A>
+ &nbsp; <B>  <A NAME="tex2html2210"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

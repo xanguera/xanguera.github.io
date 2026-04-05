@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Experiments from Broadcast News to Meetings</TITLE>
+<META NAME="description" CONTENT="Experiments from Broadcast News to Meetings">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node112.html">
+<LINK REL="previous" HREF="node104.html">
+<LINK REL="up" HREF="node103.html">
+<LINK REL="next" HREF="node112.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1880"
+  HREF="node112.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1876"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1870"
+  HREF="node110.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1878"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1881"
+  HREF="node112.html">Speech/Non-Speech Detection Block</A>
+<B> Up:</B> <A NAME="tex2html1877"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1871"
+  HREF="node110.html">Reference Segmentation Selection and</A>
+ &nbsp; <B>  <A NAME="tex2html1879"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001020000000000000000">
+Experiments from Broadcast News to Meetings</A>
+</H1>
+
+<P>
+This section covers the experiments done to assess the performance
+of the system given the different improvements proposed in the
+previous chapters. To do so, the following structure will be
+followed:
+
+<P>
+
+<UL>
+<LI>This section sets the baseline using the system described in
+section <A HREF="node105.html#baseline_system">6.1.1</A>.
+
+<P>
+</LI>
+<LI>Section <A HREF="node112.html#spnsp_exp">6.3</A> verses about the speecn/non-speech
+detector applied to the baseline system in the SDM case.
+
+<P>
+</LI>
+<LI>Section <A HREF="node113.html#beamform_exp">6.4</A> explores the different algorithms
+introduced in the beamforming block. It quantifies their
+performance both in SNR and DER.
+
+<P>
+</LI>
+<LI>Section <A HREF="node119.html#diary_experiments">6.5</A> takes both the
+speech/non-speech detector and the beamforming system and analyzes
+the performance of the diarization block with the introduced
+algorithms. It first analyzes each individual algorithm
+contribution separate from the others and then iteratively
+agglomerates them into the final optimized system using all
+blocks.
+
+<P>
+</LI>
+</UL>
+
+<P>
+As explained above, there are several baseline systems that are
+considered to test the different modules proposed by this thesis.
+By doing so every module's performance can be evaluated
+independently.
+
+<P>
+The system used to evaluate the speech/non-speech detector can be
+considered as the baseline of this thesis as it is directly
+derived from the broadcast news (BN) system found at ICSI at the
+time of this thesis work start. Such system already contains a few
+improvements from the BN initial system but these are considered
+core and will not be evaluated.
+
+<P>
+The other baseline used (although it is in reality an intermediate
+system) uses the beamforming system submitted to the RT06s
+evaluation and the hybrid speech/non-speech detector together with
+the initial baseline. This is used to evaluate the algorithms in
+the acoustic beamforming module and in the diarization module.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="6910"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.2:</STRONG>
+<I>Results for the CV-EM training algorithm in the
+agglomerate system</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Development set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">SDM</TD>
+<TD ALIGN="CENTER">MDM</TD>
+<TD ALIGN="CENTER">TDOA-MDM</TD>
+<TD ALIGN="CENTER">Ave</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT04f</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline(24 shows)</TD>
+<TD ALIGN="CENTER">20.6%</TD>
+<TD ALIGN="CENTER">19.04%</TD>
+<TD ALIGN="CENTER">16.49%</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT06s system(20 shows)</TD>
+<TD ALIGN="CENTER">19.45%</TD>
+<TD ALIGN="CENTER">17.65%</TD>
+<TD ALIGN="CENTER">14.70%</TD>
+<TD ALIGN="CENTER">17.26%</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=4><SPAN>DER Evaluation set</SPAN></TD>
+</TR>
+<TR><TD ALIGN="LEFT">RT04f</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline</TD>
+<TD ALIGN="CENTER">24.54%</TD>
+<TD ALIGN="CENTER">26.5%</TD>
+<TD ALIGN="CENTER">18.65%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+</TABLE>
+ <A NAME="baseline_table"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table <A HREF="#baseline_table">6.2</A> shows the baseline scores to compare to
+through the following sections. The difference between the
+baseline and the RT06s system is the inclusion or not of 4 CMU
+meetings from the development set with a single channel. The
+version with 20 meeting excerpts is used to develop the
+beamforming system, while the complete baseline is used to
+evaluate it (all meetings contain more than one channel).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1880"
+  HREF="node112.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1876"
+  HREF="node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1870"
+  HREF="node110.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1878"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1881"
+  HREF="node112.html">Speech/Non-Speech Detection Block</A>
+<B> Up:</B> <A NAME="tex2html1877"
+  HREF="node103.html">Experiments</A>
+<B> Previous:</B> <A NAME="tex2html1871"
+  HREF="node110.html">Reference Segmentation Selection and</A>
+ &nbsp; <B>  <A NAME="tex2html1879"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

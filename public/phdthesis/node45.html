@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Clusters Comparison, Pruning and Clusters Merging</TITLE>
+<META NAME="description" CONTENT="Clusters Comparison, Pruning and Clusters Merging">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node46.html">
+<LINK REL="previous" HREF="node44.html">
+<LINK REL="up" HREF="node42.html">
+<LINK REL="next" HREF="node46.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html992"
+  HREF="node46.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html988"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html982"
+  HREF="node44.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html990"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html993"
+  HREF="node46.html">Stopping Criterion and System</A>
+<B> Up:</B> <A NAME="tex2html989"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html983"
+  HREF="node44.html">Clusters Initialization and Acoustic</A>
+ &nbsp; <B>  <A NAME="tex2html991"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00713000000000000000">
+Clusters Comparison, Pruning and Clusters Merging</A>
+</H2>
+
+<P>
+Given M clusters with their corresponding models, the matrix of
+distances between every cluster pair is created and the closest
+pair is merged if it is determined that both clusters contain data
+from the same speaker. In order to obtain a measure of similarity
+between two clusters modeled by a GMM a modified version of the
+Bayesian Information Criterion (BIC) is used, as introduced by
+Ajmera in <A
+ HREF="node147.html#Ajmera_2004a">Ajmera, McCowan and Bourlard (2004)</A> and <A
+ HREF="node147.html#Ajmera_2003b">Ajmera and Wooters (2003)</A>.
+As explained in the state of the art chapter, the BIC value
+quantifies the appropriateness of a model given the data. It is a
+likelihood-based metric that introduces a penalty term (in the
+standard formulation) to penalize models by their complexity.
+
+<P>
+Given two clusters <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img176.png"
+ ALT="$ C_{i}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img177.png"
+ ALT="$ C_{j}$"></SPAN> composed of <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ N_{i}$"></SPAN> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ N_{j}$"></SPAN> acoustic frames respectively, they are modeled with two
+GMM models <!-- MATH
+ $\mathcal{M}_{i}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.png"
+ ALT="$ \mathcal{M}_{i}$"></SPAN> and <!-- MATH
+ $\mathcal{M}_{j}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img178.png"
+ ALT="$ \mathcal{M}_{j}$"></SPAN>. The data used
+to train each of the models is the union of the data belonging to
+each one of the segments labelled as belonging to cluster <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img179.png"
+ ALT="$ C_{.}$"></SPAN>.
+In the same manner a third model <!-- MATH
+ $\mathcal{M}_{i+j}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.png"
+ ALT="$ \mathcal{M}_{i+j}$"></SPAN> is trained
+with <!-- MATH
+ $C_{i+j} = C_{i} \bigcup C_{j}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="120" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img181.png"
+ ALT="$ C_{i+j} = C_{i} \bigcup C_{j}$"></SPAN>.
+
+<P>
+In the standard BIC implementation to compare two clusters
+(<A
+ HREF="node147.html#Chen_1998a">Shaobing&nbsp;Chen and Gopalakrishnan, 1998</A>) the penalty term adds a factor <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> that is
+used to determine the effect of the penalty on the likelihood. The
+equation of the standard <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC for GMM models is
+
+<P>
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+\Delta BIC(C_{i}, C_{j}) & = \mathcal{L}(C_{i+j}
+|\mathcal{M}_{i+j})) - (\mathcal{L}(C_{i}|\mathcal{M}_{i})) +
+\mathcal{L}(C_{j}|\mathcal{M}_{j}))) \nonumber \\
+& - \frac{1}{2} \lambda (\# M_{i+j} - \# M_{i} - \# M_{j}) \log
+(N_{i}+N_{j})
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="114" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img182.png"
+ ALT="$\displaystyle \Delta BIC(C_{i}, C_{j})$"></TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="360" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.png"
+ ALT="$\displaystyle = \mathcal{L}(C_{i+j}
+\vert\mathcal{M}_{i+j})) - (\mathcal{L}(C_{i}\vert\mathcal{M}_{i})) +
+\mathcal{L}(C_{j}\vert\mathcal{M}_{j})))$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="326" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img184.png"
+ ALT="$\displaystyle - \frac{1}{2} \lambda (\char93  M_{i+j} - \char93  M_{i} - \char93  M_{j}) \log
+(N_{i}+N_{j})$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img185.png"
+ ALT="$ \char93  M_{.}$"></SPAN> is the number of free parameters to be
+estimated for each of the models, i.e. relative to the topology
+and complexity of the model.
+
+<P>
+It is considered that two clusters belong to the same speaker if
+they have a positive <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC value. Such value is affected by
+the penalty term (including the <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN>, which acts as a
+threshold determining which clusters to merge and which not to).
+The penalty term also modifies the order in which the cluster
+pairs are merged in an agglomerative clustering system, as each
+pair will have a different number of total frames and/or models
+complexities, which will cause the penalty term to be different.
+In systems based on <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC this penalty term (<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN>) is
+usually tuned based on development data and it always takes values
+greater than 0. In some cases two different values are defined,
+one for the merging criterion and the other one for the stopping
+criterion.
+
+<P>
+When training models to be used in <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC, these need to be
+trained using an ML approach, but there is no constraint in the
+kind of model to use. Ajmera's modification to the traditional BIC
+formula comes with the inclusion of a constraint to the combined
+model <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img186.png"
+ ALT="$ M_{i+j}$"></SPAN>:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="BIC_condition"></A><!-- MATH
+ \begin{equation}
+\# M_{i+j} = \# M_{i} + \# M_{j}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="178" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img187.png"
+ ALT="$\displaystyle \char93  M_{i+j} = \char93  M_{i} + \char93  M_{j}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+This is an easy to follow rule as model <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img186.png"
+ ALT="$ M_{i+j}$"></SPAN> is
+normally built exclusively for the comparison.
+
+<P>
+By Applying this rule to the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC formula one avoids having
+to decide on a particular <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \lambda$"></SPAN> parameter and therefore the
+real threshold which is applied to consider if two clusters are
+from the same speaker becomes 0. The formula of the modified-BIC
+becomes equivalent to the GLR, but with the condition that
+<A HREF="#BIC_condition">3.2</A> applies.
+
+<P>
+The lack of an extra tuning parameter makes the system more robust
+to changes in the data to be processed, although, as the BIC
+formula is just an approximation of the Bayesian Factor (BF)
+formulation, sometimes the robustness increase comes with a small
+detriment on performance.
+
+<P>
+In the broadcast news system that has been described, the model
+<SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img186.png"
+ ALT="$ M_{i+j}$"></SPAN> is generated directly from the two individual models <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ i$"></SPAN>
+and <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ j$"></SPAN> by pooling all the Gaussian mixtures together. Then the
+data belonging to both parent models is used to train the new
+model via ML. Training is always performed using an Expectation
+Maximization (EM-ML) algorithm and performing 5 iterations on the
+data.
+
+<P>
+Once the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC metric between all possible cluster pairs has
+been computed, it searches for the biggest value and if <!-- MATH
+ $\Delta
+BIC_{max}(C_{i}, C_{j}) > 0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="173" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img188.png"
+ ALT="$ \Delta
+BIC_{max}(C_{i}, C_{j}) &gt; 0$"></SPAN> the two clusters are merged into a
+single cluster. In this case, the merged cluster is created in the
+same way as <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img186.png"
+ ALT="$ M_{i+j}$"></SPAN> is created, although it is not a
+requirement. The total complexity of the system remains intact
+through the merge as the number of Gaussian mixtures representing
+the data is the same, clustered in M-1 clusters.
+
+<P>
+The computation of <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC for all possible combinations of
+clusters is by far the most computationally intensive step in the
+agglomerative clustering system. Given that the models are
+retrained and the data is resegmented after each merge it obtains
+models at each iteration that are quite dissimilar to the models
+in the previous iteration, therefore it is recommended to compute
+all values again. Some techniques were tested to speedup this
+process by looking at the behavior of the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values. Some
+are:
+
+<P>
+
+<UL>
+<LI>In every iteration merge more than one cluster pair,
+selecting them to be the pairs with highest BIC value and
+positive. This generates mixed results as modifies the way that
+the models are grouped.
+
+<P>
+</LI>
+<LI>Compute the BIC value only for clusters which have changed
+considerably between iterations, maintaining the same value as
+previous iterations for those with almost the same segments
+assigned. This also resulted in mixed results, depending on the
+shows evaluated.
+
+<P>
+</LI>
+<LI>Do not compute the BIC value for clusters pairs that obtain
+a negative value at any given iteration. This reduces the
+computation as only positive BIC values will be considered in
+subsequent iterations. It was implemented with success in the
+broadcast news system.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html992"
+  HREF="node46.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html988"
+  HREF="node42.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html982"
+  HREF="node44.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html990"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html993"
+  HREF="node46.html">Stopping Criterion and System</A>
+<B> Up:</B> <A NAME="tex2html989"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Previous:</B> <A NAME="tex2html983"
+  HREF="node44.html">Clusters Initialization and Acoustic</A>
+ &nbsp; <B>  <A NAME="tex2html991"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

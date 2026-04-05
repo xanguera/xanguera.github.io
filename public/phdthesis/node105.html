@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Baseline Systems</TITLE>
+<META NAME="description" CONTENT="Baseline Systems">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node106.html">
+<LINK REL="previous" HREF="node104.html">
+<LINK REL="up" HREF="node104.html">
+<LINK REL="next" HREF="node106.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1810"
+  HREF="node106.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1806"
+  HREF="node104.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1800"
+  HREF="node104.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1808"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1811"
+  HREF="node106.html">Databases</A>
+<B> Up:</B> <A NAME="tex2html1807"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+<B> Previous:</B> <A NAME="tex2html1801"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+ &nbsp; <B>  <A NAME="tex2html1809"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001011000000000000000"></A>
+<A NAME="baseline_system"></A>
+<BR>
+Baseline Systems
+</H2>
+
+<P>
+Taking as a reference the blocks diagram in figure
+<A HREF="node55.html#full_system">3.5</A>, experiments were conducted on three of the main
+blocks, namely the filter&amp;sum module, the speech/non-speech
+module and the mono-channel speaker diarization module. For each
+block a baseline was defined to suit its characteristics and to
+allow for the development of its optimum parameters selection. The
+initial Wiener filtering of the signal was not analyzed as it was
+used without modification from its original implementation outside
+of the scope of this thesis.
+
+<P>
+The baseline system used for the experiments in the diarization
+module and in the speech/non speech module corresponds to a
+modified version of the broadcast news system presented for the
+NIST RT04f evaluation as described in section <A HREF="node42.html#bn_system">3.1</A>.
+This corresponds to a mono-channel system (or Single Distant
+Microphone, SDM, in the meetings domain) with the following main
+differences from RT04f:
+
+<P>
+
+<UL>
+<LI>The speech/non-speech (spnsp) detector used in the
+experiments for the hybrid spnsp algorithm is composed of a
+two-states HMM model trained with meetings data, as it was used in
+the RT05s evaluation and explained in section <A HREF="node42.html#bn_system">3.1</A>. For
+the speaker diarization module the proposed hybrid spnsp detector
+was used instead, with parameters equal to the values used for the
+RT06s evaluation (see <A
+ HREF="node147.html#Anguera_2006f">Anguera, Wooters and Pardo (2006b)</A>,
+(<A
+ HREF="node147.html#Anguera_2006e">Anguera, Wooters and Pardo, 2006a</A>)). These use the parameter values optimized in
+the spnsp experiments section.
+
+<P>
+</LI>
+<LI>During the agglomerative clustering processing the same
+speaker turn minimum duration is applied as in the broadcast news
+system (3 seconds). Before the output of the resulting
+segmentation, a final segmentation step is performed using the
+same speaker models but reducing the minimum duration to 1.5
+seconds to allow for smaller speaker turns to be properly
+detected.
+
+<P>
+</LI>
+<LI>The HMM acoustic models used in the segmentation of the data
+do not have any maximum time constraint, as explained in section
+<A HREF="node75.html#no_time_restrict">4.2.3</A>, to allow the speaker segments to be as
+long as the acoustics dictate. As shown in
+<A
+ HREF="node147.html#Anguera_2006c">Anguera, Wooters and Hernando (2006a)</A> it does not change much the DER of the
+systems but allows for longer speaker segments to be created.
+
+<P>
+</LI>
+<LI>A few bug fixes regarding floating point values
+inexactitudes were resolved which slightly changed the system
+outputs.
+
+<P>
+</LI>
+<LI>The BIC-based stopping criterion is used in all experiments
+in order to stop clustering when the optimum number of clusters is
+reached.
+
+<P>
+</LI>
+</UL>
+
+<P>
+The baseline system used for experiments on the beamforming module
+is composed of the submission to RT06s NIST evaluation campaign.
+This contains all the modules as explained in section
+<A HREF="node86.html#multi-implement">5.2</A> and their parameters optimized using a
+subset of 10 meetings from the development data available for
+RT06s.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1810"
+  HREF="node106.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1806"
+  HREF="node104.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1800"
+  HREF="node104.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1808"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1811"
+  HREF="node106.html">Databases</A>
+<B> Up:</B> <A NAME="tex2html1807"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+<B> Previous:</B> <A NAME="tex2html1801"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+ &nbsp; <B>  <A NAME="tex2html1809"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

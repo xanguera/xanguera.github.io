@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Frame and Segment Purification</TITLE>
+<META NAME="description" CONTENT="Frame and Segment Purification">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node125.html">
+<LINK REL="previous" HREF="node123.html">
+<LINK REL="up" HREF="node120.html">
+<LINK REL="next" HREF="node125.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2051"
+  HREF="node125.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2047"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2041"
+  HREF="node123.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2049"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2052"
+  HREF="node125.html">Multiple Feature Streams Automatic</A>
+<B> Up:</B> <A NAME="tex2html2048"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2042"
+  HREF="node123.html">Friends-and-Enemies Clusters Initialization</A>
+ &nbsp; <B>  <A NAME="tex2html2050"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001051400000000000000">
+Frame and Segment Purification</A>
+</H3>
+
+<P>
+The frame and segment purification algorithms deal with the
+problem of cluster impurity at two different levels. The segment
+level purification locates the segments within a cluster that are
+most probable to belong to a different speaker and places them in
+a different cluster. The frame level purification locates those
+frames that impede the proper discrimination between clusters and
+eliminates them when conducting the cluster pairs comparison.
+
+<P>
+First, experiments were performed on the frame purification
+algorithm. For all experiments either metric 1 or 2 were used (see
+section <A HREF="node80.html#frame_pur_implement">4.3.1</A>). Two main parameters were
+selected that determine the behavior of the algorithm given the
+data. On one hand the percentage <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ P$"></SPAN>% of data with the highest
+metric values to be eliminated from the models comparison. On the
+other hand, the percentage of Gaussian mixtures with smallest
+average variance that are used to compute metric 2. In fact,
+metric 1 can be considered equivalent to metric 2 when 100% of
+Gaussians are used.
+
+<P>
+Given the development data, figure <A HREF="#frame_pur_percent">6.12</A> shows
+the average DER for several <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img498.png"
+ ALT="$ P\%$"></SPAN> of used frames and using 50%
+and 75% of the available Gaussians. The optimum value is found
+for 50% Gaussians and using <SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img499.png"
+ ALT="$ P=70\%$"></SPAN> of the frames. While using a
+75% of Gaussians shows a clear minimum point with much higher
+values around it, with the optimum 50% values oscillate around
+the minimum, showing a more robust selection of the optimum point.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="frame_pur_percent"></A><A NAME="7526"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.12:</STRONG>
+<I>DER variation with the percentage of accepted frames
+and used Gaussians in frame purification</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="612" HEIGHT="245" BORDER="0"
+ SRC="img500.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/frame_pur_percent,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+In the segment purification algorithm no parameters were tuned.
+Table <A HREF="#table_purification">6.15</A> compares the selected systems to
+the baseline both in the development set and the evaluation set.
+While segment purification obtains an improvement of 2.5%
+relative on the development set, it obtains worse results than the
+baseline in the evaluation set. The frame purification algorithm
+obtains an improvement of 3.6% and 2.8% relative improvement in
+development and evaluation sets respectively.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7527"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.15:</STRONG>
+<I>DER results for the segment and frame purification
+algorithms</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">System</TD>
+<TD ALIGN="CENTER">DER Devel</TD>
+<TD ALIGN="CENTER">DER Test</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Baseline system</TD>
+<TD ALIGN="CENTER">18.71%</TD>
+<TD ALIGN="CENTER">23.23%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Frame purification</TD>
+<TD ALIGN="CENTER">18.03%</TD>
+<TD ALIGN="CENTER">22.58%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Segment purification</TD>
+<TD ALIGN="CENTER">18.23%</TD>
+<TD ALIGN="CENTER">24.23%</TD>
+</TR>
+</TABLE>
+ <A NAME="table_purification"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2051"
+  HREF="node125.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2047"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2041"
+  HREF="node123.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2049"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2052"
+  HREF="node125.html">Multiple Feature Streams Automatic</A>
+<B> Up:</B> <A NAME="tex2html2048"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2042"
+  HREF="node123.html">Friends-and-Enemies Clusters Initialization</A>
+ &nbsp; <B>  <A NAME="tex2html2050"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

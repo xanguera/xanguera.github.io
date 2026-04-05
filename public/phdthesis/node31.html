@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>NIST 2004 Rich Transcription Spring Meeting Evaluation</TITLE>
+<META NAME="description" CONTENT="NIST 2004 Rich Transcription Spring Meeting Evaluation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node32.html">
+<LINK REL="previous" HREF="node30.html">
+<LINK REL="up" HREF="node29.html">
+<LINK REL="next" HREF="node32.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html800"
+  HREF="node32.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html796"
+  HREF="node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html790"
+  HREF="node30.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html798"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html801"
+  HREF="node32.html">NIST 2005 Rich Transcription</A>
+<B> Up:</B> <A NAME="tex2html797"
+  HREF="node29.html">NIST RT Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html791"
+  HREF="node30.html">NIST 2002 Speaker Recognition</A>
+ &nbsp; <B>  <A NAME="tex2html799"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00643200000000000000">
+NIST 2004 Rich Transcription Spring Meeting Evaluation</A>
+</H3>
+
+<P>
+Within the NIST 2004 Spring Rich Transcription Evaluation
+(<A
+ HREF="node147.html#NIST_Meetings_web"><EM>NIST Spring Rich Transcription Evaluation in Meetings
+  website,
+  http://www.nist.gov/speech/tests/rt/rt2005/spring</EM>, 2006</A>) speaker diarization was evaluated in
+meeting recordings in two different conditions: Multiple Distant
+Microphones (MDM) and Single Distant Microphone (SDM). The MDM
+condition uses multiple microphones located in the center of a
+meetings table, and the SDM case uses only one of these
+microphones, normally the most centrally located. This is the
+first time that this task was performed for meetings environment
+on the MDM condition. A full description of the different tasks
+evaluated and the results of such evaluation can be found in
+<A
+ HREF="node147.html#Garofolo_2004">Garofolo et&nbsp;al. (2004)</A>. Following are the approaches (in
+brief) that the participants proposed for the MDM and SDM
+conditions:
+
+<P>
+
+<UL>
+<LI>Macquarie University in <A
+ HREF="node147.html#Cassidy_2004">Cassidy (2004)</A> proposes
+the same system for SDM than for MDM, using always the SDM
+channel. A BIC based speaker segmentation step is followed by an
+agglomerative clustering using Mahalanobis distance between
+clusters and BIC as stopping criterion.
+
+<P>
+</LI>
+<LI>The ELISA consortium in <A
+ HREF="node147.html#Fredouille_2004">Fredouille et&nbsp;al. (2004)</A>
+proposes a two-axis merging strategy. An horizontal merging
+consists on the collapse and resegmentation of the clustering
+output of their two expert systems (based on BIC and EHMM) as
+proposed in the RT03 and SRE02 evaluations (<A
+ HREF="node147.html#Moraru_2004">Moraru, Meignier, Fredouille, Besacier and
+  Bonastre, 2004</A>).
+This is done for each individual MDM channel or for the SDM
+channel. The vertical merging is applied when processing multiple
+channels and unifies all the individual channels into one single
+resulting output by merging all channels at the output level. It
+uses an iterative process that searches for the longest speaker
+interventions that are common to all outputs and finally assigns
+to the closest speaker those segments of short duration where the
+different channels do not agree on.
+
+<P>
+</LI>
+<LI>Carnegie Mellon University (CMU) in <A
+ HREF="node147.html#Jin_2004">Jin et&nbsp;al. (2004)</A>
+presents a clustering scheme based on GLR distance and BIC
+stopping criterion. In order to obtain the initial segmentation of
+the data it does a three steps process, first a Speech Activity
+Detection (SAD) is done over all the channels, then the resulting
+segments for all channels are collapsed into a single segmentation
+and the best channel (according to an energy/SNR metric) is chosen
+for each segment. Finally GLR change detection is applied on
+segments <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.png"
+ ALT="$ &gt;$"></SPAN>5s to detect any missed change point. The speaker
+clustering is done using a global GMM trained on all the meeting
+excerpt data and adapted to each segment and uses GLR to compute
+the cluster pair distances to be used in an agglomerative
+clustering processing with BIC stopping criterion.
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html800"
+  HREF="node32.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html796"
+  HREF="node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html790"
+  HREF="node30.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html798"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html801"
+  HREF="node32.html">NIST 2005 Rich Transcription</A>
+<B> Up:</B> <A NAME="tex2html797"
+  HREF="node29.html">NIST RT Speaker Diarization</A>
+<B> Previous:</B> <A NAME="tex2html791"
+  HREF="node30.html">NIST 2002 Speaker Recognition</A>
+ &nbsp; <B>  <A NAME="tex2html799"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

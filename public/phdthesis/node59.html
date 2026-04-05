@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Models Training Using CV-EM and Clusters Segmentation</TITLE>
+<META NAME="description" CONTENT="Models Training Using CV-EM and Clusters Segmentation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node58.html">
+<LINK REL="up" HREF="node58.html">
+<LINK REL="next" HREF="node60.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1168"
+  HREF="node60.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1164"
+  HREF="node58.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1160"
+  HREF="node58.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1166"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1169"
+  HREF="node60.html">Clusters Merging and System</A>
+<B> Up:</B> <A NAME="tex2html1165"
+  HREF="node58.html">Speaker Clusters and Models</A>
+<B> Previous:</B> <A NAME="tex2html1161"
+  HREF="node58.html">Speaker Clusters and Models</A>
+ &nbsp; <B>  <A NAME="tex2html1167"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00733100000000000000"></A>
+<A NAME="CV-EM_training"></A>
+<BR>
+Models Training Using CV-EM and Clusters Segmentation
+</H3>
+
+<P>
+In order to train the speaker models used throughout the
+processing a standard EM-ML algorithm was used by the broadcast
+news system. It performed a five iterations EM-ML algorithm
+regardless of the data or the models being trained. The use of EM
+in small training datasets has two potential problems. On one hand
+the models can suffer from overfitting to the available data,
+becoming not general enough to represent the speaker at hand. On
+the other hand there is no guarantee that the models will converge
+to the best possible parameters that maximize the likelihood of
+the data given such model. The use of <SPAN CLASS="MATH"><IMG
+ WIDTH="46" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img210.png"
+ ALT="$ k=5$"></SPAN> iteration of EM
+training is a parameter that needs to be defined for the system in
+order to avoid overfitting but to allow the models to be correctly
+trained to the data. It was seen that modifying the value of the
+parameter <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img73.png"
+ ALT="$ k$"></SPAN> would considerably alter the final performance, and
+therefore it was found desirable to find a more robust algorithm.
+
+<P>
+For these reasons a new training algorithm has been implemented.
+The choice of implementation has been the cross-validation EM
+training algorithm (CV-EM for short), recently proposed by T.
+Shinozaki in <A
+ HREF="node147.html#Shinozaki_2006">Shinozaki and Ostendorf (2007)</A>. It introduces a
+cross-validation technique, in use for decision tree design, to
+the iterative process of the EM, addressing the problems of
+overfitting and potential local maxima.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="cv_em"></A><A NAME="3589"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.8:</STRONG>
+<I>Cross-validation EM training algorithm</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="435" HEIGHT="289" BORDER="0"
+ SRC="img211.png"
+ ALT="\begin{figure}
+\centering {\epsfig{figure=figures/cv_em,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Figure <A HREF="#cv_em">3.8</A> shows the CV-EM procedure. The system starts
+from an initial single model to be trained and finishes also with
+a single model. On the initial E-step of the EM processing the
+training data is split into N partitions as homogeneously as
+possible (in the implementation each consecutive frame is assigned
+to a different partition sequentially until all frames have been
+assigned). Then the conditional probability of each frame to each
+Gaussian mixture in the initial model is computed. This process is
+identical to the initial E-step in a similar technique called
+parallel EM training (<A
+ HREF="node147.html#Young_2005">Young et&nbsp;al., 2005</A>).
+
+<P>
+In the following M-step, each model <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ M_{i}$"></SPAN> is reestimated using
+the sufficient statistics computed for all partitions except for
+<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img212.png"
+ ALT="$ SS_{i}$"></SPAN>, which is kept as cross-validation data. This differs
+from the parallel EM technique, which collapses all the statistics
+into creating a single model, losing the cross-validation
+properties. In the CV-EM algorithm, once all the N models have
+been approximated, new conditional probabilities are computed for
+the frames in each partition <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img212.png"
+ ALT="$ SS_{i}$"></SPAN> using model <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ M_{i}$"></SPAN>. As data
+in partition <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img212.png"
+ ALT="$ SS_{i}$"></SPAN> has not been involved in the reestimation of
+the parameters in <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ M_{i}$"></SPAN>, the accumulated likelihood from all
+partitions can be used as a cross-validation to check for
+convergence, avoiding the possible overfitting to the data. In the
+implementation a <!-- MATH
+ $\Delta \mathcal{L}_{inc} = 0.1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="96" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img213.png"
+ ALT="$ \Delta \mathcal{L}_{inc} = 0.1$"></SPAN>% likelihood
+increase criterion is used.
+
+<P>
+In <A
+ HREF="node147.html#Shinozaki_2006">Shinozaki and Ostendorf (2007)</A> it proposes a 5 iterations step
+when training models towards speech recognition, although in
+speaker diarization a likelihood relative increase stopping
+criterion is preferred in order to bound the likelihood variation
+between iterations.
+
+<P>
+Given two clusters <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img214.png"
+ ALT="$ A$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img215.png"
+ ALT="$ B$"></SPAN>, with data <SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img216.png"
+ ALT="$ X_{A}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img217.png"
+ ALT="$ X_{B}$"></SPAN> and
+their respective models, <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img218.png"
+ ALT="$ M_{A}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img219.png"
+ ALT="$ M_{B}$"></SPAN>, when training such
+models let us consider the variation in likelihood between two EM
+iterations as <!-- MATH
+ $\Delta \mathcal{L}(X_{A}|M_{A})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="103" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img220.png"
+ ALT="$ \Delta \mathcal{L}(X_{A}\vert M_{A})$"></SPAN> and <!-- MATH
+ $\Delta
+\mathcal{L}(X_{B}|M_{B})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img221.png"
+ ALT="$ \Delta
+\mathcal{L}(X_{B}\vert M_{B})$"></SPAN>. Within the diarization system we want
+to use the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC metric to determine wether they belong to
+the same speaker or not. By using the modified <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC
+constrained by <A HREF="node45.html#BIC_condition">3.2</A>, and expanding terms, we
+obtain:
+
+<P>
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="BIC_deltas"></A><!-- MATH
+ \begin{eqnarray}
+\Delta BIC(A,B) =& \log \mathcal{L}(X_{A}|M_{A+B}) + \log
+\mathcal{L}(X_{B}|M_{A+B}) \nonumber\\
+&- \log \mathcal{L}(X_{A}|M_{A}) - \log \mathcal{L}(X_{B}|M_{B})
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="123" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img222.png"
+ ALT="$\displaystyle \Delta BIC(A,B) =$"></TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="287" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img223.png"
+ ALT="$\displaystyle \log \mathcal{L}(X_{A}\vert M_{A+B}) + \log
+\mathcal{L}(X_{B}\vert M_{A+B})$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="262" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img224.png"
+ ALT="$\displaystyle - \log \mathcal{L}(X_{A}\vert M_{A}) - \log \mathcal{L}(X_{B}\vert M_{B})$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+In the usual proceeding of the algorithm, by comparing
+the resulting <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC value to a threshold 0 it will be
+determined wether both clusters are the same speaker or not. If
+each of the models is trained an extra EM iteration, and using the
+notation introduced before, one can express the resulting
+<!-- MATH
+ $\Delta^{'}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img225.png"
+ ALT="$ \Delta^{'}$"></SPAN>BIC in terms of the one just computed in equation
+<A HREF="#BIC_deltas">3.3</A> as
+
+<P>
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+\Delta BIC'(A,B) =& \Delta BIC(A,B) + \Delta
+\mathcal{L}(X_{A}|M_{A+B}) +
+\Delta \mathcal{L}(X_{B}|M_{A+B}) \nonumber\\
+&- \Delta \mathcal{L}(X_{A}|M_{A}) - \Delta
+\mathcal{L}(X_{B}|M_{B})
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT"><IMG
+ WIDTH="127" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$\displaystyle \Delta BIC'(A,B) =$"></TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="387" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img227.png"
+ ALT="$\displaystyle \Delta BIC(A,B) + \Delta
+\mathcal{L}(X_{A}\vert M_{A+B}) +
+\Delta \mathcal{L}(X_{B}\vert M_{A+B})$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP WIDTH="50%" ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP WIDTH="50%"><IMG
+ WIDTH="237" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img228.png"
+ ALT="$\displaystyle - \Delta \mathcal{L}(X_{A}\vert M_{A}) - \Delta
+\mathcal{L}(X_{B}\vert M_{B})$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+In order for the system to be robust and results
+consistent it is desired that <!-- MATH
+ $BIC'(A,B) = BIC(A,B)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="203" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img229.png"
+ ALT="$ BIC'(A,B) = BIC(A,B)$"></SPAN> which leads
+to having the likelihood variation terms to cancel out. While it
+is not possible to control the exact likelihood variations between
+iterations, by using a minimum relative likelihood variation as a
+stopping criterion for the CV-EM training makes these terms upper
+bounded and the BIC more stable. Furthermore, by forcing these
+variations to be small will result in <!-- MATH
+ $BIC(A,B) \simeq BIC'(A,B)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="203" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img230.png"
+ ALT="$ BIC(A,B) \simeq BIC'(A,B)$"></SPAN>
+as desired.
+
+<P>
+According to <A
+ HREF="node147.html#Shinozaki_2006">Shinozaki and Ostendorf (2007)</A>, since N cross-validation
+models are reestimated from different subsets of the data it could
+potentially create a problem where the Gaussian mixtures would
+behave differently to the data and obtain totally different
+parallel models, in which case the CV-EM algorithm would not be
+usable. In reality the difference in number of samples between any
+two models is <!-- MATH
+ $\frac{1}{N-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img231.png"
+ ALT="$ \frac{1}{N-1}$"></SPAN>, which becomes very small when N is
+large, and therefore prevents this divergence from happening.
+
+<P>
+Once the CV-training stopping criterion is reached, the current
+sufficient statistics computed for each of the subsets are used to
+derive a single output model. The increase in computation for this
+parallel training technique is small as only in the M-step the
+number of operations is increased. When the size of the training
+data is big, the most costly part of the EM algorithm is the
+E-step, which takes the same time to be computed as by the CV-EM
+algorithm.
+
+<P>
+In order to avoid quick changes in the speaker turns in both the
+baseline and the current system, a minimum duration of 3 seconds
+is imposed when performing Viterbi segmentation of the data. This
+is imposed in the speaker model by using multiple consecutive
+states with transition probability 1 between them, and tied
+Gaussian mixture models, as seen in figure <A HREF="node44.html#bn_topology">3.2</A>.
+
+<P>
+On the contrary, it was observed that the maximum turn duration
+for the speaker turn is artificially constrained by the <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img65.png"
+ ALT="$ \alpha$"></SPAN>
+and <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img232.png"
+ ALT="$ \beta$"></SPAN> parameters in figure <A HREF="node44.html#bn_topology">3.2</A>. As explained
+in detail in section <A HREF="node75.html#no_time_restrict">4.2.3</A> these were changed to
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img233.png"
+ ALT="$ \alpha=1$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img234.png"
+ ALT="$ \beta=1$"></SPAN> to allow the maximum duration to be
+solely decided by the acoustics. This is an important change given
+that conference room data is very different in terms of average
+speaker turn length to broadcast news and to lecture room data.
+
+<P>
+As mentioned earlier, when processing multiple microphones the
+system creates an independent feature stream to the acoustic
+stream composed of the TDOA values between microphones. As
+explained in section <A HREF="node100.html#multi_delays">5.3</A>, each one of the feature
+streams is represented by different models and the total
+likelihood of the data at any instant is obtained as the weighted
+sum of the log-likelihood of the respective feature vectors
+according to their models. The resulting log-likelihood affects
+the decisions made in the Viterbi segmentation module and in the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC computation between two clusters, which otherwise are
+identical to the broadcast news system.
+
+<P>
+In order for the different independent feature streams to be
+combined at the log-likelihood level a relative weight has to be
+assigned for each one depending on their reliability to contribute
+to the diarization. Although an initial weight is set for all
+meetings using development data, each particular meeting will
+respond differently to the use of the TDOA values and therefore an
+automatic system of reestimating these initial weights is
+desirable. An effective way was found using a metric derived from
+the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img92.png"
+ ALT="$ \Delta$"></SPAN>BIC values computed between all pairs for all feature
+streams. It is described in section <A HREF="node102.html#weight_estimation">5.3.2</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1168"
+  HREF="node60.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1164"
+  HREF="node58.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1160"
+  HREF="node58.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1166"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1169"
+  HREF="node60.html">Clusters Merging and System</A>
+<B> Up:</B> <A NAME="tex2html1165"
+  HREF="node58.html">Speaker Clusters and Models</A>
+<B> Previous:</B> <A NAME="tex2html1161"
+  HREF="node58.html">Speaker Clusters and Models</A>
+ &nbsp; <B>  <A NAME="tex2html1167"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>NIST RT Speaker Diarization Systems for Meetings</TITLE>
+<META NAME="description" CONTENT="NIST RT Speaker Diarization Systems for Meetings">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node28.html">
+<LINK REL="up" HREF="node26.html">
+<LINK REL="next" HREF="node30.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html772"
+  HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html768"
+  HREF="node26.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html764"
+  HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html770"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html773"
+  HREF="node30.html">NIST 2002 Speaker Recognition</A>
+<B> Up:</B> <A NAME="tex2html769"
+  HREF="node26.html">Speaker Diarization in Meetings</A>
+<B> Previous:</B> <A NAME="tex2html765"
+  HREF="node28.html">Databases</A>
+ &nbsp; <B>  <A NAME="tex2html771"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00643000000000000000">
+NIST RT Speaker Diarization Systems for Meetings</A>
+</H2>
+
+<P>
+The National Institute for Standards and Technology (NIST)
+(<A
+ HREF="node147.html#NIST_web"><EM>National Institute for Standards and
+  Technology</EM>, 2006</A>) has been organizing multiple evaluations over the
+years on many aspects of speech technologies. In the area of
+speaker diarization evaluations, they started in year 2000 with
+interest in telephone speech (2000, 2001, 2002), broadcast news
+(2002, 2003, 2004) and meetings (2002, 2004, 2005, 2006). In the
+latest two years, focus has been geared exclusively towards the
+meetings environment.
+
+<P>
+The datasets used in the meetings evaluations were
+hand-transcribed by LDC. This acoustic data constitutes the basis
+for the development and evaluation of the algorithms proposed in
+this thesis. Initially, in 2002, the speaker segmentation task was
+enclosed within the speaker recognition evaluation (SRE-02) and
+used data from the NIST meeting room research project. This
+changed for 2004-2006 when speaker diarization has been a part of
+the Rich Transcription (RT) evaluation (RT04s, RT05s and RT06s),
+grouping it with the speech-to-text evaluation (STT) on meetings
+data. The datasets used for these evaluations contain data from
+CMU, ICSI, LDC, NIST, CHIL and AMI.
+
+<P>
+In the following sections the main ideas in the systems presented
+to each of the NIST meetings evaluations are explained, together
+with the particular algorithms that were created explicitly for
+processing of meetings data.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html774"
+  HREF="node30.html">NIST 2002 Speaker Recognition Evaluation</A>
+<LI><A NAME="tex2html775"
+  HREF="node31.html">NIST 2004 Rich Transcription Spring Meeting Evaluation</A>
+<LI><A NAME="tex2html776"
+  HREF="node32.html">NIST 2005 Rich Transcription Spring Meeting Evaluation</A>
+<LI><A NAME="tex2html777"
+  HREF="node33.html">NIST 2006 Rich Transcription Spring Meeting Evaluation</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html772"
+  HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html768"
+  HREF="node26.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html764"
+  HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html770"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html773"
+  HREF="node30.html">NIST 2002 Speaker Recognition</A>
+<B> Up:</B> <A NAME="tex2html769"
+  HREF="node26.html">Speaker Diarization in Meetings</A>
+<B> Previous:</B> <A NAME="tex2html765"
+  HREF="node28.html">Databases</A>
+ &nbsp; <B>  <A NAME="tex2html771"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

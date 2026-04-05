@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Friends-and-Enemies Clusters Initialization</TITLE>
+<META NAME="description" CONTENT="Friends-and-Enemies Clusters Initialization">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node124.html">
+<LINK REL="previous" HREF="node122.html">
+<LINK REL="up" HREF="node120.html">
+<LINK REL="next" HREF="node124.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2039"
+  HREF="node124.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2035"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2029"
+  HREF="node122.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2037"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2040"
+  HREF="node124.html">Frame and Segment Purification</A>
+<B> Up:</B> <A NAME="tex2html2036"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2030"
+  HREF="node122.html">Cross-Validation EM Training</A>
+ &nbsp; <B>  <A NAME="tex2html2038"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION001051300000000000000">
+Friends-and-Enemies Clusters Initialization</A>
+</H3>
+
+<P>
+Once the initial number of desired clusters is defined, the
+algorithm called friends-and-enemies was proposed to cluster the
+available acoustic data among these clusters so that the cluster
+purity was maximized and there were no speakers (regardless of the
+length of their intervention in the recording) that were left
+without any exclusive cluster. The proposed algorithm is an
+iterative process where initial single speaker segments are
+clustered together with the closest segments (friends) and new
+clusters are derived with the most dissimilar resulting
+segments(enemies).
+
+<P>
+In the definition of the algorithm there are three levels of
+freedom that need to be evaluated. On one hand, a way of selecting
+the initial speaker segment to start the iterative processing and
+a metric of ``closeness'' between segments need to be defined. On
+the other hand, one needs to determine the optimum number of
+friend-segments to group into a cluster so that it is well
+represented but only with data from one speaker.
+
+<P>
+In the description of the algorithm, in section
+<A HREF="node71.html#friends_enemies">4.2.1</A>, three alternatives are proposed for both
+the selection of the initial segment and the distance metric
+between segments. Table <A HREF="#table_friends_enemies">6.14</A> shows the
+average DER of the considered systems using the different
+combinations of initial segment selection and distance metric as
+numbered in section <A HREF="node71.html#friends_enemies">4.2.1</A> for the development set.
+These values were computed using 2 friends for each cluster (i.e.
+total of 3 segments per initial cluster).
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="7522"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.14:</STRONG>
+<I>Average DER for the development set using various
+possible distance metrics and initial segment selection
+criterions</I></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+
+</DIV>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">distance metric/init segment</TD>
+<TD ALIGN="CENTER">init 1</TD>
+<TD ALIGN="CENTER">init 2</TD>
+<TD ALIGN="CENTER">init 3</TD>
+</TR>
+<TR><TD ALIGN="LEFT">metric 1 (eq. <A HREF="node71.html#fr-en_metric1">4.6</A>)</TD>
+<TD ALIGN="CENTER">19.8%</TD>
+<TD ALIGN="CENTER">19.51%</TD>
+<TD ALIGN="CENTER">19.08%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">metric 2 (eq. <A HREF="node71.html#fr-en_metric2">4.7</A>)</TD>
+<TD ALIGN="CENTER">19.74%</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">18.34</SPAN>%</TD>
+<TD ALIGN="CENTER">20.34%</TD>
+</TR>
+<TR><TD ALIGN="LEFT">metric 3 (eq. <A HREF="node71.html#fr-en_metric3">4.8</A>)</TD>
+<TD ALIGN="CENTER">19.58%</TD>
+<TD ALIGN="CENTER">19.12%</TD>
+<TD ALIGN="CENTER"><SPAN  CLASS="textbf">18.10</SPAN>%</TD>
+</TR>
+</TABLE>
+ <A NAME="table_friends_enemies"></A>
+</TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+From the results in table <A HREF="#table_friends_enemies">6.14</A>, the
+combinations 2-2 and 3-3 are the ones with better DER values,
+compared to the baseline with 18.71% DER they represent a 1.9%
+and a 3.2% relative improvement respectively. Taking the
+combination 2-2, figure <A HREF="#fr_en_numfriends">6.11</A> shows the evolution
+of the DER for each system with the number of friends chosen.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fr_en_numfriends"></A><A NAME="7524"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.11:</STRONG>
+<I>DER variation with the number of friends used in the
+friends-and-enemies initialization</I></CAPTION>
+<TR><TD><IMG
+ WIDTH="441" HEIGHT="236" BORDER="0"
+ SRC="img497.png"
+ ALT="\begin{figure}
+\centerline{\epsfig{figure=figures/fr_en_numfriends,width=100mm}}
+\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+For values greater than 1 the system is very robust as the three
+systems obtain very stable results. The minimum average DER
+pertains to using 3 friends, with a 17.47% DER, a 6.62% relative
+improvement over the baseline.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2039"
+  HREF="node124.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2035"
+  HREF="node120.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2029"
+  HREF="node122.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2037"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2040"
+  HREF="node124.html">Frame and Segment Purification</A>
+<B> Up:</B> <A NAME="tex2html2036"
+  HREF="node120.html">Individual Algorithms Performance</A>
+<B> Previous:</B> <A NAME="tex2html2030"
+  HREF="node122.html">Cross-Validation EM Training</A>
+ &nbsp; <B>  <A NAME="tex2html2038"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

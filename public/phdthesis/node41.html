@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Speaker Diarization: from Broadcast News to Meetings</TITLE>
+<META NAME="description" CONTENT="Speaker Diarization: from Broadcast News to Meetings">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node61.html">
+<LINK REL="previous" HREF="node9.html">
+<LINK REL="up" HREF="PhD_Thesis.html">
+<LINK REL="next" HREF="node42.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html921"
+  HREF="node42.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html917"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html911"
+  HREF="node40.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html919"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html922"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Up:</B> <A NAME="tex2html918"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html912"
+  HREF="node40.html">Time Delay of Arrival</A>
+ &nbsp; <B>  <A NAME="tex2html920"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00700000000000000000"></A>
+<A NAME="system_intro"></A>
+<BR>
+Speaker Diarization: from Broadcast News to Meetings
+</H1>
+
+<P>
+When applying a known technique to a new task it is preferable to
+do it starting from some well rooted theory and some
+implementation that has been proven to be successful in a task
+similar to the proposed one, while analyzing its shortcoming on
+this new domain and proposing improvements to it. This is the case
+of the diarization system presented for the meetings environment,
+which is based on the system previously developed at the
+International Computer Science Institute (ICSI) for the task of
+broadcast news. It has been developed by proposing alternatives to
+the algorithms that had some room for improvement or that needed
+to be adapted to better fit the new domain. Also, given that the
+broadcast news system is designed to run only on a single-channel
+recording, the necessary algorithms have also been implemented to
+adapt the signals from multiple channels/microphones to be able to
+process them with the presented system.
+
+<P>
+This chapter covers the description of both the broadcast news
+system and the new meetings domain system, bridging the gap
+between both by analyzing the differences that have been observed
+during development.
+
+<P>
+In the first part, the broadcast news system is described in
+detail, pointing out the main ideas behind it and its
+implementation, and baseline results are shown regarding its
+performance for the NIST Rich transcription evaluations for
+broadcast news (RT03s and RT04f) in which ICSI participated.
+
+<P>
+Following the broadcast news description, a comparison on some of
+the parameters measurable on both domains (meetings and broadcast
+news) is offered. The differences between them are pointed out, as
+well as the areas where this thesis proposes improvements in
+converting a system from one task to the other.
+
+<P>
+Finally, a description of the meetings domain speaker diarization
+system is given. The detailed description of all the novel
+algorithms involved in the new system is split between the current
+and next two chapters. In this chapter a detailed description is
+given of those algorithms that have been adapted from different
+sources but that are not considered a novelty of this thesis by
+themselves. It also gives an overview description of the rest of
+the algorithms (novel in this thesis) to obtain a complete view of
+the overall system.
+
+<P>
+The techniques considered to be the primary contribution of this
+thesis will be described in chapters <A HREF="node61.html#acoustic_modeling">4</A>,
+focusing in those algorithms within the single-channel speaker
+diarization system, and <A HREF="node82.html#multich_process">5</A> which deals with the
+use of the multiple channels in a meeting room to further improve
+the system.
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html923"
+  HREF="node42.html">The ICSI Broadcast News System</A>
+<UL>
+<LI><A NAME="tex2html924"
+  HREF="node43.html">Speech/non-Speech Detection and Parameters
+Extraction</A>
+<LI><A NAME="tex2html925"
+  HREF="node44.html">Clusters Initialization and Acoustic Modeling</A>
+<LI><A NAME="tex2html926"
+  HREF="node45.html">Clusters Comparison, Pruning and Clusters Merging</A>
+<LI><A NAME="tex2html927"
+  HREF="node46.html">Stopping Criterion and System Output</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html928"
+  HREF="node47.html">Analysis of Differences from Broadcast News to Meetings</A>
+<UL>
+<LI><A NAME="tex2html929"
+  HREF="node48.html">Input Data Analysis: Broadcast News versus Meetings</A>
+<UL>
+<LI><A NAME="tex2html930"
+  HREF="node49.html">Signal to Noise Ratio</A>
+<LI><A NAME="tex2html931"
+  HREF="node50.html">Average Total Speaking Time</A>
+<LI><A NAME="tex2html932"
+  HREF="node51.html">Average Number of Speakers</A>
+<LI><A NAME="tex2html933"
+  HREF="node52.html">Average Speaker Turn Duration</A>
+<LI><A NAME="tex2html934"
+  HREF="node53.html">Meetings Domain Overlap Regions</A>
+</UL>
+<LI><A NAME="tex2html935"
+  HREF="node54.html">Summary of Differences and Proposed Changes</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html936"
+  HREF="node55.html">Robust Speaker Diarization System for Meetings</A>
+<UL>
+<LI><A NAME="tex2html937"
+  HREF="node56.html">Acoustic Signal Enhancement</A>
+<LI><A NAME="tex2html938"
+  HREF="node57.html">Single Channel System Frontend</A>
+<LI><A NAME="tex2html939"
+  HREF="node58.html">Speaker Clusters and Models Initialization</A>
+<UL>
+<LI><A NAME="tex2html940"
+  HREF="node59.html">Models Training Using CV-EM and Clusters Segmentation</A>
+</UL>
+<LI><A NAME="tex2html941"
+  HREF="node60.html">Clusters Merging and System Output</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html921"
+  HREF="node42.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html917"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html911"
+  HREF="node40.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html919"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html922"
+  HREF="node42.html">The ICSI Broadcast News</A>
+<B> Up:</B> <A NAME="tex2html918"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html912"
+  HREF="node40.html">Time Delay of Arrival</A>
+ &nbsp; <B>  <A NAME="tex2html920"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

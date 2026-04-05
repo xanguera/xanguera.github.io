@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Model-Based Segmentation</TITLE>
+<META NAME="description" CONTENT="Model-Based Segmentation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node16.html">
+<LINK REL="previous" HREF="node14.html">
+<LINK REL="up" HREF="node13.html">
+<LINK REL="next" HREF="node16.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html594"
+  HREF="node16.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html590"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html584"
+  HREF="node14.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html592"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html595"
+  HREF="node16.html">Segmentation Using Other Techniques</A>
+<B> Up:</B> <A NAME="tex2html591"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<B> Previous:</B> <A NAME="tex2html585"
+  HREF="node14.html">Silence and Decoder-Based Segmentation</A>
+ &nbsp; <B>  <A NAME="tex2html593"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00622200000000000000">
+Model-Based Segmentation</A>
+</H3>
+
+<P>
+Initial models (for example GMMs) are created for a closed set of
+acoustic classes (telephone-wideband, male-female,
+music-speech-silence and combinations of them) by using training
+data. The audio stream is then classified by ML (Maximum Likelihood)
+selection using these models (<A
+ HREF="node147.html#Gauvain_1998">Gauvain et&nbsp;al. (1998)</A>,
+<A
+ HREF="node147.html#Kemp_2000">Kemp et&nbsp;al. (2000)</A>, <A
+ HREF="node147.html#Bakis_1997">Bakis et&nbsp;al. (1997)</A>,
+<A
+ HREF="node147.html#Sankar_1998">Sankar et&nbsp;al. (1998)</A>, <A
+ HREF="node147.html#Kubala_1997">Kubala et&nbsp;al. (1997)</A>). The boundaries
+between models become the segmentation change points. One could also
+consider the decoder-guided systems to be model-based, as they model
+each phoneme and silence, but here researchers try to distinguish
+among broader classes, instead of models derived from speech
+recognition and trained for individual phones.
+
+<P>
+This segmentation method resembles very closely the speaker
+clustering techniques where the identity of the different speakers
+(in this case acoustic classes) is known a priori and an ML
+segmentation is found. Both areas have a robustness problem given
+that they require initial data to train the models. As will be shown
+in the speaker clustering section, in recent years there has been
+research done on the topic of blind speaker clustering, where no
+initial information of the clusters is known. There is some of this
+research that applies these techniques to speaker segmentation, in
+particular some clustering systems make use of an ML decoding of
+evolutive models that look for the optimum acoustic change points
+and speaker models at the same time.
+
+<P>
+In <A
+ HREF="node147.html#Ajmera_2002">Ajmera et&nbsp;al. (2002)</A> and <A
+ HREF="node147.html#Ajmera_2003b">Ajmera and Wooters (2003)</A> the
+iterative decoding is done bottom-up (starting with a large number
+of speaker changes as the product of a first step of processing and
+then eliminating them until obtaining the optimum amount) and in
+<A
+ HREF="node147.html#Meignier_2001">Meignier et&nbsp;al. (2001)</A> and <A
+ HREF="node147.html#Anguera_2004b">Anguera and Hernando (2004a)</A> it is done
+top-down (starting with one segment and adding extra segments until
+the final number is reached).
+
+<P>
+<A
+ HREF="node147.html#Meignier_2004">Meignier et&nbsp;al. (2004)</A> analyzed the use of evolutive systems
+where pretrained models are also used for modeling background
+conditions, showing that in general the more prior information that
+can be given to the system the better performance it achieves.
+
+<P>
+All of these systems use Gaussian Mixture Models (GMM) to model
+the different classes and an ML/Viterbi decoding approach to
+obtain the optimum change points. In <A
+ HREF="node147.html#Lu_2001b">Lu et&nbsp;al. (2001)</A> SVMs
+(Support Vector Machines) are used as a classifier instead of GMM
+models and the ML decoding, training them using pre-labelled data.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html594"
+  HREF="node16.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html590"
+  HREF="node13.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html584"
+  HREF="node14.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html592"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html595"
+  HREF="node16.html">Segmentation Using Other Techniques</A>
+<B> Up:</B> <A NAME="tex2html591"
+  HREF="node13.html">Non Metric-Based Segmentation</A>
+<B> Previous:</B> <A NAME="tex2html585"
+  HREF="node14.html">Silence and Decoder-Based Segmentation</A>
+ &nbsp; <B>  <A NAME="tex2html593"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

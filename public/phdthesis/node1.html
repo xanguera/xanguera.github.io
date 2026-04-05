@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Resum</TITLE>
+<META NAME="description" CONTENT="Resum">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="PhD_Thesis.html">
+<LINK REL="up" HREF="PhD_Thesis.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html295"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html291"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html285"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html293"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html296"
+  HREF="node2.html">Contents</A>
+<B> Up:</B> <A NAME="tex2html292"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html286"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+ &nbsp; <B>  <A NAME="tex2html294"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00100000000000000000">
+Resum</A>
+</H1>
+
+<P>
+Aquesta tesi doctoral mostra la recerca feta en l'&#224;rea de la
+diaritzaci&#243; de locutor per a sales de reunions. En la present
+s'estudien els algorismes i la implementaci&#243; d'un sistema en
+diferit de segmentaci&#243; i aglomerat de locutor per a grabacions
+de reunions a on normalment es t&#233; acc&#233;s a m&#233;s d'un
+micr&#242;fon per al processat. El bloc m&#233;s important de recerca
+s'ha fet durant una estada al International Computer Science
+Institute (ICSI, Berkeley, Caligornia) per un per&#237;ode de dos
+anys.
+
+<P>
+La diaritzaci&#243; de locutor s'ha estudiat for&#231;a per al domini
+de grabacions de r&#224;dio i televisi&#243;. La majoria dels sistemes
+proposats utilitzen algun tipus d'aglomerat jer&#224;rquic de les
+dades en grups ac&#250;stics a on de bon principi no se sap el
+n&#250;mero de locutors &#242;ptim ni tampoc la seva identitat. Un
+m&#232;tode molt comunment utilitzat s'anomena ``bottom-up
+clustering'' (aglomerat de baix-a-dalt), amb el qual inicialment
+es defineixen molts grups ac&#250;stics de dades que es van ajuntant
+de manera iterativa fins a obtenir el nombre &#242;ptim de grups tot
+i acomplint un criteri de parada. Tots aquests sistemes es basen
+en l'an&#224;lisi d'un canal d'entrada individual, el qual no permet
+la seva aplicaci'o directa per a reunions. A m&#233;s a m&#233;s, molts
+d'aquests algorismes necessiten entrenar models o afinar els
+parameters del sistema usant dades externes, el qual dificulta
+l'aplicabilitat d'aquests sistemes per a dades diferents de les
+usades per a l'adaptaci&#243;.
+
+<P>
+La implementaci&#243; proposada en aquesta tesi es dirigeix a
+solventar els problemes mencionats anteriorment. Aquesta pren com
+a punt de partida el sistema existent al ICSI de diaritzaci&#243; de
+locutor basat en l'aglomerat de ``baix-a-dalt''. Primer es
+processen els canals de grabaci&#243; disponibles per a obtindre un
+sol canal d'&#224;udio de qualitat major, a m&#233;s d'informaci&#243;
+sobre la posici&#243; dels locutors existents. Aleshores s'implementa
+un sistema de detecci&#243; de veu/silenci que no requereix de cap
+entrenament previ, i processa els segments de veu resultant amb
+una versi&#243; millorada del sistema mono-canal de diaritzaci&#243; de
+locutor. Aquest sistema ha estat modificat per a l'&#250;s de
+l'informaci&#243; de posici&#243; dels locutors (quan es tingui) i s'han
+adaptat i creat nous algorismes per a que el sistema obtingui
+tanta informaci&#243; com sigui possible directament del senyal
+acustic, fent-lo menys depenent de les dades de desenvolupament.
+
+<P>
+El sistema resultant es flexible i es pot usar en qualsevol tipus
+de sala de reunions pel que fa al nombre de micr&#242;fons o la seva
+posici&#243;. El sistema, a m&#233;s, no requereix en absolut dades
+d&#233;ntrenament, sent m&#233;s senzill adaptar-lo a diferents tipus de
+dades o dominis d'aplicaci&#243;. Finalment, fa un pas endavant en
+l'&#250;s de parametres que siguin mes robusts als canvis en les
+dades ac&#250;stiques. Dos versions del sistema es van presentar amb
+resultats excel.lents a les evaluacions de RT05s i RT06s del NIST
+en transcripci&#243; rica per a reunions, a on aquests es van avaluar
+amb dades de dos subdominis diferents (conferencies i reunions). A
+m&#233;s a m&#233;s, es fan experiments utilitzant totes les dades de
+les evaluacions RT per a demostrar la viabilitat dels algorismes
+proposats en aquesta tasca.
+
+<P>
+
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html295"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html291"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html285"
+  HREF="PhD_Thesis.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html293"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html296"
+  HREF="node2.html">Contents</A>
+<B> Up:</B> <A NAME="tex2html292"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+<B> Previous:</B> <A NAME="tex2html286"
+  HREF="PhD_Thesis.html">Robust Speaker Diarization for</A>
+ &nbsp; <B>  <A NAME="tex2html294"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Automatic Adaptive Channel Elimination</TITLE>
+<META NAME="description" CONTENT="Automatic Adaptive Channel Elimination">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="next" HREF="node99.html">
+<LINK REL="previous" HREF="node97.html">
+<LINK REL="up" HREF="node96.html">
+<LINK REL="next" HREF="node99.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1700"
+  HREF="node99.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1696"
+  HREF="node96.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1690"
+  HREF="node97.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1698"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1701"
+  HREF="node99.html">Channels Sum and Output</A>
+<B> Up:</B> <A NAME="tex2html1697"
+  HREF="node96.html">Output Signal Generation</A>
+<B> Previous:</B> <A NAME="tex2html1691"
+  HREF="node97.html">Automatic Channel Weight Adaptation</A>
+ &nbsp; <B>  <A NAME="tex2html1699"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00924200000000000000"></A>
+<A NAME="auto_channel_eliminate"></A>
+<BR>
+Automatic Adaptive Channel Elimination
+</H3>
+
+<P>
+Although efforts are made to ensure that the TDOA values assigned
+to each of the channels are correct, in some cases the signal of
+one of the channels at a particular segment is itself of such low
+quality that its use in the sum would only degrade the overall
+quality. This usually happens when the quality of one or more
+microphones is very different from the others (for example the PDA
+microphones in the ICSI meeting room recordings as explained in
+<A
+ HREF="node147.html#Janin_1998">Janin et&nbsp;al. (2004)</A>).
+
+<P>
+In the filter&amp;sum processing all available microphones in the
+room are used and a dynamic selection and elimination of the
+microphones that could harm the overall signal quality at every
+particular segment is performed. The previously defined
+<!-- MATH
+ $avexcorr_{n}[c]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="99" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img437.png"
+ ALT="$ avexcorr_{n}[c]$"></SPAN> is used to determine the channel quality. If
+<!-- MATH
+ $avexcorr_{n}[c] < \frac{1}{4N}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="145" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img440.png"
+ ALT="$ avexcorr_{n}[c] &lt; \frac{1}{4N}$"></SPAN> then <!-- MATH
+ $\mathcal{W}_{n}[c] = 0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="80" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img441.png"
+ ALT="$ \mathcal{W}_{n}[c] = 0$"></SPAN>.
+After checking all the channels for any elimination the weights
+are readapted to sum up to 1.
+
+<P>
+<BR><HR>
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>

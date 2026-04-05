@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Reference Segmentation Selection and Calculation</TITLE>
+<META NAME="description" CONTENT="Reference Segmentation Selection and Calculation">
+<META NAME="keywords" CONTENT="PhD_Thesis">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="PhD_Thesis.css">
+
+<LINK REL="previous" HREF="node107.html">
+<LINK REL="up" HREF="node104.html">
+<LINK REL="next" HREF="node111.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1868"
+  HREF="node111.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1864"
+  HREF="node104.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1860"
+  HREF="node109.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1866"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1869"
+  HREF="node111.html">Experiments from Broadcast News</A>
+<B> Up:</B> <A NAME="tex2html1865"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+<B> Previous:</B> <A NAME="tex2html1861"
+  HREF="node109.html">Signal-to-Noise Ratio</A>
+ &nbsp; <B>  <A NAME="tex2html1867"
+  HREF="node2.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001014000000000000000">
+Reference Segmentation Selection and Calculation</A>
+</H2>
+
+<P>
+The use of predefined reference segmentations is necessary to
+compute the DER given the system hypotheses. The data used in this
+chapter all comes from the NIST evaluations, which defined a set
+of rules on how the transcription should be made. In the latest
+evaluation (<A
+ HREF="node147.html#NIST_rt_eval_plan_2006"><EM>NIST Fall Rich Transcription on meetings 2006 Evaluation
+  Plan</EM>, 2006</A>) they were:
+
+<P>
+
+<UL>
+<LI>Within a speaker's turn, pauses lasting less than 0.3
+seconds are to be considered to belong to that speaker turn.
+Pauses with more than 0.3 seconds or in between different speaker
+turns are to be considered non-speech. This value was determined
+in 2003 by NIST as the minimum duration for a pause that would
+indicate an utterance boundary.
+
+<P>
+</LI>
+<LI>Vocal noises, such as laugh, cough, sneeze, breath and
+lipsmack are to be considered non-speech, and take this into
+account when considering segment boundaries.
+
+<P>
+</LI>
+<LI>Although not a rule in creating the transcriptions, it is
+worth mentioning again the collar of <SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img486.png"
+ ALT="$ \pm0.25$"></SPAN> seconds to be
+considered around each reference segment boundary when comparing
+it to the hypothesis in order to account for inexactitudes in
+computing the real segment boundary.
+
+<P>
+</LI>
+</UL>
+
+<P>
+Within the NIST evaluation campaigns all data sent out for
+development and test was carefully transcribed by hand by the
+Linguistic Data Consortium (LDC). Such transcription was usually
+done listenning to the channel with the best quality possible
+(which usually is the Individual Headphone Channel, IHM, when
+available) for each participant, and then the transcriptions are
+collapsed into a main reference file for all participants.
+
+<P>
+Prior to the RT06s evaluation it was under consideration by NIST
+and by some of the participants (including ICSI) the use of forced
+alignments of the acoustic data. Although in RT06s still hand
+alignments were used, it is the intention of NIST to change the
+reference transcriptions to be forced alignments in the near
+future. The need for such change became strong when areas in
+overlap started being scored as part of the main metric for system
+performance. In chapter <A HREF="node47.html#bn_compare">3.2</A> a quantitative comparison
+is done between forced and hand alignments. In brief, the main
+drawbacks found in the hand-aligned references are:
+
+<P>
+
+<UL>
+<LI>Transcriptions time inconsistency due to the gap of 1 year
+between each of the transcriptions for each evaluation, which
+leads to a change in transcription criterions, human transcriber,
+transcription tools, etc. Leading to consistent differences
+between the reference files to which the systems try to learn
+from.
+
+<P>
+</LI>
+<LI>Inability, at times, to detect short speaker pauses when
+these are around 0.3 seconds. This leads to problems for systems
+which are trained to this data and which are impeded to determine
+when a speaker pause has to be a silence and when it does not.
+
+<P>
+</LI>
+<LI>Existence of extended durations when labelling the overlap
+speech. As seen in chapter <A HREF="node47.html#bn_compare">3.2</A> the average length of
+speech in overlap is bigger in the hand-alignments, usually so as
+the human transcribers added some arbitrary padding to either side
+of some overlap regions, leading to greater overlap errors. Such
+difference varies from evaluation to evaluation and was detected
+only in RT06s data when overlap became part of the main metric.
+
+<P>
+</LI>
+<LI>The inability, at times, to identify in the distant
+microphones (the ones actually used in the evaluations) some
+sounds or artifacts that are heart and transcribed in the IHM
+channels (much closer to each speaker's mouth).
+
+<P>
+</LI>
+</UL>
+
+<P>
+It was decided at ICSI that development for the RT06s evaluation
+had to be done using forced alignments in order to avoid these
+problems. In order to obtain the forced alignment of a meeting
+recording a two steps process was followed:
+
+<P>
+
+<OL>
+<LI>The human words transcription for each one of the IHM
+channels was used to do a forced alignment of the audio in each of
+the IHM channels to such transcription, obtaining a time-aligned
+word transcription for each speaker with a headset on. To do so,
+the ICSI-SRI ASR system (<A
+ HREF="node147.html#Janin_06">Janin et&nbsp;al., 2006</A>) was used. Experiments
+pursued by NIST after the RT06s evaluation
+<A
+ HREF="node147.html#Fiscus_2006b">Fiscus, Garofolo, Ajot and Michet (2006)</A> indicated that very similar behaviors
+for all participants could be obtained using either ICSI-SRI
+transcriptions or LIMSI's ASR system transcriptions.
+
+<P>
+</LI>
+<LI>The transcriptions from each individual speaker were
+collapsed into a single file and the transcription rules were
+applied to determine when two words were to be joined into a
+single speaker segment or two speaker segments needed to be
+created.
+
+<P>
+</LI>
+</OL>
+
+<P>
+By using forced alignments there are also several drawbacks to
+point out:
+
+<P>
+
+<UL>
+<LI>In the way that these were done, an IHM channel needed to be
+provided for each participant in the meetings in order to obtain
+that channel's alignment. One meeting in RT05s (named
+NIST_20050412-1303) contained a speaker through a telephone
+speaker which was not considered, therefore creating a transcript
+lacking of some of the data. This could be avoided by using other
+channels instead, trying to always select the optimum quality
+source.
+
+<P>
+</LI>
+<LI>Errors in the transcription of the words (which is done so
+by human transcribers) propagates into the forced-alignments.
+These errors were measured to be much smaller than transcribing
+the speaker turns directly.
+
+<P>
+</LI>
+<LI>Each ASR system does their own systematic errors/decisions
+which translate into systematic segmentation issues. These are
+thought to be the difference between every ASR forced-alignment
+output that can be used. Although such difference is very small,
+in order to create good quality transcripts, reducing this
+variability, they could be derived from the output of multiple
+systems.
+
+<P>
+</LI>
+</UL>
+
+<P>
+All results reported in this thesis were computed using the forced
+alignments obtained using the ICSI-SRI ASR system, unless
+otherwise stated.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1868"
+  HREF="node111.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1864"
+  HREF="node104.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1860"
+  HREF="node109.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1866"
+  HREF="node2.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1869"
+  HREF="node111.html">Experiments from Broadcast News</A>
+<B> Up:</B> <A NAME="tex2html1865"
+  HREF="node104.html">Meetings Domain Experiments Setup</A>
+<B> Previous:</B> <A NAME="tex2html1861"
+  HREF="node109.html">Signal-to-Noise Ratio</A>
+ &nbsp; <B>  <A NAME="tex2html1867"
+  HREF="node2.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+user
+2008-12-08
+</ADDRESS>
+</BODY>
+</HTML>
